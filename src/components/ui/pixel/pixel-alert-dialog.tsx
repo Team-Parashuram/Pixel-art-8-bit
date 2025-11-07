@@ -3,7 +3,7 @@
 import * as React from "react"
 import * as AlertDialogPrimitive from "@radix-ui/react-alert-dialog"
 import { cn } from "@/lib/utils"
-import { pixelButtonVariants } from "./pixel/pixel-button"
+import { pixelButtonVariants } from "./pixel-button"
 
 function PixelAlertDialog({
   ...props

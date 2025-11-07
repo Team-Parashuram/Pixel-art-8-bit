@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import * as ToggleGroupPrimitive from "@radix-ui/react-toggle-group"
-import { pixelToggleVariants } from "./pixel/pixel-toggle"
+import { pixelToggleVariants } from "./pixel-toggle"
 import { cn } from "@/lib/utils"
 import { type VariantProps } from "class-variance-authority"
 

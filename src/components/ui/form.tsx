@@ -5,16 +5,18 @@ import * as LabelPrimitive from "@radix-ui/react-label"
 import { Slot } from "@radix-ui/react-slot"
 import {
   Controller,
-  ControllerProps,
-  FieldPath,
-  FieldValues,
   FormProvider,
   useFormContext,
+  useFormState,
+  type ControllerProps,
+  type FieldPath,
+  type FieldValues,
 } from "react-hook-form"
-import { cn } from "@/lib/utils"
-import { PixelLabel } from "./pixel/pixel-label"
 
-const PixelForm = FormProvider
+import { cn } from "@/lib/utils"
+import { Label } from "@/components/ui/label"
+
+const Form = FormProvider
 
 type FormFieldContextValue<
   TFieldValues extends FieldValues = FieldValues,
@@ -27,7 +29,7 @@ const FormFieldContext = React.createContext<FormFieldContextValue>(
   {} as FormFieldContextValue
 )
 
-const PixelFormField = <
+const FormField = <
   TFieldValues extends FieldValues = FieldValues,
   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
 >({
@@ -43,8 +45,8 @@ const PixelFormField = <
 const useFormField = () => {
   const fieldContext = React.useContext(FormFieldContext)
   const itemContext = React.useContext(FormItemContext)
-  const { getFieldState, formState } = useFormContext()
-
+  const { getFieldState } = useFormContext()
+  const formState = useFormState({ name: fieldContext.name })
   const fieldState = getFieldState(fieldContext.name, formState)
 
   if (!fieldContext) {
@@ -71,36 +73,43 @@ const FormItemContext = React.createContext<FormItemContextValue>(
   {} as FormItemContextValue
 )
 
-function PixelFormItem({ className, ...props }: React.ComponentProps<"div">) {
+function FormItem({ className, ...props }: React.ComponentProps<"div">) {
   const id = React.useId()
 
   return (
     <FormItemContext.Provider value={{ id }}>
-      <div className={cn("space-y-2", className)} {...props} />
+      <div
+        data-slot="form-item"
+        className={cn("grid gap-2", className)}
+        {...props}
+      />
     </FormItemContext.Provider>
   )
 }
 
-function PixelFormLabel({
+function FormLabel({
   className,
   ...props
 }: React.ComponentProps<typeof LabelPrimitive.Root>) {
   const { error, formItemId } = useFormField()
 
   return (
-    <PixelLabel
-      className={cn(error && "text-[#ff0000]", className)}
+    <Label
+      data-slot="form-label"
+      data-error={!!error}
+      className={cn("data-[error=true]:text-destructive", className)}
       htmlFor={formItemId}
       {...props}
     />
   )
 }
 
-function PixelFormControl({ ...props }: React.ComponentProps<typeof Slot>) {
+function FormControl({ ...props }: React.ComponentProps<typeof Slot>) {
   const { error, formItemId, formDescriptionId, formMessageId } = useFormField()
 
   return (
     <Slot
+      data-slot="form-control"
       id={formItemId}
       aria-describedby={
         !error
@@ -113,28 +122,22 @@ function PixelFormControl({ ...props }: React.ComponentProps<typeof Slot>) {
   )
 }
 
-function PixelFormDescription({
-  className,
-  ...props
-}: React.ComponentProps<"p">) {
+function FormDescription({ className, ...props }: React.ComponentProps<"p">) {
   const { formDescriptionId } = useFormField()
 
   return (
     <p
+      data-slot="form-description"
       id={formDescriptionId}
-      className={cn("text-xs text-[#555] dark:text-[#aaa]", className)}
+      className={cn("text-muted-foreground text-sm", className)}
       {...props}
     />
   )
 }
 
-function PixelFormMessage({
-  className,
-  children,
-  ...props
-}: React.ComponentProps<"p">) {
+function FormMessage({ className, ...props }: React.ComponentProps<"p">) {
   const { error, formMessageId } = useFormField()
-  const body = error ? String(error?.message) : children
+  const body = error ? String(error?.message ?? "") : props.children
 
   if (!body) {
     return null
@@ -142,8 +145,9 @@ function PixelFormMessage({
 
   return (
     <p
+      data-slot="form-message"
       id={formMessageId}
-      className={cn("text-xs font-bold text-[#ff0000]", className)}
+      className={cn("text-destructive text-sm", className)}
       {...props}
     >
       {body}
@@ -153,11 +157,11 @@ function PixelFormMessage({
 
 export {
   useFormField,
-  PixelForm,
-  PixelFormItem,
-  PixelFormLabel,
-  PixelFormControl,
-  PixelFormDescription,
-  PixelFormMessage,
-  PixelFormField,
+  Form,
+  FormItem,
+  FormLabel,
+  FormControl,
+  FormDescription,
+  FormMessage,
+  FormField,
 }

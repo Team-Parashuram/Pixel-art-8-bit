@@ -2,8 +2,8 @@
 
 import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
-import { PixelLabel } from "./pixel/pixel-label"
-import { PixelSeparator } from "./pixel/pixel-separator"
+import { PixelLabel } from "./pixel-label"
+import { PixelSeparator } from "./pixel-separator"
 
 function PixelFieldSet({ className, ...props }: React.ComponentProps<"fieldset">) {
   return (

@@ -1,7 +1,7 @@
 import { Slot } from "@radix-ui/react-slot"
 import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
-import { PixelSeparator } from "./pixel/pixel-separator"
+import { PixelSeparator } from "./pixel-separator"
 
 const pixelButtonGroupVariants = cva(
   "flex w-fit items-stretch font-[family-name:var(--font-press-start)]",

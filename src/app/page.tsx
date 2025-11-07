@@ -1,11 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { PixelButton } from "@/components/ui/pixel-button";
-import { PixelCard, PixelCardContent, PixelCardDescription, PixelCardFooter, PixelCardHeader, PixelCardTitle } from "@/components/ui/pixel-card";
-import { PixelBadge } from "@/components/ui/pixel-badge";
-import { ArrowRight, Gamepad2, Sparkles, Code, Zap } from "lucide-react";
+import { categories } from "@/lib/component-registry";
+import { PixelBadge } from "@/components/ui/pixel/pixel-badge";
+import { PixelButton } from "@/components/ui/pixel/pixel-button";
 import { ModeToggle } from "@/components/theme/theme-button";
+import { ArrowRight, Gamepad2, Sparkles, Code, Zap, Copy, Palette, Layers } from "lucide-react";
+import { PixelCard, PixelCardContent, PixelCardDescription, PixelCardFooter, PixelCardHeader, PixelCardTitle } from "@/components/ui/pixel/pixel-card";
 
 export default function HomePage() {
   return (
@@ -43,7 +44,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Features Section */}
       <section className="container mx-auto px-4 py-20">
         <h2 className="text-3xl font-bold uppercase tracking-wider font-[family-name:var(--font-pixel)] mb-12 text-center dark:text-[#ffd700]">
           Features
@@ -108,55 +108,71 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Component Showcase */}
+      <section className="container mx-auto px-4 py-20">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+          <PixelCard>
+            <PixelCardHeader className="text-center">
+              <div className="flex justify-center mb-2">
+                <Layers className="h-12 w-12" />
+              </div>
+              <PixelCardTitle className="text-4xl">50+</PixelCardTitle>
+              <PixelCardDescription>Components</PixelCardDescription>
+            </PixelCardHeader>
+          </PixelCard>
+          
+          <PixelCard>
+            <PixelCardHeader className="text-center">
+              <div className="flex justify-center mb-2">
+                <Palette className="h-12 w-12" />
+              </div>
+              <PixelCardTitle className="text-4xl">6</PixelCardTitle>
+              <PixelCardDescription>Categories</PixelCardDescription>
+            </PixelCardHeader>
+          </PixelCard>
+          
+          <PixelCard>
+            <PixelCardHeader className="text-center">
+              <div className="flex justify-center mb-2">
+                <Copy className="h-12 w-12" />
+              </div>
+              <PixelCardTitle className="text-4xl">100%</PixelCardTitle>
+              <PixelCardDescription>Copy-Paste Ready</PixelCardDescription>
+            </PixelCardHeader>
+          </PixelCard>
+        </div>
+      </section>
+
       <section id="components" className="container mx-auto px-4 py-20">
         <h2 className="text-3xl font-bold uppercase tracking-wider font-[family-name:var(--font-pixel)] mb-12 text-center dark:text-[#ffd700]">
-          Components
+          Component Categories
         </h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {[
-            { name: "Button", slug: "pixel-button", desc: "Interactive buttons with variants" },
-            { name: "Card", slug: "pixel-card", desc: "Content containers" },
-            { name: "Input", slug: "pixel-input", desc: "Text input fields" },
-            { name: "Badge", slug: "pixel-badge", desc: "Status indicators" },
-            { name: "Dialog", slug: "pixel-dialog", desc: "Modal dialogs" },
-            { name: "Toast", slug: "pixel-toast", desc: "Notifications" },
-            { name: "Select", slug: "pixel-select", desc: "Dropdown selections" },
-            { name: "Checkbox", slug: "pixel-checkbox", desc: "Checkboxes" },
-            { name: "Tabs", slug: "pixel-tabs", desc: "Tabbed content" },
-            { name: "Accordion", slug: "pixel-accordion", desc: "Collapsible sections" },
-            { name: "Progress", slug: "pixel-progress", desc: "Progress bars" },
-            { name: "Slider", slug: "pixel-slider", desc: "Range sliders" },
-            { name: "Switch", slug: "pixel-switch", desc: "Toggle switches" },
-            { name: "Textarea", slug: "pixel-textarea", desc: "Multi-line text input" },
-            { name: "Radio Group", slug: "pixel-radio-group", desc: "Radio buttons" },
-            { name: "Alert", slug: "pixel-alert", desc: "Alert messages" },
-            { name: "Tooltip", slug: "pixel-tooltip", desc: "Hover tooltips" },
-            { name: "Popover", slug: "pixel-popover", desc: "Popover content" },
-            { name: "Table", slug: "pixel-table", desc: "Data tables" },
-            { name: "Breadcrumb", slug: "pixel-breadcrumb", desc: "Navigation breadcrumbs" },
-            { name: "Separator", slug: "pixel-separator", desc: "Divider lines" },
-            { name: "Spinner", slug: "pixel-spinner", desc: "Loading indicators" },
-          ].map((component) => (
-            <PixelCard key={component.slug}>
-              <PixelCardHeader>
-                <PixelCardTitle>{component.name}</PixelCardTitle>
-                <PixelCardDescription>{component.desc}</PixelCardDescription>
-              </PixelCardHeader>
-              <PixelCardFooter>
-                <Link href={`/docs/components/${component.slug}`} className="w-full">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          {categories.map((category) => (
+            <Link key={category} href={`/docs/components?category=${category.toLowerCase()}`}>
+              <PixelCard className="hover:scale-105 transition-transform duration-0 cursor-pointer">
+                <PixelCardHeader>
+                  <PixelCardTitle className="text-xl">{category}</PixelCardTitle>
+                  <PixelCardDescription>
+                    {category === "Forms" && "Input, Button, Select, and more"}
+                    {category === "Display" && "Card, Badge, Table, Avatar"}
+                    {category === "Feedback" && "Alert, Toast, Progress"}
+                    {category === "Navigation" && "Tabs, Breadcrumb, Menu"}
+                    {category === "Overlays" && "Dialog, Popover, Tooltip"}
+                    {category === "Layout" && "Accordion, Separator, Grid"}
+                  </PixelCardDescription>
+                </PixelCardHeader>
+                <PixelCardFooter>
                   <PixelButton className="w-full" size="sm">
-                    View Docs
+                    Browse {category} <ArrowRight className="ml-2 h-3 w-3" />
                   </PixelButton>
-                </Link>
-              </PixelCardFooter>
-            </PixelCard>
+                </PixelCardFooter>
+              </PixelCard>
+            </Link>
           ))}
         </div>
       </section>
 
-      {/* CTA Section */}
       <section className="container mx-auto px-4 py-20 text-center">
         <PixelCard className="max-w-3xl mx-auto">
           <PixelCardHeader>
