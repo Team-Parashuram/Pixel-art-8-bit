@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
 import { PixelButton } from "@/components/ui/pixel/pixel-button";
 import { PixelCard, PixelCardContent, PixelCardDescription, PixelCardFooter, PixelCardHeader, PixelCardTitle } from "@/components/ui/pixel/pixel-card";
@@ -13,13 +12,15 @@ import { PixelSelect, PixelSelectContent, PixelSelectItem, PixelSelectTrigger, P
 import { PixelTabs, PixelTabsContent, PixelTabsList, PixelTabsTrigger } from "@/components/ui/pixel/pixel-tabs";
 import { PixelAccordion, PixelAccordionContent, PixelAccordionItem, PixelAccordionTrigger } from "@/components/ui/pixel/pixel-accordion";
 import { Home, Settings, User, Bell, Trophy, Star } from "lucide-react";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { setUsername, setEmail, toggleNotifications, setTheme } from "@/store/slices/userPreferencesSlice";
 
 function DashboardContent() {
   const { addToast } = usePixelToast();
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [notifications, setNotifications] = useState(true);
-  const [theme, setTheme] = useState("dark");
+  
+  // Using Redux instead of local state
+  const dispatch = useAppDispatch();
+  const { username, email, notifications, theme } = useAppSelector((state) => state.userPreferences);
 
   return (
     <div className="min-h-screen bg-[#f5f5dc] dark:bg-[#000000] p-8">
@@ -117,7 +118,7 @@ function DashboardContent() {
                     <label className="block text-sm font-bold mb-2">Username</label>
                     <PixelInput 
                       value={username}
-                      onChange={(e) => setUsername(e.target.value)}
+                      onChange={(e) => dispatch(setUsername(e.target.value))}
                       placeholder="Enter username" 
                     />
                   </div>
@@ -126,21 +127,20 @@ function DashboardContent() {
                     <PixelInput 
                       type="email"
                       value={email}
-                      onChange={(e) => setEmail(e.target.value)}
+                      onChange={(e) => dispatch(setEmail(e.target.value))}
                       placeholder="email@example.com" 
                     />
                   </div>
                   <div>
                     <label className="block text-sm font-bold mb-2">Game Mode</label>
-                    <PixelSelect value={theme} onValueChange={setTheme}>
+                    <PixelSelect value={theme} onValueChange={(value) => dispatch(setTheme(value as 'light' | 'dark' | 'system'))}>
                       <PixelSelectTrigger>
                         <PixelSelectValue placeholder="Select mode" />
                       </PixelSelectTrigger>
                       <PixelSelectContent>
-                        <PixelSelectItem value="easy">Easy</PixelSelectItem>
-                        <PixelSelectItem value="normal">Normal</PixelSelectItem>
-                        <PixelSelectItem value="hard">Hard</PixelSelectItem>
-                        <PixelSelectItem value="nightmare">Nightmare</PixelSelectItem>
+                        <PixelSelectItem value="light">Light</PixelSelectItem>
+                        <PixelSelectItem value="dark">Dark</PixelSelectItem>
+                        <PixelSelectItem value="system">System</PixelSelectItem>
                       </PixelSelectContent>
                     </PixelSelect>
                   </div>
@@ -170,7 +170,7 @@ function DashboardContent() {
                     <PixelCheckbox 
                       id="notifications" 
                       checked={notifications}
-                      onCheckedChange={(checked) => setNotifications(checked as boolean)}
+                      onCheckedChange={() => dispatch(toggleNotifications())}
                     />
                     <label htmlFor="notifications" className="text-sm font-medium">
                       Enable notifications

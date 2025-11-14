@@ -1,0 +1,32 @@
+# humans.txt - We are people, not machines
+
+/* TEAM */
+Developer: Shardendu Mishra
+Site: https://mishrashardendu22.is-a.dev/
+GitHub: https://github.com/MishraShardendu22/
+LinkedIn: https://www.linkedin.com/in/shardendumishra22/
+Twitter: @Shardendu_M
+Location: India
+
+Team: Team Parashuram
+GitHub: https://github.com/Team-Parashuram
+
+/* THANKS */
+Built with: React, Next.js, TypeScript, Tailwind CSS, Radix UI
+Font: Press Start 2P (Google Fonts)
+Inspiration: Classic 8-bit games and retro computing
+
+/* SITE */
+Last update: 2025/11/14
+Standards: HTML5, CSS3, JavaScript ES6+
+Components: 50+ pixel-perfect UI elements
+Software: VS Code, Git, pnpm
+Framework: Next.js 15
+Language: TypeScript 5.0+
+Doctype: HTML5
+IDE: Visual Studio Code
+
+/* SPECIAL THANKS */
+Community contributors and open-source enthusiasts
+Radix UI team for accessible primitives
+Tailwind CSS team for the utility framework

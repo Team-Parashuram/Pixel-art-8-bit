@@ -1,8 +1,9 @@
 {
-  "name": "Pixel UI - 8-Bit Retro Component Library",
+  "name": "Pixel UI - 8-Bit Retro Component Library for React & Next.js",
   "short_name": "Pixel UI",
-  "description": "A complete pixel-art/8-bit retro UI component library for React and Next.js",
+  "description": "Build nostalgic web experiences with 50+ pixel-perfect components. Free, open-source 8-bit UI library with TypeScript, Tailwind CSS, and full accessibility support.",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#f5f5dc",
   "theme_color": "#ff8c00",
@@ -12,28 +13,50 @@
       "src": "/icon-192x192.png",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "maskable"
+      "purpose": "maskable any"
     },
     {
       "src": "/icon-512x512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "maskable"
+      "purpose": "maskable any"
     }
   ],
-  "categories": ["development", "design", "utilities"],
+  "categories": ["development", "design", "utilities", "productivity"],
   "screenshots": [
     {
       "src": "/screenshot-wide.png",
       "sizes": "1280x720",
       "type": "image/png",
-      "form_factor": "wide"
+      "form_factor": "wide",
+      "label": "Pixel UI Component Gallery"
     },
     {
       "src": "/screenshot-mobile.png",
       "sizes": "750x1334",
       "type": "image/png",
-      "form_factor": "narrow"
+      "form_factor": "narrow",
+      "label": "Pixel UI Mobile View"
     }
-  ]
+  ],
+  "shortcuts": [
+    {
+      "name": "Browse Components",
+      "short_name": "Components",
+      "description": "View all available components",
+      "url": "/docs/components",
+      "icons": [{ "src": "/icon-192x192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "View Examples",
+      "short_name": "Examples",
+      "description": "See component examples",
+      "url": "/examples",
+      "icons": [{ "src": "/icon-192x192.png", "sizes": "192x192" }]
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false,
+  "lang": "en-US",
+  "dir": "ltr"
 }

@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/theme/theme";
 import { Navbar } from "@/components/navbar/navbar";
 import { Footer } from "@/components/footer/footer";
 import { StructuredData } from "@/components/seo/structured-data";
+import StoreProvider from "@/store/StoreProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,12 +18,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://pixel-ui.vercel.app'),
+  metadataBase: new URL('https://pixel-art-8-bit.mishrashardendu22.is-a.dev'),
   title: {
-    default: "Pixel UI - 8-Bit Retro Component Library",
-    template: "%s | Pixel UI"
+    default: "Pixel UI - 8-Bit Retro Component Library for React & Next.js | 50+ Components",
+    template: "%s | Pixel UI - Retro Component Library"
   },
-  description: "A complete pixel-art/8-bit retro UI component library for React and Next.js. Built with TypeScript, Tailwind CSS, and Radix UI. Features retro gaming aesthetics with modern accessibility.",
+  description: "Build nostalgic web experiences with Pixel UI - A complete 8-bit retro component library for React and Next.js. 50+ pixel-perfect components with TypeScript, Tailwind CSS, and Radix UI. Free, open-source, and accessible.",
   keywords: [
     "pixel art",
     "8-bit",
@@ -37,7 +38,27 @@ export const metadata: Metadata = {
     "pixel perfect",
     "retro gaming",
     "arcade style",
-    "nostalgic design"
+    "nostalgic design",
+    "pixel art components",
+    "8-bit UI library",
+    "retro design system",
+    "pixel button",
+    "retro forms",
+    "8-bit animations",
+    "arcade UI",
+    "gaming UI components",
+    "nostalgic web design",
+    "pixel perfect borders",
+    "retro aesthetic",
+    "free component library",
+    "open source UI",
+    "accessible components",
+    "Radix UI",
+    "shadcn alternative",
+    "retro website builder",
+    "8-bit website components",
+    "pixel art web design",
+    "vintage UI components"
   ],
   authors: [
     {
@@ -47,32 +68,37 @@ export const metadata: Metadata = {
   ],
   creator: "Shardendu Mishra",
   publisher: "Team Parashuram",
+  applicationName: "Pixel UI",
+  category: "Developer Tools",
+  classification: "UI Component Library",
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://pixel-ui.vercel.app/",
-    title: "Pixel UI - 8-Bit Retro Component Library",
-    description: "A complete pixel-art/8-bit retro UI component library for React and Next.js",
+    url: "https://pixel-art-8-bit.mishrashardendu22.is-a.dev/",
+    title: "Pixel UI - 8-Bit Retro Component Library for React & Next.js",
+    description: "Build nostalgic web experiences with 50+ pixel-perfect components. Free, open-source 8-bit UI library with TypeScript, Tailwind CSS, and full accessibility support.",
     siteName: "Pixel UI",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Pixel UI - 8-Bit Retro Component Library"
+        alt: "Pixel UI - 8-Bit Retro Component Library with 50+ Components"
       }
     ]
   },
   twitter: {
     card: "summary_large_image",
     title: "Pixel UI - 8-Bit Retro Component Library",
-    description: "A complete pixel-art/8-bit retro UI component library for React and Next.js",
+    description: "50+ pixel-perfect components for React & Next.js. Free, open-source, accessible. Build nostalgic web experiences with authentic 8-bit aesthetics.",
     creator: "@Shardendu_M",
+    site: "@Shardendu_M",
     images: ["/og-image.png"]
   },
   robots: {
     index: true,
     follow: true,
+    nocache: false,
     googleBot: {
       index: true,
       follow: true,
@@ -80,6 +106,12 @@ export const metadata: Metadata = {
       "max-image-preview": "large",
       "max-snippet": -1
     }
+  },
+  alternates: {
+    canonical: "https://pixel-art-8-bit.mishrashardendu22.is-a.dev"
+  },
+  verification: {
+    google: "google-site-verification-code",
   },
   manifest: "/manifest.json",
   icons: {
@@ -90,6 +122,12 @@ export const metadata: Metadata = {
     ],
     apple: [
       { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }
+    ],
+    other: [
+      {
+        rel: "mask-icon",
+        url: "/safari-pinned-tab.svg"
+      }
     ]
   }
 };
@@ -100,10 +138,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" prefix="og: https://ogp.me/ns#">
       <head>
         <StructuredData />
         <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+        <link type="text/plain" rel="author" href="/humans.txt" />
+        <meta name="theme-color" content="#ff8c00" media="(prefers-color-scheme: light)" />
+        <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <style>{`
           :root {
             --font-press-start: 'Press Start 2P', monospace;
@@ -111,16 +157,18 @@ export default function RootLayout({
         `}</style>
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`} >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <Navbar />
-          <main>{children}</main>
-          <Footer />
-        </ThemeProvider>
+        <StoreProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <Navbar />
+            <main>{children}</main>
+            <Footer />
+          </ThemeProvider>
+        </StoreProvider>
       </body>
     </html>
   );

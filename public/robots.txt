@@ -2,5 +2,19 @@
 User-agent: *
 Allow: /
 
+# Disallow admin or private paths if any
+Disallow: /api/
+Disallow: /_next/static/
+
+# Crawl-delay for specific bots
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
 # Sitemap
-Sitemap: https://pixel-ui.vercel.app/sitemap.xml
+Sitemap: https://pixel-art-8-bit.mishrashardendu22.is-a.dev/sitemap.xml
