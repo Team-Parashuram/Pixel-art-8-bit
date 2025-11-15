@@ -50,8 +50,13 @@ import { PixelFaq, PixelFaqList, PixelFaqItem, PixelFaqQuestion, PixelFaqAnswer 
 import { PixelLoader } from "@/components/ui/pixel/pixel-loader";
 import { PixelTerminal } from "@/components/ui/pixel/pixel-terminal";
 import { PixelHealthBar, PixelManaBar, PixelXPBar, PixelInventory, PixelInventorySlot, PixelAchievement, PixelDamageNumber } from "@/components/ui/pixel/pixel-game-ui";
-import { PixelWindow, PixelWindowTitleBar, PixelWindowContent } from "@/components/ui/pixel/pixel-window";
+import { PixelWindow, PixelWindowMenuBar, PixelWindowContent } from "@/components/ui/pixel/pixel-window";
 import { PixelAudioVisualizer } from "@/components/ui/pixel/pixel-audio-visualizer";
+import { PixelCodeBlock, PixelCode } from "@/components/ui/pixel/pixel-code-block";
+import { PixelTimeline, PixelTimelineCheckpoint } from "@/components/ui/pixel/pixel-timeline";
+import { PixelNotification, usePixelToast } from "@/components/ui/pixel/pixel-notification";
+import { PixelChat, PixelMessageBubble } from "@/components/ui/pixel/pixel-chat";
+import { PixelCountdown, PixelTimer } from "@/components/ui/pixel/pixel-countdown";
 
 // Import animation components
 import { PixelBlurText } from "@/components/ui/pixel/animations/pixel-blur-text";
@@ -1132,7 +1137,6 @@ Try: hello, info, joke
         <PixelWindow 
           title="My Computer" 
           icon="💻" 
-          defaultPosition={{ x: 50, y: 50 }}
           className="w-[400px]"
         >
           <PixelWindowContent>
@@ -1156,9 +1160,145 @@ Try: hello, info, joke
           <PixelAudioVisualizer 
             variant="bars" 
             size="md"
-            bars={16}
-            animated={true}
+            animate={true}
           />
+        </div>
+      );
+    
+    case "pixel-code-block":
+      return (
+        <div className="space-y-6">
+          <PixelCodeBlock 
+            code={`function greet(name) {\n  console.log(\`Hello, \${name}!\`);\n  return true;\n}\n\ngreet("World");`}
+            language="javascript"
+            title="example.js"
+            variant="terminal"
+            highlightLines={[2, 3]}
+          />
+          <div className="flex gap-4 items-center">
+            <span className="font-pixel text-sm">Inline code:</span>
+            <PixelCode>const x = 10;</PixelCode>
+          </div>
+        </div>
+      );
+    
+    case "pixel-timeline":
+      return (
+        <div className="max-w-3xl">
+          <PixelTimeline 
+            items={[
+              {
+                title: "Project Started",
+                description: "Initial planning phase completed.",
+                date: "Jan 2024",
+                variant: "success" as const,
+                icon: "🚀",
+              },
+              {
+                title: "Development",
+                description: "Building core features.",
+                date: "Feb 2024",
+                variant: "warning" as const,
+                icon: "⚡",
+              },
+              {
+                title: "Testing",
+                description: "QA scheduled for next month.",
+                date: "Mar 2024",
+                variant: "default" as const,
+                icon: "🔍",
+              },
+            ]}
+            markerSize="md"
+            markerShape="circle"
+          />
+        </div>
+      );
+    
+    case "pixel-notification":
+      return (
+        <div className="space-y-4 max-w-md mx-auto">
+          <PixelNotification
+            title="Success!"
+            description="Your changes have been saved successfully."
+            variant="success"
+            icon="✓"
+            onClose={() => {}}
+          />
+          <PixelNotification
+            title="Warning!"
+            description="This action requires your attention."
+            variant="warning"
+            icon="⚠"
+            action={{
+              label: "Review",
+              onClick: () => alert("Reviewing..."),
+            }}
+          />
+          <PixelNotification
+            title="Error!"
+            description="Something went wrong. Please try again."
+            variant="error"
+            icon="✕"
+            onClose={() => {}}
+          />
+        </div>
+      );
+    
+    case "pixel-chat":
+      return (
+        <div className="flex justify-center">
+          <PixelChat
+            messages={[
+              {
+                id: "1",
+                text: "Hey, check out these pixel components!",
+                sender: "other",
+                username: "Alice",
+                timestamp: "10:00 AM",
+                avatar: "👩",
+              },
+              {
+                id: "2",
+                text: "They look amazing! Very retro! 😄",
+                sender: "user",
+                timestamp: "10:01 AM",
+              },
+              {
+                id: "3",
+                text: "I know right! The 8-bit style is perfect!",
+                sender: "other",
+                username: "Alice",
+                timestamp: "10:02 AM",
+                avatar: "👩",
+              },
+            ]}
+            size="sm"
+            onSendMessage={(text) => console.log("Sent:", text)}
+          />
+        </div>
+      );
+    
+    case "pixel-countdown":
+      return (
+        <div className="space-y-8">
+          <div className="flex justify-center">
+            <PixelCountdown
+              targetDate={new Date(Date.now() + 10 * 24 * 60 * 60 * 1000)}
+              variant="flip"
+              size="md"
+              labels={true}
+            />
+          </div>
+          <div className="flex justify-center">
+            <PixelTimer
+              initialMinutes={5}
+              initialSeconds={0}
+              variant="digital"
+              size="md"
+              showControls={true}
+            />
+          </div>
         </div>
       );
     

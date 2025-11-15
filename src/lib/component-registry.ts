@@ -2638,6 +2638,319 @@ toast({
       },
     ],
   },
+  {
+    slug: "pixel-code-block",
+    title: "Code Block",
+    description: "Syntax-highlighted code display with line numbers, copy button, and retro terminal themes.",
+    category: "Special",
+    installation: "",
+    importCode: `import { PixelCodeBlock, PixelCode } from "@/components/ui/pixel/pixel-code-block"`,
+    usageCode: `<PixelCodeBlock 
+  code={sourceCode}
+  language="javascript"
+  title="app.js"
+  highlightLines={[2, 3]}
+/>
+<PixelCode>const x = 10;</PixelCode>`,
+    componentCode: `/src/components/ui/pixel/pixel-code-block.tsx`,
+    props: [
+      { name: "code", type: "string", description: "Source code to display" },
+      { name: "language", type: "string", description: "Programming language (e.g., 'javascript', 'python')" },
+      { name: "title", type: "string", description: "Code block title/filename" },
+      { name: "variant", type: '"default" | "terminal" | "dark" | "light" | "matrix" | "amber"', default: '"default"', description: "Color theme" },
+      { name: "size", type: '"sm" | "md" | "lg"', default: '"md"', description: "Text size" },
+      { name: "showLineNumbers", type: "boolean", default: "true", description: "Show line numbers" },
+      { name: "showCopyButton", type: "boolean", default: "true", description: "Show copy button" },
+      { name: "highlightLines", type: "number[]", description: "Array of line numbers to highlight" },
+    ],
+    examples: [
+      {
+        title: "JavaScript Code",
+        description: "Basic JavaScript with syntax highlighting",
+        code: `<PixelCodeBlock 
+  code="function hello() { console.log('Hello!'); }"
+  language="javascript"
+  title="app.js"
+/>`,
+      },
+      {
+        title: "Terminal Theme",
+        description: "Green terminal style",
+        code: `<PixelCodeBlock 
+  code="npm install pixel-ui"
+  variant="terminal"
+  showLineNumbers={false}
+/>`,
+      },
+      {
+        title: "Line Highlighting",
+        description: "Highlight specific lines",
+        code: `<PixelCodeBlock 
+  code={multiLineCode}
+  highlightLines={[2, 3, 4]}
+  title="important.ts"
+/>`,
+      },
+      {
+        title: "Inline Code",
+        description: "Inline code snippet",
+        code: `<p>Use <PixelCode>useState</PixelCode> for state management.</p>`,
+      },
+    ],
+  },
+  {
+    slug: "pixel-timeline",
+    title: "Timeline",
+    description: "Vertical and horizontal timelines with milestones, checkpoints, and progress tracking.",
+    category: "Special",
+    installation: "",
+    importCode: `import { PixelTimeline, PixelTimelineCheckpoint } from "@/components/ui/pixel/pixel-timeline"`,
+    usageCode: `<PixelTimeline 
+  items={timelineItems}
+  orientation="vertical"
+  markerShape="circle"
+/>
+<PixelTimelineCheckpoint 
+  checkpoints={checkpoints}
+  orientation="horizontal"
+/>`,
+    componentCode: `/src/components/ui/pixel/pixel-timeline.tsx`,
+    props: [
+      { name: "items", type: "TimelineItemType[]", description: "Timeline items array" },
+      { name: "orientation", type: '"vertical" | "horizontal"', default: '"vertical"', description: "Timeline direction" },
+      { name: "markerSize", type: '"sm" | "md" | "lg"', default: '"md"', description: "Marker size" },
+      { name: "markerShape", type: '"square" | "circle" | "diamond"', default: '"square"', description: "Marker shape" },
+      { name: "showConnector", type: "boolean", default: "true", description: "Show connecting lines" },
+      { name: "checkpoints", type: "Array<{ label: string, completed?: boolean, active?: boolean }>", description: "Checkpoint items for progress tracking" },
+    ],
+    examples: [
+      {
+        title: "Project Timeline",
+        description: "Vertical timeline with milestones",
+        code: `<PixelTimeline 
+  items={[
+    { title: "Started", date: "Jan 2024", variant: "success" },
+    { title: "In Progress", date: "Feb 2024", variant: "warning" },
+  ]}
+/>`,
+      },
+      {
+        title: "Checkpoint Progress",
+        description: "Step-by-step progress tracker",
+        code: `<PixelTimelineCheckpoint 
+  checkpoints={[
+    { label: "Register", completed: true },
+    { label: "Verify", active: true },
+    { label: "Complete", completed: false },
+  ]}
+/>`,
+      },
+      {
+        title: "Horizontal Timeline",
+        description: "Horizontal layout for wide displays",
+        code: `<PixelTimeline 
+  items={events}
+  orientation="horizontal"
+  markerShape="circle"
+/>`,
+      },
+    ],
+  },
+  {
+    slug: "pixel-notification",
+    title: "Notification",
+    description: "Toast notification system with auto-dismiss, stacking, variants, and action buttons.",
+    category: "Special",
+    installation: "",
+    importCode: `import { PixelNotification, usePixelToast } from "@/components/ui/pixel/pixel-notification"`,
+    usageCode: `<PixelNotification 
+  title="Success!"
+  description="Changes saved"
+  variant="success"
+  onClose={() => {}}
+/>
+
+// In component:
+const { addToast } = usePixelToast();
+addToast({ 
+  title: "Success", 
+  variant: "success",
+  duration: 5000 
+});`,
+    componentCode: `/src/components/ui/pixel/pixel-notification.tsx`,
+    props: [
+      { name: "title", type: "string", description: "Notification title" },
+      { name: "description", type: "string", description: "Notification message" },
+      { name: "variant", type: '"default" | "success" | "warning" | "error" | "info"', default: '"default"', description: "Notification style" },
+      { name: "icon", type: "ReactNode", description: "Icon element" },
+      { name: "onClose", type: "() => void", description: "Close callback" },
+      { name: "action", type: "{ label: string, onClick: () => void }", description: "Action button config" },
+      { name: "duration", type: "number", default: "5000", description: "Auto-dismiss duration (ms), 0 for persistent" },
+    ],
+    examples: [
+      {
+        title: "Success Toast",
+        description: "Success notification",
+        code: `<PixelNotification 
+  title="Success!"
+  description="Operation completed"
+  variant="success"
+  icon="✓"
+/>`,
+      },
+      {
+        title: "With Action",
+        description: "Notification with action button",
+        code: `<PixelNotification 
+  title="Update Available"
+  action={{ label: "Update", onClick: () => update() }}
+/>`,
+      },
+      {
+        title: "Toast Hook",
+        description: "Programmatic toast creation",
+        code: `const { addToast } = usePixelToast();
+
+addToast({
+  title: "Saved!",
+  variant: "success",
+  duration: 3000
+});`,
+      },
+    ],
+  },
+  {
+    slug: "pixel-chat",
+    title: "Chat",
+    description: "Retro chat messenger with message bubbles, typing indicators, and multiple style variants.",
+    category: "Special",
+    installation: "",
+    importCode: `import { PixelChat, PixelMessageBubble } from "@/components/ui/pixel/pixel-chat"`,
+    usageCode: `<PixelChat 
+  messages={messages}
+  onSendMessage={(text) => handleSend(text)}
+  showTypingIndicator={isTyping}
+/>
+<PixelMessageBubble 
+  text="Hello!"
+  sender="user"
+/>`,
+    componentCode: `/src/components/ui/pixel/pixel-chat.tsx`,
+    props: [
+      { name: "messages", type: "MessageType[]", description: "Array of chat messages" },
+      { name: "onSendMessage", type: "(message: string) => void", description: "Send message callback" },
+      { name: "variant", type: '"default" | "retro" | "terminal"', default: '"default"', description: "Chat style" },
+      { name: "size", type: '"sm" | "md" | "lg"', default: '"md"', description: "Chat window size" },
+      { name: "showTypingIndicator", type: "boolean", default: "false", description: "Show typing animation" },
+      { name: "typingUser", type: "string", description: "Name of user who is typing" },
+      { name: "placeholder", type: "string", default: '"Type a message..."', description: "Input placeholder" },
+    ],
+    examples: [
+      {
+        title: "Basic Chat",
+        description: "Simple chat interface",
+        code: `<PixelChat 
+  messages={chatMessages}
+  onSendMessage={handleSend}
+/>`,
+      },
+      {
+        title: "With Typing Indicator",
+        description: "Show when other user is typing",
+        code: `<PixelChat 
+  messages={messages}
+  showTypingIndicator={true}
+  typingUser="Alice"
+/>`,
+      },
+      {
+        title: "Message Bubble",
+        description: "Standalone message component",
+        code: `<PixelMessageBubble 
+  text="Hello!"
+  sender="user"
+  username="Bob"
+  timestamp="10:30 AM"
+/>`,
+      },
+      {
+        title: "Terminal Style",
+        description: "Terminal-themed chat",
+        code: `<PixelChat 
+  messages={messages}
+  variant="terminal"
+/>`,
+      },
+    ],
+  },
+  {
+    slug: "pixel-countdown",
+    title: "Countdown",
+    description: "Countdown timer and stopwatch with flip-clock display, multiple variants, and controls.",
+    category: "Special",
+    installation: "",
+    importCode: `import { PixelCountdown, PixelTimer } from "@/components/ui/pixel/pixel-countdown"`,
+    usageCode: `<PixelCountdown 
+  targetDate={new Date("2025-12-31")}
+  variant="flip"
+  size="lg"
+/>
+<PixelTimer 
+  initialMinutes={5}
+  showControls={true}
+/>`,
+    componentCode: `/src/components/ui/pixel/pixel-countdown.tsx`,
+    props: [
+      { name: "targetDate", type: "Date", description: "Target date for countdown" },
+      { name: "initialSeconds", type: "number", description: "Initial seconds (alternative to targetDate)" },
+      { name: "variant", type: '"default" | "retro" | "digital" | "flip"', default: '"default"', description: "Display style" },
+      { name: "size", type: '"sm" | "md" | "lg" | "xl"', default: '"md"', description: "Countdown size" },
+      { name: "showDays", type: "boolean", default: "true", description: "Show days unit" },
+      { name: "showHours", type: "boolean", default: "true", description: "Show hours unit" },
+      { name: "showMinutes", type: "boolean", default: "true", description: "Show minutes unit" },
+      { name: "showSeconds", type: "boolean", default: "true", description: "Show seconds unit" },
+      { name: "labels", type: "boolean", default: "true", description: "Show unit labels" },
+      { name: "onComplete", type: "() => void", description: "Callback when countdown reaches zero" },
+      { name: "showControls", type: "boolean", default: "true", description: "Show start/pause/reset buttons (PixelTimer only)" },
+    ],
+    examples: [
+      {
+        title: "Event Countdown",
+        description: "Countdown to specific date",
+        code: `<PixelCountdown 
+  targetDate={new Date("2025-12-31")}
+  variant="flip"
+/>`,
+      },
+      {
+        title: "Timer with Controls",
+        description: "Controllable timer",
+        code: `<PixelTimer 
+  initialMinutes={5}
+  variant="digital"
+  showControls={true}
+/>`,
+      },
+      {
+        title: "Seconds Only",
+        description: "Simple seconds counter",
+        code: `<PixelCountdown 
+  initialSeconds={60}
+  showDays={false}
+  showHours={false}
+  showMinutes={false}
+/>`,
+      },
+      {
+        title: "Pomodoro Timer",
+        description: "25-minute focus timer",
+        code: `<PixelTimer 
+  initialMinutes={25}
+  onComplete={() => alert("Break time!")}
+/>`,
+      },
+    ],
+  },
 ];
 
 export function getComponentBySlug(slug: string): ComponentDoc | undefined {
