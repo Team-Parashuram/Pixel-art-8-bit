@@ -36,7 +36,7 @@ import { PixelNavigationMenu, PixelNavigationMenuList, PixelNavigationMenuItem, 
 import { PixelCommand, PixelCommandInput, PixelCommandList, PixelCommandEmpty, PixelCommandGroup, PixelCommandItem } from "@/components/ui/pixel/pixel-command";
 import { PixelSheet, PixelSheetContent, PixelSheetHeader, PixelSheetTitle, PixelSheetTrigger } from "@/components/ui/pixel/pixel-sheet";
 import { PixelDrawer, PixelDrawerTrigger, PixelDrawerContent, PixelDrawerHeader, PixelDrawerTitle, PixelDrawerDescription, PixelDrawerClose } from "@/components/ui/pixel/pixel-drawer";
-import { PixelToastProvider} from "@/components/ui/pixel/pixel-toast";
+import { PixelToastProvider, usePixelToast as useSimpleToast } from "@/components/ui/pixel/pixel-toast";
 import { PixelToaster } from "@/components/ui/pixel/pixel-sonner";
 import { toast } from "sonner";
 import { PixelSeparator } from "@/components/ui/pixel/pixel-separator";
@@ -106,7 +106,7 @@ import { PixelImageTrail } from "@/components/ui/pixel/animations/pixel-image-tr
 
 // Helper component for Toast demo
 function ToastDemo() {
-  const { addToast } = usePixelToast();
+  const { addToast } = useSimpleToast();
   
   return (
     <div className="flex gap-4 flex-wrap">
@@ -115,7 +115,7 @@ function ToastDemo() {
       </PixelButton>
       <PixelButton 
         variant="secondary"
-        onClick={() => addToast({ message: "Success!", label: "Undo", onClick: () => console.log("Undo clicked") })}
+        onClick={() => addToast("Success!", { label: "Undo", onClick: () => console.log("Undo clicked") })}
       >
         Toast with Action
       </PixelButton>

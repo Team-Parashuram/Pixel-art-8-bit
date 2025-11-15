@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import { componentRegistry, categories, type ComponentCategory } from "@/lib/component-registry";
 import { PixelButton } from "@/components/ui/pixel/pixel-button";
@@ -11,7 +11,7 @@ import { PixelBadge } from "@/components/ui/pixel/pixel-badge";
 import { PixelInput } from "@/components/ui/pixel/pixel-input";
 import { Search, ArrowRight } from "lucide-react";
 
-export default function ComponentsListPage() {
+function ComponentsListContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const pathname = usePathname();
@@ -51,7 +51,7 @@ export default function ComponentsListPage() {
   );
 
   return (
-    <div className="min-h-screen bg-[#f5f5dc] dark:bg-[#000000]">
+    <div className="min-h-screen bg-pixel-light-bg dark:bg-black">
       <div className="container mx-auto px-4 py-12">
         {/* Header */}
         <div className="mb-12 text-center">
@@ -61,7 +61,7 @@ export default function ComponentsListPage() {
             </PixelButton>
           </Link>
           
-          <h1 className="text-5xl md:text-6xl font-bold uppercase font-[family-name:var(--font-press-start)] mb-6 dark:text-[#ffd700]">
+          <h1 className="text-5xl md:text-6xl font-bold uppercase font-pixel mb-6 dark:text-pixel-dark-secondary">
             Components
           </h1>
           
@@ -90,7 +90,7 @@ export default function ComponentsListPage() {
             return (
               <PixelCard 
                 key={category}
-                className={isSpecial ? "relative border-4 border-[#ffd700] shadow-[8px_8px_0px_0px_rgba(255,215,0,0.5)]" : ""}
+                className={isSpecial ? "relative border-4 border-pixel-dark-secondary shadow-[8px_8px_0px_0px_rgba(255,215,0,0.5)]" : ""}
               >
                 {isSpecial && (
                   <div className="absolute -top-2 -right-2 px-2 py-1 text-[8px] font-bold bg-linear-to-r from-[#ff8c00] to-pixel-dark-secondary text-black border-2 border-black shadow-pixel-sm animate-bounce z-10">
@@ -166,7 +166,7 @@ export default function ComponentsListPage() {
         {/* All Components (if searching) */}
         {searchQuery && (
           <div className="mt-12">
-            <h2 className="text-2xl font-bold uppercase font-[family-name:var(--font-press-start)] mb-6 dark:text-[#ffd700]">
+            <h2 className="text-2xl font-bold uppercase font-pixel mb-6 dark:text-pixel-dark-secondary">
               Search Results ({filteredComponents.length})
             </h2>
             
@@ -196,5 +196,20 @@ export default function ComponentsListPage() {
         )}
       </div>
     </div>
+  );
+}
+
+export default function ComponentsListPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-pixel-light-bg dark:bg-black flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin h-8 w-8 border-4 border-black dark:border-white border-t-transparent dark:border-t-transparent rounded-none mx-auto mb-4"></div>
+          <p className="text-lg dark:text-white">Loading components...</p>
+        </div>
+      </div>
+    }>
+      <ComponentsListContent />
+    </Suspense>
   );
 }
