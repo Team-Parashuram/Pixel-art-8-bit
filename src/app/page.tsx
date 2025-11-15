@@ -192,11 +192,13 @@ export default function HomePage() {
                   <PixelCardTitle className="text-xl">{category}</PixelCardTitle>
                   <PixelCardDescription>
                     {category === "Forms" && "Input, Button, Select, and more"}
-                    {category === "Display" && "Card, Badge, Table, Avatar"}
-                    {category === "Feedback" && "Alert, Toast, Progress"}
-                    {category === "Navigation" && "Tabs, Breadcrumb, Menu"}
-                    {category === "Overlays" && "Dialog, Popover, Tooltip"}
-                    {category === "Layout" && "Accordion, Separator, Grid"}
+                     {category === "Animations" && "Gradient, Glitch Text, Shuffle, and more"}
+                    {category === "Display" && "Card, Badge, Table, Avatar and more"}
+                    {category === "Feedback" && "Alert, Toast, Progress and more"}
+                    {category === "Navigation" && "Tabs, Breadcrumb, Menu and more"}
+                    {category === "Overlays" && "Dialog, Popover, Tooltip and more"}
+                    {category === "Layout" && "Hero Section, Bento Grid, Pricing Section and more"}
+                    {category === "Special" && "Game UI, Retro Window, Terminal UI and more"}
                   </PixelCardDescription>
                 </PixelCardHeader>
                 <PixelCardFooter>
