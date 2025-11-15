@@ -59,7 +59,7 @@ const PixelStats = React.forwardRef<HTMLDivElement, PixelStatsProps>(
 PixelStats.displayName = "PixelStats";
 
 const pixelStatItemVariants = cva(
-  "relative border-4 border-black p-8 transition-none text-center group overflow-hidden",
+  "relative border-4 border-black p-6 md:p-8 transition-none text-center group min-w-[200px]",
   {
     variants: {
       variant: {
@@ -133,7 +133,7 @@ const PixelStatValue = React.forwardRef<
   <div
     ref={ref}
     className={cn(
-      "text-4xl md:text-6xl font-bold mb-2 font-[family-name:var(--font-pixel)]",
+      "text-2xl md:text-4xl font-bold mb-2 font-pixel whitespace-nowrap text-left -ml-4",
       className
     )}
     {...props}
@@ -150,7 +150,7 @@ const PixelStatLabel = React.forwardRef<
   <p
     ref={ref}
     className={cn(
-      "text-sm md:text-base uppercase tracking-wider font-bold opacity-80",
+      "text-sm md:text-base uppercase tracking-wider font-bold opacity-80 break-words text-left -ml-4",
       className
     )}
     {...props}

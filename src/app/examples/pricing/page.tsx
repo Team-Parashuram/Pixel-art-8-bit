@@ -76,7 +76,7 @@ export default function PricingExamples() {
           </PixelPricingCard>
           
           <PixelPricingCard variant="default">
-            <PixelPricingTitle>Enterprise</PixelPricingTitle>
+            <PixelPricingTitle>Firm</PixelPricingTitle>
             <PixelPricingPrice>$99</PixelPricingPrice>
             <PixelPricingPeriod>per month</PixelPricingPeriod>
             <PixelPricingDescription>For large organizations</PixelPricingDescription>
@@ -261,7 +261,7 @@ export default function PricingExamples() {
           </PixelPricingCard>
           
           <PixelPricingCard variant="dark">
-            <PixelPricingTitle>Enterprise</PixelPricingTitle>
+            <PixelPricingTitle>Firm</PixelPricingTitle>
             <PixelPricingPrice>Custom</PixelPricingPrice>
             <PixelPricingPeriod>pricing</PixelPricingPeriod>
             <PixelPricingFeatures>

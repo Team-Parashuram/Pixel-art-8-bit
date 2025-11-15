@@ -86,7 +86,7 @@ export default function FooterExamples() {
           <PixelFooterDivider />
           
           <PixelFooterBottom>
-            <PixelFooterCopyright>© 2024 Pixel UI. All rights reserved.</PixelFooterCopyright>
+            <PixelFooterCopyright>© 2025 Pixel UI. All rights reserved.</PixelFooterCopyright>
             <PixelFooterSocial>
               <PixelFooterSocialLink href="#">🐦</PixelFooterSocialLink>
               <PixelFooterSocialLink href="#">📘</PixelFooterSocialLink>
@@ -170,7 +170,7 @@ export default function FooterExamples() {
         
         <PixelFooter variant="default" size="sm">
           <PixelFooterBottom>
-            <PixelFooterCopyright>© 2024 Pixel UI</PixelFooterCopyright>
+            <PixelFooterCopyright>© 2025 Pixel UI</PixelFooterCopyright>
             <div className="flex gap-4">
               <PixelFooterLink><a href="#">Privacy</a></PixelFooterLink>
               <PixelFooterLink><a href="#">Terms</a></PixelFooterLink>
@@ -235,7 +235,7 @@ export default function FooterExamples() {
           <PixelFooterDivider />
           
           <PixelFooterBottom>
-            <PixelFooterCopyright>© 2024 Retro App. Powered by Pixel UI.</PixelFooterCopyright>
+            <PixelFooterCopyright>© 2025 Retro App. Powered by Pixel UI.</PixelFooterCopyright>
             <PixelFooterSocial>
               <PixelFooterSocialLink href="#">🐦</PixelFooterSocialLink>
               <PixelFooterSocialLink href="#">📘</PixelFooterSocialLink>
@@ -299,7 +299,7 @@ export default function FooterExamples() {
           <PixelFooterDivider />
           
           <PixelFooterBottom>
-            <PixelFooterCopyright>© 2024 Pixel Studio. All rights reserved.</PixelFooterCopyright>
+            <PixelFooterCopyright>© 2025 Pixel Studio. All rights reserved.</PixelFooterCopyright>
             <PixelFooterSocial>
               <PixelFooterSocialLink href="#">🐦</PixelFooterSocialLink>
               <PixelFooterSocialLink href="#">📘</PixelFooterSocialLink>
@@ -362,7 +362,7 @@ export default function FooterExamples() {
           <PixelFooterDivider />
           
           <PixelFooterBottom>
-            <PixelFooterCopyright>© 2024 Premium Pixels Inc.</PixelFooterCopyright>
+            <PixelFooterCopyright>© 2025 Premium Pixels Inc.</PixelFooterCopyright>
             <PixelFooterSocial>
               <PixelFooterSocialLink href="#">🐦</PixelFooterSocialLink>
               <PixelFooterSocialLink href="#">📘</PixelFooterSocialLink>

@@ -1393,7 +1393,7 @@ toast({
   </PixelPricingCard>
   
   <PixelPricingCard variant="default">
-    <PixelPricingTitle>Enterprise</PixelPricingTitle>
+    <PixelPricingTitle>Firm</PixelPricingTitle>
     <PixelPricingPrice>$99</PixelPricingPrice>
     <PixelPricingPeriod>per month</PixelPricingPeriod>
     <PixelPricingDescription>For large organizations</PixelPricingDescription>
@@ -1448,7 +1448,7 @@ toast({
   </PixelFooterGrid>
   <PixelFooterDivider />
   <PixelFooterBottom>
-    <PixelFooterCopyright>© 2024 Your Company</PixelFooterCopyright>
+    <PixelFooterCopyright>© 2025 Your Company</PixelFooterCopyright>
     <PixelFooterSocial>
       <PixelFooterSocialLink href="#" icon="🐦" />
       <PixelFooterSocialLink href="#" icon="💼" />
@@ -1502,7 +1502,7 @@ toast({
   <PixelFooterDivider />
   
   <PixelFooterBottom>
-    <PixelFooterCopyright>© 2024 Pixel UI. All rights reserved.</PixelFooterCopyright>
+    <PixelFooterCopyright>© 2025 Pixel UI. All rights reserved.</PixelFooterCopyright>
     <PixelFooterSocial>
       <PixelFooterSocialLink href="#" icon="🐦" />
       <PixelFooterSocialLink href="#" icon="📘" />

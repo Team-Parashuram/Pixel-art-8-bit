@@ -125,7 +125,7 @@ const PixelPricingTitle = React.forwardRef<
   <h3
     ref={ref}
     className={cn(
-      "text-2xl md:text-3xl font-bold uppercase tracking-wider mb-4 font-[family-name:var(--font-pixel)]",
+      "text-xl md:text-2xl font-bold uppercase tracking-wide mb-4 font-pixel wrap-break-word text-left -ml-5",
       className
     )}
     {...props}
@@ -142,7 +142,7 @@ const PixelPricingPrice = React.forwardRef<
   <div
     ref={ref}
     className={cn(
-      "text-4xl md:text-5xl font-bold mb-2 font-[family-name:var(--font-pixel)]",
+      "text-4xl md:text-5xl font-bold mb-2 font-pixel text-left -ml-4",
       className
     )}
     {...props}
@@ -158,7 +158,7 @@ const PixelPricingPeriod = React.forwardRef<
 >(({ className, children, ...props }, ref) => (
   <p
     ref={ref}
-    className={cn("text-sm opacity-80 mb-6", className)}
+    className={cn("text-sm opacity-80 mb-6 text-left -ml-4", className)}
     {...props}
   >
     {children}
@@ -172,7 +172,7 @@ const PixelPricingDescription = React.forwardRef<
 >(({ className, children, ...props }, ref) => (
   <p
     ref={ref}
-    className={cn("text-sm md:text-base mb-6 opacity-90", className)}
+    className={cn("text-sm md:text-base mb-6 opacity-90 text-left -ml-4", className)}
     {...props}
   >
     {children}

@@ -859,7 +859,7 @@ export function ComponentPreview({ slug }: { slug: string }) {
           </PixelPricingCard>
           
           <PixelPricingCard variant="default">
-            <PixelPricingTitle>Enterprise</PixelPricingTitle>
+            <PixelPricingTitle>Firm</PixelPricingTitle>
             <PixelPricingPrice>$99</PixelPricingPrice>
             <PixelPricingPeriod>per month</PixelPricingPeriod>
             <PixelPricingDescription>For organizations</PixelPricingDescription>
@@ -915,7 +915,7 @@ export function ComponentPreview({ slug }: { slug: string }) {
           <PixelFooterDivider />
           
           <PixelFooterBottom>
-            <PixelFooterCopyright>© 2024 Pixel UI</PixelFooterCopyright>
+            <PixelFooterCopyright>© 2025 Pixel UI</PixelFooterCopyright>
             <PixelFooterSocial>
               <PixelFooterSocialLink href="#">🐦</PixelFooterSocialLink>
               <PixelFooterSocialLink href="#">💼</PixelFooterSocialLink>
