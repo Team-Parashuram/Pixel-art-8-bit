@@ -5,7 +5,7 @@ import Link from "next/link";
 import { categories } from "@/lib/component-registry";
 import { PixelBadge } from "@/components/ui/pixel/pixel-badge";
 import { PixelButton } from "@/components/ui/pixel/pixel-button";
-import { ArrowRight, Gamepad2, Sparkles, Code, Zap, Copy, Palette, Layers } from "lucide-react";
+import { ArrowRight, Gamepad2, Sparkles, Code, Zap, Copy, Palette, Layers, FileText } from "lucide-react";
 import { PixelCard, PixelCardContent, PixelCardDescription, PixelCardFooter, PixelCardHeader, PixelCardTitle } from "@/components/ui/pixel/pixel-card";
 
 export default function HomePage() {
@@ -70,6 +70,35 @@ export default function HomePage() {
               <Link href="/patterns" aria-label="View the complete Retro Game Pattern demo">
                 <PixelButton size="lg" className="group">
                   View Live Demo <Gamepad2 className="ml-2 h-5 w-5 group-hover:scale-110 transition-transform" />
+                </PixelButton>
+              </Link>
+            </PixelCardFooter>
+          </PixelCard>
+        </div>
+      </section>
+
+      {/* Resume Builder Section */}
+      <section className="container mx-auto px-4 py-12 mb-8">
+        <div className="max-w-5xl mx-auto">
+          <PixelCard className="border-4 border-pixel-dark-primary dark:border-pixel-dark-secondary">
+            <PixelCardHeader className="text-center pb-4">
+              <div className="flex justify-center mb-3">
+                <PixelBadge variant="warning" className="text-lg px-4 py-2">
+                  ✨ NEW
+                </PixelBadge>
+              </div>
+              <PixelCardTitle className="text-3xl md:text-4xl mb-3">
+                <FileText className="inline h-10 w-10 mr-3" />
+                Resume to Portfolio
+              </PixelCardTitle>
+              <PixelCardDescription className="text-base md:text-lg">
+                Transform your resume PDF into a stunning pixel-perfect portfolio website instantly! Upload your resume and get a fully styled, retro-themed portfolio with all your experience, skills, projects, and education beautifully displayed.
+              </PixelCardDescription>
+            </PixelCardHeader>
+            <PixelCardFooter className="flex justify-center pt-2 gap-4">
+              <Link href="/resume" aria-label="Try the Resume to Portfolio converter">
+                <PixelButton size="lg" className="group">
+                  Try It Now <ArrowRight className="ml-2 h-5 w-5 group-hover:scale-110 transition-transform" />
                 </PixelButton>
               </Link>
             </PixelCardFooter>

@@ -2,12 +2,30 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { ResumeLoader } from "@/components/ResumeLoader";
+import { PixelLoader } from "@/components/ui/pixel/pixel-loader";
+import { PixelCard, PixelCardContent, PixelCardDescription, PixelCardHeader, PixelCardTitle } from "@/components/ui/pixel/pixel-card";
+import { PixelButton } from "@/components/ui/pixel/pixel-button";
+import { PixelAlert, PixelAlertDescription, PixelAlertTitle } from "@/components/ui/pixel/pixel-alert";
+import { PixelBadge } from "@/components/ui/pixel/pixel-badge";
+import { Upload, CheckCircle, FileText } from "lucide-react";
 
 const Page = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [loadingText, setLoadingText] = useState("Analyzing resume...");
+  const [progress, setProgress] = useState(0);
   const router = useRouter();
+
+  const loadingSteps = [
+    "Analyzing resume structure...",
+    "Extracting contact information...",
+    "Identifying skills and technologies...",
+    "Processing work experience...",
+    "Discovering projects...",
+    "Parsing education details...",
+    "Generating portfolio design...",
+    "Finalizing your website..."
+  ];
 
   const handleFile = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -15,6 +33,23 @@ const Page = () => {
 
     setLoading(true);
     setError("");
+    setProgress(0);
+    
+    // Simulate loading animation
+    let currentStep = 0;
+    const stepInterval = setInterval(() => {
+      if (currentStep < loadingSteps.length - 1) {
+        currentStep++;
+        setLoadingText(loadingSteps[currentStep]);
+      }
+    }, 600);
+
+    const progressInterval = setInterval(() => {
+      setProgress(prev => {
+        if (prev < 95) return prev + 1;
+        return prev;
+      });
+    }, 50);
 
     try {
       const formData = new FormData();
@@ -28,55 +63,80 @@ const Page = () => {
       const result = await response.json();
 
       if (result.success) {
-        // Wait for loading animation to complete
+        setProgress(100);
+        clearInterval(stepInterval);
+        clearInterval(progressInterval);
+        setLoadingText("Complete! Redirecting...");
+        
+        // Wait a moment before redirecting
         setTimeout(() => {
           router.push(`/resume/${result.id}`);
-        }, 5000); // 5 seconds for the loading animation
+        }, 1000);
       } else {
+        clearInterval(stepInterval);
+        clearInterval(progressInterval);
         setError(`${result.error}${result.details ? ': ' + result.details : ''}`);
         setLoading(false);
+        setProgress(0);
       }
     } catch (err) {
+      clearInterval(stepInterval);
+      clearInterval(progressInterval);
       setError('Failed to upload or parse PDF: ' + (err instanceof Error ? err.message : 'Unknown error'));
       setLoading(false);
+      setProgress(0);
     }
   };
 
   if (loading) {
-    return <ResumeLoader />;
+    return (
+      <div className="min-h-screen bg-pixel-light-bg dark:bg-[#000000] flex items-center justify-center px-4">
+        <div className="flex flex-col items-center gap-6">
+          <PixelLoader variant="cassette" size="lg" progress={progress} text={loadingText} />
+          <div className="text-center">
+            <p className="text-lg font-bold font-pixel">{progress}% Complete</p>
+          </div>
+        </div>
+      </div>
+    );
   }
 
   return (
-    <div className="min-h-screen bg-black text-white flex items-center justify-center px-4">
-      <div className="max-w-2xl w-full space-y-8">
-        <div className="text-center space-y-4">
-          <h1 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent">
+    <div className="min-h-screen bg-pixel-light-bg dark:bg-[#000000] flex items-center justify-center px-4 py-20">
+      <div className="max-w-3xl w-full space-y-8">
+        <div className="text-center space-y-6">
+          <PixelBadge variant="warning" className="text-lg px-6 py-2">
+            NEW FEATURE
+          </PixelBadge>
+          <h1 className="text-4xl md:text-6xl font-bold uppercase tracking-wider font-pixel dark:text-pixel-dark-secondary">
             Resume to Portfolio
           </h1>
-          <p className="text-xl text-gray-400">
+          <p className="text-xl md:text-2xl dark:text-white">
             Transform your resume into a stunning portfolio website instantly
           </p>
         </div>
 
-        <div className="bg-gray-900/50 border border-gray-800 rounded-2xl p-8 space-y-6">
-          <div className="space-y-2">
-            <h2 className="text-2xl font-semibold">Upload Your Resume</h2>
-            <p className="text-gray-400">
-              Upload a PDF resume and we'll create a beautiful portfolio website for you
-            </p>
-          </div>
-
-          <div className="space-y-4">
+        <PixelCard>
+          <PixelCardHeader>
+            <PixelCardTitle className="flex items-center gap-3">
+              <FileText className="h-6 w-6" />
+              Upload Your Resume
+            </PixelCardTitle>
+            <PixelCardDescription>
+              Upload a PDF resume and we'll create a beautiful pixel-perfect portfolio website for you
+            </PixelCardDescription>
+          </PixelCardHeader>
+          <PixelCardContent className="space-y-6">
             <label
               htmlFor="resume-upload"
-              className="block w-full p-12 border-2 border-dashed border-gray-700 hover:border-blue-500 rounded-xl text-center cursor-pointer transition-colors group"
+              className="block w-full p-12 border-4 border-dashed border-black dark:border-pixel-dark-primary text-center cursor-pointer transition-none duration-0 hover:bg-pixel-dark-secondary/10 dark:hover:bg-pixel-dark-primary/10"
             >
-              <div className="space-y-3">
-                <div className="text-4xl">📄</div>
-                <div className="text-lg font-medium group-hover:text-blue-400 transition-colors">
-                  Click to upload or drag and drop
+              <div className="space-y-4">
+                <Upload className="h-12 w-12 mx-auto" />
+                <div className="text-lg font-bold uppercase font-pixel">
+                  Click to upload
                 </div>
-                <div className="text-sm text-gray-500">PDF files only</div>
+                <div className="text-sm">PDF files only</div>
               </div>
               <input
                 id="resume-upload"
@@ -88,39 +148,41 @@ const Page = () => {
             </label>
 
             {error && (
-              <div className="p-4 bg-red-500/10 border border-red-500/50 rounded-lg text-red-400">
-                {error}
-              </div>
+              <PixelAlert variant="error">
+                <PixelAlertTitle>Error</PixelAlertTitle>
+                <PixelAlertDescription>{error}</PixelAlertDescription>
+              </PixelAlert>
             )}
-          </div>
+          </PixelCardContent>
+        </PixelCard>
 
-          <div className="pt-4 border-t border-gray-800">
-            <h3 className="font-semibold mb-3">What we'll extract:</h3>
-            <ul className="grid grid-cols-2 gap-2 text-sm text-gray-400">
-              <li className="flex items-center gap-2">
-                <span className="text-blue-400">✓</span> Contact Information
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="text-blue-400">✓</span> Skills & Technologies
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="text-blue-400">✓</span> Work Experience
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="text-blue-400">✓</span> Projects
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="text-blue-400">✓</span> Education
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="text-blue-400">✓</span> Social Links
-              </li>
-            </ul>
-          </div>
-        </div>
+        <PixelCard>
+          <PixelCardHeader>
+            <PixelCardTitle>What We'll Extract</PixelCardTitle>
+          </PixelCardHeader>
+          <PixelCardContent>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {[
+                "Contact Information",
+                "Skills & Technologies",
+                "Work Experience",
+                "Projects",
+                "Education",
+                "Social Links"
+              ].map((item, index) => (
+                <div key={index} className="flex items-center gap-3">
+                  <CheckCircle className="h-5 w-5 text-[#50c878]" />
+                  <span className="font-bold">{item}</span>
+                </div>
+              ))}
+            </div>
+          </PixelCardContent>
+        </PixelCard>
 
-        <div className="text-center text-sm text-gray-500">
-          <p>Your resume data is processed securely and never stored permanently.</p>
+        <div className="text-center">
+          <PixelBadge variant="default" className="text-sm">
+            🔒 Your resume data is processed securely and never stored permanently
+          </PixelBadge>
         </div>
       </div>
     </div>
