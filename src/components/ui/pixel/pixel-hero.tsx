@@ -5,20 +5,26 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const pixelHeroVariants = cva(
-  "relative w-full pixel-borders transition-none duration-0",
+  "relative w-full pixel-borders transition-none duration-0 overflow-hidden",
   {
     variants: {
       variant: {
         default:
           "bg-[#fffacd] border-black dark:bg-[#1a1a1a] dark:border-[#ff8c00]",
         primary:
-          "bg-[#ff8c00] border-black text-white dark:bg-[#ff8c00] dark:border-[#ffd700]",
+          "bg-[#ff8c00] border-black text-white dark:bg-[#ff8c00] dark:border-[#ffd700] shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] dark:shadow-[8px_8px_0px_0px_rgba(255,215,0,0.3)]",
         secondary:
-          "bg-[#ffd700] border-black text-black dark:bg-[#ffd700] dark:border-[#ff8c00]",
+          "bg-[#ffd700] border-black text-black dark:bg-[#ffd700] dark:border-[#ff8c00] shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] dark:shadow-[8px_8px_0px_0px_rgba(255,140,0,0.3)]",
         dark:
-          "bg-black border-[#ff8c00] text-white dark:bg-[#000000] dark:border-[#ffd700]",
+          "bg-black border-[#ff8c00] text-white dark:bg-[#000000] dark:border-[#ffd700] shadow-[8px_8px_0px_0px_rgba(255,140,0,0.5)] dark:shadow-[8px_8px_0px_0px_rgba(255,215,0,0.5)]",
         gradient:
-          "bg-gradient-to-br from-[#ff8c00] via-[#ffd700] to-[#ff6b00] border-black text-white dark:border-[#ffd700]",
+          "bg-gradient-to-br from-[#ff8c00] via-[#ffd700] to-[#ff6b00] border-black text-white dark:border-[#ffd700] shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]",
+        arcade:
+          "bg-[#1a1a2e] border-[#ff8c00] text-white dark:bg-[#0f0f1e] dark:border-[#ffd700] shadow-[0_0_20px_rgba(255,140,0,0.5)] dark:shadow-[0_0_20px_rgba(255,215,0,0.5)]",
+        neon:
+          "bg-black border-[#00ff00] text-[#00ff00] shadow-[0_0_20px_rgba(0,255,0,0.5),inset_0_0_20px_rgba(0,255,0,0.1)]",
+        retro:
+          "bg-[#e6d5ac] border-[#8b4513] text-[#4a2c2a] dark:bg-[#2a1810] dark:border-[#d4a574] dark:text-[#f5e6d3] shadow-[6px_6px_0px_0px_rgba(139,69,19,0.5)]",
       },
       size: {
         sm: "py-12 md:py-16",
@@ -177,19 +183,44 @@ const PixelHeroActions = React.forwardRef<
 ));
 PixelHeroActions.displayName = "PixelHeroActions";
 
-const PixelHeroBadge = React.forwardRef<
-  HTMLSpanElement,
-  React.HTMLAttributes<HTMLSpanElement>
->(({ className, ...props }, ref) => (
-  <span
-    ref={ref}
-    className={cn(
-      "inline-flex items-center px-4 py-2 text-xs font-bold uppercase tracking-wider pixel-borders border-2 bg-[#ffd700] border-black text-black dark:bg-[#ff8c00] dark:text-white dark:border-[#ffd700] shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,215,0,0.5)]",
-      className
-    )}
-    {...props}
-  />
-));
+const pixelHeroBadgeVariants = cva(
+  "inline-flex items-center gap-2 px-4 py-2 text-xs font-bold uppercase tracking-wider pixel-borders border-2 transition-none duration-0",
+  {
+    variants: {
+      variant: {
+        default:
+          "bg-[#ffd700] border-black text-black dark:bg-[#ff8c00] dark:text-white dark:border-[#ffd700] shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,215,0,0.5)]",
+        primary:
+          "bg-[#ff8c00] border-black text-white dark:bg-[#ff8c00] dark:border-[#ffd700] shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]",
+        success:
+          "bg-[#00ff00] border-black text-black dark:bg-[#00cc00] dark:border-[#00ff00] shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]",
+        warning:
+          "bg-[#ff0000] border-black text-white dark:bg-[#cc0000] dark:border-[#ff0000] shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]",
+        neon:
+          "bg-black border-[#00ff00] text-[#00ff00] shadow-[0_0_10px_rgba(0,255,0,0.5)]",
+        pulse:
+          "bg-[#ffd700] border-black text-black dark:bg-[#ff8c00] dark:text-white animate-pulse shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+    },
+  }
+);
+
+export interface PixelHeroBadgeProps
+  extends React.HTMLAttributes<HTMLSpanElement>,
+    VariantProps<typeof pixelHeroBadgeVariants> {}
+
+const PixelHeroBadge = React.forwardRef<HTMLSpanElement, PixelHeroBadgeProps>(
+  ({ className, variant, ...props }, ref) => (
+    <span
+      ref={ref}
+      className={cn(pixelHeroBadgeVariants({ variant }), className)}
+      {...props}
+    />
+  )
+);
 PixelHeroBadge.displayName = "PixelHeroBadge";
 
 const PixelHeroImage = React.forwardRef<
@@ -239,14 +270,18 @@ PixelHeroFeature.displayName = "PixelHeroFeature";
 const PixelHeroPattern = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement> & {
-    pattern?: "dots" | "grid" | "checkerboard" | "scanlines";
+    pattern?: "dots" | "grid" | "checkerboard" | "scanlines" | "diagonal" | "cross" | "waves";
+    animate?: boolean;
   }
->(({ className, pattern = "dots", ...props }, ref) => {
+>(({ className, pattern = "dots", animate = false, ...props }, ref) => {
   const patternClasses = {
     dots: "bg-[radial-gradient(circle,_rgba(0,0,0,0.1)_1px,_transparent_1px)] bg-[size:20px_20px] dark:bg-[radial-gradient(circle,_rgba(255,255,255,0.05)_1px,_transparent_1px)]",
     grid: "bg-[linear-gradient(rgba(0,0,0,0.05)_1px,_transparent_1px),linear-gradient(90deg,_rgba(0,0,0,0.05)_1px,_transparent_1px)] bg-[size:20px_20px] dark:bg-[linear-gradient(rgba(255,255,255,0.03)_1px,_transparent_1px),linear-gradient(90deg,_rgba(255,255,255,0.03)_1px,_transparent_1px)]",
     checkerboard: "bg-[linear-gradient(45deg,_rgba(0,0,0,0.05)_25%,_transparent_25%,_transparent_75%,_rgba(0,0,0,0.05)_75%),linear-gradient(45deg,_rgba(0,0,0,0.05)_25%,_transparent_25%,_transparent_75%,_rgba(0,0,0,0.05)_75%)] bg-[size:40px_40px] bg-[position:0_0,20px_20px] dark:bg-[linear-gradient(45deg,_rgba(255,255,255,0.03)_25%,_transparent_25%,_transparent_75%,_rgba(255,255,255,0.03)_75%),linear-gradient(45deg,_rgba(255,255,255,0.03)_25%,_transparent_25%,_transparent_75%,_rgba(255,255,255,0.03)_75%)]",
     scanlines: "bg-[linear-gradient(0deg,_rgba(0,0,0,0.05)_50%,_transparent_50%)] bg-[size:100%_4px] dark:bg-[linear-gradient(0deg,_rgba(255,255,255,0.03)_50%,_transparent_50%)]",
+    diagonal: "bg-[repeating-linear-gradient(45deg,_rgba(0,0,0,0.03),_rgba(0,0,0,0.03)_10px,_transparent_10px,_transparent_20px)] dark:bg-[repeating-linear-gradient(45deg,_rgba(255,255,255,0.02),_rgba(255,255,255,0.02)_10px,_transparent_10px,_transparent_20px)]",
+    cross: "bg-[linear-gradient(rgba(0,0,0,0.05)_2px,_transparent_2px),linear-gradient(90deg,_rgba(0,0,0,0.05)_2px,_transparent_2px)] bg-[size:20px_20px] dark:bg-[linear-gradient(rgba(255,255,255,0.03)_2px,_transparent_2px),linear-gradient(90deg,_rgba(255,255,255,0.03)_2px,_transparent_2px)]",
+    waves: "bg-[repeating-radial-gradient(circle_at_0_0,_transparent_0,_rgba(0,0,0,0.03)_10px,_transparent_20px)] dark:bg-[repeating-radial-gradient(circle_at_0_0,_transparent_0,_rgba(255,255,255,0.02)_10px,_transparent_20px)]",
   };
 
   return (
@@ -255,6 +290,7 @@ const PixelHeroPattern = React.forwardRef<
       className={cn(
         "absolute inset-0 pointer-events-none",
         patternClasses[pattern],
+        animate && "animate-pulse",
         className
       )}
       {...props}
@@ -262,6 +298,104 @@ const PixelHeroPattern = React.forwardRef<
   );
 });
 PixelHeroPattern.displayName = "PixelHeroPattern";
+
+const PixelHeroFloatingElement = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement> & {
+    delay?: number;
+  }
+>(({ className, delay = 0, children, ...props }, ref) => (
+  <div
+    ref={ref}
+    className={cn(
+      "absolute opacity-20 dark:opacity-10 pointer-events-none",
+      className
+    )}
+    style={{
+      animation: `pixel-float 3s ease-in-out ${delay}s infinite`,
+    }}
+    {...props}
+  >
+    {children}
+  </div>
+));
+PixelHeroFloatingElement.displayName = "PixelHeroFloatingElement";
+
+const PixelHeroCornerDecor = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement> & {
+    position?: "top-left" | "top-right" | "bottom-left" | "bottom-right";
+  }
+>(({ className, position = "top-left", ...props }, ref) => {
+  const positionClasses = {
+    "top-left": "top-0 left-0",
+    "top-right": "top-0 right-0",
+    "bottom-left": "bottom-0 left-0",
+    "bottom-right": "bottom-0 right-0",
+  };
+
+  return (
+    <div
+      ref={ref}
+      className={cn(
+        "absolute w-12 h-12 pixel-borders border-4 border-current opacity-20",
+        positionClasses[position],
+        className
+      )}
+      {...props}
+    />
+  );
+});
+PixelHeroCornerDecor.displayName = "PixelHeroCornerDecor";
+
+const PixelHeroStats = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => (
+  <div
+    ref={ref}
+    className={cn(
+      "grid grid-cols-2 md:grid-cols-4 gap-4 mt-8",
+      className
+    )}
+    {...props}
+  />
+));
+PixelHeroStats.displayName = "PixelHeroStats";
+
+const PixelHeroStat = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => (
+  <div
+    ref={ref}
+    className={cn(
+      "flex flex-col items-center justify-center p-4 pixel-borders border-2 border-current bg-black/5 dark:bg-white/5",
+      className
+    )}
+    {...props}
+  />
+));
+PixelHeroStat.displayName = "PixelHeroStat";
+
+const PixelHeroGlowText = React.forwardRef<
+  HTMLSpanElement,
+  React.HTMLAttributes<HTMLSpanElement> & {
+    color?: string;
+  }
+>(({ className, color = "#ff8c00", children, ...props }, ref) => (
+  <span
+    ref={ref}
+    className={cn("relative inline-block", className)}
+    style={{
+      textShadow: `0 0 10px ${color}, 0 0 20px ${color}, 0 0 30px ${color}`,
+    }}
+    {...props}
+  >
+    {children}
+  </span>
+));
+PixelHeroGlowText.displayName = "PixelHeroGlowText";
 
 export {
   PixelHero,
@@ -275,5 +409,11 @@ export {
   PixelHeroGrid,
   PixelHeroFeature,
   PixelHeroPattern,
+  PixelHeroFloatingElement,
+  PixelHeroCornerDecor,
+  PixelHeroStats,
+  PixelHeroStat,
+  PixelHeroGlowText,
   pixelHeroVariants,
+  pixelHeroBadgeVariants,
 };
