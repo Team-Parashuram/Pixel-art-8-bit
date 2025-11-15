@@ -38,6 +38,8 @@ import { PixelAspectRatio } from "@/components/ui/pixel/pixel-aspect-ratio";
 import { PixelHoverCard, PixelHoverCardContent, PixelHoverCardTrigger } from "@/components/ui/pixel/pixel-hover-card";
 import { PixelHero, PixelHeroContent, PixelHeroTitle, PixelHeroSubtitle, PixelHeroDescription, PixelHeroActions, PixelHeroBadge } from "@/components/ui/pixel/pixel-hero";
 import { PixelBentoGrid, PixelBentoItem, PixelBentoHeader, PixelBentoTitle, PixelBentoDescription, PixelBentoIcon, PixelBentoContent } from "@/components/ui/pixel/pixel-bento";
+import { PixelFeatures, PixelFeatureItem, PixelFeatureIcon, PixelFeatureTitle, PixelFeatureDescription } from "@/components/ui/pixel/pixel-features";
+import { PixelCta, PixelCtaContent, PixelCtaTitle, PixelCtaDescription, PixelCtaActions } from "@/components/ui/pixel/pixel-cta";
 
 // Import animation components
 import { PixelBlurText } from "@/components/ui/pixel/animations/pixel-blur-text";
@@ -203,6 +205,49 @@ export function ComponentPreview({ slug }: { slug: string }) {
             <PixelBentoTitle>Item 4</PixelBentoTitle>
           </PixelBentoItem>
         </PixelBentoGrid>
+      );
+    
+    case "pixel-features":
+      return (
+        <PixelFeatures columns={3} gap="lg" className="w-full">
+          <PixelFeatureItem hover="lift">
+            <PixelFeatureIcon>🚀</PixelFeatureIcon>
+            <PixelFeatureTitle>Fast</PixelFeatureTitle>
+            <PixelFeatureDescription>
+              Blazing fast performance with zero transitions
+            </PixelFeatureDescription>
+          </PixelFeatureItem>
+          <PixelFeatureItem hover="lift">
+            <PixelFeatureIcon>🎨</PixelFeatureIcon>
+            <PixelFeatureTitle>Beautiful</PixelFeatureTitle>
+            <PixelFeatureDescription>
+              Pixel-perfect design with retro aesthetics
+            </PixelFeatureDescription>
+          </PixelFeatureItem>
+          <PixelFeatureItem hover="lift">
+            <PixelFeatureIcon>🔧</PixelFeatureIcon>
+            <PixelFeatureTitle>Customizable</PixelFeatureTitle>
+            <PixelFeatureDescription>
+              Fully customizable components
+            </PixelFeatureDescription>
+          </PixelFeatureItem>
+        </PixelFeatures>
+      );
+    
+    case "pixel-cta":
+      return (
+        <PixelCta variant="primary" size="md" className="w-full">
+          <PixelCtaContent>
+            <PixelCtaTitle>Get Started Today</PixelCtaTitle>
+            <PixelCtaDescription>
+              Join thousands of developers building amazing things
+            </PixelCtaDescription>
+            <PixelCtaActions>
+              <PixelButton size="lg">Start Building</PixelButton>
+              <PixelButton variant="ghost" size="lg">Learn More</PixelButton>
+            </PixelCtaActions>
+          </PixelCtaContent>
+        </PixelCta>
       );
     
     case "pixel-accordion":

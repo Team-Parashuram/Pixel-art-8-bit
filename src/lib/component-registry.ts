@@ -994,6 +994,332 @@ toast({
     ],
   },
   {
+    slug: "pixel-features",
+    title: "Features Section",
+    description: "Showcase features and capabilities in a responsive grid layout.",
+    category: "Layout",
+    installation: "",
+    importCode: `import { 
+  PixelFeatures,
+  PixelFeatureItem,
+  PixelFeatureIcon,
+  PixelFeatureTitle,
+  PixelFeatureDescription,
+  PixelFeatureHeader,
+  PixelFeatureSectionTitle,
+  PixelFeatureSectionDescription
+} from "@/components/ui/pixel/pixel-features"`,
+    usageCode: `<PixelFeatures columns={3} gap="lg">
+  <PixelFeatureHeader>
+    <PixelFeatureSectionTitle>Features</PixelFeatureSectionTitle>
+    <PixelFeatureSectionDescription>
+      Everything you need to build amazing products
+    </PixelFeatureSectionDescription>
+  </PixelFeatureHeader>
+  <PixelFeatureItem hover="lift">
+    <PixelFeatureIcon>🎯</PixelFeatureIcon>
+    <PixelFeatureTitle>Fast Performance</PixelFeatureTitle>
+    <PixelFeatureDescription>
+      Lightning-fast load times
+    </PixelFeatureDescription>
+  </PixelFeatureItem>
+</PixelFeatures>`,
+    componentCode: `/src/components/ui/pixel/pixel-features.tsx`,
+    examples: [
+      {
+        title: "Basic Features",
+        description: "Simple 3-column features grid",
+        code: `<PixelFeatures columns={3} gap="lg">
+  <PixelFeatureItem hover="lift">
+    <PixelFeatureIcon>🚀</PixelFeatureIcon>
+    <PixelFeatureTitle>Fast</PixelFeatureTitle>
+    <PixelFeatureDescription>
+      Blazing fast performance with zero transitions
+    </PixelFeatureDescription>
+  </PixelFeatureItem>
+  <PixelFeatureItem hover="lift">
+    <PixelFeatureIcon>🎨</PixelFeatureIcon>
+    <PixelFeatureTitle>Beautiful</PixelFeatureTitle>
+    <PixelFeatureDescription>
+      Pixel-perfect design with retro aesthetics
+    </PixelFeatureDescription>
+  </PixelFeatureItem>
+  <PixelFeatureItem hover="lift">
+    <PixelFeatureIcon>🔧</PixelFeatureIcon>
+    <PixelFeatureTitle>Customizable</PixelFeatureTitle>
+    <PixelFeatureDescription>
+      Fully customizable components and themes
+    </PixelFeatureDescription>
+  </PixelFeatureItem>
+</PixelFeatures>`,
+      },
+      {
+        title: "With Header",
+        description: "Features section with title and description",
+        code: `<PixelFeatures columns={3} gap="lg">
+  <PixelFeatureHeader>
+    <PixelFeatureSectionTitle>Why Choose Us</PixelFeatureSectionTitle>
+    <PixelFeatureSectionDescription>
+      Everything you need to build amazing pixel-perfect applications
+    </PixelFeatureSectionDescription>
+  </PixelFeatureHeader>
+  <PixelFeatureItem variant="primary" hover="lift">
+    <PixelFeatureIcon>⚡</PixelFeatureIcon>
+    <PixelFeatureTitle>Lightning Fast</PixelFeatureTitle>
+    <PixelFeatureDescription>
+      Optimized for performance and speed
+    </PixelFeatureDescription>
+  </PixelFeatureItem>
+  <PixelFeatureItem variant="secondary" hover="lift">
+    <PixelFeatureIcon>🎯</PixelFeatureIcon>
+    <PixelFeatureTitle>Precise</PixelFeatureTitle>
+    <PixelFeatureDescription>
+      Pixel-perfect accuracy in every detail
+    </PixelFeatureDescription>
+  </PixelFeatureItem>
+  <PixelFeatureItem variant="dark" hover="glow">
+    <PixelFeatureIcon>🔒</PixelFeatureIcon>
+    <PixelFeatureTitle>Secure</PixelFeatureTitle>
+    <PixelFeatureDescription>
+      Built with security best practices
+    </PixelFeatureDescription>
+  </PixelFeatureItem>
+</PixelFeatures>`,
+      },
+      {
+        title: "4-Column Layout",
+        description: "Wider grid with more features",
+        code: `<PixelFeatures columns={4} gap="md">
+  <PixelFeatureItem hover="lift">
+    <PixelFeatureIcon>🎮</PixelFeatureIcon>
+    <PixelFeatureTitle>Gaming Ready</PixelFeatureTitle>
+    <PixelFeatureDescription>
+      Perfect for retro gaming UIs
+    </PixelFeatureDescription>
+  </PixelFeatureItem>
+  <PixelFeatureItem hover="lift">
+    <PixelFeatureIcon>📱</PixelFeatureIcon>
+    <PixelFeatureTitle>Responsive</PixelFeatureTitle>
+    <PixelFeatureDescription>
+      Works on all devices
+    </PixelFeatureDescription>
+  </PixelFeatureItem>
+  <PixelFeatureItem hover="lift">
+    <PixelFeatureIcon>🌙</PixelFeatureIcon>
+    <PixelFeatureTitle>Dark Mode</PixelFeatureTitle>
+    <PixelFeatureDescription>
+      Built-in dark mode support
+    </PixelFeatureDescription>
+  </PixelFeatureItem>
+  <PixelFeatureItem hover="lift">
+    <PixelFeatureIcon>♿</PixelFeatureIcon>
+    <PixelFeatureTitle>Accessible</PixelFeatureTitle>
+    <PixelFeatureDescription>
+      WCAG compliant components
+    </PixelFeatureDescription>
+  </PixelFeatureItem>
+</PixelFeatures>`,
+      },
+      {
+        title: "Dark Variant",
+        description: "Features section with dark background",
+        code: `<PixelFeatures variant="dark" columns={3} gap="lg">
+  <PixelFeatureItem variant="primary" hover="glow">
+    <PixelFeatureIcon>💎</PixelFeatureIcon>
+    <PixelFeatureTitle>Premium</PixelFeatureTitle>
+    <PixelFeatureDescription>
+      Enterprise-grade features
+    </PixelFeatureDescription>
+  </PixelFeatureItem>
+  <PixelFeatureItem hover="glow">
+    <PixelFeatureIcon>🔥</PixelFeatureIcon>
+    <PixelFeatureTitle>Hot Features</PixelFeatureTitle>
+    <PixelFeatureDescription>
+      Latest and greatest capabilities
+    </PixelFeatureDescription>
+  </PixelFeatureItem>
+  <PixelFeatureItem variant="gradient" hover="glow">
+    <PixelFeatureIcon>✨</PixelFeatureIcon>
+    <PixelFeatureTitle>Magic</PixelFeatureTitle>
+    <PixelFeatureDescription>
+      Delightful user experiences
+    </PixelFeatureDescription>
+  </PixelFeatureItem>
+</PixelFeatures>`,
+      },
+    ],
+    props: [
+      {
+        name: "variant",
+        type: '"default" | "primary" | "secondary" | "dark"',
+        default: '"default"',
+        description: "Background style of the features section",
+      },
+      {
+        name: "columns",
+        type: "1 | 2 | 3 | 4",
+        default: "3",
+        description: "Number of columns in the grid (responsive)",
+      },
+      {
+        name: "gap",
+        type: '"none" | "sm" | "md" | "lg" | "xl"',
+        default: '"lg"',
+        description: "Spacing between feature items",
+      },
+      {
+        name: "hover",
+        type: '"none" | "lift" | "glow"',
+        default: '"lift"',
+        description: "Hover effect animation for feature items",
+      },
+    ],
+  },
+  {
+    slug: "pixel-cta",
+    title: "CTA Section",
+    description: "Call-to-action section for conversions and user engagement.",
+    category: "Layout",
+    installation: "",
+    importCode: `import { 
+  PixelCta,
+  PixelCtaContent,
+  PixelCtaTitle,
+  PixelCtaDescription,
+  PixelCtaActions,
+  PixelCtaPattern,
+  PixelCtaBadge
+} from "@/components/ui/pixel/pixel-cta"`,
+    usageCode: `<PixelCta variant="primary" size="md">
+  <PixelCtaContent>
+    <PixelCtaTitle>Get Started Today</PixelCtaTitle>
+    <PixelCtaDescription>
+      Join thousands of developers building amazing things
+    </PixelCtaDescription>
+    <PixelCtaActions>
+      <PixelButton size="lg">Start Building</PixelButton>
+      <PixelButton variant="ghost" size="lg">Learn More</PixelButton>
+    </PixelCtaActions>
+  </PixelCtaContent>
+</PixelCta>`,
+    componentCode: `/src/components/ui/pixel/pixel-cta.tsx`,
+    examples: [
+      {
+        title: "Basic CTA",
+        description: "Simple call-to-action with buttons",
+        code: `<PixelCta variant="primary" size="md">
+  <PixelCtaContent>
+    <PixelCtaTitle>Ready to Get Started?</PixelCtaTitle>
+    <PixelCtaDescription>
+      Join thousands of developers building pixel-perfect applications
+    </PixelCtaDescription>
+    <PixelCtaActions>
+      <PixelButton size="lg" variant="default">Get Started</PixelButton>
+      <PixelButton size="lg" variant="ghost">Learn More</PixelButton>
+    </PixelCtaActions>
+  </PixelCtaContent>
+</PixelCta>`,
+      },
+      {
+        title: "With Pattern",
+        description: "CTA with decorative background pattern",
+        code: `<PixelCta variant="gradient" size="lg">
+  <PixelCtaPattern pattern="dots" />
+  <PixelCtaContent>
+    <PixelCtaBadge>✨ Limited Time Offer</PixelCtaBadge>
+    <PixelCtaTitle>Build Something Amazing</PixelCtaTitle>
+    <PixelCtaDescription>
+      Create stunning retro interfaces with our pixel-perfect components
+    </PixelCtaDescription>
+    <PixelCtaActions>
+      <PixelButton size="lg">Start Free Trial</PixelButton>
+    </PixelCtaActions>
+  </PixelCtaContent>
+</PixelCta>`,
+      },
+      {
+        title: "Dark CTA",
+        description: "Dark themed call-to-action",
+        code: `<PixelCta variant="dark" size="md">
+  <PixelCtaPattern pattern="grid" />
+  <PixelCtaContent>
+    <PixelCtaTitle>Join the Community</PixelCtaTitle>
+    <PixelCtaDescription>
+      Connect with other developers and share your creations
+    </PixelCtaDescription>
+    <PixelCtaActions>
+      <PixelButton variant="primary" size="lg">Join Discord</PixelButton>
+      <PixelButton variant="secondary" size="lg">View GitHub</PixelButton>
+    </PixelCtaActions>
+  </PixelCtaContent>
+</PixelCta>`,
+      },
+      {
+        title: "Left Aligned",
+        description: "CTA with left-aligned content",
+        code: `<PixelCta variant="secondary" size="md" align="left">
+  <PixelCtaContent>
+    <PixelCtaBadge>🎮 New Release</PixelCtaBadge>
+    <PixelCtaTitle>Version 2.0 is Here</PixelCtaTitle>
+    <PixelCtaDescription>
+      Check out the latest features and improvements in our biggest update yet
+    </PixelCtaDescription>
+    <PixelCtaActions className="justify-start">
+      <PixelButton size="lg">What's New</PixelButton>
+      <PixelButton variant="ghost" size="lg">Documentation</PixelButton>
+    </PixelCtaActions>
+  </PixelCtaContent>
+</PixelCta>`,
+      },
+      {
+        title: "Compact CTA",
+        description: "Smaller CTA for inline use",
+        code: `<PixelCta variant="default" size="sm" align="center">
+  <PixelCtaContent>
+    <PixelCtaTitle>Subscribe to Newsletter</PixelCtaTitle>
+    <PixelCtaDescription>
+      Get weekly updates and exclusive content
+    </PixelCtaDescription>
+    <PixelCtaActions>
+      <input 
+        type="email" 
+        placeholder="your@email.com"
+        className="px-4 py-2 border-2 border-black"
+      />
+      <PixelButton>Subscribe</PixelButton>
+    </PixelCtaActions>
+  </PixelCtaContent>
+</PixelCta>`,
+      },
+    ],
+    props: [
+      {
+        name: "variant",
+        type: '"default" | "primary" | "secondary" | "dark" | "gradient"',
+        default: '"primary"',
+        description: "Visual style variant of the CTA section",
+      },
+      {
+        name: "size",
+        type: '"sm" | "md" | "lg" | "xl"',
+        default: '"md"',
+        description: "Padding size of the CTA section",
+      },
+      {
+        name: "align",
+        type: '"left" | "center" | "right"',
+        default: '"center"',
+        description: "Text alignment within the CTA",
+      },
+      {
+        name: "pattern",
+        type: '"dots" | "grid" | "checkerboard" | "scanlines"',
+        default: '"dots"',
+        description: "Background pattern for decorative overlay",
+      },
+    ],
+  },
+  {
     slug: "pixel-accordion",
     title: "Accordion",
     description: "Collapsible content sections.",
