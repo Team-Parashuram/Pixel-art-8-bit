@@ -1,57 +1,68 @@
 import { NextRequest, NextResponse } from 'next/server';
 // @ts-ignore - pdf-parse-fork doesn't have types
 import pdf from 'pdf-parse-fork';
+import { parseResume } from '@/lib/resume-parser';
+
+// In-memory storage (in production, use a database)
+const resumeStore = new Map<string, any>();
 
 export async function POST(request: NextRequest) {
   try {
-    console.log('Starting PDF parse request...');
-    
     const formData = await request.formData();
     const file = formData.get('file') as File;
 
     if (!file) {
-      console.log('No file provided');
       return NextResponse.json(
         { error: 'No file provided' },
         { status: 400 }
       );
     }
 
-    console.log('File received:', file.name, 'Size:', file.size, 'Type:', file.type);
-
-    // Convert file to buffer
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
-    
-    console.log('Buffer created, size:', buffer.length);
-    
-    // Parse PDF
-    console.log('Attempting to parse PDF...');
     const data = await pdf(buffer);
     
-    console.log('PDF parsed successfully');
-    console.log('Pages:', data.numpages);
-    console.log('Text length:', data.text.length);
-
+    // Parse the resume text to extract structured data
+    const resumeData = parseResume(data.text);
+    
+    // Generate unique ID
+    const id = Date.now().toString(36) + Math.random().toString(36).substr(2);
+    
+    // Store the parsed data
+    const fullData = { ...resumeData, id };
+    resumeStore.set(id, fullData);
+    
     return NextResponse.json({
       success: true,
-      text: data.text,
-      pages: data.numpages,
-      info: data.info,
-      metadata: data.metadata
+      id,
+      data: fullData
     });
 
   } catch (error) {
-    console.error('Error parsing PDF:', error);
-    console.error('Error stack:', error instanceof Error ? error.stack : 'No stack trace');
     return NextResponse.json(
       { 
         success: false,
         error: 'Failed to parse PDF', 
         details: error instanceof Error ? error.message : 'Unknown error',
-        stack: error instanceof Error ? error.stack : undefined
       },
       { status: 500 }
     );
   }
+}
+
+export async function GET(request: NextRequest) {
+  const { searchParams } = new URL(request.url);
+  const id = searchParams.get('id');
+  
+  if (!id) {
+    return NextResponse.json({ error: 'No ID provided' }, { status: 400 });
+  }
+  
+  const data = resumeStore.get(id);
+  
+  if (!data) {
+    return NextResponse.json({ error: 'Resume not found' }, { status: 404 });
+  }
+  
+  return NextResponse.json({ success: true, data });
 }
