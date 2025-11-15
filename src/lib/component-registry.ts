@@ -5,7 +5,8 @@ export type ComponentCategory =
   | "Navigation"
   | "Display"
   | "Overlays"
-  | "Animations";
+  | "Animations"
+  | "Special";
 
 export interface ComponentExample {
   title: string;
@@ -2378,6 +2379,265 @@ toast({
     usageCode: `<PixelImageTrail images={[]} />`,
     componentCode: `/src/components/ui/pixel/animations/pixel-image-trail.tsx`,
   },
+
+  // Special Components
+  {
+    slug: "pixel-loader",
+    title: "Retro Loader",
+    description: "Retro loading screens with cassette tape, floppy disk, and CRT boot animations.",
+    category: "Special",
+    installation: "",
+    importCode: `import { PixelLoader } from "@/components/ui/pixel/pixel-loader"`,
+    usageCode: `<PixelLoader variant="cassette" />
+<PixelLoader variant="floppy" text="Loading..." />
+<PixelLoader variant="crt" size="lg" />`,
+    componentCode: `/src/components/ui/pixel/pixel-loader.tsx`,
+    props: [
+      { name: "variant", type: '"cassette" | "floppy" | "crt"', default: '"cassette"', description: "Loading animation style" },
+      { name: "size", type: '"sm" | "md" | "lg" | "full"', default: '"md"', description: "Loader size" },
+      { name: "progress", type: "number", default: "0", description: "Progress percentage (0-100)" },
+      { name: "text", type: "string", description: "Custom loading text" },
+      { name: "isLoading", type: "boolean", default: "true", description: "Enable auto-progress animation" },
+    ],
+    examples: [
+      {
+        title: "Cassette Tape",
+        description: "Classic cassette tape loading animation",
+        code: `<PixelLoader variant="cassette" text="LOADING GAME..." />`,
+      },
+      {
+        title: "Floppy Disk",
+        description: "Floppy disk inserting animation",
+        code: `<PixelLoader variant="floppy" size="lg" />`,
+      },
+      {
+        title: "CRT Boot",
+        description: "CRT terminal boot sequence",
+        code: `<PixelLoader variant="crt" text="BOOTING SYSTEM..." />`,
+      },
+    ],
+  },
+  {
+    slug: "pixel-terminal",
+    title: "Terminal",
+    description: "Interactive retro terminal with command execution, history, and auto-completion.",
+    category: "Special",
+    installation: "",
+    importCode: `import { PixelTerminal } from "@/components/ui/pixel/pixel-terminal"`,
+    usageCode: `<PixelTerminal 
+  variant="matrix"
+  commands={{
+    hello: () => 'Hello World!',
+    time: () => new Date().toLocaleTimeString(),
+  }}
+/>`,
+    componentCode: `/src/components/ui/pixel/pixel-terminal.tsx`,
+    props: [
+      { name: "variant", type: '"default" | "amber" | "white" | "matrix" | "retro"', default: '"default"', description: "Terminal color scheme" },
+      { name: "size", type: '"sm" | "md" | "lg" | "xl"', default: '"md"', description: "Terminal size" },
+      { name: "prompt", type: "string", default: '"user@pixel:~$"', description: "Command prompt text" },
+      { name: "welcomeMessage", type: "string | ReactNode", description: "Message shown on terminal start" },
+      { name: "commands", type: "Record<string, Function>", description: "Custom command handlers" },
+      { name: "onCommand", type: "(command: string, args: string[]) => void", description: "Command execution callback" },
+      { name: "showCursor", type: "boolean", default: "true", description: "Show blinking cursor" },
+    ],
+    examples: [
+      {
+        title: "Matrix Terminal",
+        description: "Green matrix-style terminal",
+        code: `<PixelTerminal variant="matrix" prompt="neo@matrix:~$" />`,
+      },
+      {
+        title: "Custom Commands",
+        description: "Terminal with custom commands",
+        code: `<PixelTerminal 
+  commands={{
+    joke: () => 'Why do programmers prefer dark mode?',
+    calc: (args) => eval(args.join(' ')),
+  }}
+/>`,
+      },
+      {
+        title: "Portfolio Terminal",
+        description: "Interactive portfolio showcase",
+        code: `<PixelTerminal 
+  variant="amber"
+  welcomeMessage="Welcome to my portfolio!"
+  commands={{
+    about: () => 'Full Stack Developer',
+    skills: () => 'React, TypeScript, Node.js',
+  }}
+/>`,
+      },
+    ],
+  },
+  {
+    slug: "pixel-game-ui",
+    title: "Game UI",
+    description: "Gaming UI components including health bars, inventory, achievements, and damage numbers.",
+    category: "Special",
+    installation: "",
+    importCode: `import { 
+  PixelHealthBar, 
+  PixelManaBar, 
+  PixelXPBar,
+  PixelInventory,
+  PixelInventorySlot,
+  PixelAchievement,
+  PixelDamageNumber
+} from "@/components/ui/pixel/pixel-game-ui"`,
+    usageCode: `<PixelHealthBar current={75} max={100} />
+<PixelManaBar current={50} max={100} />
+<PixelXPBar currentXP={350} requiredXP={500} level={12} />
+<PixelInventory columns={5} title="Backpack">
+  <PixelInventorySlot item="⚔️" rarity="legendary" />
+</PixelInventory>
+<PixelAchievement 
+  variant="gold" 
+  title="Master"
+  icon="🥇"
+  points={50}
+/>`,
+    componentCode: `/src/components/ui/pixel/pixel-game-ui.tsx`,
+    props: [
+      { name: "current", type: "number", description: "Current health/mana value" },
+      { name: "max", type: "number", description: "Maximum health/mana value" },
+      { name: "currentXP", type: "number", description: "Current experience points" },
+      { name: "requiredXP", type: "number", description: "XP required for next level" },
+      { name: "level", type: "number", description: "Character level" },
+      { name: "columns", type: "3 | 4 | 5 | 6", default: "5", description: "Inventory grid columns" },
+      { name: "rarity", type: '"common" | "rare" | "epic" | "legendary"', description: "Item rarity" },
+      { name: "variant", type: '"bronze" | "silver" | "gold" | "platinum"', description: "Achievement tier" },
+    ],
+    examples: [
+      {
+        title: "Health Bar",
+        description: "HP bar with auto-coloring",
+        code: `<PixelHealthBar current={75} max={100} label="HP" />`,
+      },
+      {
+        title: "XP Bar",
+        description: "Experience bar with level",
+        code: `<PixelXPBar currentXP={350} requiredXP={500} level={12} />`,
+      },
+      {
+        title: "Inventory",
+        description: "Grid-based inventory system",
+        code: `<PixelInventory columns={5}>
+  <PixelInventorySlot item="⚔️" rarity="legendary" />
+  <PixelInventorySlot item="💊" count={5} />
+</PixelInventory>`,
+      },
+      {
+        title: "Achievement",
+        description: "Trophy notification",
+        code: `<PixelAchievement 
+  variant="gold" 
+  title="Master"
+  description="Defeat 100 enemies"
+  icon="🥇"
+  points={50}
+/>`,
+      },
+    ],
+  },
+  {
+    slug: "pixel-window",
+    title: "Retro Window",
+    description: "Windows 95/98 style draggable windows with minimize, maximize, and close buttons.",
+    category: "Special",
+    installation: "",
+    importCode: `import { PixelWindow } from "@/components/ui/pixel/pixel-window"`,
+    usageCode: `<PixelWindow 
+  title="My Window"
+  defaultPosition={{ x: 100, y: 100 }}
+  defaultSize={{ width: 400, height: 300 }}
+>
+  Window content here...
+</PixelWindow>`,
+    componentCode: `/src/components/ui/pixel/pixel-window.tsx`,
+    props: [
+      { name: "title", type: "string", default: '"Window"', description: "Window title text" },
+      { name: "icon", type: "ReactNode", description: "Window icon" },
+      { name: "defaultPosition", type: "{ x: number, y: number }", description: "Initial window position" },
+      { name: "defaultSize", type: "{ width: number, height: number }", description: "Initial window size" },
+      { name: "resizable", type: "boolean", default: "false", description: "Allow window resizing" },
+      { name: "closable", type: "boolean", default: "true", description: "Show close button" },
+      { name: "minimizable", type: "boolean", default: "true", description: "Show minimize button" },
+      { name: "maximizable", type: "boolean", default: "true", description: "Show maximize button" },
+      { name: "onClose", type: "() => void", description: "Close callback" },
+    ],
+    examples: [
+      {
+        title: "Basic Window",
+        description: "Simple draggable window",
+        code: `<PixelWindow title="Notepad">
+  <p>This is a retro window!</p>
+</PixelWindow>`,
+      },
+      {
+        title: "With Icon",
+        description: "Window with title icon",
+        code: `<PixelWindow title="My Computer" icon="💻">
+  <p>Computer contents...</p>
+</PixelWindow>`,
+      },
+      {
+        title: "Custom Size",
+        description: "Window with custom dimensions",
+        code: `<PixelWindow 
+  title="Large Window"
+  defaultSize={{ width: 600, height: 400 }}
+>
+  <p>Large content area</p>
+</PixelWindow>`,
+      },
+    ],
+  },
+  {
+    slug: "pixel-audio-visualizer",
+    title: "Audio Visualizer",
+    description: "Retro audio visualizer with equalizer bars, waveform, and circular modes.",
+    category: "Special",
+    installation: "",
+    importCode: `import { PixelAudioVisualizer } from "@/components/ui/pixel/pixel-audio-visualizer"`,
+    usageCode: `<PixelAudioVisualizer 
+  variant="bars"
+  barCount={32}
+  animated={true}
+/>`,
+    componentCode: `/src/components/ui/pixel/pixel-audio-visualizer.tsx`,
+    props: [
+      { name: "variant", type: '"bars" | "wave" | "circular" | "spectrum"', default: '"bars"', description: "Visualizer style" },
+      { name: "barCount", type: "number", default: "32", description: "Number of frequency bars" },
+      { name: "color", type: "string", description: "Visualizer color" },
+      { name: "animated", type: "boolean", default: "true", description: "Enable animation" },
+      { name: "responsive", type: "boolean", default: "true", description: "Adapt to container size" },
+      { name: "audioSource", type: "MediaStream | HTMLAudioElement", description: "Audio source for real-time visualization" },
+    ],
+    examples: [
+      {
+        title: "Equalizer Bars",
+        description: "Classic equalizer bars",
+        code: `<PixelAudioVisualizer variant="bars" barCount={32} />`,
+      },
+      {
+        title: "Waveform",
+        description: "Wave oscilloscope style",
+        code: `<PixelAudioVisualizer variant="wave" color="#00ff00" />`,
+      },
+      {
+        title: "Circular",
+        description: "Circular frequency display",
+        code: `<PixelAudioVisualizer variant="circular" barCount={64} />`,
+      },
+      {
+        title: "Spectrum",
+        description: "Full spectrum analyzer",
+        code: `<PixelAudioVisualizer variant="spectrum" />`,
+      },
+    ],
+  },
 ];
 
 export function getComponentBySlug(slug: string): ComponentDoc | undefined {
@@ -2396,4 +2656,5 @@ export const categories: ComponentCategory[] = [
   "Navigation",
   "Overlays",
   "Layout",
+  "Special",
 ];
