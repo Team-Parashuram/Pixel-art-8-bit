@@ -130,51 +130,49 @@ export function PixelCountdown({
     return () => clearInterval(timer);
   }, [targetDate, initialSeconds, onComplete]);
 
-  return (
+    return (
     <div className={countdownVariants({ variant, size, className })}>
       {showDays && (
         <PixelCountdownUnit
           value={timeLeft.days}
           label={labels ? "DAYS" : undefined}
-          variant={variant}
-          size={size}
+          variant={variant || undefined}
+          size={size || undefined}
         />
       )}
-      {showDays && showHours && <PixelColon size={size} />}
+      {showDays && showHours && <PixelColon size={size || undefined} />}
       
       {showHours && (
         <PixelCountdownUnit
           value={timeLeft.hours}
           label={labels ? "HOURS" : undefined}
-          variant={variant}
-          size={size}
+          variant={variant || undefined}
+          size={size || undefined}
         />
       )}
-      {showHours && showMinutes && <PixelColon size={size} />}
+      {showHours && showMinutes && <PixelColon size={size || undefined} />}
       
       {showMinutes && (
         <PixelCountdownUnit
           value={timeLeft.minutes}
           label={labels ? "MINS" : undefined}
-          variant={variant}
-          size={size}
+          variant={variant || undefined}
+          size={size || undefined}
         />
       )}
-      {showMinutes && showSeconds && <PixelColon size={size} />}
+      {showMinutes && showSeconds && <PixelColon size={size || undefined} />}
       
       {showSeconds && (
         <PixelCountdownUnit
           value={timeLeft.seconds}
           label={labels ? "SECS" : undefined}
-          variant={variant}
-          size={size}
+          variant={variant || undefined}
+          size={size || undefined}
         />
       )}
     </div>
   );
-}
-
-interface PixelCountdownUnitProps {
+}interface PixelCountdownUnitProps {
   value: number;
   label?: string;
   variant?: "default" | "retro" | "digital" | "flip";
@@ -219,11 +217,13 @@ function PixelColon({ size = "md" }: { size?: "sm" | "md" | "lg" | "xl" }) {
 }
 
 // Timer variant with controls
-interface PixelTimerProps extends VariantProps<typeof countdownVariants> {
+interface PixelTimerProps {
   initialMinutes?: number;
   initialSeconds?: number;
   onComplete?: () => void;
   showControls?: boolean;
+  variant?: "default" | "retro" | "digital" | "flip";
+  size?: "sm" | "md" | "lg" | "xl";
   className?: string;
 }
 

@@ -108,7 +108,7 @@ export function PixelTimeline({
         <PixelTimelineItem
           key={index}
           {...item}
-          orientation={orientation}
+          orientation={orientation || undefined}
           markerSize={markerSize}
           markerShape={markerShape}
           showConnector={showConnector && index < items.length - 1}
