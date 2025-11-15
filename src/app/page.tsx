@@ -36,7 +36,7 @@ export default function HomePage() {
                   Example Shop
                 </PixelButton>
               </Link>
-          <Link href="/docs/components/pixel-button" aria-label="Get started with Pixel UI components">
+          <Link href="/docs/components/pixel-blur-text" aria-label="Get started with Pixel UI components">
             <PixelButton size="lg">
               Get Started <ArrowRight className="ml-2 h-4 w-4" />
             </PixelButton>
@@ -223,7 +223,7 @@ export default function HomePage() {
               <div className="flex justify-center mb-2" aria-hidden="true">
                 <Layers className="h-12 w-12" />
               </div>
-              <PixelCardTitle className="text-4xl">50+</PixelCardTitle>
+              <PixelCardTitle className="text-4xl">100+</PixelCardTitle>
               <PixelCardDescription>Components</PixelCardDescription>
             </PixelCardHeader>
           </PixelCard>
@@ -233,7 +233,7 @@ export default function HomePage() {
               <div className="flex justify-center mb-2" aria-hidden="true">
                 <Palette className="h-12 w-12" />
               </div>
-              <PixelCardTitle className="text-4xl">6</PixelCardTitle>
+              <PixelCardTitle className="text-4xl">8</PixelCardTitle>
               <PixelCardDescription>Categories</PixelCardDescription>
             </PixelCardHeader>
           </PixelCard>
@@ -269,7 +269,7 @@ export default function HomePage() {
                     {category === "Feedback" && "Alert, Toast, Progress and more"}
                     {category === "Navigation" && "Tabs, Breadcrumb, Menu and more"}
                     {category === "Overlays" && "Dialog, Popover, Tooltip and more"}
-                    {category === "Layout" && "Hero Section, Bento Grid, Pricing Section and more"}
+                    {category === "Layout" && "Hero Section, Bento Grid and more"}
                     {category === "Special" && "Game UI, Retro Window, Terminal UI and more"}
                   </PixelCardDescription>
                 </PixelCardHeader>
