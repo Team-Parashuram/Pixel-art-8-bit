@@ -91,10 +91,21 @@ const Page = () => {
   if (loading) {
     return (
       <div className="min-h-screen bg-pixel-light-bg dark:bg-[#000000] flex items-center justify-center px-4">
-        <div className="flex flex-col items-center gap-6">
+        <div className="flex flex-col items-center gap-8 max-w-md w-full">
           <PixelLoader variant="cassette" size="lg" progress={progress} text={loadingText} />
-          <div className="text-center">
-            <p className="text-lg font-bold font-pixel">{progress}% Complete</p>
+          <div className="text-center space-y-3 w-full">
+            <p className="text-2xl md:text-3xl font-bold font-pixel dark:text-pixel-dark-secondary">
+              {progress}% Complete
+            </p>
+            <div className="w-full bg-gray-200 dark:bg-gray-700 h-3 border-2 border-black dark:border-pixel-dark-primary">
+              <div 
+                className="h-full bg-pixel-warning dark:bg-pixel-dark-primary transition-all duration-300 ease-out"
+                style={{ width: `${progress}%` }}
+              />
+            </div>
+            <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 font-pixel">
+              {loadingText}
+            </p>
           </div>
         </div>
       </div>
@@ -102,41 +113,49 @@ const Page = () => {
   }
 
   return (
-    <div className="min-h-screen bg-pixel-light-bg dark:bg-[#000000] flex items-center justify-center px-4 py-20">
-      <div className="max-w-3xl w-full space-y-8">
-        <div className="text-center space-y-6">
-          <PixelBadge variant="warning" className="text-lg px-6 py-2">
-            NEW FEATURE
-          </PixelBadge>
-          <h1 className="text-4xl md:text-6xl font-bold uppercase tracking-wider font-pixel dark:text-pixel-dark-secondary">
+    <div className="min-h-screen bg-pixel-light-bg dark:bg-[#000000] flex items-center justify-center px-4 py-12 md:py-20">
+      <div className="max-w-4xl w-full space-y-10">
+        {/* Hero Section */}
+        <div className="text-center space-y-5">
+          <div className="flex justify-center mb-4">
+            <PixelBadge variant="warning" className="text-sm md:text-base px-6 py-2 font-pixel">
+              ✨ NEW FEATURE
+            </PixelBadge>
+          </div>
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold uppercase tracking-wider font-pixel dark:text-pixel-dark-secondary leading-tight">
             Resume to Portfolio
           </h1>
-          <p className="text-xl md:text-2xl dark:text-white">
-            Transform your resume into a stunning portfolio website instantly
+          <p className="text-lg md:text-xl lg:text-2xl dark:text-gray-300 text-gray-700 max-w-2xl mx-auto leading-relaxed">
+            Transform your resume into a stunning pixel-perfect portfolio website in seconds
           </p>
         </div>
 
-        <PixelCard>
-          <PixelCardHeader>
-            <PixelCardTitle className="flex items-center gap-3">
-              <FileText className="h-6 w-6" />
+        {/* Upload Card */}
+        <PixelCard className="overflow-hidden">
+          <PixelCardHeader className="space-y-3">
+            <PixelCardTitle className="flex items-center gap-3 text-xl md:text-2xl">
+              <FileText className="h-6 w-6 md:h-7 md:w-7" />
               Upload Your Resume
             </PixelCardTitle>
-            <PixelCardDescription>
-              Upload a PDF resume and we'll create a beautiful pixel-perfect portfolio website for you
+            <PixelCardDescription className="text-base">
+              Upload a PDF resume and we'll instantly create a beautiful, responsive portfolio website
             </PixelCardDescription>
           </PixelCardHeader>
-          <PixelCardContent className="space-y-6">
+          <PixelCardContent className="space-y-5">
             <label
               htmlFor="resume-upload"
-              className="block w-full p-12 border-4 border-dashed border-black dark:border-pixel-dark-primary text-center cursor-pointer transition-none duration-0 hover:bg-pixel-dark-secondary/10 dark:hover:bg-pixel-dark-primary/10"
+              className="block w-full p-16 md:p-20 border-4 border-dashed border-black dark:border-pixel-dark-primary text-center cursor-pointer transition-all duration-200 hover:bg-pixel-warning/10 dark:hover:bg-pixel-dark-primary/20 hover:border-pixel-warning dark:hover:border-pixel-dark-secondary group"
             >
-              <div className="space-y-4">
-                <Upload className="h-12 w-12 mx-auto" />
-                <div className="text-lg font-bold uppercase font-pixel">
-                  Click to upload
+              <div className="space-y-5">
+                <Upload className="h-14 w-14 md:h-16 md:w-16 mx-auto text-gray-600 dark:text-gray-400 group-hover:text-pixel-warning dark:group-hover:text-pixel-dark-secondary transition-colors" />
+                <div>
+                  <div className="text-xl md:text-2xl font-bold uppercase font-pixel mb-2 group-hover:text-pixel-warning dark:group-hover:text-pixel-dark-secondary transition-colors">
+                    Click to Upload
+                  </div>
+                  <div className="text-sm md:text-base text-gray-600 dark:text-gray-400">
+                    PDF files only • Max 10MB
+                  </div>
                 </div>
-                <div className="text-sm">PDF files only</div>
               </div>
               <input
                 id="resume-upload"
@@ -149,39 +168,44 @@ const Page = () => {
 
             {error && (
               <PixelAlert variant="error">
-                <PixelAlertTitle>Error</PixelAlertTitle>
-                <PixelAlertDescription>{error}</PixelAlertDescription>
+                <PixelAlertTitle className="font-pixel">Upload Failed</PixelAlertTitle>
+                <PixelAlertDescription className="text-sm">{error}</PixelAlertDescription>
               </PixelAlert>
             )}
           </PixelCardContent>
         </PixelCard>
 
+        {/* Features Card */}
         <PixelCard>
           <PixelCardHeader>
-            <PixelCardTitle>What We'll Extract</PixelCardTitle>
+            <PixelCardTitle className="text-xl md:text-2xl text-center md:text-left">
+              📋 What We'll Extract
+            </PixelCardTitle>
           </PixelCardHeader>
           <PixelCardContent>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5">
               {[
                 "Contact Information",
                 "Skills & Technologies",
                 "Work Experience",
-                "Projects",
-                "Education",
-                "Social Links"
+                "Projects & Links",
+                "Education Details",
+                "Social Profiles"
               ].map((item, index) => (
-                <div key={index} className="flex items-center gap-3">
-                  <CheckCircle className="h-5 w-5 text-[#50c878]" />
-                  <span className="font-bold">{item}</span>
+                <div key={index} className="flex items-center gap-3 p-3 rounded-lg bg-pixel-light-bg dark:bg-pixel-dark-bg/50 transition-all hover:bg-pixel-warning/10 dark:hover:bg-pixel-dark-primary/10">
+                  <CheckCircle className="h-5 w-5 md:h-6 md:w-6 text-[#50c878] shrink-0" />
+                  <span className="font-bold text-sm md:text-base">{item}</span>
                 </div>
               ))}
             </div>
           </PixelCardContent>
         </PixelCard>
 
-        <div className="text-center">
-          <PixelBadge variant="default" className="text-sm">
-            🔒 Your resume data is processed securely and never stored permanently
+        {/* Security Badge */}
+        <div className="text-center pt-2">
+          <PixelBadge variant="default" className="text-xs md:text-sm px-5 py-2.5 inline-flex items-center gap-2">
+            <span className="text-base">🔒</span>
+            <span>Your resume data is processed securely and never stored permanently</span>
           </PixelBadge>
         </div>
       </div>

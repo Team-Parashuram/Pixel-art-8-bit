@@ -444,10 +444,13 @@ export default function Portfolio() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-pixel-light-bg dark:bg-[#000000]">
-        <div className="flex flex-col items-center gap-6">
+        <div className="flex flex-col items-center gap-8 max-w-md w-full px-4">
           <PixelLoader variant="crt" size="lg" text="Loading Portfolio..." />
-          <div className="text-center">
-            <p className="text-lg font-bold font-pixel dark:text-pixel-dark-secondary">
+          <div className="text-center space-y-2">
+            <p className="text-xl md:text-2xl font-bold font-pixel dark:text-pixel-dark-secondary">
+              Loading Your Portfolio
+            </p>
+            <p className="text-sm text-gray-600 dark:text-gray-400">
               Fetching your resume data...
             </p>
           </div>
@@ -504,74 +507,76 @@ export default function Portfolio() {
   return (
     <div className="min-h-screen bg-pixel-light-bg dark:bg-[#000000]">
       {/* Navigation Bar */}
-      <nav className="border-b-4 border-black dark:border-pixel-dark-primary bg-white dark:bg-pixel-dark-surface sticky top-0 z-50 shadow-lg">
-        <div className="container mx-auto px-4 md:px-6 py-3 flex justify-between items-center">
+      <nav className="border-b-4 border-black dark:border-pixel-dark-primary bg-white dark:bg-pixel-dark-surface sticky top-0 z-50 shadow-[0_4px_0_0_rgba(0,0,0,0.25)] dark:shadow-[0_4px_0_0_rgba(255,255,255,0.1)]">
+        <div className="container mx-auto px-4 md:px-6 py-4 flex justify-between items-center">
           <a href="/resume">
-            <PixelButton variant="ghost" size="sm">
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Back
+            <PixelButton variant="ghost" size="sm" className="gap-2">
+              <ArrowLeft className="h-4 w-4" />
+              <span className="font-pixel">Back</span>
             </PixelButton>
           </a>
-          <div className="flex gap-2">
+          <div className="flex gap-3">
             <a href="/resume">
-              <PixelButton variant="secondary" size="sm">
-                <Upload className="mr-2 h-4 w-4" />
-                <span className="hidden sm:inline">New Resume</span>
-                <span className="sm:hidden">New</span>
+              <PixelButton variant="secondary" size="sm" className="gap-2">
+                <Upload className="h-4 w-4" />
+                <span className="hidden sm:inline font-pixel">New Resume</span>
+                <span className="sm:hidden font-pixel">New</span>
               </PixelButton>
             </a>
-            <PixelButton onClick={handleDownload} size="sm">
-              <Download className="mr-2 h-4 w-4" />
-              <span className="hidden sm:inline">Download</span>
+            <PixelButton onClick={handleDownload} size="sm" className="gap-2">
+              <Download className="h-4 w-4" />
+              <span className="hidden sm:inline font-pixel">Download</span>
+              <span className="sm:hidden font-pixel">TSX</span>
             </PixelButton>
           </div>
         </div>
       </nav>
 
       {/* Hero Section */}
-      <PixelHero variant="dark" size="md">
-        <PixelHeroContent>
-          <PixelHeroTitle className="mb-5 text-3xl md:text-5xl lg:text-6xl">
+      <PixelHero variant="dark" size="md" className="border-b-4 border-black dark:border-pixel-dark-primary">
+        <PixelHeroContent className="py-12 md:py-16">
+          <PixelHeroTitle className="mb-6 text-4xl md:text-5xl lg:text-7xl">
             {data.personalInfo.name}
           </PixelHeroTitle>
           
           {data.personalInfo.location && (
-            <PixelHeroDescription className="text-xl md:text-2xl lg:text-3xl mb-7 font-semibold">
-              <MapPin className="inline h-5 w-5 mr-2" />
+            <PixelHeroDescription className="text-lg md:text-xl lg:text-2xl mb-8 font-semibold flex items-center justify-center gap-2">
+              <MapPin className="h-5 w-5 md:h-6 md:w-6" />
               {data.personalInfo.location}
             </PixelHeroDescription>
           )}
 
-          <div className="flex flex-wrap gap-3 justify-center items-center">
+          <div className="flex flex-wrap gap-3 md:gap-4 justify-center items-center">
             {data.personalInfo.email && (
               <a href={`mailto:${data.personalInfo.email}`}>
-                <PixelButton size="sm">
-                  <Mail className="mr-2 h-4 w-4" />
-                  Contact Me
+                <PixelButton size="sm" className="gap-2">
+                  <Mail className="h-4 w-4" />
+                  <span className="font-pixel">Contact</span>
                 </PixelButton>
               </a>
             )}
             {data.personalInfo.github && (
               <a href={data.personalInfo.github} target="_blank" rel="noopener noreferrer">
-                <PixelButton size="sm" variant="secondary">
-                  <Github className="mr-2 h-4 w-4" />
-                  GitHub
+                <PixelButton size="sm" variant="secondary" className="gap-2">
+                  <Github className="h-4 w-4" />
+                  <span className="font-pixel">GitHub</span>
                 </PixelButton>
               </a>
             )}
             {data.personalInfo.linkedin && (
               <a href={data.personalInfo.linkedin} target="_blank" rel="noopener noreferrer">
-                <PixelButton size="sm" variant="secondary">
-                  <Linkedin className="mr-2 h-4 w-4" />
-                  LinkedIn
+                <PixelButton size="sm" variant="secondary" className="gap-2">
+                  <Linkedin className="h-4 w-4" />
+                  <span className="font-pixel">LinkedIn</span>
                 </PixelButton>
               </a>
             )}
             {data.personalInfo.phone && (
               <a href={`tel:${data.personalInfo.phone}`}>
-                <PixelButton size="sm" variant="secondary">
-                  <Phone className="mr-2 h-4 w-4" />
-                  {data.personalInfo.phone}
+                <PixelButton size="sm" variant="secondary" className="gap-2">
+                  <Phone className="h-4 w-4" />
+                  <span className="hidden sm:inline font-pixel">{data.personalInfo.phone}</span>
+                  <span className="sm:hidden font-pixel">Call</span>
                 </PixelButton>
               </a>
             )}
@@ -581,22 +586,25 @@ export default function Portfolio() {
 
       {/* Show message if no sections were extracted */}
       {!hasAnySection && (
-        <section className="py-20 px-4">
+        <section className="py-16 md:py-24 px-4">
           <div className="max-w-2xl mx-auto">
-            <PixelCard className="border-4 border-pixel-warning">
-              <PixelCardHeader>
-                <PixelCardTitle className="text-2xl text-center">⚠️ Unable to Extract Information</PixelCardTitle>
+            <PixelCard className="border-4 border-pixel-warning bg-pixel-warning/5 dark:bg-pixel-warning/10">
+              <PixelCardHeader className="text-center space-y-3">
+                <div className="text-5xl md:text-6xl mb-2">⚠️</div>
+                <PixelCardTitle className="text-2xl md:text-3xl font-pixel">
+                  Unable to Extract Information
+                </PixelCardTitle>
               </PixelCardHeader>
-              <PixelCardContent className="space-y-6">
-                <p className="text-center text-base leading-relaxed">
+              <PixelCardContent className="space-y-8">
+                <p className="text-center text-base md:text-lg leading-relaxed text-gray-700 dark:text-gray-300">
                   The resume parser could not identify standard sections. 
                   Try uploading a resume with clear section headers like <strong>Experience</strong>, <strong>Skills</strong>, <strong>Projects</strong>, and <strong>Education</strong>.
                 </p>
                 <div className="flex justify-center">
                   <a href="/resume">
-                    <PixelButton size="lg">
-                      <Upload className="mr-2 h-5 w-5" />
-                      Try Another Resume
+                    <PixelButton size="lg" className="gap-2">
+                      <Upload className="h-5 w-5" />
+                      <span className="font-pixel">Try Another Resume</span>
                     </PixelButton>
                   </a>
                 </div>
@@ -608,19 +616,23 @@ export default function Portfolio() {
 
       {/* Skills Section */}
       {data.skills && data.skills.length > 0 && (
-        <section id="skills-section" className="py-16 px-4 container mx-auto">
+        <section id="skills-section" className="py-16 md:py-20 px-4 bg-white dark:bg-pixel-dark-surface/50">
           <div className="max-w-6xl mx-auto">
-            <div className="flex items-center justify-center gap-3 mb-10">
-              <Code className="h-7 w-7 dark:text-pixel-dark-secondary" />
-              <h2 className="text-2xl md:text-4xl font-bold uppercase tracking-wider font-pixel text-center dark:text-pixel-dark-secondary">
-                Skills & Technologies
+            <div className="flex items-center justify-center gap-3 mb-12">
+              <Code className="h-7 w-7 md:h-8 md:w-8 text-pixel-warning dark:text-pixel-dark-secondary" />
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold uppercase tracking-wider font-pixel text-center dark:text-pixel-dark-secondary">
+                Skills
               </h2>
-              <PixelBadge variant="default" className="text-sm">{totalSkills}</PixelBadge>
+              <PixelBadge variant="default" className="text-sm font-pixel">{totalSkills}</PixelBadge>
             </div>
             
-            <div className="flex flex-wrap gap-3 justify-center max-w-5xl mx-auto min-h-[140px] items-center">
+            <div className="flex flex-wrap gap-3 md:gap-4 justify-center max-w-5xl mx-auto min-h-40 items-center">
               {currentSkills.map((skill, index) => (
-                <PixelBadge key={indexOfFirstSkill + index} variant="warning" className="text-base px-4 py-2 font-medium">
+                <PixelBadge 
+                  key={indexOfFirstSkill + index} 
+                  variant="warning" 
+                  className="text-sm md:text-base px-4 md:px-5 py-2 md:py-2.5 font-medium hover:scale-105 transition-transform"
+                >
                   {skill}
                 </PixelBadge>
               ))}
@@ -628,14 +640,15 @@ export default function Portfolio() {
 
             {/* Skills Pagination */}
             {totalSkillsPages > 1 && (
-              <div className="flex justify-center items-center gap-3 mt-10">
+              <div className="flex justify-center items-center gap-3 mt-12">
                 <PixelButton
                   variant="ghost"
                   size="sm"
                   onClick={() => handleSkillsPageChange(currentSkillsPage - 1)}
                   disabled={currentSkillsPage === 1}
+                  className="font-pixel"
                 >
-                  ← Previous
+                  ← Prev
                 </PixelButton>
                 
                 <div className="flex gap-2">
@@ -645,7 +658,7 @@ export default function Portfolio() {
                       variant={currentSkillsPage === pageNum ? "default" : "ghost"}
                       size="sm"
                       onClick={() => handleSkillsPageChange(pageNum)}
-                      className="min-w-10"
+                      className="min-w-10 font-pixel"
                     >
                       {pageNum}
                     </PixelButton>
@@ -657,6 +670,7 @@ export default function Portfolio() {
                   size="sm"
                   onClick={() => handleSkillsPageChange(currentSkillsPage + 1)}
                   disabled={currentSkillsPage === totalSkillsPages}
+                  className="font-pixel"
                 >
                   Next →
                 </PixelButton>
@@ -668,33 +682,33 @@ export default function Portfolio() {
 
       {/* Experience Section */}
       {data.experience && data.experience.length > 0 && (
-        <section className="py-16 px-4">
+        <section className="py-16 md:py-20 px-4">
           <div className="max-w-6xl mx-auto container">
-            <div className="flex items-center justify-center gap-3 mb-10">
-              <Briefcase className="h-7 w-7 dark:text-pixel-dark-secondary" />
-              <h2 className="text-2xl md:text-4xl font-bold uppercase tracking-wider font-pixel text-center dark:text-pixel-dark-secondary">
-                Work Experience
+            <div className="flex items-center justify-center gap-3 mb-12">
+              <Briefcase className="h-7 w-7 md:h-8 md:w-8 text-pixel-warning dark:text-pixel-dark-secondary" />
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold uppercase tracking-wider font-pixel text-center dark:text-pixel-dark-secondary">
+                Experience
               </h2>
-              <PixelBadge variant="default" className="text-sm">{data.experience.length}</PixelBadge>
+              <PixelBadge variant="default" className="text-sm font-pixel">{data.experience.length}</PixelBadge>
             </div>
 
-            <div className="space-y-6 max-w-5xl mx-auto">
+            <div className="space-y-6 md:space-y-8 max-w-5xl mx-auto">
               {data.experience.map((exp, index) => (
-                <PixelCard key={index} className="hover:shadow-lg transition-shadow">
+                <PixelCard key={index} className="hover:shadow-xl transition-shadow duration-200">
                   <PixelCardHeader>
-                    <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-3">
-                      <div className="flex-1">
-                        <PixelCardTitle className="text-xl md:text-2xl mb-2">
+                    <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+                      <div className="flex-1 space-y-2">
+                        <PixelCardTitle className="text-xl md:text-2xl lg:text-3xl font-pixel">
                           {exp.position}
                         </PixelCardTitle>
                         <h4 className="text-lg md:text-xl font-bold text-pixel-primary dark:text-pixel-dark-primary">
                           {exp.company}
                         </h4>
                       </div>
-                      <div className="md:text-right flex flex-col gap-2">
-                        <PixelBadge variant="default" className="w-fit">{exp.dates}</PixelBadge>
+                      <div className="md:text-right flex flex-col gap-2.5">
+                        <PixelBadge variant="default" className="w-fit font-pixel text-sm">{exp.dates}</PixelBadge>
                         {exp.location && (
-                          <div className="text-sm flex items-center gap-1 md:justify-end">
+                          <div className="text-sm flex items-center gap-1.5 md:justify-end text-gray-600 dark:text-gray-400">
                             <MapPin className="h-4 w-4" />
                             <span>{exp.location}</span>
                           </div>
@@ -705,9 +719,9 @@ export default function Portfolio() {
 
                   {exp.responsibilities && exp.responsibilities.length > 0 && (
                     <PixelCardContent>
-                      <ul className="list-disc list-inside space-y-2.5 text-sm md:text-base">
+                      <ul className="list-disc list-inside space-y-3 text-sm md:text-base">
                         {exp.responsibilities.map((item, i) => (
-                          <li key={i} className="leading-relaxed text-gray-700 dark:text-gray-300">{item}</li>
+                          <li key={i} className="leading-relaxed text-gray-700 dark:text-gray-300 pl-2">{item}</li>
                         ))}
                       </ul>
                     </PixelCardContent>
@@ -721,33 +735,33 @@ export default function Portfolio() {
 
       {/* Projects Section */}
       {data.projects && data.projects.length > 0 && (
-        <section id="projects-section" className="py-16 px-4">
+        <section id="projects-section" className="py-16 md:py-20 px-4 bg-white dark:bg-pixel-dark-surface/50">
           <div className="max-w-6xl mx-auto container">
-            <div className="flex items-center justify-center gap-3 mb-10">
-              <FolderGit2 className="h-7 w-7 dark:text-pixel-dark-secondary" />
-              <h2 className="text-2xl md:text-4xl font-bold uppercase tracking-wider font-pixel text-center dark:text-pixel-dark-secondary">
-                Featured Projects
+            <div className="flex items-center justify-center gap-3 mb-12">
+              <FolderGit2 className="h-7 w-7 md:h-8 md:w-8 text-pixel-warning dark:text-pixel-dark-secondary" />
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold uppercase tracking-wider font-pixel text-center dark:text-pixel-dark-secondary">
+                Projects
               </h2>
-              <PixelBadge variant="default" className="text-sm">{totalProjects}</PixelBadge>
+              <PixelBadge variant="default" className="text-sm font-pixel">{totalProjects}</PixelBadge>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-6 md:gap-8 max-w-5xl mx-auto">
               {currentProjects.map((project, idx) => {
                 const globalIndex = indexOfFirstProject + idx;
                 const isExpanded = expandedProjects.has(globalIndex);
                 
                 return (
-                  <PixelCard key={globalIndex} className="transition-all duration-200 hover:shadow-lg">
+                  <PixelCard key={globalIndex} className="transition-all duration-200 hover:shadow-xl">
                     <PixelCardHeader>
                       <div className="flex justify-between items-start gap-3">
-                        <PixelCardTitle className="text-lg md:text-xl flex-1">
+                        <PixelCardTitle className="text-lg md:text-xl lg:text-2xl flex-1 font-pixel">
                           {project.name}
                         </PixelCardTitle>
                         <PixelButton
                           variant="ghost"
                           size="sm"
                           onClick={() => toggleProjectExpand(globalIndex)}
-                          className="shrink-0 h-8 w-8 p-0 flex items-center justify-center text-lg font-bold"
+                          className="shrink-0 h-9 w-9 p-0 flex items-center justify-center text-xl font-bold hover:bg-pixel-warning/20 dark:hover:bg-pixel-dark-primary/20"
                         >
                           {isExpanded ? '−' : '+'}
                         </PixelButton>
@@ -755,27 +769,27 @@ export default function Portfolio() {
                     </PixelCardHeader>
                     
                     <PixelCardContent className="space-y-4">
-                      {/* Always show technologies */}
+                      {/* Technologies */}
                       {project.technologies && project.technologies.length > 0 && (
                         <div className="flex flex-wrap gap-2">
                           {project.technologies.slice(0, isExpanded ? undefined : 4).map((tech, i) => (
-                            <PixelBadge key={i} variant="success" className="text-xs px-3 py-1">
+                            <PixelBadge key={i} variant="success" className="text-xs md:text-sm px-3 py-1.5">
                               {tech}
                             </PixelBadge>
                           ))}
                           {!isExpanded && project.technologies.length > 4 && (
-                            <PixelBadge variant="default" className="text-xs px-3 py-1">
-                              +{project.technologies.length - 4} more
+                            <PixelBadge variant="default" className="text-xs md:text-sm px-3 py-1.5 font-pixel">
+                              +{project.technologies.length - 4}
                             </PixelBadge>
                           )}
                         </div>
                       )}
 
-                      {/* Show description only when expanded */}
+                      {/* Expanded content */}
                       {isExpanded && (
                         <>
                           {project.description && (
-                            <p className="leading-relaxed text-sm md:text-base text-gray-700 dark:text-gray-300">
+                            <p className="leading-relaxed text-sm md:text-base text-gray-700 dark:text-gray-300 pt-2">
                               {project.description}
                             </p>
                           )}
@@ -786,15 +800,16 @@ export default function Portfolio() {
                               target="_blank"
                               rel="noopener noreferrer"
                             >
-                              <PixelButton variant="secondary" size="sm" className="mt-2">
-                                View Project <ExternalLink className="ml-2 h-4 w-4" />
+                              <PixelButton variant="secondary" size="sm" className="mt-2 gap-2">
+                                <span className="font-pixel">View Project</span>
+                                <ExternalLink className="h-4 w-4" />
                               </PixelButton>
                             </a>
                           )}
                         </>
                       )}
                       
-                      {/* Show truncated description when collapsed */}
+                      {/* Collapsed description */}
                       {!isExpanded && project.description && (
                         <p className="leading-relaxed text-sm text-gray-600 dark:text-gray-400 line-clamp-2">
                           {project.description}
@@ -808,14 +823,15 @@ export default function Portfolio() {
 
             {/* Pagination */}
             {totalPages > 1 && (
-              <div className="flex justify-center items-center gap-3 mt-10">
+              <div className="flex justify-center items-center gap-3 mt-12">
                 <PixelButton
                   variant="ghost"
                   size="sm"
                   onClick={() => handlePageChange(currentPage - 1)}
                   disabled={currentPage === 1}
+                  className="font-pixel"
                 >
-                  ← Previous
+                  ← Prev
                 </PixelButton>
                 
                 <div className="flex gap-2">
@@ -825,7 +841,7 @@ export default function Portfolio() {
                       variant={currentPage === pageNum ? "default" : "ghost"}
                       size="sm"
                       onClick={() => handlePageChange(pageNum)}
-                      className="min-w-10"
+                      className="min-w-10 font-pixel"
                     >
                       {pageNum}
                     </PixelButton>
@@ -837,6 +853,7 @@ export default function Portfolio() {
                   size="sm"
                   onClick={() => handlePageChange(currentPage + 1)}
                   disabled={currentPage === totalPages}
+                  className="font-pixel"
                 >
                   Next →
                 </PixelButton>
@@ -848,23 +865,23 @@ export default function Portfolio() {
 
       {/* Education Section */}
       {data.education && data.education.length > 0 && (
-        <section className="py-16 px-4">
+        <section className="py-16 md:py-20 px-4">
           <div className="max-w-6xl mx-auto container">
-            <div className="flex items-center justify-center gap-3 mb-10">
-              <GraduationCap className="h-7 w-7 dark:text-pixel-dark-secondary" />
-              <h2 className="text-2xl md:text-4xl font-bold uppercase tracking-wider font-pixel text-center dark:text-pixel-dark-secondary">
+            <div className="flex items-center justify-center gap-3 mb-12">
+              <GraduationCap className="h-7 w-7 md:h-8 md:w-8 text-pixel-warning dark:text-pixel-dark-secondary" />
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold uppercase tracking-wider font-pixel text-center dark:text-pixel-dark-secondary">
                 Education
               </h2>
-              <PixelBadge variant="default" className="text-sm">{data.education.length}</PixelBadge>
+              <PixelBadge variant="default" className="text-sm font-pixel">{data.education.length}</PixelBadge>
             </div>
 
-            <div className="space-y-6 max-w-5xl mx-auto">
+            <div className="space-y-6 md:space-y-8 max-w-5xl mx-auto">
               {data.education.map((edu, index) => (
-                <PixelCard key={index} className="hover:shadow-lg transition-shadow">
+                <PixelCard key={index} className="hover:shadow-xl transition-shadow duration-200">
                   <PixelCardHeader>
-                    <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-3">
-                      <div className="flex-1">
-                        <PixelCardTitle className="text-xl md:text-2xl mb-2">
+                    <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+                      <div className="flex-1 space-y-2">
+                        <PixelCardTitle className="text-xl md:text-2xl lg:text-3xl font-pixel">
                           {edu.institution}
                         </PixelCardTitle>
                         <p className="text-lg md:text-xl font-bold text-pixel-primary dark:text-pixel-dark-primary mt-2">
@@ -874,11 +891,11 @@ export default function Portfolio() {
                           <p className="mt-1.5 text-base text-gray-700 dark:text-gray-300">{edu.field}</p>
                         )}
                       </div>
-                      <div className="md:text-right flex flex-col gap-2">
-                        <PixelBadge variant="default" className="w-fit">{edu.dates}</PixelBadge>
+                      <div className="md:text-right flex flex-col gap-2.5">
+                        <PixelBadge variant="default" className="w-fit font-pixel text-sm">{edu.dates}</PixelBadge>
                         {edu.gpa && (
                           <div className="text-sm font-semibold">
-                            GPA: <span className="text-pixel-primary dark:text-pixel-dark-primary">{edu.gpa}</span>
+                            GPA: <span className="text-pixel-primary dark:text-pixel-dark-primary text-base">{edu.gpa}</span>
                           </div>
                         )}
                       </div>
@@ -901,41 +918,59 @@ export default function Portfolio() {
       )}
 
       {/* Professional Footer */}
-      <footer className="py-10 px-4 border-t-4 border-black dark:border-pixel-dark-primary bg-white dark:bg-pixel-dark-surface">
-        <div className="max-w-6xl mx-auto text-center space-y-4">
-          <div className="flex flex-wrap gap-4 justify-center items-center">
+      <footer className="py-12 md:py-16 px-4 border-t-4 border-black dark:border-pixel-dark-primary bg-white dark:bg-pixel-dark-surface">
+        <div className="max-w-6xl mx-auto text-center space-y-6">
+          {/* Contact Links */}
+          <div className="flex flex-wrap gap-5 md:gap-6 justify-center items-center">
             {data.personalInfo.email && (
-              <a href={`mailto:${data.personalInfo.email}`} className="hover:text-pixel-primary dark:hover:text-pixel-dark-primary transition-colors">
-                <Mail className="inline h-4 w-4 mr-1" />
+              <a 
+                href={`mailto:${data.personalInfo.email}`} 
+                className="hover:text-pixel-warning dark:hover:text-pixel-dark-secondary transition-colors flex items-center gap-2 group"
+              >
+                <Mail className="h-4 w-4 group-hover:scale-110 transition-transform" />
                 <span className="text-sm font-medium">{data.personalInfo.email}</span>
               </a>
             )}
             {data.personalInfo.phone && (
-              <a href={`tel:${data.personalInfo.phone}`} className="hover:text-pixel-primary dark:hover:text-pixel-dark-primary transition-colors">
-                <Phone className="inline h-4 w-4 mr-1" />
+              <a 
+                href={`tel:${data.personalInfo.phone}`} 
+                className="hover:text-pixel-warning dark:hover:text-pixel-dark-secondary transition-colors flex items-center gap-2 group"
+              >
+                <Phone className="h-4 w-4 group-hover:scale-110 transition-transform" />
                 <span className="text-sm font-medium">{data.personalInfo.phone}</span>
               </a>
             )}
             {data.personalInfo.github && (
-              <a href={data.personalInfo.github} target="_blank" rel="noopener noreferrer" className="hover:text-pixel-primary dark:hover:text-pixel-dark-primary transition-colors">
-                <Github className="inline h-4 w-4 mr-1" />
+              <a 
+                href={data.personalInfo.github} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="hover:text-pixel-warning dark:hover:text-pixel-dark-secondary transition-colors flex items-center gap-2 group"
+              >
+                <Github className="h-4 w-4 group-hover:scale-110 transition-transform" />
                 <span className="text-sm font-medium">GitHub</span>
               </a>
             )}
             {data.personalInfo.linkedin && (
-              <a href={data.personalInfo.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-pixel-primary dark:hover:text-pixel-dark-primary transition-colors">
-                <Linkedin className="inline h-4 w-4 mr-1" />
+              <a 
+                href={data.personalInfo.linkedin} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="hover:text-pixel-warning dark:hover:text-pixel-dark-secondary transition-colors flex items-center gap-2 group"
+              >
+                <Linkedin className="h-4 w-4 group-hover:scale-110 transition-transform" />
                 <span className="text-sm font-medium">LinkedIn</span>
               </a>
             )}
           </div>
           
-          <div className="border-t-2 border-black/10 dark:border-white/10 pt-4 space-y-1">
-            <p className="font-bold text-sm text-gray-800 dark:text-gray-200">
+          {/* Copyright */}
+          <div className="border-t-2 border-black/10 dark:border-white/10 pt-6 space-y-2">
+            <p className="font-bold text-sm md:text-base text-gray-800 dark:text-gray-200">
               © {new Date().getFullYear()} {data.personalInfo.name}. All rights reserved.
             </p>
-            <p className="text-xs text-gray-600 dark:text-gray-400 font-pixel uppercase tracking-wider">
-              Built with Resume to Portfolio Generator 🎮
+            <p className="text-xs md:text-sm text-gray-600 dark:text-gray-400 font-pixel uppercase tracking-wider">
+              Built with Resume to Portfolio Generator 🎮✨
             </p>
           </div>
         </div>
