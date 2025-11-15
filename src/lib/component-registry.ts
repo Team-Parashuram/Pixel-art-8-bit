@@ -1321,6 +1321,446 @@ toast({
     ],
   },
   {
+    slug: "pixel-pricing",
+    title: "Pricing Section",
+    description: "Pricing tables and cards for displaying product or service pricing plans.",
+    category: "Layout",
+    installation: "",
+    importCode: `import { 
+  PixelPricing,
+  PixelPricingCard,
+  PixelPricingBadge,
+  PixelPricingTitle,
+  PixelPricingPrice,
+  PixelPricingPeriod,
+  PixelPricingDescription,
+  PixelPricingFeatures,
+  PixelPricingFeature,
+  PixelPricingActions,
+  PixelPricingHeader,
+  PixelPricingSectionTitle,
+  PixelPricingSectionDescription
+} from "@/components/ui/pixel/pixel-pricing"`,
+    usageCode: `<PixelPricing columns={3} gap="md">
+  <PixelPricingCard>
+    <PixelPricingTitle>Basic</PixelPricingTitle>
+    <PixelPricingPrice>$9</PixelPricingPrice>
+    <PixelPricingPeriod>per month</PixelPricingPeriod>
+    <PixelPricingFeatures>
+      <PixelPricingFeature>10 Projects</PixelPricingFeature>
+      <PixelPricingFeature>5GB Storage</PixelPricingFeature>
+    </PixelPricingFeatures>
+    <PixelPricingActions>
+      <PixelButton>Get Started</PixelButton>
+    </PixelPricingActions>
+  </PixelPricingCard>
+</PixelPricing>`,
+    componentCode: `/src/components/ui/pixel/pixel-pricing.tsx`,
+    examples: [
+      {
+        title: "Basic Pricing Cards",
+        description: "Simple 3-column pricing layout",
+        code: `<PixelPricing columns={3} gap="md">
+  <PixelPricingCard variant="default">
+    <PixelPricingTitle>Basic</PixelPricingTitle>
+    <PixelPricingPrice>$9</PixelPricingPrice>
+    <PixelPricingPeriod>per month</PixelPricingPeriod>
+    <PixelPricingDescription>Perfect for individuals</PixelPricingDescription>
+    <PixelPricingFeatures>
+      <PixelPricingFeature>10 Projects</PixelPricingFeature>
+      <PixelPricingFeature>5GB Storage</PixelPricingFeature>
+      <PixelPricingFeature>Email Support</PixelPricingFeature>
+    </PixelPricingFeatures>
+    <PixelPricingActions>
+      <PixelButton variant="secondary">Choose Plan</PixelButton>
+    </PixelPricingActions>
+  </PixelPricingCard>
+  
+  <PixelPricingCard variant="featured">
+    <PixelPricingBadge>Most Popular</PixelPricingBadge>
+    <PixelPricingTitle>Pro</PixelPricingTitle>
+    <PixelPricingPrice>$29</PixelPricingPrice>
+    <PixelPricingPeriod>per month</PixelPricingPeriod>
+    <PixelPricingDescription>Perfect for teams</PixelPricingDescription>
+    <PixelPricingFeatures>
+      <PixelPricingFeature>Unlimited Projects</PixelPricingFeature>
+      <PixelPricingFeature>50GB Storage</PixelPricingFeature>
+      <PixelPricingFeature>Priority Support</PixelPricingFeature>
+    </PixelPricingFeatures>
+    <PixelPricingActions>
+      <PixelButton>Choose Plan</PixelButton>
+    </PixelPricingActions>
+  </PixelPricingCard>
+  
+  <PixelPricingCard variant="default">
+    <PixelPricingTitle>Enterprise</PixelPricingTitle>
+    <PixelPricingPrice>$99</PixelPricingPrice>
+    <PixelPricingPeriod>per month</PixelPricingPeriod>
+    <PixelPricingDescription>For large organizations</PixelPricingDescription>
+    <PixelPricingFeatures>
+      <PixelPricingFeature>Unlimited Everything</PixelPricingFeature>
+      <PixelPricingFeature>500GB Storage</PixelPricingFeature>
+      <PixelPricingFeature>24/7 Support</PixelPricingFeature>
+    </PixelPricingFeatures>
+    <PixelPricingActions>
+      <PixelButton variant="secondary">Contact Sales</PixelButton>
+    </PixelPricingActions>
+  </PixelPricingCard>
+</PixelPricing>`,
+      },
+    ],
+    props: [
+      { name: "columns", type: '2 | 3 | 4', default: '3', description: "Number of columns in the grid" },
+      { name: "gap", type: '"none" | "sm" | "md" | "lg" | "xl"', default: '"md"', description: "Gap between pricing cards" },
+      { name: "variant", type: '"default" | "primary" | "secondary" | "dark" | "featured"', default: '"default"', description: "Card visual style" },
+    ],
+  },
+  {
+    slug: "pixel-footer",
+    title: "Footer",
+    description: "Website footer with links, social media, and copyright information.",
+    category: "Layout",
+    installation: "",
+    importCode: `import { 
+  PixelFooter,
+  PixelFooterGrid,
+  PixelFooterSection,
+  PixelFooterTitle,
+  PixelFooterLinks,
+  PixelFooterLink,
+  PixelFooterDivider,
+  PixelFooterBottom,
+  PixelFooterCopyright,
+  PixelFooterSocial,
+  PixelFooterSocialLink,
+  PixelFooterLogo,
+  PixelFooterDescription
+} from "@/components/ui/pixel/pixel-footer"`,
+    usageCode: `<PixelFooter variant="default" size="md">
+  <PixelFooterGrid>
+    <PixelFooterSection>
+      <PixelFooterTitle>Company</PixelFooterTitle>
+      <PixelFooterLinks>
+        <PixelFooterLink href="/about">About</PixelFooterLink>
+        <PixelFooterLink href="/contact">Contact</PixelFooterLink>
+      </PixelFooterLinks>
+    </PixelFooterSection>
+  </PixelFooterGrid>
+  <PixelFooterDivider />
+  <PixelFooterBottom>
+    <PixelFooterCopyright>© 2024 Your Company</PixelFooterCopyright>
+    <PixelFooterSocial>
+      <PixelFooterSocialLink href="#" icon="🐦" />
+      <PixelFooterSocialLink href="#" icon="💼" />
+    </PixelFooterSocial>
+  </PixelFooterBottom>
+</PixelFooter>`,
+    componentCode: `/src/components/ui/pixel/pixel-footer.tsx`,
+    examples: [
+      {
+        title: "Basic Footer",
+        description: "Simple footer with sections",
+        code: `<PixelFooter variant="default" size="md">
+  <PixelFooterGrid>
+    <PixelFooterSection>
+      <PixelFooterTitle>Product</PixelFooterTitle>
+      <PixelFooterLinks>
+        <PixelFooterLink href="#">Features</PixelFooterLink>
+        <PixelFooterLink href="#">Pricing</PixelFooterLink>
+        <PixelFooterLink href="#">Changelog</PixelFooterLink>
+      </PixelFooterLinks>
+    </PixelFooterSection>
+    
+    <PixelFooterSection>
+      <PixelFooterTitle>Company</PixelFooterTitle>
+      <PixelFooterLinks>
+        <PixelFooterLink href="#">About</PixelFooterLink>
+        <PixelFooterLink href="#">Blog</PixelFooterLink>
+        <PixelFooterLink href="#">Careers</PixelFooterLink>
+      </PixelFooterLinks>
+    </PixelFooterSection>
+    
+    <PixelFooterSection>
+      <PixelFooterTitle>Resources</PixelFooterTitle>
+      <PixelFooterLinks>
+        <PixelFooterLink href="#">Docs</PixelFooterLink>
+        <PixelFooterLink href="#">Guides</PixelFooterLink>
+        <PixelFooterLink href="#">API</PixelFooterLink>
+      </PixelFooterLinks>
+    </PixelFooterSection>
+    
+    <PixelFooterSection>
+      <PixelFooterTitle>Legal</PixelFooterTitle>
+      <PixelFooterLinks>
+        <PixelFooterLink href="#">Privacy</PixelFooterLink>
+        <PixelFooterLink href="#">Terms</PixelFooterLink>
+        <PixelFooterLink href="#">License</PixelFooterLink>
+      </PixelFooterLinks>
+    </PixelFooterSection>
+  </PixelFooterGrid>
+  
+  <PixelFooterDivider />
+  
+  <PixelFooterBottom>
+    <PixelFooterCopyright>© 2024 Pixel UI. All rights reserved.</PixelFooterCopyright>
+    <PixelFooterSocial>
+      <PixelFooterSocialLink href="#" icon="🐦" />
+      <PixelFooterSocialLink href="#" icon="📘" />
+      <PixelFooterSocialLink href="#" icon="💼" />
+      <PixelFooterSocialLink href="#" icon="📷" />
+    </PixelFooterSocial>
+  </PixelFooterBottom>
+</PixelFooter>`,
+      },
+    ],
+    props: [
+      { name: "variant", type: '"default" | "primary" | "secondary" | "dark"', default: '"default"', description: "Footer visual style" },
+      { name: "size", type: '"sm" | "md" | "lg"', default: '"md"', description: "Padding size" },
+    ],
+  },
+  {
+    slug: "pixel-testimonials",
+    title: "Testimonials Section",
+    description: "Display customer reviews and testimonials in a grid layout.",
+    category: "Layout",
+    installation: "",
+    importCode: `import { 
+  PixelTestimonials,
+  PixelTestimonialCard,
+  PixelTestimonialQuote,
+  PixelTestimonialAuthor,
+  PixelTestimonialAvatar,
+  PixelTestimonialInfo,
+  PixelTestimonialName,
+  PixelTestimonialRole,
+  PixelTestimonialRating,
+  PixelTestimonialsHeader,
+  PixelTestimonialsSectionTitle,
+  PixelTestimonialsSectionDescription
+} from "@/components/ui/pixel/pixel-testimonials"`,
+    usageCode: `<PixelTestimonials columns={3} gap="md">
+  <PixelTestimonialCard>
+    <PixelTestimonialRating rating={5} />
+    <PixelTestimonialQuote>
+      "Amazing product! Highly recommended."
+    </PixelTestimonialQuote>
+    <PixelTestimonialAuthor>
+      <PixelTestimonialAvatar>JD</PixelTestimonialAvatar>
+      <PixelTestimonialInfo>
+        <PixelTestimonialName>John Doe</PixelTestimonialName>
+        <PixelTestimonialRole>CEO, Company</PixelTestimonialRole>
+      </PixelTestimonialInfo>
+    </PixelTestimonialAuthor>
+  </PixelTestimonialCard>
+</PixelTestimonials>`,
+    componentCode: `/src/components/ui/pixel/pixel-testimonials.tsx`,
+    examples: [
+      {
+        title: "Basic Testimonials",
+        description: "Simple testimonial cards with ratings",
+        code: `<PixelTestimonials columns={3} gap="md">
+  <PixelTestimonialCard variant="default">
+    <PixelTestimonialRating rating={5} />
+    <PixelTestimonialQuote>
+      "This component library completely transformed our design workflow. The pixel-art aesthetic is perfect for our retro gaming platform!"
+    </PixelTestimonialQuote>
+    <PixelTestimonialAuthor>
+      <PixelTestimonialAvatar>SM</PixelTestimonialAvatar>
+      <PixelTestimonialInfo>
+        <PixelTestimonialName>Sarah Miller</PixelTestimonialName>
+        <PixelTestimonialRole>Lead Designer, GameDev Studios</PixelTestimonialRole>
+      </PixelTestimonialInfo>
+    </PixelTestimonialAuthor>
+  </PixelTestimonialCard>
+  
+  <PixelTestimonialCard variant="primary">
+    <PixelTestimonialRating rating={5} />
+    <PixelTestimonialQuote>
+      "Easy to use, highly customizable, and the documentation is excellent. Our team shipped faster than ever before."
+    </PixelTestimonialQuote>
+    <PixelTestimonialAuthor>
+      <PixelTestimonialAvatar>MJ</PixelTestimonialAvatar>
+      <PixelTestimonialInfo>
+        <PixelTestimonialName>Mike Johnson</PixelTestimonialName>
+        <PixelTestimonialRole>CTO, StartupXYZ</PixelTestimonialRole>
+      </PixelTestimonialInfo>
+    </PixelTestimonialAuthor>
+  </PixelTestimonialCard>
+  
+  <PixelTestimonialCard variant="default">
+    <PixelTestimonialRating rating={4} />
+    <PixelTestimonialQuote>
+      "The attention to detail is remarkable. Every component feels thoughtfully crafted and production-ready."
+    </PixelTestimonialQuote>
+    <PixelTestimonialAuthor>
+      <PixelTestimonialAvatar>EK</PixelTestimonialAvatar>
+      <PixelTestimonialInfo>
+        <PixelTestimonialName>Emma Kim</PixelTestimonialName>
+        <PixelTestimonialRole>Product Manager, TechCorp</PixelTestimonialRole>
+      </PixelTestimonialInfo>
+    </PixelTestimonialAuthor>
+  </PixelTestimonialCard>
+</PixelTestimonials>`,
+      },
+    ],
+    props: [
+      { name: "columns", type: '1 | 2 | 3', default: '3', description: "Number of columns in the grid" },
+      { name: "gap", type: '"none" | "sm" | "md" | "lg" | "xl"', default: '"md"', description: "Gap between testimonial cards" },
+      { name: "variant", type: '"default" | "primary" | "secondary" | "dark"', default: '"default"', description: "Card visual style" },
+    ],
+  },
+  {
+    slug: "pixel-stats",
+    title: "Stats Section",
+    description: "Display key metrics and statistics in an engaging grid layout.",
+    category: "Layout",
+    installation: "",
+    importCode: `import { 
+  PixelStats,
+  PixelStatItem,
+  PixelStatIcon,
+  PixelStatValue,
+  PixelStatLabel,
+  PixelStatDescription,
+  PixelStatTrend,
+  PixelStatsHeader,
+  PixelStatsSectionTitle,
+  PixelStatsSectionDescription
+} from "@/components/ui/pixel/pixel-stats"`,
+    usageCode: `<PixelStats columns={4} gap="md">
+  <PixelStatItem>
+    <PixelStatIcon>📊</PixelStatIcon>
+    <PixelStatValue>10K+</PixelStatValue>
+    <PixelStatLabel>Active Users</PixelStatLabel>
+    <PixelStatTrend trend="up">+12%</PixelStatTrend>
+  </PixelStatItem>
+</PixelStats>`,
+    componentCode: `/src/components/ui/pixel/pixel-stats.tsx`,
+    examples: [
+      {
+        title: "Basic Stats Grid",
+        description: "Simple 4-column stats display",
+        code: `<PixelStats columns={4} gap="md">
+  <PixelStatItem variant="default">
+    <PixelStatIcon>👥</PixelStatIcon>
+    <PixelStatValue>10,000+</PixelStatValue>
+    <PixelStatLabel>Active Users</PixelStatLabel>
+    <PixelStatTrend trend="up">+12% this month</PixelStatTrend>
+  </PixelStatItem>
+  
+  <PixelStatItem variant="primary">
+    <PixelStatIcon>⭐</PixelStatIcon>
+    <PixelStatValue>4.9/5</PixelStatValue>
+    <PixelStatLabel>User Rating</PixelStatLabel>
+    <PixelStatDescription>Based on 2,500+ reviews</PixelStatDescription>
+  </PixelStatItem>
+  
+  <PixelStatItem variant="secondary">
+    <PixelStatIcon>🚀</PixelStatIcon>
+    <PixelStatValue>99.9%</PixelStatValue>
+    <PixelStatLabel>Uptime</PixelStatLabel>
+    <PixelStatTrend trend="neutral">Last 12 months</PixelStatTrend>
+  </PixelStatItem>
+  
+  <PixelStatItem variant="gradient">
+    <PixelStatIcon>💰</PixelStatIcon>
+    <PixelStatValue>$2M+</PixelStatValue>
+    <PixelStatLabel>Revenue</PixelStatLabel>
+    <PixelStatTrend trend="up">+25% YoY</PixelStatTrend>
+  </PixelStatItem>
+</PixelStats>`,
+      },
+    ],
+    props: [
+      { name: "columns", type: '2 | 3 | 4', default: '4', description: "Number of columns in the grid" },
+      { name: "gap", type: '"none" | "sm" | "md" | "lg" | "xl"', default: '"md"', description: "Gap between stat items" },
+      { name: "variant", type: '"default" | "primary" | "secondary" | "dark" | "gradient"', default: '"default"', description: "Stat item visual style" },
+      { name: "trend", type: '"up" | "down" | "neutral"', default: '"neutral"', description: "Trend indicator direction and color" },
+    ],
+  },
+  {
+    slug: "pixel-faq",
+    title: "FAQ Section",
+    description: "Frequently Asked Questions with accordion-style expandable answers.",
+    category: "Layout",
+    installation: "",
+    importCode: `import { 
+  PixelFaq,
+  PixelFaqList,
+  PixelFaqItem,
+  PixelFaqQuestion,
+  PixelFaqAnswer,
+  PixelFaqHeader,
+  PixelFaqSectionTitle,
+  PixelFaqSectionDescription,
+  PixelFaqCategory,
+  PixelFaqCategoryTitle
+} from "@/components/ui/pixel/pixel-faq"`,
+    usageCode: `<PixelFaq variant="default">
+  <PixelFaqHeader>
+    <PixelFaqSectionTitle>FAQ</PixelFaqSectionTitle>
+    <PixelFaqSectionDescription>
+      Commonly asked questions
+    </PixelFaqSectionDescription>
+  </PixelFaqHeader>
+  <PixelFaqList>
+    <PixelFaqItem>
+      <PixelFaqQuestion>How do I get started?</PixelFaqQuestion>
+      <PixelFaqAnswer>Simply install and import components.</PixelFaqAnswer>
+    </PixelFaqItem>
+  </PixelFaqList>
+</PixelFaq>`,
+    componentCode: `/src/components/ui/pixel/pixel-faq.tsx`,
+    examples: [
+      {
+        title: "Basic FAQ",
+        description: "Simple accordion-style FAQ",
+        code: `<PixelFaq variant="default">
+  <PixelFaqHeader>
+    <PixelFaqSectionTitle>Frequently Asked Questions</PixelFaqSectionTitle>
+    <PixelFaqSectionDescription>
+      Find answers to common questions about our pixel component library
+    </PixelFaqSectionDescription>
+  </PixelFaqHeader>
+  
+  <PixelFaqList>
+    <PixelFaqItem defaultOpen>
+      <PixelFaqQuestion>How do I install the components?</PixelFaqQuestion>
+      <PixelFaqAnswer>
+        You can install individual components by copying the code from our docs, or install the entire library via npm. Each component includes installation instructions and dependencies.
+      </PixelFaqAnswer>
+    </PixelFaqItem>
+    
+    <PixelFaqItem>
+      <PixelFaqQuestion>Is this library free to use?</PixelFaqQuestion>
+      <PixelFaqAnswer>
+        Yes! All components are completely free and open source. You can use them in personal and commercial projects without any restrictions.
+      </PixelFaqAnswer>
+    </PixelFaqItem>
+    
+    <PixelFaqItem>
+      <PixelFaqQuestion>Can I customize the pixel borders and shadows?</PixelFaqQuestion>
+      <PixelFaqAnswer>
+        Absolutely! All components use Tailwind CSS classes and support className prop for easy customization. You can modify borders, shadows, colors, and more.
+      </PixelFaqAnswer>
+    </PixelFaqItem>
+    
+    <PixelFaqItem>
+      <PixelFaqQuestion>Do these components support dark mode?</PixelFaqQuestion>
+      <PixelFaqAnswer>
+        Yes, all components are built with dark mode support using Tailwind's dark: variant. They automatically adapt to your system's color scheme.
+      </PixelFaqAnswer>
+    </PixelFaqItem>
+  </PixelFaqList>
+</PixelFaq>`,
+      },
+    ],
+    props: [
+      { name: "variant", type: '"default" | "primary" | "secondary" | "dark"', default: '"default"', description: "FAQ section visual style" },
+      { name: "defaultOpen", type: "boolean", default: "false", description: "Whether the FAQ item is open by default" },
+    ],
+  },
+  {
     slug: "pixel-accordion",
     title: "Accordion",
     description: "Collapsible content sections.",

@@ -40,6 +40,11 @@ import { PixelHero, PixelHeroContent, PixelHeroTitle, PixelHeroSubtitle, PixelHe
 import { PixelBentoGrid, PixelBentoItem, PixelBentoHeader, PixelBentoTitle, PixelBentoDescription, PixelBentoIcon, PixelBentoContent } from "@/components/ui/pixel/pixel-bento";
 import { PixelFeatures, PixelFeatureItem, PixelFeatureIcon, PixelFeatureTitle, PixelFeatureDescription } from "@/components/ui/pixel/pixel-features";
 import { PixelCta, PixelCtaContent, PixelCtaTitle, PixelCtaDescription, PixelCtaActions, PixelCtaHighlight } from "@/components/ui/pixel/pixel-cta";
+import { PixelPricing, PixelPricingCard, PixelPricingTitle, PixelPricingPrice, PixelPricingPeriod, PixelPricingDescription, PixelPricingFeatures, PixelPricingFeature, PixelPricingActions, PixelPricingBadge } from "@/components/ui/pixel/pixel-pricing";
+import { PixelFooter, PixelFooterGrid, PixelFooterSection, PixelFooterTitle, PixelFooterLinks, PixelFooterLink, PixelFooterDivider, PixelFooterBottom, PixelFooterCopyright, PixelFooterSocial, PixelFooterSocialLink } from "@/components/ui/pixel/pixel-footer";
+import { PixelTestimonials, PixelTestimonialCard, PixelTestimonialQuote, PixelTestimonialAuthor, PixelTestimonialAvatar, PixelTestimonialInfo, PixelTestimonialName, PixelTestimonialRole, PixelTestimonialRating } from "@/components/ui/pixel/pixel-testimonials";
+import { PixelStats, PixelStatItem, PixelStatIcon, PixelStatValue, PixelStatLabel, PixelStatTrend } from "@/components/ui/pixel/pixel-stats";
+import { PixelFaq, PixelFaqList, PixelFaqItem, PixelFaqQuestion, PixelFaqAnswer } from "@/components/ui/pixel/pixel-faq";
 
 // Import animation components
 import { PixelBlurText } from "@/components/ui/pixel/animations/pixel-blur-text";
@@ -817,6 +822,212 @@ export function ComponentPreview({ slug }: { slug: string }) {
         <div className="w-full h-48">
           <PixelImageTrail images={["/example1.png", "/example2.png"]} />
         </div>
+      );
+    
+    case "pixel-pricing":
+      return (
+        <PixelPricing columns={3} gap="md" className="max-w-5xl mx-auto">
+          <PixelPricingCard variant="default">
+            <PixelPricingTitle>Basic</PixelPricingTitle>
+            <PixelPricingPrice>$9</PixelPricingPrice>
+            <PixelPricingPeriod>per month</PixelPricingPeriod>
+            <PixelPricingDescription>For individuals</PixelPricingDescription>
+            <PixelPricingFeatures>
+              <PixelPricingFeature>10 Projects</PixelPricingFeature>
+              <PixelPricingFeature>5GB Storage</PixelPricingFeature>
+              <PixelPricingFeature>Email Support</PixelPricingFeature>
+            </PixelPricingFeatures>
+            <PixelPricingActions>
+              <PixelButton variant="secondary">Choose Plan</PixelButton>
+            </PixelPricingActions>
+          </PixelPricingCard>
+          
+          <PixelPricingCard variant="featured">
+            <PixelPricingBadge>Popular</PixelPricingBadge>
+            <PixelPricingTitle>Pro</PixelPricingTitle>
+            <PixelPricingPrice>$29</PixelPricingPrice>
+            <PixelPricingPeriod>per month</PixelPricingPeriod>
+            <PixelPricingDescription>For teams</PixelPricingDescription>
+            <PixelPricingFeatures>
+              <PixelPricingFeature>Unlimited Projects</PixelPricingFeature>
+              <PixelPricingFeature>50GB Storage</PixelPricingFeature>
+              <PixelPricingFeature>Priority Support</PixelPricingFeature>
+            </PixelPricingFeatures>
+            <PixelPricingActions>
+              <PixelButton>Choose Plan</PixelButton>
+            </PixelPricingActions>
+          </PixelPricingCard>
+          
+          <PixelPricingCard variant="default">
+            <PixelPricingTitle>Enterprise</PixelPricingTitle>
+            <PixelPricingPrice>$99</PixelPricingPrice>
+            <PixelPricingPeriod>per month</PixelPricingPeriod>
+            <PixelPricingDescription>For organizations</PixelPricingDescription>
+            <PixelPricingFeatures>
+              <PixelPricingFeature>Unlimited Everything</PixelPricingFeature>
+              <PixelPricingFeature>500GB Storage</PixelPricingFeature>
+              <PixelPricingFeature>24/7 Support</PixelPricingFeature>
+            </PixelPricingFeatures>
+            <PixelPricingActions>
+              <PixelButton variant="secondary">Contact Sales</PixelButton>
+            </PixelPricingActions>
+          </PixelPricingCard>
+        </PixelPricing>
+      );
+    
+    case "pixel-footer":
+      return (
+        <PixelFooter variant="default" size="md">
+          <PixelFooterGrid>
+            <PixelFooterSection>
+              <PixelFooterTitle>Product</PixelFooterTitle>
+              <PixelFooterLinks>
+                <PixelFooterLink href="#">Features</PixelFooterLink>
+                <PixelFooterLink href="#">Pricing</PixelFooterLink>
+              </PixelFooterLinks>
+            </PixelFooterSection>
+            
+            <PixelFooterSection>
+              <PixelFooterTitle>Company</PixelFooterTitle>
+              <PixelFooterLinks>
+                <PixelFooterLink href="#">About</PixelFooterLink>
+                <PixelFooterLink href="#">Blog</PixelFooterLink>
+              </PixelFooterLinks>
+            </PixelFooterSection>
+            
+            <PixelFooterSection>
+              <PixelFooterTitle>Resources</PixelFooterTitle>
+              <PixelFooterLinks>
+                <PixelFooterLink href="#">Docs</PixelFooterLink>
+                <PixelFooterLink href="#">Guides</PixelFooterLink>
+              </PixelFooterLinks>
+            </PixelFooterSection>
+            
+            <PixelFooterSection>
+              <PixelFooterTitle>Legal</PixelFooterTitle>
+              <PixelFooterLinks>
+                <PixelFooterLink href="#">Privacy</PixelFooterLink>
+                <PixelFooterLink href="#">Terms</PixelFooterLink>
+              </PixelFooterLinks>
+            </PixelFooterSection>
+          </PixelFooterGrid>
+          
+          <PixelFooterDivider />
+          
+          <PixelFooterBottom>
+            <PixelFooterCopyright>© 2024 Pixel UI</PixelFooterCopyright>
+            <PixelFooterSocial>
+              <PixelFooterSocialLink href="#" icon="🐦" />
+              <PixelFooterSocialLink href="#" icon="💼" />
+            </PixelFooterSocial>
+          </PixelFooterBottom>
+        </PixelFooter>
+      );
+    
+    case "pixel-testimonials":
+      return (
+        <PixelTestimonials columns={3} gap="md" className="max-w-5xl mx-auto">
+          <PixelTestimonialCard variant="default">
+            <PixelTestimonialRating rating={5} />
+            <PixelTestimonialQuote>
+              "Amazing library! The pixel-art aesthetic is perfect."
+            </PixelTestimonialQuote>
+            <PixelTestimonialAuthor>
+              <PixelTestimonialAvatar>SM</PixelTestimonialAvatar>
+              <PixelTestimonialInfo>
+                <PixelTestimonialName>Sarah Miller</PixelTestimonialName>
+                <PixelTestimonialRole>Designer</PixelTestimonialRole>
+              </PixelTestimonialInfo>
+            </PixelTestimonialAuthor>
+          </PixelTestimonialCard>
+          
+          <PixelTestimonialCard variant="primary">
+            <PixelTestimonialRating rating={5} />
+            <PixelTestimonialQuote>
+              "Easy to use and highly customizable. Love it!"
+            </PixelTestimonialQuote>
+            <PixelTestimonialAuthor>
+              <PixelTestimonialAvatar>MJ</PixelTestimonialAvatar>
+              <PixelTestimonialInfo>
+                <PixelTestimonialName>Mike Johnson</PixelTestimonialName>
+                <PixelTestimonialRole>Developer</PixelTestimonialRole>
+              </PixelTestimonialInfo>
+            </PixelTestimonialAuthor>
+          </PixelTestimonialCard>
+          
+          <PixelTestimonialCard variant="default">
+            <PixelTestimonialRating rating={4} />
+            <PixelTestimonialQuote>
+              "Excellent attention to detail. Production ready."
+            </PixelTestimonialQuote>
+            <PixelTestimonialAuthor>
+              <PixelTestimonialAvatar>EK</PixelTestimonialAvatar>
+              <PixelTestimonialInfo>
+                <PixelTestimonialName>Emma Kim</PixelTestimonialName>
+                <PixelTestimonialRole>PM</PixelTestimonialRole>
+              </PixelTestimonialInfo>
+            </PixelTestimonialAuthor>
+          </PixelTestimonialCard>
+        </PixelTestimonials>
+      );
+    
+    case "pixel-stats":
+      return (
+        <PixelStats columns={4} gap="md" className="max-w-6xl mx-auto">
+          <PixelStatItem variant="default">
+            <PixelStatIcon>👥</PixelStatIcon>
+            <PixelStatValue>10K+</PixelStatValue>
+            <PixelStatLabel>Active Users</PixelStatLabel>
+            <PixelStatTrend trend="up">+12%</PixelStatTrend>
+          </PixelStatItem>
+          
+          <PixelStatItem variant="primary">
+            <PixelStatIcon>⭐</PixelStatIcon>
+            <PixelStatValue>4.9/5</PixelStatValue>
+            <PixelStatLabel>User Rating</PixelStatLabel>
+          </PixelStatItem>
+          
+          <PixelStatItem variant="secondary">
+            <PixelStatIcon>🚀</PixelStatIcon>
+            <PixelStatValue>99.9%</PixelStatValue>
+            <PixelStatLabel>Uptime</PixelStatLabel>
+          </PixelStatItem>
+          
+          <PixelStatItem variant="gradient">
+            <PixelStatIcon>💰</PixelStatIcon>
+            <PixelStatValue>$2M+</PixelStatValue>
+            <PixelStatLabel>Revenue</PixelStatLabel>
+            <PixelStatTrend trend="up">+25%</PixelStatTrend>
+          </PixelStatItem>
+        </PixelStats>
+      );
+    
+    case "pixel-faq":
+      return (
+        <PixelFaq variant="default" className="max-w-3xl mx-auto">
+          <PixelFaqList>
+            <PixelFaqItem defaultOpen>
+              <PixelFaqQuestion>How do I install the components?</PixelFaqQuestion>
+              <PixelFaqAnswer>
+                You can install components by copying the code from our docs or via npm.
+              </PixelFaqAnswer>
+            </PixelFaqItem>
+            
+            <PixelFaqItem>
+              <PixelFaqQuestion>Is this library free to use?</PixelFaqQuestion>
+              <PixelFaqAnswer>
+                Yes! All components are completely free and open source.
+              </PixelFaqAnswer>
+            </PixelFaqItem>
+            
+            <PixelFaqItem>
+              <PixelFaqQuestion>Can I customize the styling?</PixelFaqQuestion>
+              <PixelFaqAnswer>
+                Absolutely! All components support className prop for easy customization.
+              </PixelFaqAnswer>
+            </PixelFaqItem>
+          </PixelFaqList>
+        </PixelFaq>
       );
     
     default:
