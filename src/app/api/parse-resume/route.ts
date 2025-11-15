@@ -1,9 +1,10 @@
-import { NextRequest, NextResponse } from 'next/server';
-// @ts-ignore - pdf-parse-fork doesn't have types
-import pdf from 'pdf-parse-fork';
-import { parseResume } from '@/lib/resume-parser';
+// app/api/resume/parse/route.ts
 
-// In-memory storage (in production, use a database)
+import { NextRequest, NextResponse } from 'next/server';
+// @ts-ignore
+import pdf from 'pdf-parse-fork';
+import { parseResumeAsync } from '@/lib/resume-parser';
+
 const resumeStore = new Map<string, any>();
 
 export async function POST(request: NextRequest) {
@@ -12,28 +13,21 @@ export async function POST(request: NextRequest) {
     const file = formData.get('file') as File;
 
     if (!file) {
-      return NextResponse.json(
-        { error: 'No file provided' },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: 'No file provided' }, { status: 400 });
     }
 
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
     const data = await pdf(buffer);
-    console.log('Extracted Text:', data);
     
-    // Parse the resume text to extract structured data
-    const resumeData = parseResume(data.text);
+    console.log('[API] PDF extracted, parsing with AI...');
     
-    // Generate unique ID
+    const resumeData = await parseResumeAsync(data.text);
     const id = Date.now().toString(36) + Math.random().toString(36).substr(2);
-    
-    // Store the parsed data
     const fullData = { ...resumeData, id };
-    resumeStore.set(id, fullData);
     
-    console.log('Parsed Resume Data:', fullData);
+    resumeStore.set(id, fullData);
+    console.log('[API] Resume parsed successfully, projects:', fullData.projects.length);
 
     return NextResponse.json({
       success: true,
@@ -42,6 +36,7 @@ export async function POST(request: NextRequest) {
     });
 
   } catch (error) {
+    console.error('[API] Parse error:', error);
     return NextResponse.json(
       { 
         success: false,
