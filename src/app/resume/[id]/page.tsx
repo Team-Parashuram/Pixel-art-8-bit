@@ -96,51 +96,45 @@ export default function Portfolio() {
       <PixelHero variant="gradient" size="md">
         <PixelHeroContent>
           <PixelHeroTitle className="mb-4 text-3xl md:text-5xl">
-            {data.name}
+            {data.personalInfo.name}
           </PixelHeroTitle>
           
-          {data.title && (
+          {data.personalInfo.location && (
             <PixelHeroDescription className="text-xl md:text-2xl mb-6">
-              {data.title}
+              {data.personalInfo.location}
             </PixelHeroDescription>
           )}
 
-          {data.summary && (
-            <p className="text-base md:text-lg mb-6 max-w-3xl mx-auto">
-              {data.summary}
-            </p>
-          )}
-
           <div className="flex flex-wrap gap-3 justify-center items-center">
-            {data.email && (
-              <a href={\`mailto:\${data.email}\`}>
+            {data.personalInfo.email && (
+              <a href={\`mailto:\${data.personalInfo.email}\`}>
                 <PixelButton size="sm">
                   <Mail className="mr-2 h-4 w-4" />
                   Contact Me
                 </PixelButton>
               </a>
             )}
-            {data.github && (
-              <a href={data.github} target="_blank" rel="noopener noreferrer">
+            {data.personalInfo.github && (
+              <a href={\`\${data.personalInfo.github}\`} target="_blank" rel="noopener noreferrer">
                 <PixelButton size="sm" variant="secondary">
                   <Github className="mr-2 h-4 w-4" />
                   GitHub
                 </PixelButton>
               </a>
             )}
-            {data.linkedin && (
-              <a href={data.linkedin} target="_blank" rel="noopener noreferrer">
+            {data.personalInfo.linkedin && (
+              <a href={\`\${data.personalInfo.linkedin}\`} target="_blank" rel="noopener noreferrer">
                 <PixelButton size="sm" variant="secondary">
                   <Linkedin className="mr-2 h-4 w-4" />
                   LinkedIn
                 </PixelButton>
               </a>
             )}
-            {data.phone && (
-              <a href={\`tel:\${data.phone}\`}>
+            {data.personalInfo.phone && (
+              <a href={\`tel:\${data.personalInfo.phone}\`}>
                 <PixelButton size="sm" variant="secondary">
                   <Phone className="mr-2 h-4 w-4" />
-                  {data.phone}
+                  {data.personalInfo.phone}
                 </PixelButton>
               </a>
             )}
@@ -226,7 +220,7 @@ export default function Portfolio() {
                         </h4>
                       </div>
                       <div className="text-right">
-                        <PixelBadge variant="default">{exp.duration}</PixelBadge>
+                        <PixelBadge variant="default">{exp.dates}</PixelBadge>
                         {exp.location && (
                           <div className="text-sm mt-2 flex items-center gap-1 justify-end">
                             <MapPin className="h-4 w-4" />
@@ -237,10 +231,10 @@ export default function Portfolio() {
                     </div>
                   </PixelCardHeader>
 
-                  {exp.description && exp.description.length > 0 && (
+                  {exp.responsibilities && exp.responsibilities.length > 0 && (
                     <PixelCardContent>
                       <ul className="list-disc list-inside space-y-2">
-                        {exp.description.map((item, i) => (
+                        {exp.responsibilities.map((item, i) => (
                           <li key={i} className="leading-relaxed">{item}</li>
                         ))}
                       </ul>
@@ -308,8 +302,8 @@ export default function Portfolio() {
                             </p>
                           )}
 
-                          {project.link && (
-                            <a href={project.link} target="_blank" rel="noopener noreferrer">
+                          {(project.link || project.github) && (
+                            <a href={\`\${project.link || project.github}\`} target="_blank" rel="noopener noreferrer">
                               <PixelButton variant="ghost" size="sm">
                                 View Project <ExternalLink className="ml-2 h-3 w-3" />
                               </PixelButton>
@@ -391,7 +385,7 @@ export default function Portfolio() {
                         )}
                       </div>
                       <div className="text-right">
-                        <PixelBadge variant="default">{edu.duration}</PixelBadge>
+                        <PixelBadge variant="default">{edu.dates}</PixelBadge>
                         {edu.gpa && (
                           <div className="text-sm mt-2">GPA: {edu.gpa}</div>
                         )}
@@ -417,7 +411,7 @@ export default function Portfolio() {
       {/* Footer */}
       <footer className="py-8 px-4 border-t-4 border-black dark:border-pixel-dark-primary">
         <div className="max-w-6xl mx-auto text-center space-y-1">
-          <p className="font-bold text-sm">© {new Date().getFullYear()} {data.name}. All rights reserved.</p>
+          <p className="font-bold text-sm">© {new Date().getFullYear()} {data.personalInfo.name}. All rights reserved.</p>
           <p className="text-xs">
             Built with ❤️ using Resume to Portfolio Generator
           </p>
