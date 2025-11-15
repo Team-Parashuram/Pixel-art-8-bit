@@ -32,10 +32,10 @@ const digitVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-white dark:bg-[#2a2a2a]",
-        retro: "bg-pixel-secondary",
-        digital: "bg-black text-pixel-error",
-        flip: "bg-pixel-primary",
+        default: "bg-white dark:bg-[#2a2a2a] text-black dark:text-white",
+        retro: "bg-pixel-secondary text-black",
+        digital: "bg-[#0a0a0a] dark:bg-black text-[#ff0000] dark:text-pixel-error",
+        flip: "bg-pixel-primary text-black dark:text-white",
       },
       size: {
         sm: "w-12 h-16 text-2xl",
