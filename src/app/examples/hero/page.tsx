@@ -244,10 +244,26 @@ export default function HeroExamplesPage() {
               </PixelHeroDescription>
               
               <PixelHeroStats className="mt-12 max-w-3xl">
-                <PixelHeroStat label="Active Users" value="25K+" icon="👥" />
-                <PixelHeroStat label="Components" value="50+" icon="🎨" />
-                <PixelHeroStat label="Satisfaction" value="99%" icon="⭐" />
-                <PixelHeroStat label="Support" value="24/7" icon="💬" />
+                <PixelHeroStat>
+                  <div className="text-4xl mb-2">👥</div>
+                  <div className="text-3xl font-bold">25K+</div>
+                  <div className="text-xs uppercase mt-1">Active Users</div>
+                </PixelHeroStat>
+                <PixelHeroStat>
+                  <div className="text-4xl mb-2">🎨</div>
+                  <div className="text-3xl font-bold">50+</div>
+                  <div className="text-xs uppercase mt-1">Components</div>
+                </PixelHeroStat>
+                <PixelHeroStat>
+                  <div className="text-4xl mb-2">⭐</div>
+                  <div className="text-3xl font-bold">99%</div>
+                  <div className="text-xs uppercase mt-1">Satisfaction</div>
+                </PixelHeroStat>
+                <PixelHeroStat>
+                  <div className="text-4xl mb-2">💬</div>
+                  <div className="text-3xl font-bold">24/7</div>
+                  <div className="text-xs uppercase mt-1">Support</div>
+                </PixelHeroStat>
               </PixelHeroStats>
               
               <PixelHeroActions className="mt-10">
