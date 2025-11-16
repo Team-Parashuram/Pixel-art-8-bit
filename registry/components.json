@@ -125,6 +125,13 @@
     "dependencies": ["@radix-ui/react-popover"],
     "registryDependencies": []
   },
+  "pixel-parallax-hero": {
+    "name": "Pixel Parallax Hero",
+    "description": "Hero section with layered parallax animation and retro stats",
+    "files": ["components/ui/pixel/pixel-parallax-hero.tsx"],
+    "dependencies": [],
+    "registryDependencies": ["pixel-button"]
+  },
   "pixel-table": {
     "name": "Pixel Table",
     "description": "Data table with pixel borders and styling",

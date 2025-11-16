@@ -2606,6 +2606,58 @@ const [step3, setStep3] = useState(2);
       },
     ],
   },
+  {
+    slug: "pixel-parallax-hero",
+    title: "Parallax Hero",
+    description: "Hero section with layered pixel parallax depth and stat blocks.",
+    category: "Layout",
+    installation: "",
+    importCode: `import { PixelParallaxHero } from "@/components/ui/pixel/pixel-parallax-hero"`,
+    usageCode: `<PixelParallaxHero
+  badge={<span>🎮 Featured</span>}
+  subtitle="8-bit Experience"
+  title="Pixel Parallax"
+  description="Multi-layer hero with cursor-driven depth."
+  primaryAction={{ label: "Get Started" }}
+  secondaryAction={{ label: "View Docs", variant: "ghost" }}
+/>`,
+    componentCode: `/src/components/ui/pixel/pixel-parallax-hero.tsx`,
+    props: [
+      { name: "title", type: "React.ReactNode", description: "Hero heading content" },
+      { name: "subtitle", type: "React.ReactNode", description: "Optional eyebrow text" },
+      { name: "primaryAction", type: "PixelParallaxHeroAction", description: "Primary CTA button configuration" },
+      { name: "stats", type: "PixelParallaxHeroStat[]", description: "Array of stat cards rendered below actions" },
+      { name: "layers", type: "PixelParallaxLayer[]", description: "Custom decorative parallax layers" },
+      { name: "contentAlign", type: '"left" | "center"', default: '"left"', description: "Align text content" },
+    ],
+    examples: [
+      {
+        title: "Default Layout",
+        code: `<PixelParallaxHero
+  badge={<span>NEW</span>}
+  subtitle="Retro Library"
+  title="Pixel UI"
+  description="Cursor-aware hero with animated depth."
+  primaryAction={{ label: "Launch", href: "/docs" }}
+  secondaryAction={{ label: "GitHub", href: "https://github.com/Team-Parashuram/Pixel-art-8-bit" }}
+/>`,
+      },
+      {
+        title: "Centered with Custom Stats",
+        code: `<PixelParallaxHero
+  contentAlign="center"
+  title="Space Mission"
+  stats={[
+    { label: "Pilots", value: "4" },
+    { label: "Systems", value: "12" },
+    { label: "Missions", value: "128" },
+  ]}
+  primaryAction={{ label: "Join Crew" }}
+  secondaryAction={{ label: "Watch Demo", variant: "secondary" }}
+/>`,
+      },
+    ],
+  },
   
   // Additional Text Animations
   {

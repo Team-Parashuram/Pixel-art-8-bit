@@ -84,7 +84,7 @@ export default function HomePage() {
             <PixelCardHeader className="text-center pb-4">
               <div className="flex justify-center mb-3">
                 <PixelBadge variant="warning" className="text-lg px-4 py-2">
-                  ✨ NEW FEATURE
+                  NEW FEATURE
                 </PixelBadge>
               </div>
               <PixelCardTitle className="text-3xl md:text-4xl mb-3">

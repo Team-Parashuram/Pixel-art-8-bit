@@ -104,6 +104,7 @@ import PixelSplashCursor from "@/components/ui/pixel/animations/pixel-splash-cur
 import PixelTargetCursor from "@/components/ui/pixel/animations/pixel-target-cursor";
 import PixelTrail from "@/components/ui/pixel/animations/pixel-trail";
 import { PixelImageTrail } from "@/components/ui/pixel/animations/pixel-image-trail";
+import { PixelParallaxHero } from "@/components/ui/pixel/pixel-parallax-hero";
 
 // Helper component for Toast demo
 function ToastDemo() {
@@ -297,6 +298,23 @@ export function ComponentPreview({ slug }: { slug: string }) {
             </PixelHeroActions>
           </PixelHeroContent>
         </PixelHero>
+      );
+
+    case "pixel-parallax-hero":
+      return (
+        <PixelParallaxHero
+          badge={<span>NEW</span>}
+          subtitle="Retro Depth"
+          title="Parallax Hero"
+          description="Layered panels glide with your cursor to create true 8-bit immersion."
+          primaryAction={{ label: "Explore", href: "/docs/components" }}
+          secondaryAction={{ label: "GitHub", href: "https://github.com/Team-Parashuram/Pixel-art-8-bit", variant: "ghost" }}
+          stats={[
+            { label: "Layers", value: "4" },
+            { label: "FPS", value: "60" },
+            { label: "Latency", value: "0ms" },
+          ]}
+        />
       );
     
     case "pixel-bento":
