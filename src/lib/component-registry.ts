@@ -100,6 +100,76 @@ export const componentRegistry: ComponentDoc[] = [
     ],
   },
   {
+    slug: "pixel-input-otp",
+    title: "OTP Input",
+    description: "Multi-digit verification input with pixel grouping, labels, and helper messaging.",
+    category: "Forms",
+    installation: "npm install input-otp",
+    importCode: `import { PixelInputOTP, PixelInputOTPGroup, PixelInputOTPSlot, PixelInputOTPSeparator } from "@/components/ui/pixel/pixel-input-otp"`,
+    usageCode: `const [otp, setOtp] = useState("");
+
+<PixelInputOTP
+  maxLength={6}
+  value={otp}
+  onChange={(value) => setOtp(value)}
+  label="Verification Code"
+  helperText={otp.length === 6 ? "Code ready to submit" : "Enter the 6-digit code we sent you"}
+  hasError={otp.length > 0 && otp.length < 6}
+  render={({ slots }) => (
+    <PixelInputOTPGroup className="gap-3">
+      {slots.slice(0, 3).map((_, index) => (
+        <PixelInputOTPSlot key={index} index={index} />
+      ))}
+      <PixelInputOTPSeparator />
+      {slots.slice(3).map((_, index) => (
+        <PixelInputOTPSlot key={index + 3} index={index + 3} />
+      ))}
+    </PixelInputOTPGroup>
+  )}
+/>`,
+    componentCode: `/src/components/ui/pixel/pixel-input-otp.tsx`,
+    props: [
+      { name: "hasError", type: "boolean", default: "false", description: "Activates error styling for helper text." },
+      { name: "label", type: "React.ReactNode", description: "Optional label displayed above the slots." },
+      { name: "helperText", type: "React.ReactNode", description: "Helper or validation message below the OTP input." },
+    ],
+    examples: [
+      {
+        title: "6-Digit Code",
+        code: `<PixelInputOTP
+  maxLength={6}
+  label="Auth Code"
+  helperText="Enter the 6-digit code"
+  render={({ slots }) => (
+    <PixelInputOTPGroup className="gap-3">
+      {slots.map((_, index) => (
+        <PixelInputOTPSlot key={index} index={index} />
+      ))}
+    </PixelInputOTPGroup>
+  )}
+/>`,
+      },
+      {
+        title: "Grouped Slots",
+        code: `<PixelInputOTP
+  maxLength={6}
+  helperText="Code expires in 30s"
+  render={({ slots }) => (
+    <PixelInputOTPGroup className="gap-3">
+      {slots.slice(0, 3).map((_, index) => (
+        <PixelInputOTPSlot key={index} index={index} />
+      ))}
+      <PixelInputOTPSeparator />
+      {slots.slice(3).map((_, index) => (
+        <PixelInputOTPSlot key={index + 3} index={index + 3} />
+      ))}
+    </PixelInputOTPGroup>
+  )}
+/>`,
+      },
+    ],
+  },
+  {
     slug: "pixel-checkbox",
     title: "Checkbox",
     description: "A pixel-styled checkbox component for selections.",

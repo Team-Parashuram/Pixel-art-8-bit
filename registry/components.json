@@ -20,6 +20,13 @@
     "dependencies": [],
     "registryDependencies": []
   },
+  "pixel-input-otp": {
+    "name": "Pixel Input OTP",
+    "description": "Multi-digit verification input with grouped slots and helper messaging",
+    "files": ["components/ui/pixel/pixel-input-otp.tsx"],
+    "dependencies": ["input-otp"],
+    "registryDependencies": []
+  },
   "pixel-badge": {
     "name": "Pixel Badge",
     "description": "Small status indicators with pixel-art styling and color variants",

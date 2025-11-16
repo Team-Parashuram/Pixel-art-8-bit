@@ -12,6 +12,7 @@ import { PixelSelect, PixelSelectContent, PixelSelectItem, PixelSelectTrigger, P
 import { PixelSwitch } from "@/components/ui/pixel/pixel-switch";
 import { PixelRadioGroup, PixelRadioGroupItem } from "@/components/ui/pixel/pixel-radio-group";
 import { PixelTextarea } from "@/components/ui/pixel/pixel-textarea";
+import { PixelInputOTP, PixelInputOTPGroup, PixelInputOTPSlot, PixelInputOTPSeparator } from "@/components/ui/pixel/pixel-input-otp";
 import { PixelSlider } from "@/components/ui/pixel/pixel-slider";
 import { PixelLabel } from "@/components/ui/pixel/pixel-label";
 import { PixelRating } from "@/components/ui/pixel/pixel-rating";
@@ -207,6 +208,7 @@ export function ComponentPreview({ slug }: { slug: string }) {
   const [switchValue, setSwitchValue] = useState(false);
   const [sliderValue, setSliderValue] = useState([50]);
   const [radioValue, setRadioValue] = useState("option1");
+  const [otpValue, setOtpValue] = useState("");
   
   switch (slug) {
     case "pixel-button":
@@ -237,6 +239,31 @@ export function ComponentPreview({ slug }: { slug: string }) {
     
     case "pixel-input":
       return <PixelInput placeholder="Enter text..." className="max-w-sm" />;
+    
+    case "pixel-input-otp": {
+      const hasError = otpValue.length > 0 && otpValue.length < 6;
+      return (
+        <PixelInputOTP
+          value={otpValue}
+          onChange={setOtpValue}
+          maxLength={6}
+          label="Verification Code"
+          helperText={hasError ? "Enter all 6 digits" : "Type the 6-digit code we sent you"}
+          hasError={hasError}
+          render={({ slots }) => (
+            <PixelInputOTPGroup className="gap-3">
+              {slots.slice(0, 3).map((_, index) => (
+                <PixelInputOTPSlot key={index} index={index} />
+              ))}
+              <PixelInputOTPSeparator />
+              {slots.slice(3).map((_, index) => (
+                <PixelInputOTPSlot key={index + 3} index={index + 3} />
+              ))}
+            </PixelInputOTPGroup>
+          )}
+        />
+      );
+    }
     
     case "pixel-badge":
       return (
