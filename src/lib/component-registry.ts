@@ -237,7 +237,7 @@ export const componentRegistry: ComponentDoc[] = [
     slug: "pixel-inventory-picker",
     title: "Inventory Picker",
     description: "Retro grid picker for loadouts or item selection with rarity badges and helper text.",
-    category: "Forms",
+    category: "Special",
     installation: "",
     importCode: `import { PixelInventoryPicker } from "@/components/ui/pixel/pixel-inventory-picker"`,
     usageCode: `const inventoryItems = [

@@ -70,18 +70,34 @@ function PixelInputOTPSlot({
   index: number;
 }) {
   const inputOTPContext = React.useContext(OTPInputContext);
-  const { char, hasFakeCaret, isActive } = inputOTPContext?.slots[index] ?? {};
+  const slot = inputOTPContext?.slots?.[index];
+  const char = slot?.char ?? null;
+  const hasFakeCaret = slot?.hasFakeCaret ?? false;
+  const isActive = slot?.isActive ?? false;
+  const hasValue = typeof char === "string" && char.length > 0;
+  const displayChar = hasValue ? char : "\u00A0";
 
   return (
     <div
       className={cn(
-        "relative flex h-12 w-12 select-none items-center justify-center border-4 border-black bg-pixel-light-surface pixel-font text-lg uppercase text-black shadow-[2px_2px_0px_rgba(0,0,0,1)] transition-none dark:bg-pixel-dark-surface dark:text-white",
-        isActive && "z-10 border-[#ff8c00] dark:border-[#ff8c00]",
+        "relative flex h-12 w-12 select-none items-center justify-center border-4 border-black bg-pixel-light-surface pixel-font text-2xl font-black leading-none text-black shadow-[2px_2px_0px_rgba(0,0,0,1)] transition-none dark:bg-pixel-dark-surface dark:text-white",
+        isActive &&
+          "z-10 border-[#ff8c00] ring-4 ring-[#ff8c00]/30 ring-offset-2 ring-offset-pixel-light-surface dark:border-[#ff8c00] dark:ring-[#ff8c00]/40 dark:ring-offset-pixel-dark-surface",
         className,
       )}
       {...props}
     >
-      {char}
+      <span
+        aria-hidden={!hasValue}
+        className={cn(
+          "pointer-events-none select-none text-[1.65rem] tabular-nums",
+          hasValue
+            ? "text-black drop-shadow-[1px_1px_0_rgba(255,255,255,0.6)] dark:text-white dark:drop-shadow-[1px_1px_0_rgba(0,0,0,0.6)]"
+            : "text-black/40 dark:text-white/40",
+        )}
+      >
+        {displayChar}
+      </span>
       {hasFakeCaret ? (
         <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
           <div className="h-4 w-px animate-caret-blink bg-black dark:bg-white" />

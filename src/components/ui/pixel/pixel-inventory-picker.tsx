@@ -70,9 +70,9 @@ const PixelInventorySlot = React.forwardRef<
       ref={ref}
       type="button"
       className={cn(
-        "relative flex h-28 flex-col items-center justify-center gap-2 border-4 border-black bg-pixel-light-surface p-3 text-center shadow-[4px_4px_0px_rgba(0,0,0,1)] transition-none focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-black focus-visible:ring-offset-4 focus-visible:ring-offset-white dark:border-[#ff8c00] dark:bg-pixel-dark-surface dark:focus-visible:ring-white dark:focus-visible:ring-offset-pixel-dark-surface",
+        "relative flex h-28 w-full items-center justify-center overflow-visible border-4 border-black bg-pixel-light-surface p-3 text-center shadow-[4px_4px_0px_rgba(0,0,0,1)] transition-none focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-black focus-visible:ring-offset-4 focus-visible:ring-offset-white dark:border-[#ff8c00] dark:bg-pixel-dark-surface dark:focus-visible:ring-white dark:focus-visible:ring-offset-pixel-dark-surface",
         isSelected &&
-          "border-(--color-pixel-light-primary) bg-pixel-light-bg dark:border-[#ff8c00]",
+          "border-(--color-pixel-light-primary) bg-pixel-light-bg text-black dark:border-[#ff8c00] dark:bg-pixel-dark-bg",
         item.disabled && "cursor-not-allowed opacity-50",
         item.rarity ? rarityAccent[item.rarity] : null,
         className,
@@ -81,22 +81,39 @@ const PixelInventorySlot = React.forwardRef<
       disabled={item.disabled || props.disabled}
       {...props}
     >
-      <span className="text-black dark:text-white">
-        {item.icon ?? <DefaultIcon rarity={item.rarity} />}
-      </span>
-      <span className="pixel-font text-[11px] uppercase text-black dark:text-white">
-        {item.label}
-      </span>
-      {typeof item.quantity === "number" ? (
-        <span className="text-[10px] font-bold text-black/70 dark:text-white/70">
-          x{item.quantity}
-        </span>
+      {isSelected ? (
+        <>
+          <span
+            aria-hidden="true"
+            className="pointer-events-none absolute -inset-1 z-0 animate-[pixel-pulse_1.4s_steps(2)_infinite] border-4 border-[#ff8c00] bg-linear-to-br from-[#fff1c1]/70 via-transparent to-transparent shadow-[4px_4px_0px_rgba(0,0,0,1)] dark:from-[#351b00]/60"
+          />
+          <span
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 z-0 bg-[linear-gradient(110deg,transparent,rgba(255,255,255,0.55),transparent)] opacity-40 mix-blend-screen"
+          />
+          <span className="pointer-events-none absolute -top-3 right-2 z-10 rounded border-2 border-black bg-white px-2 py-px text-[9px] font-black uppercase tracking-wide text-black shadow-[2px_2px_0px_rgba(0,0,0,1)] dark:border-[#ff8c00] dark:bg-pixel-dark-surface dark:text-white">
+            Selected
+          </span>
+        </>
       ) : null}
-      {item.rarity ? (
-        <span className="pointer-events-none absolute left-2 top-2 rounded border-2 border-black bg-white px-2 py-px text-[9px] font-bold uppercase tracking-wide text-black shadow-[2px_2px_0px_rgba(0,0,0,1)] dark:border-[#ff8c00] dark:bg-pixel-dark-surface dark:text-white">
-          {item.rarity}
+      <div className="relative z-10 flex h-full w-full flex-col items-center justify-center gap-2">
+        <span className="text-black dark:text-white">
+          {item.icon ?? <DefaultIcon rarity={item.rarity} />}
         </span>
-      ) : null}
+        <span className="pixel-font text-[11px] uppercase text-black dark:text-white">
+          {item.label}
+        </span>
+        {typeof item.quantity === "number" ? (
+          <span className="text-[10px] font-bold text-black/70 dark:text-white/70">
+            x{item.quantity}
+          </span>
+        ) : null}
+        {item.rarity ? (
+          <span className="pointer-events-none absolute left-2 top-2 rounded border-2 border-black bg-white px-2 py-px text-[9px] font-bold uppercase tracking-wide text-black shadow-[2px_2px_0px_rgba(0,0,0,1)] dark:border-[#ff8c00] dark:bg-pixel-dark-surface dark:text-white">
+            {item.rarity}
+          </span>
+        ) : null}
+      </div>
     </button>
   );
 });
