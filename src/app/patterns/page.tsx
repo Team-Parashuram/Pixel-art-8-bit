@@ -56,7 +56,7 @@ export default function PatternsPage() {
   if (isLoading) {
     setTimeout(() => setIsLoading(false), 3000);
     return (
-      <div className="min-h-screen bg-black flex items-center justify-center">
+      <div className="min-h-screen bg-pixel-light-bg dark:bg-black flex items-center justify-center">
         <PixelLoader variant="crt" size="lg" text="LOADING RETRO GAME..." />
       </div>
     );
@@ -114,9 +114,9 @@ export default function PatternsPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#000000] text-white">
+    <div className="min-h-screen bg-pixel-light-bg dark:bg-[#000000] text-black dark:text-white">
       {/* Hero Section - Clean & Aesthetic */}
-      <section className="border-b-4 border-[#ff8c00] bg-[#000000] py-20">
+      <section className="border-b-4 border-[#ff8c00] bg-pixel-light-surface dark:bg-[#000000] py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto text-center space-y-8">
             {/* Badge */}
@@ -128,23 +128,21 @@ export default function PatternsPage() {
 
             {/* Title */}
             <div className="space-y-4">
-              <h1 className="text-5xl md:text-7xl font-bold font-pixel text-pixel-dark-secondary leading-tight">
+              <h1 className="text-5xl md:text-7xl font-bold font-pixel text-[#ff8c00] dark:text-pixel-dark-secondary leading-tight">
                 RETRO GAME CENTRAL
               </h1>
               <p className="text-xl md:text-2xl text-[#ff8c00] font-pixel">
                 Built with Special Components
               </p>
-              <p className="text-base md:text-lg text-gray-400 max-w-2xl mx-auto">
-                Experience the ultimate 8-bit gaming platform powered by
-                cutting-edge retro UI components
+
+              <p className="text-base md:text-lg text-black/70 dark:text-gray-400 max-w-2xl mx-auto">
+                Experience the ultimate 8-bit gaming platform powered by cutting-edge retro UI components
               </p>
             </div>
 
             {/* Countdown */}
             <div className="pt-8">
-              <h3 className="text-xl font-bold font-pixel mb-6 text-center text-white">
-                ⏰ NEXT EVENT STARTS IN:
-              </h3>
+              <h3 className="text-xl font-bold font-pixel mb-6 text-center text-black dark:text-white">⏰ NEXT EVENT STARTS IN:</h3>
               <PixelCountdown
                 targetDate={new Date(Date.now() + 2 * 24 * 60 * 60 * 1000)}
                 variant="digital"
@@ -179,7 +177,7 @@ export default function PatternsPage() {
       )}
 
       {/* Stats Section */}
-      <section className="border-b-4 border-[#ff8c00] bg-pixel-dark-surface py-12">
+      <section className="border-b-4 border-[#ff8c00] bg-[#ffefd5] dark:bg-pixel-dark-surface py-12">
         <div className="container mx-auto px-4">
           <PixelStats columns={4} className="gap-6">
             <PixelStatItem variant="primary">
@@ -203,9 +201,9 @@ export default function PatternsPage() {
       </section>
 
       {/* Player Dashboard - Game UI Components */}
-      <section className="border-b-4 border-[#ff8c00] py-16 bg-[#0a0a0a]">
+      <section className="border-b-4 border-[#ff8c00] py-16 bg-pixel-light-bg dark:bg-[#0a0a0a]">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold font-pixel mb-12 text-center text-pixel-dark-secondary">
+          <h2 className="text-4xl font-bold font-pixel mb-12 text-center text-[#ff8c00] dark:text-pixel-dark-secondary">
             🎮 PLAYER DASHBOARD
           </h2>
 
@@ -271,9 +269,9 @@ export default function PatternsPage() {
       </section>
 
       {/* Terminal & Code Section */}
-      <section className="border-b-4 border-[#ff8c00] py-16 bg-[#000000]">
+      <section className="border-b-4 border-[#ff8c00] py-16 bg-pixel-light-surface dark:bg-[#000000]">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold font-pixel mb-12 text-center text-[#00ff00]">
+          <h2 className="text-4xl font-bold font-pixel mb-12 text-center text-[#00aa00] dark:text-[#00ff00]">
             💻 DEVELOPER TERMINAL
           </h2>
 
@@ -322,9 +320,9 @@ function unlockAchievement(id) {
       </section>
 
       {/* Audio Visualizer Section */}
-      <section className="border-b-4 border-[#ff8c00] py-16 bg-[#000000]">
+      <section className="border-b-4 border-[#ff8c00] py-16 bg-pixel-light-bg dark:bg-[#000000]">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold font-pixel mb-12 text-center text-[#00ff00]">
+          <h2 className="text-4xl font-bold font-pixel mb-12 text-center text-[#00aa00] dark:text-[#00ff00]">
             🎵 AUDIO VISUALIZER
           </h2>
 
@@ -334,7 +332,7 @@ function unlockAchievement(id) {
                 <PixelCardTitle>Bars Mode</PixelCardTitle>
               </PixelCardHeader>
               <PixelCardContent>
-                <div className="h-64 flex items-center justify-center bg-black/50 rounded">
+                <div className="h-64 flex items-center justify-center bg-black/10 dark:bg-black/50 rounded">
                   <PixelAudioVisualizer variant="bars" animate={true} />
                 </div>
               </PixelCardContent>
@@ -345,7 +343,7 @@ function unlockAchievement(id) {
                 <PixelCardTitle>Wave Mode</PixelCardTitle>
               </PixelCardHeader>
               <PixelCardContent>
-                <div className="h-64 flex items-center justify-center bg-black/50 rounded">
+                <div className="h-64 flex items-center justify-center bg-black/10 dark:bg-black/50 rounded">
                   <PixelAudioVisualizer variant="wave" animate={true} />
                 </div>
               </PixelCardContent>
@@ -355,7 +353,7 @@ function unlockAchievement(id) {
       </section>
 
       {/* Activity Timeline */}
-      <section className="border-b-4 border-[#ff8c00] py-16 bg-[#0a0a0a]">
+      <section className="border-b-4 border-[#ff8c00] py-16 bg-pixel-light-surface dark:bg-[#0a0a0a]">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold font-pixel mb-12 text-center text-[#ff8c00]">
             📜 RECENT ACTIVITY
@@ -373,9 +371,9 @@ function unlockAchievement(id) {
       </section>
 
       {/* Live Chat */}
-      <section className="border-b-4 border-[#ff8c00] py-16 bg-[#000000]">
+      <section className="border-b-4 border-[#ff8c00] py-16 bg-pixel-light-bg dark:bg-[#000000]">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold font-pixel mb-12 text-center text-pixel-dark-secondary">
+          <h2 className="text-4xl font-bold font-pixel mb-12 text-center text-[#ff8c00] dark:text-pixel-dark-secondary">
             💬 LIVE GAME CHAT
           </h2>
 
@@ -392,9 +390,9 @@ function unlockAchievement(id) {
       </section>
 
       {/* Retro Windows */}
-      <section className="border-b-4 border-[#ff8c00] py-16 bg-pixel-dark-surface">
+      <section className="border-b-4 border-[#ff8c00] py-16 bg-pixel-light-surface dark:bg-pixel-dark-surface">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold font-pixel mb-12 text-center text-[#00ffff]">
+          <h2 className="text-4xl font-bold font-pixel mb-12 text-center text-[#0088cc] dark:text-[#00ffff]">
             🪟 CLASSIC WINDOWS
           </h2>
 
@@ -451,17 +449,15 @@ function unlockAchievement(id) {
       </section>
 
       {/* Timer/Countdown Section */}
-      <section className="border-b-4 border-[#ff8c00] py-16 bg-[#000000]">
+      <section className="border-b-4 border-[#ff8c00] py-16 bg-pixel-light-bg dark:bg-[#000000]">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold font-pixel mb-12 text-center text-[#ff0000]">
+          <h2 className="text-4xl font-bold font-pixel mb-12 text-center text-[#cc0000] dark:text-[#ff0000]">
             ⏱️ GAME TIMERS
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
             <div className="text-center">
-              <h3 className="text-xl font-bold font-pixel mb-6 text-pixel-dark-secondary">
-                SPEED RUN TIMER
-              </h3>
+              <h3 className="text-xl font-bold font-pixel mb-6 text-[#ff8c00] dark:text-pixel-dark-secondary">SPEED RUN TIMER</h3>
               <PixelTimer
                 initialMinutes={5}
                 initialSeconds={0}
@@ -472,9 +468,8 @@ function unlockAchievement(id) {
             </div>
 
             <div className="text-center">
-              <h3 className="text-xl font-bold font-pixel mb-6 text-[#00ff00]">
-                BOSS BATTLE COUNTDOWN
-              </h3>
+              <h3 className="text-xl font-bold font-pixel mb-6 text-[#00aa00] dark:text-[#00ff00]">BOSS BATTLE COUNTDOWN</h3>
+
               <PixelCountdown
                 initialSeconds={300}
                 variant="flip"
@@ -488,7 +483,7 @@ function unlockAchievement(id) {
       </section>
 
       {/* Notifications Bar */}
-      <section className="py-8 bg-pixel-dark-surface">
+      <section className="py-8 bg-pixel-light-surface dark:bg-pixel-dark-surface">
         <div className="container mx-auto px-4">
           <div className="flex flex-wrap gap-4 justify-center">
             <PixelNotification
