@@ -28,7 +28,7 @@ const PixelTabsTrigger = React.forwardRef<
   <TabsPrimitive.Trigger
     ref={ref}
     className={cn(
-      "inline-flex items-center justify-center whitespace-nowrap px-4 py-2 text-sm font-bold uppercase tracking-wider transition-none duration-0 pixel-borders border-[3px] border-black bg-white hover:bg-black/5 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-[#ff8c00] data-[state=active]:text-white data-[state=active]:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:border-[#ff8c00] dark:bg-[#1a1a1a] dark:hover:bg-white/5 dark:data-[state=active]:bg-[#ff8c00] dark:data-[state=active]:border-[#ff8c00]",
+      "inline-flex items-center justify-center whitespace-nowrap px-3 sm:px-4 py-2 text-xs sm:text-sm font-bold uppercase tracking-wider transition-none duration-0 pixel-borders border-[3px] border-black bg-white hover:bg-black/5 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-[#ff8c00] data-[state=active]:text-white data-[state=active]:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:border-[#ff8c00] dark:bg-[#1a1a1a] dark:hover:bg-white/5 dark:data-[state=active]:bg-[#ff8c00] dark:data-[state=active]:border-[#ff8c00]",
       className,
     )}
     {...props}

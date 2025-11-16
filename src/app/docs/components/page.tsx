@@ -88,14 +88,16 @@ function ComponentsListContent() {
           </p>
 
           {/* Search */}
-          <div className="max-w-md mx-auto relative px-4 sm:px-0">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-black/50 dark:text-white/50" />
-            <PixelInput
-              placeholder="Search components..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="pl-10"
-            />
+          <div className="max-w-md mx-auto px-4 sm:px-0">
+            <div className="relative">
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-black/50 dark:text-white/50 pointer-events-none" />
+              <PixelInput
+                placeholder="Search components..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="pl-10 w-full"
+              />
+            </div>
           </div>
         </div>
 
@@ -133,7 +135,7 @@ function ComponentsListContent() {
 
         {/* Component Grid by Category */}
         <PixelTabs value={selectedTab} onValueChange={handleTabChange}>
-          <PixelTabsList className="mb-8">
+          <PixelTabsList className="mb-8 flex-wrap justify-center">
             {categories.map((category) => (
               <PixelTabsTrigger
                 key={category}
