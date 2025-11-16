@@ -27,6 +27,13 @@
     "dependencies": ["input-otp"],
     "registryDependencies": []
   },
+  "pixel-dropzone": {
+    "name": "Pixel Dropzone",
+    "description": "Drag-and-drop upload zone with previews and helper messaging",
+    "files": ["components/ui/pixel/pixel-dropzone.tsx"],
+    "dependencies": ["lucide-react"],
+    "registryDependencies": []
+  },
   "pixel-badge": {
     "name": "Pixel Badge",
     "description": "Small status indicators with pixel-art styling and color variants",

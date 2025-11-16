@@ -13,6 +13,7 @@ import { PixelSwitch } from "@/components/ui/pixel/pixel-switch";
 import { PixelRadioGroup, PixelRadioGroupItem } from "@/components/ui/pixel/pixel-radio-group";
 import { PixelTextarea } from "@/components/ui/pixel/pixel-textarea";
 import { PixelInputOTP, PixelInputOTPGroup, PixelInputOTPSlot, PixelInputOTPSeparator } from "@/components/ui/pixel/pixel-input-otp";
+import { PixelDropzone } from "@/components/ui/pixel/pixel-dropzone";
 import { PixelSlider } from "@/components/ui/pixel/pixel-slider";
 import { PixelLabel } from "@/components/ui/pixel/pixel-label";
 import { PixelRating } from "@/components/ui/pixel/pixel-rating";
@@ -209,6 +210,7 @@ export function ComponentPreview({ slug }: { slug: string }) {
   const [sliderValue, setSliderValue] = useState([50]);
   const [radioValue, setRadioValue] = useState("option1");
   const [otpValue, setOtpValue] = useState("");
+  const [dropzoneFiles, setDropzoneFiles] = useState<File[]>([]);
   
   switch (slug) {
     case "pixel-button":
@@ -261,6 +263,24 @@ export function ComponentPreview({ slug }: { slug: string }) {
               ))}
             </PixelInputOTPGroup>
           )}
+        />
+      );
+    }
+
+    case "pixel-dropzone": {
+      const helper = dropzoneFiles.length
+        ? `${dropzoneFiles.length} file${dropzoneFiles.length > 1 ? "s" : ""} ready`
+        : "PNG, GIF or WEBP up to 10MB";
+      return (
+        <PixelDropzone
+          label="Upload Assets"
+          description={<p className="text-xs text-black/70 dark:text-white/70">Drop sprites or click to browse</p>}
+          helperText={helper}
+          hasError={dropzoneFiles.length >= 4}
+          maxFiles={4}
+          accept={["image/png", "image/webp", "image/gif"]}
+          files={dropzoneFiles}
+          onFilesChange={setDropzoneFiles}
         />
       );
     }

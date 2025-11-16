@@ -170,6 +170,70 @@ export const componentRegistry: ComponentDoc[] = [
     ],
   },
   {
+    slug: "pixel-dropzone",
+    title: "Dropzone",
+    description: "Drag-and-drop uploader with pixel borders, helper messaging, and removable previews.",
+    category: "Forms",
+    installation: "",
+    importCode: `import { PixelDropzone } from "@/components/ui/pixel/pixel-dropzone"`,
+    usageCode: `const [files, setFiles] = useState<File[]>([]);
+
+<PixelDropzone
+  label="Sprite Upload"
+  description="Drag sprites here or click to browse"
+  helperText={
+    files.length
+      ? files.length + (files.length > 1 ? " files ready" : " file ready")
+      : "PNG, GIF or WEBP up to 10MB"
+  }
+  accept={["image/png", "image/webp", "image/gif"]}
+  maxFiles={4}
+  files={files}
+  onFilesChange={setFiles}
+/>`,
+    componentCode: `/src/components/ui/pixel/pixel-dropzone.tsx`,
+    props: [
+      { name: "accept", type: "string | string[]", description: "Accepted MIME types or file extensions." },
+      { name: "maxFiles", type: "number", description: "Maximum number of files that can be queued." },
+      { name: "multiple", type: "boolean", default: "true", description: "Allow selecting multiple files at once." },
+      { name: "files", type: "File[]", description: "Controlled list of files for preview rendering." },
+      { name: "onFilesChange", type: "(files: File[]) => void", description: "Callback fired whenever the selection changes." },
+      { name: "helperText", type: "React.ReactNode", description: "Helper or status text displayed below the dropzone." },
+      { name: "hasError", type: "boolean", default: "false", description: "Tints the helper text and border for error states." },
+    ],
+    examples: [
+      {
+        title: "Basic Image Upload",
+        code: `const [assets, setAssets] = useState<File[]>([]);
+
+<PixelDropzone
+  label="Upload assets"
+  helperText={assets.length ? assets.length + " file(s) selected" : "PNG or GIF only"}
+  accept={["image/png", "image/gif"]}
+  files={assets}
+  onFilesChange={setAssets}
+/>`,
+      },
+      {
+        title: "Custom Preview",
+        code: `<PixelDropzone
+  label="Audio FX"
+  accept={["audio/wav", "audio/mpeg"]}
+  helperText="Drop WAV or MP3 clips"
+  renderFile={(file, index) => (
+    <div className="flex items-center justify-between border-4 border-black bg-pixel-light-surface px-4 py-2 shadow-[2px_2px_0px_rgba(0,0,0,1)]">
+      <div>
+        <p className="text-xs font-bold uppercase">{file.name}</p>
+        <p className="text-[10px] text-black/60">Track #{index + 1}</p>
+      </div>
+      <span className="pixel-font text-xs uppercase">Ready</span>
+    </div>
+  )}
+/>`,
+      },
+    ],
+  },
+  {
     slug: "pixel-checkbox",
     title: "Checkbox",
     description: "A pixel-styled checkbox component for selections.",
