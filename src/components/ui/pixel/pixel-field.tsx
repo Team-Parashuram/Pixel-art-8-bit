@@ -1,20 +1,23 @@
-"use client"
+"use client";
 
-import { cva, type VariantProps } from "class-variance-authority"
-import { cn } from "@/lib/utils"
-import { PixelLabel } from "./pixel-label"
-import { PixelSeparator } from "./pixel-separator"
+import { cva, type VariantProps } from "class-variance-authority";
+import { cn } from "@/lib/utils";
+import { PixelLabel } from "./pixel-label";
+import { PixelSeparator } from "./pixel-separator";
 
-function PixelFieldSet({ className, ...props }: React.ComponentProps<"fieldset">) {
+function PixelFieldSet({
+  className,
+  ...props
+}: React.ComponentProps<"fieldset">) {
   return (
     <fieldset
       className={cn(
         "flex flex-col gap-6 font-[family-name:var(--font-press-start)]",
-        className
+        className,
       )}
       {...props}
     />
-  )
+  );
 }
 
 function PixelFieldLegend({
@@ -28,39 +31,30 @@ function PixelFieldLegend({
       className={cn(
         "mb-3 font-bold",
         variant === "legend" ? "text-sm" : "text-xs",
-        className
+        className,
       )}
       {...props}
     />
-  )
+  );
 }
 
 function PixelFieldGroup({ className, ...props }: React.ComponentProps<"div">) {
   return (
-    <div
-      className={cn(
-        "flex w-full flex-col gap-4",
-        className
-      )}
-      {...props}
-    />
-  )
+    <div className={cn("flex w-full flex-col gap-4", className)} {...props} />
+  );
 }
 
-const pixelFieldVariants = cva(
-  "flex w-full gap-3",
-  {
-    variants: {
-      orientation: {
-        horizontal: "flex-row items-center",
-        vertical: "flex-col",
-      },
+const pixelFieldVariants = cva("flex w-full gap-3", {
+  variants: {
+    orientation: {
+      horizontal: "flex-row items-center",
+      vertical: "flex-col",
     },
-    defaultVariants: {
-      orientation: "vertical",
-    },
-  }
-)
+  },
+  defaultVariants: {
+    orientation: "vertical",
+  },
+});
 
 function PixelField({
   className,
@@ -72,7 +66,7 @@ function PixelField({
       className={cn(pixelFieldVariants({ orientation }), className)}
       {...props}
     />
-  )
+  );
 }
 
 function PixelFieldLabel({
@@ -85,11 +79,11 @@ function PixelFieldLabel({
       className={cn(
         "text-xs font-bold",
         required && "after:content-['*'] after:ml-0.5 after:text-[#ff0000]",
-        className
+        className,
       )}
       {...props}
     />
-  )
+  );
 }
 
 function PixelFieldDescription({
@@ -101,19 +95,16 @@ function PixelFieldDescription({
       className={cn("text-xs text-[#555] dark:text-[#aaa]", className)}
       {...props}
     />
-  )
+  );
 }
 
-function PixelFieldError({
-  className,
-  ...props
-}: React.ComponentProps<"div">) {
+function PixelFieldError({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       className={cn("text-xs font-bold text-[#ff0000]", className)}
       {...props}
     />
-  )
+  );
 }
 
 export {
@@ -125,4 +116,4 @@ export {
   PixelFieldDescription,
   PixelFieldError,
   pixelFieldVariants,
-}
+};

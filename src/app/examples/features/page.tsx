@@ -1,19 +1,25 @@
 "use client";
 
+import { Heart, Home, Rocket, Shield, Star, Zap } from "lucide-react";
 import Link from "next/link";
-import { Home, Zap, Shield, Star, Rocket, Heart } from "lucide-react";
 import { PixelButton } from "@/components/ui/pixel/pixel-button";
 import {
-  PixelFeatures,
-  PixelFeatureItem,
-  PixelFeatureIcon,
-  PixelFeatureTitle,
+  PixelCard,
+  PixelCardContent,
+  PixelCardDescription,
+  PixelCardHeader,
+  PixelCardTitle,
+} from "@/components/ui/pixel/pixel-card";
+import {
   PixelFeatureDescription,
   PixelFeatureHeader,
-  PixelFeatureSectionTitle,
+  PixelFeatureIcon,
+  PixelFeatureItem,
   PixelFeatureSectionDescription,
+  PixelFeatureSectionTitle,
+  PixelFeatures,
+  PixelFeatureTitle,
 } from "@/components/ui/pixel/pixel-features";
-import { PixelCard, PixelCardContent, PixelCardDescription, PixelCardHeader, PixelCardTitle } from "@/components/ui/pixel/pixel-card";
 
 export default function FeaturesExamplesPage() {
   return (
@@ -31,9 +37,7 @@ export default function FeaturesExamplesPage() {
           </div>
           <div className="flex gap-4">
             <Link href="/docs/components/pixel-features">
-              <PixelButton variant="secondary">
-                📖 Documentation
-              </PixelButton>
+              <PixelButton variant="secondary">📖 Documentation</PixelButton>
             </Link>
             <Link href="/">
               <PixelButton>
@@ -53,17 +57,20 @@ export default function FeaturesExamplesPage() {
             <PixelCard>
               <PixelCardHeader>
                 <PixelCardTitle>Basic 3-Column Features</PixelCardTitle>
-                <PixelCardDescription>Simple features grid with icons and descriptions</PixelCardDescription>
+                <PixelCardDescription>
+                  Simple features grid with icons and descriptions
+                </PixelCardDescription>
               </PixelCardHeader>
             </PixelCard>
           </div>
-          
+
           <PixelFeatures columns={3} gap="lg">
             <PixelFeatureItem hover="lift">
               <PixelFeatureIcon>🚀</PixelFeatureIcon>
               <PixelFeatureTitle>Lightning Fast</PixelFeatureTitle>
               <PixelFeatureDescription>
-                Optimized for speed with zero transitions and instant interactions
+                Optimized for speed with zero transitions and instant
+                interactions
               </PixelFeatureDescription>
             </PixelFeatureItem>
             <PixelFeatureItem hover="lift">
@@ -89,34 +96,46 @@ export default function FeaturesExamplesPage() {
             <PixelCard>
               <PixelCardHeader>
                 <PixelCardTitle>Features with Section Header</PixelCardTitle>
-                <PixelCardDescription>Add context with title and description</PixelCardDescription>
+                <PixelCardDescription>
+                  Add context with title and description
+                </PixelCardDescription>
               </PixelCardHeader>
             </PixelCard>
           </div>
-          
+
           <PixelFeatures columns={3} gap="lg">
             <PixelFeatureHeader>
-              <PixelFeatureSectionTitle>Why Choose Pixel UI?</PixelFeatureSectionTitle>
+              <PixelFeatureSectionTitle>
+                Why Choose Pixel UI?
+              </PixelFeatureSectionTitle>
               <PixelFeatureSectionDescription>
                 Everything you need to build amazing retro-inspired applications
               </PixelFeatureSectionDescription>
             </PixelFeatureHeader>
             <PixelFeatureItem variant="primary" hover="lift">
-              <PixelFeatureIcon><Zap className="h-12 w-12" /></PixelFeatureIcon>
+              <PixelFeatureIcon>
+                <Zap className="h-12 w-12" />
+              </PixelFeatureIcon>
               <PixelFeatureTitle>Blazing Fast</PixelFeatureTitle>
               <PixelFeatureDescription>
-                Built with performance in mind. No unnecessary animations or transitions.
+                Built with performance in mind. No unnecessary animations or
+                transitions.
               </PixelFeatureDescription>
             </PixelFeatureItem>
             <PixelFeatureItem variant="secondary" hover="lift">
-              <PixelFeatureIcon><Shield className="h-12 w-12" /></PixelFeatureIcon>
+              <PixelFeatureIcon>
+                <Shield className="h-12 w-12" />
+              </PixelFeatureIcon>
               <PixelFeatureTitle>Type Safe</PixelFeatureTitle>
               <PixelFeatureDescription>
-                Built with TypeScript for maximum type safety and developer experience.
+                Built with TypeScript for maximum type safety and developer
+                experience.
               </PixelFeatureDescription>
             </PixelFeatureItem>
             <PixelFeatureItem variant="dark" hover="glow">
-              <PixelFeatureIcon><Star className="h-12 w-12" /></PixelFeatureIcon>
+              <PixelFeatureIcon>
+                <Star className="h-12 w-12" />
+              </PixelFeatureIcon>
               <PixelFeatureTitle>Premium Quality</PixelFeatureTitle>
               <PixelFeatureDescription>
                 Carefully crafted components with attention to detail.
@@ -131,11 +150,13 @@ export default function FeaturesExamplesPage() {
             <PixelCard>
               <PixelCardHeader>
                 <PixelCardTitle>4-Column Wide Layout</PixelCardTitle>
-                <PixelCardDescription>More features in a wider grid</PixelCardDescription>
+                <PixelCardDescription>
+                  More features in a wider grid
+                </PixelCardDescription>
               </PixelCardHeader>
             </PixelCard>
           </div>
-          
+
           <PixelFeatures columns={4} gap="md">
             <PixelFeatureItem hover="lift">
               <PixelFeatureIcon>🎮</PixelFeatureIcon>
@@ -202,20 +223,26 @@ export default function FeaturesExamplesPage() {
             <PixelCard>
               <PixelCardHeader>
                 <PixelCardTitle>Dark Background Variant</PixelCardTitle>
-                <PixelCardDescription>Features on dark background with glow effects</PixelCardDescription>
+                <PixelCardDescription>
+                  Features on dark background with glow effects
+                </PixelCardDescription>
               </PixelCardHeader>
             </PixelCard>
           </div>
-          
+
           <PixelFeatures variant="dark" columns={3} gap="lg">
             <PixelFeatureHeader>
-              <PixelFeatureSectionTitle>Premium Features</PixelFeatureSectionTitle>
+              <PixelFeatureSectionTitle>
+                Premium Features
+              </PixelFeatureSectionTitle>
               <PixelFeatureSectionDescription>
                 Enterprise-grade capabilities for serious projects
               </PixelFeatureSectionDescription>
             </PixelFeatureHeader>
             <PixelFeatureItem variant="primary" hover="glow">
-              <PixelFeatureIcon><Rocket className="h-12 w-12" /></PixelFeatureIcon>
+              <PixelFeatureIcon>
+                <Rocket className="h-12 w-12" />
+              </PixelFeatureIcon>
               <PixelFeatureTitle>Advanced Tools</PixelFeatureTitle>
               <PixelFeatureDescription>
                 Professional-grade tools for complex applications
@@ -244,26 +271,32 @@ export default function FeaturesExamplesPage() {
             <PixelCard>
               <PixelCardHeader>
                 <PixelCardTitle>2-Column Layout</PixelCardTitle>
-                <PixelCardDescription>Larger feature cards with more space</PixelCardDescription>
+                <PixelCardDescription>
+                  Larger feature cards with more space
+                </PixelCardDescription>
               </PixelCardHeader>
             </PixelCard>
           </div>
-          
+
           <PixelFeatures columns={2} gap="xl">
             <PixelFeatureItem variant="secondary" hover="lift">
-              <PixelFeatureIcon><Heart className="h-16 w-16" /></PixelFeatureIcon>
+              <PixelFeatureIcon>
+                <Heart className="h-16 w-16" />
+              </PixelFeatureIcon>
               <PixelFeatureTitle>Made with Love</PixelFeatureTitle>
               <PixelFeatureDescription>
-                Every component is carefully crafted with attention to detail and passion for great design. 
-                We believe in quality over quantity and it shows in every pixel.
+                Every component is carefully crafted with attention to detail
+                and passion for great design. We believe in quality over
+                quantity and it shows in every pixel.
               </PixelFeatureDescription>
             </PixelFeatureItem>
             <PixelFeatureItem variant="primary" hover="lift">
               <PixelFeatureIcon>🎯</PixelFeatureIcon>
               <PixelFeatureTitle>Laser Focused</PixelFeatureTitle>
               <PixelFeatureDescription>
-                Built specifically for retro and pixel-art aesthetics. No bloat, no unnecessary features. 
-                Just what you need to create amazing nostalgic experiences.
+                Built specifically for retro and pixel-art aesthetics. No bloat,
+                no unnecessary features. Just what you need to create amazing
+                nostalgic experiences.
               </PixelFeatureDescription>
             </PixelFeatureItem>
           </PixelFeatures>
@@ -275,11 +308,13 @@ export default function FeaturesExamplesPage() {
             <PixelCard>
               <PixelCardHeader>
                 <PixelCardTitle>Mixed Variants</PixelCardTitle>
-                <PixelCardDescription>Combine different variants for visual interest</PixelCardDescription>
+                <PixelCardDescription>
+                  Combine different variants for visual interest
+                </PixelCardDescription>
               </PixelCardHeader>
             </PixelCard>
           </div>
-          
+
           <PixelFeatures columns={3} gap="lg" variant="primary">
             <PixelFeatureItem variant="default" hover="lift">
               <PixelFeatureIcon>🎨</PixelFeatureIcon>
@@ -311,7 +346,8 @@ export default function FeaturesExamplesPage() {
         <PixelCard>
           <PixelCardContent className="text-center">
             <p className="text-sm dark:text-white/70">
-              Ready to showcase your features? Check out the full documentation for all customization options.
+              Ready to showcase your features? Check out the full documentation
+              for all customization options.
             </p>
             <div className="mt-4 flex gap-4 justify-center">
               <Link href="/docs/components/pixel-features">

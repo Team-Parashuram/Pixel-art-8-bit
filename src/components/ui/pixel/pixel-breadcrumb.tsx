@@ -1,7 +1,7 @@
 "use client";
 
-import * as React from "react";
 import { ChevronRight, MoreHorizontal } from "lucide-react";
+import * as React from "react";
 import { cn } from "@/lib/utils";
 
 const PixelBreadcrumb = React.forwardRef<
@@ -20,7 +20,7 @@ const PixelBreadcrumbList = React.forwardRef<
     ref={ref}
     className={cn(
       "flex flex-wrap items-center gap-2 break-words text-sm text-black dark:text-white",
-      className
+      className,
     )}
     {...props}
   />
@@ -50,7 +50,7 @@ const PixelBreadcrumbLink = React.forwardRef<
       ref={ref}
       className={cn(
         "pixel-borders border-2 border-black px-2 py-1 text-xs font-medium uppercase transition-none duration-0 hover:bg-black/10 dark:border-[#ff8c00] dark:hover:bg-white/10",
-        className
+        className,
       )}
       {...props}
     />
@@ -69,7 +69,7 @@ const PixelBreadcrumbPage = React.forwardRef<
     aria-current="page"
     className={cn(
       "pixel-borders border-2 border-black bg-[#ff8c00] px-2 py-1 text-xs font-bold uppercase text-white dark:border-[#ff8c00]",
-      className
+      className,
     )}
     {...props}
   />

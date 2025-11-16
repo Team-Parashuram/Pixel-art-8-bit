@@ -1,16 +1,16 @@
 "use client";
 
-import { 
-  PixelStats,
-  PixelStatItem,
-  PixelStatIcon,
-  PixelStatValue,
-  PixelStatLabel,
+import {
   PixelStatDescription,
-  PixelStatTrend,
+  PixelStatIcon,
+  PixelStatItem,
+  PixelStatLabel,
+  PixelStats,
   PixelStatsHeader,
+  PixelStatsSectionDescription,
   PixelStatsSectionTitle,
-  PixelStatsSectionDescription
+  PixelStatTrend,
+  PixelStatValue,
 } from "@/components/ui/pixel/pixel-stats";
 
 export default function StatsExamples() {
@@ -35,7 +35,7 @@ export default function StatsExamples() {
             Simple stats display with icons, values, and labels
           </p>
         </div>
-        
+
         <PixelStats columns={4} gap="md">
           <PixelStatItem variant="default">
             <PixelStatIcon>👥</PixelStatIcon>
@@ -43,21 +43,21 @@ export default function StatsExamples() {
             <PixelStatLabel>Active Users</PixelStatLabel>
             <PixelStatTrend trend="up">+12% this month</PixelStatTrend>
           </PixelStatItem>
-          
+
           <PixelStatItem variant="primary">
             <PixelStatIcon>⭐</PixelStatIcon>
             <PixelStatValue>4.9/5</PixelStatValue>
             <PixelStatLabel>User Rating</PixelStatLabel>
             <PixelStatDescription>Based on 2,500+ reviews</PixelStatDescription>
           </PixelStatItem>
-          
+
           <PixelStatItem variant="secondary">
             <PixelStatIcon>🚀</PixelStatIcon>
             <PixelStatValue>99.9%</PixelStatValue>
             <PixelStatLabel>Uptime</PixelStatLabel>
             <PixelStatTrend trend="neutral">Last 12 months</PixelStatTrend>
           </PixelStatItem>
-          
+
           <PixelStatItem variant="gradient">
             <PixelStatIcon>💰</PixelStatIcon>
             <PixelStatValue>$2M+</PixelStatValue>
@@ -77,36 +77,37 @@ export default function StatsExamples() {
             Add context with a title and description
           </p>
         </div>
-        
+
         <PixelStats columns={4} gap="md">
           <PixelStatsHeader>
             <PixelStatsSectionTitle>Our Impact</PixelStatsSectionTitle>
             <PixelStatsSectionDescription>
-              Real numbers that showcase our growth and success over the past year
+              Real numbers that showcase our growth and success over the past
+              year
             </PixelStatsSectionDescription>
           </PixelStatsHeader>
-          
+
           <PixelStatItem variant="default">
             <PixelStatIcon>🌍</PixelStatIcon>
             <PixelStatValue>150+</PixelStatValue>
             <PixelStatLabel>Countries</PixelStatLabel>
             <PixelStatDescription>Worldwide reach</PixelStatDescription>
           </PixelStatItem>
-          
+
           <PixelStatItem variant="primary">
             <PixelStatIcon>📦</PixelStatIcon>
             <PixelStatValue>1M+</PixelStatValue>
             <PixelStatLabel>Downloads</PixelStatLabel>
             <PixelStatTrend trend="up">+40% this quarter</PixelStatTrend>
           </PixelStatItem>
-          
+
           <PixelStatItem variant="secondary">
             <PixelStatIcon>⚡</PixelStatIcon>
             <PixelStatValue>50ms</PixelStatValue>
             <PixelStatLabel>Avg Response</PixelStatLabel>
             <PixelStatDescription>Lightning fast</PixelStatDescription>
           </PixelStatItem>
-          
+
           <PixelStatItem variant="dark">
             <PixelStatIcon>🎯</PixelStatIcon>
             <PixelStatValue>95%</PixelStatValue>
@@ -126,7 +127,7 @@ export default function StatsExamples() {
             Balanced layout for key metrics
           </p>
         </div>
-        
+
         <PixelStats columns={3} gap="lg">
           <PixelStatItem variant="default" hover="lift">
             <PixelStatIcon>💻</PixelStatIcon>
@@ -134,14 +135,14 @@ export default function StatsExamples() {
             <PixelStatLabel>Projects Built</PixelStatLabel>
             <PixelStatDescription>Using our components</PixelStatDescription>
           </PixelStatItem>
-          
+
           <PixelStatItem variant="primary" hover="lift">
             <PixelStatIcon>🎨</PixelStatIcon>
             <PixelStatValue>100+</PixelStatValue>
             <PixelStatLabel>Components</PixelStatLabel>
             <PixelStatDescription>Ready to use</PixelStatDescription>
           </PixelStatItem>
-          
+
           <PixelStatItem variant="secondary" hover="lift">
             <PixelStatIcon>🔥</PixelStatIcon>
             <PixelStatValue>24/7</PixelStatValue>
@@ -161,7 +162,7 @@ export default function StatsExamples() {
             Prominent display for key performance indicators
           </p>
         </div>
-        
+
         <PixelStats columns={2} gap="xl" className="max-w-4xl mx-auto">
           <PixelStatItem variant="gradient" hover="glow">
             <PixelStatIcon>📈</PixelStatIcon>
@@ -170,7 +171,7 @@ export default function StatsExamples() {
             <PixelStatDescription>Year over year increase</PixelStatDescription>
             <PixelStatTrend trend="up">+120% from last year</PixelStatTrend>
           </PixelStatItem>
-          
+
           <PixelStatItem variant="dark" hover="glow">
             <PixelStatIcon>🏆</PixelStatIcon>
             <PixelStatValue>#1</PixelStatValue>
@@ -191,7 +192,7 @@ export default function StatsExamples() {
             Dark background with orange accents
           </p>
         </div>
-        
+
         <PixelStats columns={4} gap="md" variant="dark">
           <PixelStatsHeader>
             <PixelStatsSectionTitle>Platform Statistics</PixelStatsSectionTitle>
@@ -199,28 +200,28 @@ export default function StatsExamples() {
               Real-time metrics from our growing community
             </PixelStatsSectionDescription>
           </PixelStatsHeader>
-          
+
           <PixelStatItem variant="dark">
             <PixelStatIcon>👨‍💻</PixelStatIcon>
             <PixelStatValue>15K+</PixelStatValue>
             <PixelStatLabel>Developers</PixelStatLabel>
             <PixelStatTrend trend="up">+18% growth</PixelStatTrend>
           </PixelStatItem>
-          
+
           <PixelStatItem variant="dark">
             <PixelStatIcon>🌟</PixelStatIcon>
             <PixelStatValue>8.5K</PixelStatValue>
             <PixelStatLabel>GitHub Stars</PixelStatLabel>
             <PixelStatTrend trend="up">+2K this month</PixelStatTrend>
           </PixelStatItem>
-          
+
           <PixelStatItem variant="dark">
             <PixelStatIcon>📚</PixelStatIcon>
             <PixelStatValue>300+</PixelStatValue>
             <PixelStatLabel>Tutorials</PixelStatLabel>
             <PixelStatDescription>Free resources</PixelStatDescription>
           </PixelStatItem>
-          
+
           <PixelStatItem variant="dark">
             <PixelStatIcon>💬</PixelStatIcon>
             <PixelStatValue>5K+</PixelStatValue>
@@ -240,7 +241,7 @@ export default function StatsExamples() {
             Showcase positive and negative trends
           </p>
         </div>
-        
+
         <PixelStats columns={4} gap="md">
           <PixelStatItem variant="default">
             <PixelStatIcon>⏱️</PixelStatIcon>
@@ -248,21 +249,21 @@ export default function StatsExamples() {
             <PixelStatLabel>Load Time</PixelStatLabel>
             <PixelStatTrend trend="down">-0.3s faster</PixelStatTrend>
           </PixelStatItem>
-          
+
           <PixelStatItem variant="primary">
             <PixelStatIcon>📊</PixelStatIcon>
             <PixelStatValue>85%</PixelStatValue>
             <PixelStatLabel>Conversion</PixelStatLabel>
             <PixelStatTrend trend="up">+15% increase</PixelStatTrend>
           </PixelStatItem>
-          
+
           <PixelStatItem variant="secondary">
             <PixelStatIcon>🎯</PixelStatIcon>
             <PixelStatValue>92%</PixelStatValue>
             <PixelStatLabel>Accuracy</PixelStatLabel>
             <PixelStatTrend trend="up">+7% improvement</PixelStatTrend>
           </PixelStatItem>
-          
+
           <PixelStatItem variant="gradient">
             <PixelStatIcon>💾</PixelStatIcon>
             <PixelStatValue>45KB</PixelStatValue>
@@ -282,7 +283,7 @@ export default function StatsExamples() {
             Highlight business achievements and growth
           </p>
         </div>
-        
+
         <PixelStats columns={3} gap="md" className="max-w-4xl mx-auto">
           <PixelStatItem variant="primary" hover="lift">
             <PixelStatIcon>💵</PixelStatIcon>
@@ -291,7 +292,7 @@ export default function StatsExamples() {
             <PixelStatDescription>Fiscal year 2024</PixelStatDescription>
             <PixelStatTrend trend="up">+35% YoY</PixelStatTrend>
           </PixelStatItem>
-          
+
           <PixelStatItem variant="secondary" hover="lift">
             <PixelStatIcon>🏢</PixelStatIcon>
             <PixelStatValue>250+</PixelStatValue>
@@ -299,7 +300,7 @@ export default function StatsExamples() {
             <PixelStatDescription>Fortune 500 companies</PixelStatDescription>
             <PixelStatTrend trend="up">+50 new clients</PixelStatTrend>
           </PixelStatItem>
-          
+
           <PixelStatItem variant="gradient" hover="lift">
             <PixelStatIcon>🌐</PixelStatIcon>
             <PixelStatValue>40+</PixelStatValue>
@@ -320,23 +321,23 @@ export default function StatsExamples() {
             Minimal spacing for inline stat displays
           </p>
         </div>
-        
+
         <PixelStats columns={4} gap="sm">
           <PixelStatItem variant="default" hover="none">
             <PixelStatValue>500K</PixelStatValue>
             <PixelStatLabel>API Calls</PixelStatLabel>
           </PixelStatItem>
-          
+
           <PixelStatItem variant="primary" hover="none">
             <PixelStatValue>12ms</PixelStatValue>
             <PixelStatLabel>Response</PixelStatLabel>
           </PixelStatItem>
-          
+
           <PixelStatItem variant="secondary" hover="none">
             <PixelStatValue>99.99%</PixelStatValue>
             <PixelStatLabel>Uptime</PixelStatLabel>
           </PixelStatItem>
-          
+
           <PixelStatItem variant="dark" hover="none">
             <PixelStatValue>24/7</PixelStatValue>
             <PixelStatLabel>Available</PixelStatLabel>

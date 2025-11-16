@@ -1,25 +1,41 @@
 "use client";
 
+import { ArrowRight, Search } from "lucide-react";
 import Link from "next/link";
-import { useState, useEffect, Suspense } from "react";
-import { useSearchParams, useRouter, usePathname } from "next/navigation";
-import { componentRegistry, categories, type ComponentCategory } from "@/lib/component-registry";
-import { PixelButton } from "@/components/ui/pixel/pixel-button";
-import { PixelCard, PixelCardHeader, PixelCardTitle, PixelCardDescription, PixelCardFooter } from "@/components/ui/pixel/pixel-card";
-import { PixelTabs, PixelTabsList, PixelTabsTrigger, PixelTabsContent } from "@/components/ui/pixel/pixel-tabs";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { Suspense, useEffect, useState } from "react";
 import { PixelBadge } from "@/components/ui/pixel/pixel-badge";
+import { PixelButton } from "@/components/ui/pixel/pixel-button";
+import {
+  PixelCard,
+  PixelCardDescription,
+  PixelCardFooter,
+  PixelCardHeader,
+  PixelCardTitle,
+} from "@/components/ui/pixel/pixel-card";
 import { PixelInput } from "@/components/ui/pixel/pixel-input";
-import { Search, ArrowRight } from "lucide-react";
+import {
+  PixelTabs,
+  PixelTabsContent,
+  PixelTabsList,
+  PixelTabsTrigger,
+} from "@/components/ui/pixel/pixel-tabs";
+import {
+  type ComponentCategory,
+  categories,
+  componentRegistry,
+} from "@/lib/component-registry";
 
 function ComponentsListContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const pathname = usePathname();
   const categoryParam = searchParams.get("category");
-  
+
   const getInitialCategory = () => {
     if (categoryParam) {
-      const formattedCategory = categoryParam.charAt(0).toUpperCase() + categoryParam.slice(1).toLowerCase() as ComponentCategory;
+      const formattedCategory = (categoryParam.charAt(0).toUpperCase() +
+        categoryParam.slice(1).toLowerCase()) as ComponentCategory;
       if (categories.includes(formattedCategory)) {
         return formattedCategory;
       }
@@ -37,7 +53,6 @@ function ComponentsListContent() {
     router.push(`${pathname}?${params.toString()}`, { scroll: false });
   };
 
-
   useEffect(() => {
     const newCategory = getInitialCategory();
     if (newCategory !== selectedTab) {
@@ -45,9 +60,10 @@ function ComponentsListContent() {
     }
   }, [categoryParam]);
 
-  const filteredComponents = componentRegistry.filter((component) =>
-    component.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    component.description.toLowerCase().includes(searchQuery.toLowerCase())
+  const filteredComponents = componentRegistry.filter(
+    (component) =>
+      component.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      component.description.toLowerCase().includes(searchQuery.toLowerCase()),
   );
 
   return (
@@ -60,14 +76,15 @@ function ComponentsListContent() {
               ← Back to Home
             </PixelButton>
           </Link>
-          
+
           <h1 className="text-5xl md:text-6xl font-bold uppercase font-pixel mb-6 dark:text-pixel-dark-secondary">
             Components
           </h1>
-          
+
           <p className="text-lg max-w-2xl mx-auto dark:text-white/80 mb-8">
-            Browse our collection of {componentRegistry.length}+ pixel-perfect retro components.
-            All components are fully typed, accessible, and copy-paste ready.
+            Browse our collection of {componentRegistry.length}+ pixel-perfect
+            retro components. All components are fully typed, accessible, and
+            copy-paste ready.
           </p>
 
           {/* Search */}
@@ -85,12 +102,18 @@ function ComponentsListContent() {
         {/* Stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12 max-w-4xl mx-auto">
           {categories.map((category) => {
-            const count = componentRegistry.filter((c) => c.category === category).length;
+            const count = componentRegistry.filter(
+              (c) => c.category === category,
+            ).length;
             const isSpecial = category === "Special";
             return (
-              <PixelCard 
+              <PixelCard
                 key={category}
-                className={isSpecial ? "relative border-4 border-pixel-dark-secondary shadow-[8px_8px_0px_0px_rgba(255,215,0,0.5)]" : ""}
+                className={
+                  isSpecial
+                    ? "relative border-4 border-pixel-dark-secondary shadow-[8px_8px_0px_0px_rgba(255,215,0,0.5)]"
+                    : ""
+                }
               >
                 {isSpecial && (
                   <div className="absolute -top-2 -right-2 px-2 py-1 text-[8px] font-bold bg-linear-to-r from-[#ff8c00] to-pixel-dark-secondary text-black border-2 border-black shadow-pixel-sm animate-bounce z-10">
@@ -99,7 +122,9 @@ function ComponentsListContent() {
                 )}
                 <PixelCardHeader className="text-center">
                   <PixelCardTitle className="text-2xl">{count}</PixelCardTitle>
-                  <PixelCardDescription className="text-xs">{category}</PixelCardDescription>
+                  <PixelCardDescription className="text-xs">
+                    {category}
+                  </PixelCardDescription>
                 </PixelCardHeader>
               </PixelCard>
             );
@@ -110,8 +135,8 @@ function ComponentsListContent() {
         <PixelTabs value={selectedTab} onValueChange={handleTabChange}>
           <PixelTabsList className="mb-8">
             {categories.map((category) => (
-              <PixelTabsTrigger 
-                key={category} 
+              <PixelTabsTrigger
+                key={category}
                 value={category}
                 className={category === "Special" ? "relative" : ""}
               >
@@ -126,23 +151,34 @@ function ComponentsListContent() {
           </PixelTabsList>
 
           {categories.map((category) => {
-            const categoryComponents = filteredComponents.filter((c) => c.category === category);
-            
+            const categoryComponents = filteredComponents.filter(
+              (c) => c.category === category,
+            );
+
             return (
               <PixelTabsContent key={category} value={category}>
                 {categoryComponents.length === 0 ? (
                   <div className="text-center py-12">
-                    <p className="text-lg dark:text-white/60">No components found</p>
+                    <p className="text-lg dark:text-white/60">
+                      No components found
+                    </p>
                   </div>
                 ) : (
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {categoryComponents.map((component) => (
-                      <Link key={component.slug} href={`/docs/components/${component.slug}`}>
+                      <Link
+                        key={component.slug}
+                        href={`/docs/components/${component.slug}`}
+                      >
                         <PixelCard className="h-full hover:scale-105 transition-transform duration-0 cursor-pointer">
                           <PixelCardHeader>
                             <div className="flex items-center justify-between mb-2">
-                              <PixelCardTitle className="text-lg">{component.title}</PixelCardTitle>
-                              <PixelBadge variant="default" className="text-xs">{category}</PixelBadge>
+                              <PixelCardTitle className="text-lg">
+                                {component.title}
+                              </PixelCardTitle>
+                              <PixelBadge variant="default" className="text-xs">
+                                {category}
+                              </PixelBadge>
                             </div>
                             <PixelCardDescription className="text-sm">
                               {component.description}
@@ -169,15 +205,22 @@ function ComponentsListContent() {
             <h2 className="text-2xl font-bold uppercase font-pixel mb-6 dark:text-pixel-dark-secondary">
               Search Results ({filteredComponents.length})
             </h2>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {filteredComponents.map((component) => (
-                <Link key={component.slug} href={`/docs/components/${component.slug}`}>
+                <Link
+                  key={component.slug}
+                  href={`/docs/components/${component.slug}`}
+                >
                   <PixelCard className="h-full hover:scale-105 transition-transform duration-0 cursor-pointer">
                     <PixelCardHeader>
                       <div className="flex items-center justify-between mb-2">
-                        <PixelCardTitle className="text-lg">{component.title}</PixelCardTitle>
-                        <PixelBadge variant="default" className="text-xs">{component.category}</PixelBadge>
+                        <PixelCardTitle className="text-lg">
+                          {component.title}
+                        </PixelCardTitle>
+                        <PixelBadge variant="default" className="text-xs">
+                          {component.category}
+                        </PixelBadge>
                       </div>
                       <PixelCardDescription className="text-sm">
                         {component.description}
@@ -201,14 +244,16 @@ function ComponentsListContent() {
 
 export default function ComponentsListPage() {
   return (
-    <Suspense fallback={
-      <div className="min-h-screen bg-pixel-light-bg dark:bg-black flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin h-8 w-8 border-4 border-black dark:border-white border-t-transparent dark:border-t-transparent rounded-none mx-auto mb-4"></div>
-          <p className="text-lg dark:text-white">Loading components...</p>
+    <Suspense
+      fallback={
+        <div className="min-h-screen bg-pixel-light-bg dark:bg-black flex items-center justify-center">
+          <div className="text-center">
+            <div className="animate-spin h-8 w-8 border-4 border-black dark:border-white border-t-transparent dark:border-t-transparent rounded-none mx-auto mb-4"></div>
+            <p className="text-lg dark:text-white">Loading components...</p>
+          </div>
         </div>
-      </div>
-    }>
+      }
+    >
       <ComponentsListContent />
     </Suspense>
   );

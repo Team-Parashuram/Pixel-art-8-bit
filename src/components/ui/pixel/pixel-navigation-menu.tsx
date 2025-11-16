@@ -1,10 +1,10 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import * as NavigationMenuPrimitive from "@radix-ui/react-navigation-menu"
-import { cva } from "class-variance-authority"
-import { ChevronDown } from "lucide-react"
-import { cn } from "@/lib/utils"
+import * as NavigationMenuPrimitive from "@radix-ui/react-navigation-menu";
+import { cva } from "class-variance-authority";
+import { ChevronDown } from "lucide-react";
+import type * as React from "react";
+import { cn } from "@/lib/utils";
 
 function PixelNavigationMenu({
   className,
@@ -15,14 +15,14 @@ function PixelNavigationMenu({
     <NavigationMenuPrimitive.Root
       className={cn(
         "relative z-10 flex max-w-max flex-1 items-center justify-center font-[family-name:var(--font-press-start)]",
-        className
+        className,
       )}
       {...props}
     >
       {children}
       <PixelNavigationMenuViewport />
     </NavigationMenuPrimitive.Root>
-  )
+  );
 }
 
 function PixelNavigationMenuList({
@@ -33,22 +33,22 @@ function PixelNavigationMenuList({
     <NavigationMenuPrimitive.List
       className={cn(
         "group flex flex-1 list-none items-center justify-center space-x-1",
-        className
+        className,
       )}
       {...props}
     />
-  )
+  );
 }
 
 function PixelNavigationMenuItem({
   ...props
 }: React.ComponentProps<typeof NavigationMenuPrimitive.Item>) {
-  return <NavigationMenuPrimitive.Item {...props} />
+  return <NavigationMenuPrimitive.Item {...props} />;
 }
 
 const pixelNavigationMenuTriggerStyle = cva(
-  "group inline-flex h-10 w-max items-center justify-center px-4 py-2 text-xs font-bold duration-0 border-2 border-black bg-[#fffacd] dark:bg-[#2a2a2a] shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:bg-[#ffd700] focus:bg-[#ffd700] disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-[#ff6b6b] data-[active]:text-white data-[state=open]:bg-[#ff6b6b] data-[state=open]:text-white"
-)
+  "group inline-flex h-10 w-max items-center justify-center px-4 py-2 text-xs font-bold duration-0 border-2 border-black bg-[#fffacd] dark:bg-[#2a2a2a] shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:bg-[#ffd700] focus:bg-[#ffd700] disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-[#ff6b6b] data-[active]:text-white data-[state=open]:bg-[#ff6b6b] data-[state=open]:text-white",
+);
 
 function PixelNavigationMenuTrigger({
   className,
@@ -66,7 +66,7 @@ function PixelNavigationMenuTrigger({
         aria-hidden="true"
       />
     </NavigationMenuPrimitive.Trigger>
-  )
+  );
 }
 
 function PixelNavigationMenuContent({
@@ -77,11 +77,11 @@ function PixelNavigationMenuContent({
     <NavigationMenuPrimitive.Content
       className={cn(
         "left-0 top-0 w-full data-[motion^=from-]:animate-in data-[motion^=to-]:animate-out data-[motion^=from-]:fade-in data-[motion^=to-]:fade-out data-[motion=from-end]:slide-in-from-right-52 data-[motion=from-start]:slide-in-from-left-52 data-[motion=to-end]:slide-out-to-right-52 data-[motion=to-start]:slide-out-to-left-52 md:absolute md:w-auto",
-        className
+        className,
       )}
       {...props}
     />
-  )
+  );
 }
 
 function PixelNavigationMenuLink({
@@ -93,7 +93,7 @@ function PixelNavigationMenuLink({
       className={cn(pixelNavigationMenuTriggerStyle(), className)}
       {...props}
     />
-  )
+  );
 }
 
 function PixelNavigationMenuViewport({
@@ -105,12 +105,12 @@ function PixelNavigationMenuViewport({
       <NavigationMenuPrimitive.Viewport
         className={cn(
           "origin-top-center relative mt-1.5 h-[var(--radix-navigation-menu-viewport-height)] w-full overflow-hidden border-4 border-black bg-[#fffacd] dark:bg-[#2a2a2a] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-90 md:w-[var(--radix-navigation-menu-viewport-width)]",
-          className
+          className,
         )}
         {...props}
       />
     </div>
-  )
+  );
 }
 
 function PixelNavigationMenuIndicator({
@@ -121,13 +121,13 @@ function PixelNavigationMenuIndicator({
     <NavigationMenuPrimitive.Indicator
       className={cn(
         "top-full z-[1] flex h-1.5 items-end justify-center overflow-hidden data-[state=visible]:animate-in data-[state=hidden]:animate-out data-[state=hidden]:fade-out data-[state=visible]:fade-in",
-        className
+        className,
       )}
       {...props}
     >
       <div className="relative top-[60%] h-2 w-2 rotate-45 bg-black shadow-md" />
     </NavigationMenuPrimitive.Indicator>
-  )
+  );
 }
 
 export {
@@ -140,4 +140,4 @@ export {
   PixelNavigationMenuIndicator,
   PixelNavigationMenuViewport,
   pixelNavigationMenuTriggerStyle,
-}
+};

@@ -1,31 +1,31 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import * as LabelPrimitive from "@radix-ui/react-label"
-import { Slot } from "@radix-ui/react-slot"
+import type * as LabelPrimitive from "@radix-ui/react-label";
+import { Slot } from "@radix-ui/react-slot";
+import * as React from "react";
 import {
   Controller,
-  ControllerProps,
-  FieldPath,
-  FieldValues,
+  type ControllerProps,
+  type FieldPath,
+  type FieldValues,
   FormProvider,
   useFormContext,
-} from "react-hook-form"
-import { cn } from "@/lib/utils"
-import { PixelLabel } from "./pixel-label"
+} from "react-hook-form";
+import { cn } from "@/lib/utils";
+import { PixelLabel } from "./pixel-label";
 
-const PixelForm = FormProvider
+const PixelForm = FormProvider;
 
 type FormFieldContextValue<
   TFieldValues extends FieldValues = FieldValues,
   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
 > = {
-  name: TName
-}
+  name: TName;
+};
 
 const FormFieldContext = React.createContext<FormFieldContextValue>(
-  {} as FormFieldContextValue
-)
+  {} as FormFieldContextValue,
+);
 
 const PixelFormField = <
   TFieldValues extends FieldValues = FieldValues,
@@ -37,21 +37,21 @@ const PixelFormField = <
     <FormFieldContext.Provider value={{ name: props.name }}>
       <Controller {...props} />
     </FormFieldContext.Provider>
-  )
-}
+  );
+};
 
 const useFormField = () => {
-  const fieldContext = React.useContext(FormFieldContext)
-  const itemContext = React.useContext(FormItemContext)
-  const { getFieldState, formState } = useFormContext()
+  const fieldContext = React.useContext(FormFieldContext);
+  const itemContext = React.useContext(FormItemContext);
+  const { getFieldState, formState } = useFormContext();
 
-  const fieldState = getFieldState(fieldContext.name, formState)
+  const fieldState = getFieldState(fieldContext.name, formState);
 
   if (!fieldContext) {
-    throw new Error("useFormField should be used within <FormField>")
+    throw new Error("useFormField should be used within <FormField>");
   }
 
-  const { id } = itemContext
+  const { id } = itemContext;
 
   return {
     id,
@@ -60,32 +60,32 @@ const useFormField = () => {
     formDescriptionId: `${id}-form-item-description`,
     formMessageId: `${id}-form-item-message`,
     ...fieldState,
-  }
-}
+  };
+};
 
 type FormItemContextValue = {
-  id: string
-}
+  id: string;
+};
 
 const FormItemContext = React.createContext<FormItemContextValue>(
-  {} as FormItemContextValue
-)
+  {} as FormItemContextValue,
+);
 
 function PixelFormItem({ className, ...props }: React.ComponentProps<"div">) {
-  const id = React.useId()
+  const id = React.useId();
 
   return (
     <FormItemContext.Provider value={{ id }}>
       <div className={cn("space-y-2", className)} {...props} />
     </FormItemContext.Provider>
-  )
+  );
 }
 
 function PixelFormLabel({
   className,
   ...props
 }: React.ComponentProps<typeof LabelPrimitive.Root>) {
-  const { error, formItemId } = useFormField()
+  const { error, formItemId } = useFormField();
 
   return (
     <PixelLabel
@@ -93,11 +93,12 @@ function PixelFormLabel({
       htmlFor={formItemId}
       {...props}
     />
-  )
+  );
 }
 
 function PixelFormControl({ ...props }: React.ComponentProps<typeof Slot>) {
-  const { error, formItemId, formDescriptionId, formMessageId } = useFormField()
+  const { error, formItemId, formDescriptionId, formMessageId } =
+    useFormField();
 
   return (
     <Slot
@@ -110,14 +111,14 @@ function PixelFormControl({ ...props }: React.ComponentProps<typeof Slot>) {
       aria-invalid={!!error}
       {...props}
     />
-  )
+  );
 }
 
 function PixelFormDescription({
   className,
   ...props
 }: React.ComponentProps<"p">) {
-  const { formDescriptionId } = useFormField()
+  const { formDescriptionId } = useFormField();
 
   return (
     <p
@@ -125,7 +126,7 @@ function PixelFormDescription({
       className={cn("text-xs text-[#555] dark:text-[#aaa]", className)}
       {...props}
     />
-  )
+  );
 }
 
 function PixelFormMessage({
@@ -133,11 +134,11 @@ function PixelFormMessage({
   children,
   ...props
 }: React.ComponentProps<"p">) {
-  const { error, formMessageId } = useFormField()
-  const body = error ? String(error?.message) : children
+  const { error, formMessageId } = useFormField();
+  const body = error ? String(error?.message) : children;
 
   if (!body) {
-    return null
+    return null;
   }
 
   return (
@@ -148,7 +149,7 @@ function PixelFormMessage({
     >
       {body}
     </p>
-  )
+  );
 }
 
 export {
@@ -160,4 +161,4 @@ export {
   PixelFormDescription,
   PixelFormMessage,
   PixelFormField,
-}
+};

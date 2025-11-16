@@ -1,13 +1,23 @@
-'use client'
+"use client";
 
-import { useState } from "react";
+import { CheckCircle, FileText, Upload } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { PixelLoader } from "@/components/ui/pixel/pixel-loader";
-import { PixelCard, PixelCardContent, PixelCardDescription, PixelCardHeader, PixelCardTitle } from "@/components/ui/pixel/pixel-card";
-import { PixelButton } from "@/components/ui/pixel/pixel-button";
-import { PixelAlert, PixelAlertDescription, PixelAlertTitle } from "@/components/ui/pixel/pixel-alert";
+import { useState } from "react";
+import {
+  PixelAlert,
+  PixelAlertDescription,
+  PixelAlertTitle,
+} from "@/components/ui/pixel/pixel-alert";
 import { PixelBadge } from "@/components/ui/pixel/pixel-badge";
-import { Upload, CheckCircle, FileText } from "lucide-react";
+import { PixelButton } from "@/components/ui/pixel/pixel-button";
+import {
+  PixelCard,
+  PixelCardContent,
+  PixelCardDescription,
+  PixelCardHeader,
+  PixelCardTitle,
+} from "@/components/ui/pixel/pixel-card";
+import { PixelLoader } from "@/components/ui/pixel/pixel-loader";
 
 const Page = () => {
   const [loading, setLoading] = useState(false);
@@ -24,7 +34,7 @@ const Page = () => {
     "Discovering projects...",
     "Parsing education details...",
     "Generating portfolio design...",
-    "Finalizing your website..."
+    "Finalizing your website...",
   ];
 
   const handleFile = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -34,7 +44,7 @@ const Page = () => {
     setLoading(true);
     setError("");
     setProgress(0);
-    
+
     // Simulate loading animation
     let currentStep = 0;
     const stepInterval = setInterval(() => {
@@ -45,7 +55,7 @@ const Page = () => {
     }, 600);
 
     const progressInterval = setInterval(() => {
-      setProgress(prev => {
+      setProgress((prev) => {
         if (prev < 95) return prev + 1;
         return prev;
       });
@@ -53,10 +63,10 @@ const Page = () => {
 
     try {
       const formData = new FormData();
-      formData.append('file', file);
+      formData.append("file", file);
 
-      const response = await fetch('/api/parse-resume', {
-        method: 'POST',
+      const response = await fetch("/api/parse-resume", {
+        method: "POST",
         body: formData,
       });
 
@@ -67,7 +77,7 @@ const Page = () => {
         clearInterval(stepInterval);
         clearInterval(progressInterval);
         setLoadingText("Complete! Redirecting...");
-        
+
         // Wait a moment before redirecting
         setTimeout(() => {
           router.push(`/resume/${result.id}`);
@@ -75,14 +85,19 @@ const Page = () => {
       } else {
         clearInterval(stepInterval);
         clearInterval(progressInterval);
-        setError(`${result.error}${result.details ? ': ' + result.details : ''}`);
+        setError(
+          `${result.error}${result.details ? ": " + result.details : ""}`,
+        );
         setLoading(false);
         setProgress(0);
       }
     } catch (err) {
       clearInterval(stepInterval);
       clearInterval(progressInterval);
-      setError('Failed to upload or parse PDF: ' + (err instanceof Error ? err.message : 'Unknown error'));
+      setError(
+        "Failed to upload or parse PDF: " +
+          (err instanceof Error ? err.message : "Unknown error"),
+      );
       setLoading(false);
       setProgress(0);
     }
@@ -92,13 +107,18 @@ const Page = () => {
     return (
       <div className="min-h-screen bg-pixel-light-bg dark:bg-[#000000] flex items-center justify-center px-4">
         <div className="flex flex-col items-center gap-8 max-w-md w-full">
-          <PixelLoader variant="cassette" size="lg" progress={progress} text={loadingText} />
+          <PixelLoader
+            variant="cassette"
+            size="lg"
+            progress={progress}
+            text={loadingText}
+          />
           <div className="text-center space-y-3 w-full">
             <p className="text-2xl md:text-3xl font-bold font-pixel dark:text-pixel-dark-secondary">
               {progress}% Complete
             </p>
             <div className="w-full bg-gray-200 dark:bg-gray-700 h-3 border-2 border-black dark:border-pixel-dark-primary">
-              <div 
+              <div
                 className="h-full bg-pixel-warning dark:bg-pixel-dark-primary transition-all duration-300 ease-out"
                 style={{ width: `${progress}%` }}
               />
@@ -118,7 +138,10 @@ const Page = () => {
         {/* Hero Section */}
         <div className="text-center space-y-5">
           <div className="flex justify-center mb-4">
-            <PixelBadge variant="warning" className="text-sm md:text-base px-6 py-2 font-pixel">
+            <PixelBadge
+              variant="warning"
+              className="text-sm md:text-base px-6 py-2 font-pixel"
+            >
               ✨ NEW FEATURE
             </PixelBadge>
           </div>
@@ -126,7 +149,8 @@ const Page = () => {
             Resume to Portfolio
           </h1>
           <p className="text-lg md:text-xl lg:text-2xl dark:text-gray-300 text-gray-700 max-w-2xl mx-auto leading-relaxed">
-            Transform your resume into a stunning pixel-perfect portfolio website in seconds
+            Transform your resume into a stunning pixel-perfect portfolio
+            website in seconds
           </p>
         </div>
 
@@ -138,7 +162,8 @@ const Page = () => {
               Upload Your Resume
             </PixelCardTitle>
             <PixelCardDescription className="text-base">
-              Upload a PDF resume and we'll instantly create a beautiful, responsive portfolio website
+              Upload a PDF resume and we'll instantly create a beautiful,
+              responsive portfolio website
             </PixelCardDescription>
           </PixelCardHeader>
           <PixelCardContent className="space-y-5">
@@ -168,8 +193,12 @@ const Page = () => {
 
             {error && (
               <PixelAlert variant="error">
-                <PixelAlertTitle className="font-pixel">Upload Failed</PixelAlertTitle>
-                <PixelAlertDescription className="text-sm">{error}</PixelAlertDescription>
+                <PixelAlertTitle className="font-pixel">
+                  Upload Failed
+                </PixelAlertTitle>
+                <PixelAlertDescription className="text-sm">
+                  {error}
+                </PixelAlertDescription>
               </PixelAlert>
             )}
           </PixelCardContent>
@@ -190,9 +219,12 @@ const Page = () => {
                 "Work Experience",
                 "Projects & Links",
                 "Education Details",
-                "Social Profiles"
+                "Social Profiles",
               ].map((item, index) => (
-                <div key={index} className="flex items-center gap-3 p-3 rounded-lg bg-pixel-light-bg dark:bg-pixel-dark-bg/50 transition-all hover:bg-pixel-warning/10 dark:hover:bg-pixel-dark-primary/10">
+                <div
+                  key={index}
+                  className="flex items-center gap-3 p-3 rounded-lg bg-pixel-light-bg dark:bg-pixel-dark-bg/50 transition-all hover:bg-pixel-warning/10 dark:hover:bg-pixel-dark-primary/10"
+                >
                   <CheckCircle className="h-5 w-5 md:h-6 md:w-6 text-[#50c878] shrink-0" />
                   <span className="font-bold text-sm md:text-base">{item}</span>
                 </div>
@@ -203,9 +235,15 @@ const Page = () => {
 
         {/* Security Badge */}
         <div className="text-center pt-2">
-          <PixelBadge variant="default" className="text-xs md:text-sm px-5 py-2.5 inline-flex items-center gap-2">
+          <PixelBadge
+            variant="default"
+            className="text-xs md:text-sm px-5 py-2.5 inline-flex items-center gap-2"
+          >
             <span className="text-base">🔒</span>
-            <span>Your resume data is processed securely and never stored permanently</span>
+            <span>
+              Your resume data is processed securely and never stored
+              permanently
+            </span>
           </PixelBadge>
         </div>
       </div>

@@ -1,8 +1,8 @@
 "use client";
 
+import { cva, type VariantProps } from "class-variance-authority";
 import * as React from "react";
 import { cn } from "@/lib/utils";
-import { cva, type VariantProps } from "class-variance-authority";
 
 const pixelCountUpVariants = cva(
   "font-bold uppercase tracking-wider pixel-font tabular-nums",
@@ -25,7 +25,7 @@ const pixelCountUpVariants = cva(
       variant: "default",
       size: "md",
     },
-  }
+  },
 );
 
 export interface PixelCountUpProps
@@ -61,7 +61,7 @@ const PixelCountUp = React.forwardRef<HTMLSpanElement, PixelCountUpProps>(
       className,
       ...props
     },
-    ref
+    ref,
   ) => {
     const [count, setCount] = React.useState(from);
     const [isInView, setIsInView] = React.useState(false);
@@ -75,7 +75,7 @@ const PixelCountUp = React.forwardRef<HTMLSpanElement, PixelCountUpProps>(
             setIsInView(true);
           }
         },
-        { threshold: 0.1 }
+        { threshold: 0.1 },
       );
 
       if (containerRef.current) {
@@ -104,7 +104,7 @@ const PixelCountUp = React.forwardRef<HTMLSpanElement, PixelCountUpProps>(
           const progress = Math.min(elapsed / (duration * 1000), 1);
 
           // Ease out cubic
-          const easeProgress = 1 - Math.pow(1 - progress, 3);
+          const easeProgress = 1 - (1 - progress) ** 3;
           const current = from + difference * easeProgress;
 
           setCount(Math.floor(current));
@@ -140,7 +140,7 @@ const PixelCountUp = React.forwardRef<HTMLSpanElement, PixelCountUpProps>(
         {suffix}
       </span>
     );
-  }
+  },
 );
 
 PixelCountUp.displayName = "PixelCountUp";

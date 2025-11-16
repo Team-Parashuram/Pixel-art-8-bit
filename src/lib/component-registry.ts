@@ -1,4 +1,4 @@
-export type ComponentCategory = 
+export type ComponentCategory =
   | "Forms"
   | "Layout"
   | "Feedback"
@@ -39,7 +39,8 @@ export const componentRegistry: ComponentDoc[] = [
   {
     slug: "pixel-button",
     title: "Button",
-    description: "Retro 8-bit styled button with pixel-perfect borders and instant state changes.",
+    description:
+      "Retro 8-bit styled button with pixel-perfect borders and instant state changes.",
     category: "Forms",
     installation: "npm install @radix-ui/react-slot",
     importCode: `import { PixelButton } from "@/components/ui/pixel-button"`,
@@ -48,9 +49,24 @@ export const componentRegistry: ComponentDoc[] = [
 <PixelButton variant="destructive">Delete</PixelButton>`,
     componentCode: `/src/components/ui/pixel-button.tsx`,
     props: [
-      { name: "variant", type: '"default" | "secondary" | "ghost" | "destructive"', default: '"default"', description: "Button visual style" },
-      { name: "size", type: '"sm" | "md" | "lg"', default: '"md"', description: "Button size" },
-      { name: "asChild", type: "boolean", default: "false", description: "Render as child component" },
+      {
+        name: "variant",
+        type: '"default" | "secondary" | "ghost" | "destructive"',
+        default: '"default"',
+        description: "Button visual style",
+      },
+      {
+        name: "size",
+        type: '"sm" | "md" | "lg"',
+        default: '"md"',
+        description: "Button size",
+      },
+      {
+        name: "asChild",
+        type: "boolean",
+        default: "false",
+        description: "Render as child component",
+      },
     ],
     examples: [
       {
@@ -82,7 +98,12 @@ export const componentRegistry: ComponentDoc[] = [
     usageCode: `<PixelInput placeholder="Enter text..." />`,
     componentCode: `/src/components/ui/pixel-input.tsx`,
     props: [
-      { name: "type", type: "string", default: '"text"', description: "Input type" },
+      {
+        name: "type",
+        type: "string",
+        default: '"text"',
+        description: "Input type",
+      },
       { name: "placeholder", type: "string", description: "Placeholder text" },
     ],
     examples: [
@@ -102,7 +123,8 @@ export const componentRegistry: ComponentDoc[] = [
   {
     slug: "pixel-input-otp",
     title: "OTP Input",
-    description: "Multi-digit verification input with pixel grouping, labels, and helper messaging.",
+    description:
+      "Multi-digit verification input with pixel grouping, labels, and helper messaging.",
     category: "Forms",
     installation: "npm install input-otp",
     importCode: `import { PixelInputOTP, PixelInputOTPGroup, PixelInputOTPSlot, PixelInputOTPSeparator } from "@/components/ui/pixel/pixel-input-otp"`,
@@ -129,9 +151,22 @@ export const componentRegistry: ComponentDoc[] = [
 />`,
     componentCode: `/src/components/ui/pixel/pixel-input-otp.tsx`,
     props: [
-      { name: "hasError", type: "boolean", default: "false", description: "Activates error styling for helper text." },
-      { name: "label", type: "React.ReactNode", description: "Optional label displayed above the slots." },
-      { name: "helperText", type: "React.ReactNode", description: "Helper or validation message below the OTP input." },
+      {
+        name: "hasError",
+        type: "boolean",
+        default: "false",
+        description: "Activates error styling for helper text.",
+      },
+      {
+        name: "label",
+        type: "React.ReactNode",
+        description: "Optional label displayed above the slots.",
+      },
+      {
+        name: "helperText",
+        type: "React.ReactNode",
+        description: "Helper or validation message below the OTP input.",
+      },
     ],
     examples: [
       {
@@ -172,7 +207,8 @@ export const componentRegistry: ComponentDoc[] = [
   {
     slug: "pixel-dropzone",
     title: "Dropzone",
-    description: "Drag-and-drop uploader with pixel borders, helper messaging, and removable previews.",
+    description:
+      "Drag-and-drop uploader with pixel borders, helper messaging, and removable previews.",
     category: "Forms",
     installation: "",
     importCode: `import { PixelDropzone } from "@/components/ui/pixel/pixel-dropzone"`,
@@ -193,13 +229,43 @@ export const componentRegistry: ComponentDoc[] = [
 />`,
     componentCode: `/src/components/ui/pixel/pixel-dropzone.tsx`,
     props: [
-      { name: "accept", type: "string | string[]", description: "Accepted MIME types or file extensions." },
-      { name: "maxFiles", type: "number", description: "Maximum number of files that can be queued." },
-      { name: "multiple", type: "boolean", default: "true", description: "Allow selecting multiple files at once." },
-      { name: "files", type: "File[]", description: "Controlled list of files for preview rendering." },
-      { name: "onFilesChange", type: "(files: File[]) => void", description: "Callback fired whenever the selection changes." },
-      { name: "helperText", type: "React.ReactNode", description: "Helper or status text displayed below the dropzone." },
-      { name: "hasError", type: "boolean", default: "false", description: "Tints the helper text and border for error states." },
+      {
+        name: "accept",
+        type: "string | string[]",
+        description: "Accepted MIME types or file extensions.",
+      },
+      {
+        name: "maxFiles",
+        type: "number",
+        description: "Maximum number of files that can be queued.",
+      },
+      {
+        name: "multiple",
+        type: "boolean",
+        default: "true",
+        description: "Allow selecting multiple files at once.",
+      },
+      {
+        name: "files",
+        type: "File[]",
+        description: "Controlled list of files for preview rendering.",
+      },
+      {
+        name: "onFilesChange",
+        type: "(files: File[]) => void",
+        description: "Callback fired whenever the selection changes.",
+      },
+      {
+        name: "helperText",
+        type: "React.ReactNode",
+        description: "Helper or status text displayed below the dropzone.",
+      },
+      {
+        name: "hasError",
+        type: "boolean",
+        default: "false",
+        description: "Tints the helper text and border for error states.",
+      },
     ],
     examples: [
       {
@@ -236,7 +302,8 @@ export const componentRegistry: ComponentDoc[] = [
   {
     slug: "pixel-inventory-picker",
     title: "Inventory Picker",
-    description: "Retro grid picker for loadouts or item selection with rarity badges and helper text.",
+    description:
+      "Retro grid picker for loadouts or item selection with rarity badges and helper text.",
     category: "Special",
     installation: "",
     importCode: `import { PixelInventoryPicker } from "@/components/ui/pixel/pixel-inventory-picker"`,
@@ -263,15 +330,53 @@ const [equipped, setEquipped] = useState<string[]>([]);
 />`,
     componentCode: `/src/components/ui/pixel/pixel-inventory-picker.tsx`,
     props: [
-      { name: "items", type: "PixelInventoryItem[]", description: "Array of inventory items rendered as slots." },
-      { name: "selectedIds", type: "string[]", description: "Controlled list of selected item IDs." },
-      { name: "defaultSelectedIds", type: "string[]", description: "Initial selection for uncontrolled usage." },
-      { name: "maxSelections", type: "number", description: "Limits the number of simultaneous selections." },
-      { name: "columns", type: "number", default: "4", description: "How many columns to display in the grid." },
-      { name: "renderItem", type: "(item, state) => React.ReactNode", description: "Custom renderer for each slot." },
-      { name: "slotClassName", type: "string", description: "Additional classes applied to default slots." },
-      { name: "helperText", type: "React.ReactNode", description: "Status or helper message shown below the grid." },
-      { name: "hasError", type: "boolean", default: "false", description: "Highlights helper text when validation fails." },
+      {
+        name: "items",
+        type: "PixelInventoryItem[]",
+        description: "Array of inventory items rendered as slots.",
+      },
+      {
+        name: "selectedIds",
+        type: "string[]",
+        description: "Controlled list of selected item IDs.",
+      },
+      {
+        name: "defaultSelectedIds",
+        type: "string[]",
+        description: "Initial selection for uncontrolled usage.",
+      },
+      {
+        name: "maxSelections",
+        type: "number",
+        description: "Limits the number of simultaneous selections.",
+      },
+      {
+        name: "columns",
+        type: "number",
+        default: "4",
+        description: "How many columns to display in the grid.",
+      },
+      {
+        name: "renderItem",
+        type: "(item, state) => React.ReactNode",
+        description: "Custom renderer for each slot.",
+      },
+      {
+        name: "slotClassName",
+        type: "string",
+        description: "Additional classes applied to default slots.",
+      },
+      {
+        name: "helperText",
+        type: "React.ReactNode",
+        description: "Status or helper message shown below the grid.",
+      },
+      {
+        name: "hasError",
+        type: "boolean",
+        default: "false",
+        description: "Highlights helper text when validation fails.",
+      },
     ],
     examples: [
       {
@@ -411,12 +516,41 @@ const [equipped, setEquipped] = useState<string[]>([]);
     usageCode: `<PixelRating value={3} maxStars={5} onRatingChange={(rating) => console.log(rating)} />`,
     componentCode: `/src/components/ui/pixel/pixel-rating.tsx`,
     props: [
-      { name: "value", type: "number", default: "0", description: "Current rating value" },
-      { name: "maxStars", type: "number", default: "5", description: "Maximum number of stars" },
-      { name: "onRatingChange", type: "(rating: number) => void", description: "Callback when rating changes" },
-      { name: "readOnly", type: "boolean", default: "false", description: "Make rating read-only" },
-      { name: "variant", type: '"default" | "gold" | "red"', default: '"default"', description: "Color variant" },
-      { name: "size", type: '"sm" | "md" | "lg"', default: '"md"', description: "Star size" },
+      {
+        name: "value",
+        type: "number",
+        default: "0",
+        description: "Current rating value",
+      },
+      {
+        name: "maxStars",
+        type: "number",
+        default: "5",
+        description: "Maximum number of stars",
+      },
+      {
+        name: "onRatingChange",
+        type: "(rating: number) => void",
+        description: "Callback when rating changes",
+      },
+      {
+        name: "readOnly",
+        type: "boolean",
+        default: "false",
+        description: "Make rating read-only",
+      },
+      {
+        name: "variant",
+        type: '"default" | "gold" | "red"',
+        default: '"default"',
+        description: "Color variant",
+      },
+      {
+        name: "size",
+        type: '"sm" | "md" | "lg"',
+        default: '"md"',
+        description: "Star size",
+      },
     ],
     examples: [
       {
@@ -463,7 +597,8 @@ const [equipped, setEquipped] = useState<string[]>([]);
   {
     slug: "pixel-card",
     title: "Card",
-    description: "Container component with pixel-art styling for displaying content.",
+    description:
+      "Container component with pixel-art styling for displaying content.",
     category: "Display",
     installation: "",
     importCode: `import { PixelCard, PixelCardHeader, PixelCardTitle, PixelCardDescription, PixelCardContent, PixelCardFooter } from "@/components/ui/pixel-card"`,
@@ -619,7 +754,8 @@ toast({
   {
     slug: "pixel-warning-tooltip",
     title: "Warning Tooltip",
-    description: "Shows warnings and alerts when hovering over elements with different severity levels.",
+    description:
+      "Shows warnings and alerts when hovering over elements with different severity levels.",
     category: "Feedback",
     installation: "npm install @radix-ui/react-tooltip lucide-react",
     importCode: `import { PixelWarningTooltip, PixelWarningTooltipTrigger, PixelWarningTooltipContent, PixelWarningTooltipProvider } from "@/components/ui/pixel/pixel-warning-tooltip"`,
@@ -635,10 +771,30 @@ toast({
 </PixelWarningTooltipProvider>`,
     componentCode: `/src/components/ui/pixel/pixel-warning-tooltip.tsx`,
     props: [
-      { name: "severity", type: '"warning" | "error" | "info" | "critical"', default: '"warning"', description: "Warning severity level" },
-      { name: "size", type: '"sm" | "md" | "lg"', default: '"md"', description: "Tooltip size" },
-      { name: "showIcon", type: "boolean", default: "true", description: "Show warning icon on trigger" },
-      { name: "showWarningIcon", type: "boolean", default: "true", description: "Show warning icon in tooltip content" },
+      {
+        name: "severity",
+        type: '"warning" | "error" | "info" | "critical"',
+        default: '"warning"',
+        description: "Warning severity level",
+      },
+      {
+        name: "size",
+        type: '"sm" | "md" | "lg"',
+        default: '"md"',
+        description: "Tooltip size",
+      },
+      {
+        name: "showIcon",
+        type: "boolean",
+        default: "true",
+        description: "Show warning icon on trigger",
+      },
+      {
+        name: "showWarningIcon",
+        type: "boolean",
+        default: "true",
+        description: "Show warning icon in tooltip content",
+      },
     ],
     examples: [
       {
@@ -714,7 +870,8 @@ toast({
   {
     slug: "pixel-undo-chip",
     title: "Undo Chip",
-    description: "Small chip/snackbar showing action confirmation with undo option. Very user-friendly, low-friction feedback.",
+    description:
+      "Small chip/snackbar showing action confirmation with undo option. Very user-friendly, low-friction feedback.",
     category: "Feedback",
     installation: "npm install lucide-react",
     importCode: `import { PixelUndoChipProvider, usePixelUndoChip } from "@/components/ui/pixel/pixel-undo-chip"`,
@@ -728,14 +885,51 @@ showUndoChip("Item deleted", {
 });`,
     componentCode: `/src/components/ui/pixel/pixel-undo-chip.tsx`,
     props: [
-      { name: "message", type: "string", description: "Message to display in the chip" },
-      { name: "onUndo", type: "() => void", description: "Callback when undo button is clicked" },
-      { name: "onClose", type: "() => void", description: "Callback when chip is closed" },
-      { name: "duration", type: "number", default: "5000", description: "Auto-dismiss duration in milliseconds (0 to disable)" },
-      { name: "variant", type: '"default" | "info" | "warning" | "error"', default: '"default"', description: "Visual variant" },
-      { name: "size", type: '"sm" | "md" | "lg"', default: '"md"', description: "Chip size" },
-      { name: "showIcon", type: "boolean", default: "true", description: "Show check icon" },
-      { name: "showUndoIcon", type: "boolean", default: "true", description: "Show undo icon in button" },
+      {
+        name: "message",
+        type: "string",
+        description: "Message to display in the chip",
+      },
+      {
+        name: "onUndo",
+        type: "() => void",
+        description: "Callback when undo button is clicked",
+      },
+      {
+        name: "onClose",
+        type: "() => void",
+        description: "Callback when chip is closed",
+      },
+      {
+        name: "duration",
+        type: "number",
+        default: "5000",
+        description: "Auto-dismiss duration in milliseconds (0 to disable)",
+      },
+      {
+        name: "variant",
+        type: '"default" | "info" | "warning" | "error"',
+        default: '"default"',
+        description: "Visual variant",
+      },
+      {
+        name: "size",
+        type: '"sm" | "md" | "lg"',
+        default: '"md"',
+        description: "Chip size",
+      },
+      {
+        name: "showIcon",
+        type: "boolean",
+        default: "true",
+        description: "Show check icon",
+      },
+      {
+        name: "showUndoIcon",
+        type: "boolean",
+        default: "true",
+        description: "Show undo icon in button",
+      },
     ],
     examples: [
       {
@@ -824,7 +1018,8 @@ function YourComponent() {
   {
     slug: "pixel-ai-bubble",
     title: "AI Bubble",
-    description: "AI assistant feedback bubbles showing thinking, typing, and status messages. Seen in AI products like ChatGPT and Claude.",
+    description:
+      "AI assistant feedback bubbles showing thinking, typing, and status messages. Seen in AI products like ChatGPT and Claude.",
     category: "Feedback",
     installation: "npm install lucide-react",
     importCode: `import { PixelAIBubble } from "@/components/ui/pixel/pixel-ai-bubble"`,
@@ -833,11 +1028,35 @@ function YourComponent() {
 <PixelAIBubble variant="typing" animate={true} />`,
     componentCode: `/src/components/ui/pixel/pixel-ai-bubble.tsx`,
     props: [
-      { name: "variant", type: '"thinking" | "ready" | "processing" | "error" | "typing"', default: '"thinking"', description: "AI status variant" },
-      { name: "size", type: '"sm" | "md" | "lg"', default: '"md"', description: "Bubble size" },
-      { name: "message", type: "string", description: "Custom message (uses default if not provided)" },
-      { name: "showIcon", type: "boolean", default: "true", description: "Show status icon" },
-      { name: "animate", type: "boolean", default: "true", description: "Enable animations" },
+      {
+        name: "variant",
+        type: '"thinking" | "ready" | "processing" | "error" | "typing"',
+        default: '"thinking"',
+        description: "AI status variant",
+      },
+      {
+        name: "size",
+        type: '"sm" | "md" | "lg"',
+        default: '"md"',
+        description: "Bubble size",
+      },
+      {
+        name: "message",
+        type: "string",
+        description: "Custom message (uses default if not provided)",
+      },
+      {
+        name: "showIcon",
+        type: "boolean",
+        default: "true",
+        description: "Show status icon",
+      },
+      {
+        name: "animate",
+        type: "boolean",
+        default: "true",
+        description: "Enable animations",
+      },
     ],
     examples: [
       {
@@ -1038,10 +1257,28 @@ function YourComponent() {
 </PixelTimelineNavigation>`,
     componentCode: `/src/components/ui/pixel/pixel-timeline-navigation.tsx`,
     props: [
-      { name: "currentStep", type: "number", description: "Current active step number" },
-      { name: "onStepClick", type: "(step: number) => void", description: "Callback when step is clicked" },
-      { name: "orientation", type: '"horizontal" | "vertical"', default: '"horizontal"', description: "Layout orientation" },
-      { name: "size", type: '"sm" | "md" | "lg"', default: '"md"', description: "Size of step indicators" },
+      {
+        name: "currentStep",
+        type: "number",
+        description: "Current active step number",
+      },
+      {
+        name: "onStepClick",
+        type: "(step: number) => void",
+        description: "Callback when step is clicked",
+      },
+      {
+        name: "orientation",
+        type: '"horizontal" | "vertical"',
+        default: '"horizontal"',
+        description: "Layout orientation",
+      },
+      {
+        name: "size",
+        type: '"sm" | "md" | "lg"',
+        default: '"md"',
+        description: "Size of step indicators",
+      },
     ],
     examples: [
       {
@@ -1297,7 +1534,8 @@ const [step3, setStep3] = useState(2);
   {
     slug: "pixel-hero",
     title: "Hero Section",
-    description: "Pixel-perfect hero sections with multiple variants and layouts for landing pages.",
+    description:
+      "Pixel-perfect hero sections with multiple variants and layouts for landing pages.",
     category: "Layout",
     installation: "",
     importCode: `import { 
@@ -1329,10 +1567,30 @@ const [step3, setStep3] = useState(2);
 </PixelHero>`,
     componentCode: `/src/components/ui/pixel/pixel-hero.tsx`,
     props: [
-      { name: "variant", type: '"default" | "primary" | "secondary" | "dark" | "gradient"', default: '"default"', description: "Hero visual style" },
-      { name: "size", type: '"sm" | "md" | "lg" | "xl" | "full"', default: '"lg"', description: "Hero height/padding" },
-      { name: "align", type: '"left" | "center" | "right"', default: '"center"', description: "Content alignment" },
-      { name: "container", type: "boolean", default: "true", description: "Wrap content in container" },
+      {
+        name: "variant",
+        type: '"default" | "primary" | "secondary" | "dark" | "gradient"',
+        default: '"default"',
+        description: "Hero visual style",
+      },
+      {
+        name: "size",
+        type: '"sm" | "md" | "lg" | "xl" | "full"',
+        default: '"lg"',
+        description: "Hero height/padding",
+      },
+      {
+        name: "align",
+        type: '"left" | "center" | "right"',
+        default: '"center"',
+        description: "Content alignment",
+      },
+      {
+        name: "container",
+        type: "boolean",
+        default: "true",
+        description: "Wrap content in container",
+      },
     ],
     examples: [
       {
@@ -1459,7 +1717,8 @@ const [step3, setStep3] = useState(2);
   {
     slug: "pixel-bento",
     title: "Bento Grid",
-    description: "Modern bento-style grid layout with customizable spans and patterns.",
+    description:
+      "Modern bento-style grid layout with customizable spans and patterns.",
     category: "Layout",
     installation: "",
     importCode: `import { 
@@ -1694,7 +1953,8 @@ const [step3, setStep3] = useState(2);
   {
     slug: "pixel-features",
     title: "Features Section",
-    description: "Showcase features and capabilities in a responsive grid layout.",
+    description:
+      "Showcase features and capabilities in a responsive grid layout.",
     category: "Layout",
     installation: "",
     importCode: `import { 
@@ -1996,7 +2256,8 @@ const [step3, setStep3] = useState(2);
         name: "variant",
         type: '"default" | "primary" | "secondary" | "dark" | "gradient" | "success" | "accent" | "purple"',
         default: '"primary"',
-        description: "Visual style variant of the CTA section - now with colorful options",
+        description:
+          "Visual style variant of the CTA section - now with colorful options",
       },
       {
         name: "size",
@@ -2021,7 +2282,8 @@ const [step3, setStep3] = useState(2);
   {
     slug: "pixel-pricing",
     title: "Pricing Section",
-    description: "Pricing tables and cards for displaying product or service pricing plans.",
+    description:
+      "Pricing tables and cards for displaying product or service pricing plans.",
     category: "Layout",
     installation: "",
     importCode: `import { 
@@ -2108,15 +2370,31 @@ const [step3, setStep3] = useState(2);
       },
     ],
     props: [
-      { name: "columns", type: '2 | 3 | 4', default: '3', description: "Number of columns in the grid" },
-      { name: "gap", type: '"none" | "sm" | "md" | "lg" | "xl"', default: '"md"', description: "Gap between pricing cards" },
-      { name: "variant", type: '"default" | "primary" | "secondary" | "dark" | "featured"', default: '"default"', description: "Card visual style" },
+      {
+        name: "columns",
+        type: "2 | 3 | 4",
+        default: "3",
+        description: "Number of columns in the grid",
+      },
+      {
+        name: "gap",
+        type: '"none" | "sm" | "md" | "lg" | "xl"',
+        default: '"md"',
+        description: "Gap between pricing cards",
+      },
+      {
+        name: "variant",
+        type: '"default" | "primary" | "secondary" | "dark" | "featured"',
+        default: '"default"',
+        description: "Card visual style",
+      },
     ],
   },
   {
     slug: "pixel-footer",
     title: "Footer",
-    description: "Website footer with links, social media, and copyright information.",
+    description:
+      "Website footer with links, social media, and copyright information.",
     category: "Layout",
     installation: "",
     importCode: `import { 
@@ -2212,8 +2490,18 @@ const [step3, setStep3] = useState(2);
       },
     ],
     props: [
-      { name: "variant", type: '"default" | "primary" | "secondary" | "dark"', default: '"default"', description: "Footer visual style" },
-      { name: "size", type: '"sm" | "md" | "lg"', default: '"md"', description: "Padding size" },
+      {
+        name: "variant",
+        type: '"default" | "primary" | "secondary" | "dark"',
+        default: '"default"',
+        description: "Footer visual style",
+      },
+      {
+        name: "size",
+        type: '"sm" | "md" | "lg"',
+        default: '"md"',
+        description: "Padding size",
+      },
     ],
   },
   {
@@ -2302,15 +2590,31 @@ const [step3, setStep3] = useState(2);
       },
     ],
     props: [
-      { name: "columns", type: '1 | 2 | 3', default: '3', description: "Number of columns in the grid" },
-      { name: "gap", type: '"none" | "sm" | "md" | "lg" | "xl"', default: '"md"', description: "Gap between testimonial cards" },
-      { name: "variant", type: '"default" | "primary" | "secondary" | "dark"', default: '"default"', description: "Card visual style" },
+      {
+        name: "columns",
+        type: "1 | 2 | 3",
+        default: "3",
+        description: "Number of columns in the grid",
+      },
+      {
+        name: "gap",
+        type: '"none" | "sm" | "md" | "lg" | "xl"',
+        default: '"md"',
+        description: "Gap between testimonial cards",
+      },
+      {
+        name: "variant",
+        type: '"default" | "primary" | "secondary" | "dark"',
+        default: '"default"',
+        description: "Card visual style",
+      },
     ],
   },
   {
     slug: "pixel-stats",
     title: "Stats Section",
-    description: "Display key metrics and statistics in an engaging grid layout.",
+    description:
+      "Display key metrics and statistics in an engaging grid layout.",
     category: "Layout",
     installation: "",
     importCode: `import { 
@@ -2370,16 +2674,37 @@ const [step3, setStep3] = useState(2);
       },
     ],
     props: [
-      { name: "columns", type: '2 | 3 | 4', default: '4', description: "Number of columns in the grid" },
-      { name: "gap", type: '"none" | "sm" | "md" | "lg" | "xl"', default: '"md"', description: "Gap between stat items" },
-      { name: "variant", type: '"default" | "primary" | "secondary" | "dark" | "gradient"', default: '"default"', description: "Stat item visual style" },
-      { name: "trend", type: '"up" | "down" | "neutral"', default: '"neutral"', description: "Trend indicator direction and color" },
+      {
+        name: "columns",
+        type: "2 | 3 | 4",
+        default: "4",
+        description: "Number of columns in the grid",
+      },
+      {
+        name: "gap",
+        type: '"none" | "sm" | "md" | "lg" | "xl"',
+        default: '"md"',
+        description: "Gap between stat items",
+      },
+      {
+        name: "variant",
+        type: '"default" | "primary" | "secondary" | "dark" | "gradient"',
+        default: '"default"',
+        description: "Stat item visual style",
+      },
+      {
+        name: "trend",
+        type: '"up" | "down" | "neutral"',
+        default: '"neutral"',
+        description: "Trend indicator direction and color",
+      },
     ],
   },
   {
     slug: "pixel-faq",
     title: "FAQ Section",
-    description: "Frequently Asked Questions with accordion-style expandable answers.",
+    description:
+      "Frequently Asked Questions with accordion-style expandable answers.",
     category: "Layout",
     installation: "",
     importCode: `import { 
@@ -2454,8 +2779,18 @@ const [step3, setStep3] = useState(2);
       },
     ],
     props: [
-      { name: "variant", type: '"default" | "primary" | "secondary" | "dark"', default: '"default"', description: "FAQ section visual style" },
-      { name: "defaultOpen", type: "boolean", default: "false", description: "Whether the FAQ item is open by default" },
+      {
+        name: "variant",
+        type: '"default" | "primary" | "secondary" | "dark"',
+        default: '"default"',
+        description: "FAQ section visual style",
+      },
+      {
+        name: "defaultOpen",
+        type: "boolean",
+        default: "false",
+        description: "Whether the FAQ item is open by default",
+      },
     ],
   },
   {
@@ -2478,7 +2813,8 @@ const [step3, setStep3] = useState(2);
     title: "Separator",
     description: "Visual divider with pixel styling and expandable sections.",
     category: "Layout",
-    installation: "npm install @radix-ui/react-separator @radix-ui/react-collapsible",
+    installation:
+      "npm install @radix-ui/react-separator @radix-ui/react-collapsible",
     importCode: `import { PixelSeparator, PixelExpandableSeparator, PixelSectionDivider } from "@/components/ui/pixel-separator"`,
     usageCode: `<PixelSeparator />
 <PixelExpandableSeparator title="Expand Me">
@@ -2557,10 +2893,30 @@ const [step3, setStep3] = useState(2);
     componentCode: `/src/components/ui/pixel/animations/pixel-blur-text.tsx`,
     props: [
       { name: "text", type: "string", description: "The text to display" },
-      { name: "duration", type: "number", default: "1", description: "Animation duration in seconds" },
-      { name: "animateOnHover", type: "boolean", default: "false", description: "Trigger animation on hover instead of scroll" },
-      { name: "variant", type: '"default" | "primary" | "secondary" | "accent"', default: '"default"', description: "Color variant" },
-      { name: "size", type: '"sm" | "md" | "lg" | "xl"', default: '"md"', description: "Text size" },
+      {
+        name: "duration",
+        type: "number",
+        default: "1",
+        description: "Animation duration in seconds",
+      },
+      {
+        name: "animateOnHover",
+        type: "boolean",
+        default: "false",
+        description: "Trigger animation on hover instead of scroll",
+      },
+      {
+        name: "variant",
+        type: '"default" | "primary" | "secondary" | "accent"',
+        default: '"default"',
+        description: "Color variant",
+      },
+      {
+        name: "size",
+        type: '"sm" | "md" | "lg" | "xl"',
+        default: '"md"',
+        description: "Text size",
+      },
     ],
     examples: [
       {
@@ -2589,10 +2945,30 @@ const [step3, setStep3] = useState(2);
     componentCode: `/src/components/ui/pixel/animations/pixel-glitch-text.tsx`,
     props: [
       { name: "text", type: "string", description: "The text to display" },
-      { name: "speed", type: "number", default: "0.5", description: "Animation speed multiplier" },
-      { name: "enableShadows", type: "boolean", default: "true", description: "Show glitch shadow effects" },
-      { name: "enableOnHover", type: "boolean", default: "false", description: "Only glitch on hover" },
-      { name: "variant", type: '"default" | "primary" | "secondary" | "cyber"', default: '"default"', description: "Color variant" },
+      {
+        name: "speed",
+        type: "number",
+        default: "0.5",
+        description: "Animation speed multiplier",
+      },
+      {
+        name: "enableShadows",
+        type: "boolean",
+        default: "true",
+        description: "Show glitch shadow effects",
+      },
+      {
+        name: "enableOnHover",
+        type: "boolean",
+        default: "false",
+        description: "Only glitch on hover",
+      },
+      {
+        name: "variant",
+        type: '"default" | "primary" | "secondary" | "cyber"',
+        default: '"default"',
+        description: "Color variant",
+      },
     ],
     examples: [
       {
@@ -2625,9 +3001,24 @@ const [step3, setStep3] = useState(2);
     componentCode: `/src/components/ui/pixel/animations/pixel-gradient-text.tsx`,
     props: [
       { name: "text", type: "string", description: "The text to display" },
-      { name: "animationSpeed", type: "number", default: "8", description: "Gradient animation speed in seconds" },
-      { name: "showBorder", type: "boolean", default: "false", description: "Show pixel border around text" },
-      { name: "variant", type: '"sunset" | "ocean" | "forest" | "cyber" | "gold"', default: '"sunset"', description: "Gradient color scheme" },
+      {
+        name: "animationSpeed",
+        type: "number",
+        default: "8",
+        description: "Gradient animation speed in seconds",
+      },
+      {
+        name: "showBorder",
+        type: "boolean",
+        default: "false",
+        description: "Show pixel border around text",
+      },
+      {
+        name: "variant",
+        type: '"sunset" | "ocean" | "forest" | "cyber" | "gold"',
+        default: '"sunset"',
+        description: "Gradient color scheme",
+      },
     ],
     examples: [
       {
@@ -2660,9 +3051,24 @@ const [step3, setStep3] = useState(2);
     componentCode: `/src/components/ui/pixel/animations/pixel-shiny-text.tsx`,
     props: [
       { name: "text", type: "string", description: "The text to display" },
-      { name: "speed", type: "number", default: "5", description: "Shine animation speed in seconds" },
-      { name: "disabled", type: "boolean", default: "false", description: "Disable animation" },
-      { name: "variant", type: '"gold" | "silver" | "rainbow" | "fire"', default: '"gold"', description: "Shine color" },
+      {
+        name: "speed",
+        type: "number",
+        default: "5",
+        description: "Shine animation speed in seconds",
+      },
+      {
+        name: "disabled",
+        type: "boolean",
+        default: "false",
+        description: "Disable animation",
+      },
+      {
+        name: "variant",
+        type: '"gold" | "silver" | "rainbow" | "fire"',
+        default: '"gold"',
+        description: "Shine color",
+      },
     ],
     examples: [
       {
@@ -2687,12 +3093,42 @@ const [step3, setStep3] = useState(2);
     componentCode: `/src/components/ui/pixel/animations/pixel-count-up.tsx`,
     props: [
       { name: "to", type: "number", description: "Target number to count to" },
-      { name: "from", type: "number", default: "0", description: "Starting number" },
-      { name: "duration", type: "number", default: "2", description: "Animation duration in seconds" },
-      { name: "delay", type: "number", default: "0", description: "Delay before animation starts" },
-      { name: "separator", type: "string", default: '""', description: "Thousands separator" },
-      { name: "prefix", type: "string", default: '""', description: "Prefix (e.g., '$')" },
-      { name: "suffix", type: "string", default: '""', description: "Suffix (e.g., '+')" },
+      {
+        name: "from",
+        type: "number",
+        default: "0",
+        description: "Starting number",
+      },
+      {
+        name: "duration",
+        type: "number",
+        default: "2",
+        description: "Animation duration in seconds",
+      },
+      {
+        name: "delay",
+        type: "number",
+        default: "0",
+        description: "Delay before animation starts",
+      },
+      {
+        name: "separator",
+        type: "string",
+        default: '""',
+        description: "Thousands separator",
+      },
+      {
+        name: "prefix",
+        type: "string",
+        default: '""',
+        description: "Prefix (e.g., '$')",
+      },
+      {
+        name: "suffix",
+        type: "string",
+        default: '""',
+        description: "Suffix (e.g., '+')",
+      },
     ],
     examples: [
       {
@@ -2726,9 +3162,23 @@ const [step3, setStep3] = useState(2);
     usageCode: `<PixelCircularText text="ROTATING TEXT" spinDuration={20} />`,
     componentCode: `/src/components/ui/pixel/animations/pixel-circular-text.tsx`,
     props: [
-      { name: "text", type: "string", description: "The text to display in a circle" },
-      { name: "spinDuration", type: "number", default: "20", description: "Rotation duration in seconds" },
-      { name: "onHover", type: '"slowDown" | "speedUp" | "pause" | "reverse"', default: '"speedUp"', description: "Hover behavior" },
+      {
+        name: "text",
+        type: "string",
+        description: "The text to display in a circle",
+      },
+      {
+        name: "spinDuration",
+        type: "number",
+        default: "20",
+        description: "Rotation duration in seconds",
+      },
+      {
+        name: "onHover",
+        type: '"slowDown" | "speedUp" | "pause" | "reverse"',
+        default: '"speedUp"',
+        description: "Hover behavior",
+      },
     ],
     examples: [
       {
@@ -2756,9 +3206,24 @@ const [step3, setStep3] = useState(2);
 </PixelSpotlightCard>`,
     componentCode: `/src/components/ui/pixel/animations/pixel-spotlight-card.tsx`,
     props: [
-      { name: "spotlightColor", type: "string", default: '"rgba(255, 215, 0, 0.3)"', description: "Spotlight color in rgba format" },
-      { name: "spotlightSize", type: "number", default: "200", description: "Spotlight radius in pixels" },
-      { name: "variant", type: '"default" | "primary" | "secondary" | "accent"', default: '"default"', description: "Card style variant" },
+      {
+        name: "spotlightColor",
+        type: "string",
+        default: '"rgba(255, 215, 0, 0.3)"',
+        description: "Spotlight color in rgba format",
+      },
+      {
+        name: "spotlightSize",
+        type: "number",
+        default: "200",
+        description: "Spotlight radius in pixels",
+      },
+      {
+        name: "variant",
+        type: '"default" | "primary" | "secondary" | "accent"',
+        default: '"default"',
+        description: "Card style variant",
+      },
     ],
     examples: [
       {
@@ -2787,10 +3252,30 @@ const [step3, setStep3] = useState(2);
 </PixelGlareCard>`,
     componentCode: `/src/components/ui/pixel/animations/pixel-glare-card.tsx`,
     props: [
-      { name: "glareColor", type: "string", default: '"#ffffff"', description: "Glare color" },
-      { name: "glareOpacity", type: "number", default: "0.5", description: "Glare opacity (0-1)" },
-      { name: "glareSize", type: "number", default: "250", description: "Glare gradient size" },
-      { name: "playOnce", type: "boolean", default: "false", description: "Only play animation once" },
+      {
+        name: "glareColor",
+        type: "string",
+        default: '"#ffffff"',
+        description: "Glare color",
+      },
+      {
+        name: "glareOpacity",
+        type: "number",
+        default: "0.5",
+        description: "Glare opacity (0-1)",
+      },
+      {
+        name: "glareSize",
+        type: "number",
+        default: "250",
+        description: "Glare gradient size",
+      },
+      {
+        name: "playOnce",
+        type: "boolean",
+        default: "false",
+        description: "Only play animation once",
+      },
     ],
     examples: [
       {
@@ -2811,7 +3296,8 @@ const [step3, setStep3] = useState(2);
   {
     slug: "pixel-parallax-hero",
     title: "Parallax Hero",
-    description: "Hero section with layered pixel parallax depth and stat blocks.",
+    description:
+      "Hero section with layered pixel parallax depth and stat blocks.",
     category: "Layout",
     installation: "",
     importCode: `import { PixelParallaxHero } from "@/components/ui/pixel/pixel-parallax-hero"`,
@@ -2825,12 +3311,37 @@ const [step3, setStep3] = useState(2);
 />`,
     componentCode: `/src/components/ui/pixel/pixel-parallax-hero.tsx`,
     props: [
-      { name: "title", type: "React.ReactNode", description: "Hero heading content" },
-      { name: "subtitle", type: "React.ReactNode", description: "Optional eyebrow text" },
-      { name: "primaryAction", type: "PixelParallaxHeroAction", description: "Primary CTA button configuration" },
-      { name: "stats", type: "PixelParallaxHeroStat[]", description: "Array of stat cards rendered below actions" },
-      { name: "layers", type: "PixelParallaxLayer[]", description: "Custom decorative parallax layers" },
-      { name: "contentAlign", type: '"left" | "center"', default: '"left"', description: "Align text content" },
+      {
+        name: "title",
+        type: "React.ReactNode",
+        description: "Hero heading content",
+      },
+      {
+        name: "subtitle",
+        type: "React.ReactNode",
+        description: "Optional eyebrow text",
+      },
+      {
+        name: "primaryAction",
+        type: "PixelParallaxHeroAction",
+        description: "Primary CTA button configuration",
+      },
+      {
+        name: "stats",
+        type: "PixelParallaxHeroStat[]",
+        description: "Array of stat cards rendered below actions",
+      },
+      {
+        name: "layers",
+        type: "PixelParallaxLayer[]",
+        description: "Custom decorative parallax layers",
+      },
+      {
+        name: "contentAlign",
+        type: '"left" | "center"',
+        default: '"left"',
+        description: "Align text content",
+      },
     ],
     examples: [
       {
@@ -2860,7 +3371,7 @@ const [step3, setStep3] = useState(2);
       },
     ],
   },
-  
+
   // Additional Text Animations
   {
     slug: "pixel-ascii-text",
@@ -3133,7 +3644,8 @@ const [step3, setStep3] = useState(2);
   {
     slug: "pixel-loader",
     title: "Retro Loader",
-    description: "Retro loading screens with cassette tape, floppy disk, and CRT boot animations.",
+    description:
+      "Retro loading screens with cassette tape, floppy disk, and CRT boot animations.",
     category: "Special",
     installation: "",
     importCode: `import { PixelLoader } from "@/components/ui/pixel/pixel-loader"`,
@@ -3142,11 +3654,31 @@ const [step3, setStep3] = useState(2);
 <PixelLoader variant="crt" size="lg" />`,
     componentCode: `/src/components/ui/pixel/pixel-loader.tsx`,
     props: [
-      { name: "variant", type: '"cassette" | "floppy" | "crt"', default: '"cassette"', description: "Loading animation style" },
-      { name: "size", type: '"sm" | "md" | "lg" | "full"', default: '"md"', description: "Loader size" },
-      { name: "progress", type: "number", default: "0", description: "Progress percentage (0-100)" },
+      {
+        name: "variant",
+        type: '"cassette" | "floppy" | "crt"',
+        default: '"cassette"',
+        description: "Loading animation style",
+      },
+      {
+        name: "size",
+        type: '"sm" | "md" | "lg" | "full"',
+        default: '"md"',
+        description: "Loader size",
+      },
+      {
+        name: "progress",
+        type: "number",
+        default: "0",
+        description: "Progress percentage (0-100)",
+      },
       { name: "text", type: "string", description: "Custom loading text" },
-      { name: "isLoading", type: "boolean", default: "true", description: "Enable auto-progress animation" },
+      {
+        name: "isLoading",
+        type: "boolean",
+        default: "true",
+        description: "Enable auto-progress animation",
+      },
     ],
     examples: [
       {
@@ -3169,7 +3701,8 @@ const [step3, setStep3] = useState(2);
   {
     slug: "pixel-terminal",
     title: "Terminal",
-    description: "Interactive retro terminal with command execution, history, and auto-completion.",
+    description:
+      "Interactive retro terminal with command execution, history, and auto-completion.",
     category: "Special",
     installation: "",
     importCode: `import { PixelTerminal } from "@/components/ui/pixel/pixel-terminal"`,
@@ -3182,13 +3715,45 @@ const [step3, setStep3] = useState(2);
 />`,
     componentCode: `/src/components/ui/pixel/pixel-terminal.tsx`,
     props: [
-      { name: "variant", type: '"default" | "amber" | "white" | "matrix" | "retro"', default: '"default"', description: "Terminal color scheme" },
-      { name: "size", type: '"sm" | "md" | "lg" | "xl"', default: '"md"', description: "Terminal size" },
-      { name: "prompt", type: "string", default: '"user@pixel:~$"', description: "Command prompt text" },
-      { name: "welcomeMessage", type: "string | ReactNode", description: "Message shown on terminal start" },
-      { name: "commands", type: "Record<string, Function>", description: "Custom command handlers" },
-      { name: "onCommand", type: "(command: string, args: string[]) => void", description: "Command execution callback" },
-      { name: "showCursor", type: "boolean", default: "true", description: "Show blinking cursor" },
+      {
+        name: "variant",
+        type: '"default" | "amber" | "white" | "matrix" | "retro"',
+        default: '"default"',
+        description: "Terminal color scheme",
+      },
+      {
+        name: "size",
+        type: '"sm" | "md" | "lg" | "xl"',
+        default: '"md"',
+        description: "Terminal size",
+      },
+      {
+        name: "prompt",
+        type: "string",
+        default: '"user@pixel:~$"',
+        description: "Command prompt text",
+      },
+      {
+        name: "welcomeMessage",
+        type: "string | ReactNode",
+        description: "Message shown on terminal start",
+      },
+      {
+        name: "commands",
+        type: "Record<string, Function>",
+        description: "Custom command handlers",
+      },
+      {
+        name: "onCommand",
+        type: "(command: string, args: string[]) => void",
+        description: "Command execution callback",
+      },
+      {
+        name: "showCursor",
+        type: "boolean",
+        default: "true",
+        description: "Show blinking cursor",
+      },
     ],
     examples: [
       {
@@ -3223,7 +3788,8 @@ const [step3, setStep3] = useState(2);
   {
     slug: "pixel-game-ui",
     title: "Game UI",
-    description: "Gaming UI components including health bars, inventory, achievements, and damage numbers.",
+    description:
+      "Gaming UI components including health bars, inventory, achievements, and damage numbers.",
     category: "Special",
     installation: "",
     importCode: `import { 
@@ -3249,14 +3815,39 @@ const [step3, setStep3] = useState(2);
 />`,
     componentCode: `/src/components/ui/pixel/pixel-game-ui.tsx`,
     props: [
-      { name: "current", type: "number", description: "Current health/mana value" },
+      {
+        name: "current",
+        type: "number",
+        description: "Current health/mana value",
+      },
       { name: "max", type: "number", description: "Maximum health/mana value" },
-      { name: "currentXP", type: "number", description: "Current experience points" },
-      { name: "requiredXP", type: "number", description: "XP required for next level" },
+      {
+        name: "currentXP",
+        type: "number",
+        description: "Current experience points",
+      },
+      {
+        name: "requiredXP",
+        type: "number",
+        description: "XP required for next level",
+      },
       { name: "level", type: "number", description: "Character level" },
-      { name: "columns", type: "3 | 4 | 5 | 6", default: "5", description: "Inventory grid columns" },
-      { name: "rarity", type: '"common" | "rare" | "epic" | "legendary"', description: "Item rarity" },
-      { name: "variant", type: '"bronze" | "silver" | "gold" | "platinum"', description: "Achievement tier" },
+      {
+        name: "columns",
+        type: "3 | 4 | 5 | 6",
+        default: "5",
+        description: "Inventory grid columns",
+      },
+      {
+        name: "rarity",
+        type: '"common" | "rare" | "epic" | "legendary"',
+        description: "Item rarity",
+      },
+      {
+        name: "variant",
+        type: '"bronze" | "silver" | "gold" | "platinum"',
+        description: "Achievement tier",
+      },
     ],
     examples: [
       {
@@ -3293,7 +3884,8 @@ const [step3, setStep3] = useState(2);
   {
     slug: "pixel-window",
     title: "Retro Window",
-    description: "Windows 95/98 style draggable windows with minimize, maximize, and close buttons.",
+    description:
+      "Windows 95/98 style draggable windows with minimize, maximize, and close buttons.",
     category: "Special",
     installation: "",
     importCode: `import { PixelWindow } from "@/components/ui/pixel/pixel-window"`,
@@ -3306,14 +3898,47 @@ const [step3, setStep3] = useState(2);
 </PixelWindow>`,
     componentCode: `/src/components/ui/pixel/pixel-window.tsx`,
     props: [
-      { name: "title", type: "string", default: '"Window"', description: "Window title text" },
+      {
+        name: "title",
+        type: "string",
+        default: '"Window"',
+        description: "Window title text",
+      },
       { name: "icon", type: "ReactNode", description: "Window icon" },
-      { name: "defaultPosition", type: "{ x: number, y: number }", description: "Initial window position" },
-      { name: "defaultSize", type: "{ width: number, height: number }", description: "Initial window size" },
-      { name: "resizable", type: "boolean", default: "false", description: "Allow window resizing" },
-      { name: "closable", type: "boolean", default: "true", description: "Show close button" },
-      { name: "minimizable", type: "boolean", default: "true", description: "Show minimize button" },
-      { name: "maximizable", type: "boolean", default: "true", description: "Show maximize button" },
+      {
+        name: "defaultPosition",
+        type: "{ x: number, y: number }",
+        description: "Initial window position",
+      },
+      {
+        name: "defaultSize",
+        type: "{ width: number, height: number }",
+        description: "Initial window size",
+      },
+      {
+        name: "resizable",
+        type: "boolean",
+        default: "false",
+        description: "Allow window resizing",
+      },
+      {
+        name: "closable",
+        type: "boolean",
+        default: "true",
+        description: "Show close button",
+      },
+      {
+        name: "minimizable",
+        type: "boolean",
+        default: "true",
+        description: "Show minimize button",
+      },
+      {
+        name: "maximizable",
+        type: "boolean",
+        default: "true",
+        description: "Show maximize button",
+      },
       { name: "onClose", type: "() => void", description: "Close callback" },
     ],
     examples: [
@@ -3346,7 +3971,8 @@ const [step3, setStep3] = useState(2);
   {
     slug: "pixel-audio-visualizer",
     title: "Audio Visualizer",
-    description: "Retro audio visualizer with equalizer bars, waveform, and circular modes.",
+    description:
+      "Retro audio visualizer with equalizer bars, waveform, and circular modes.",
     category: "Special",
     installation: "",
     importCode: `import { PixelAudioVisualizer } from "@/components/ui/pixel/pixel-audio-visualizer"`,
@@ -3357,12 +3983,36 @@ const [step3, setStep3] = useState(2);
 />`,
     componentCode: `/src/components/ui/pixel/pixel-audio-visualizer.tsx`,
     props: [
-      { name: "variant", type: '"bars" | "wave" | "circular" | "spectrum"', default: '"bars"', description: "Visualizer style" },
-      { name: "barCount", type: "number", default: "32", description: "Number of frequency bars" },
+      {
+        name: "variant",
+        type: '"bars" | "wave" | "circular" | "spectrum"',
+        default: '"bars"',
+        description: "Visualizer style",
+      },
+      {
+        name: "barCount",
+        type: "number",
+        default: "32",
+        description: "Number of frequency bars",
+      },
       { name: "color", type: "string", description: "Visualizer color" },
-      { name: "animated", type: "boolean", default: "true", description: "Enable animation" },
-      { name: "responsive", type: "boolean", default: "true", description: "Adapt to container size" },
-      { name: "audioSource", type: "MediaStream | HTMLAudioElement", description: "Audio source for real-time visualization" },
+      {
+        name: "animated",
+        type: "boolean",
+        default: "true",
+        description: "Enable animation",
+      },
+      {
+        name: "responsive",
+        type: "boolean",
+        default: "true",
+        description: "Adapt to container size",
+      },
+      {
+        name: "audioSource",
+        type: "MediaStream | HTMLAudioElement",
+        description: "Audio source for real-time visualization",
+      },
     ],
     examples: [
       {
@@ -3390,7 +4040,8 @@ const [step3, setStep3] = useState(2);
   {
     slug: "pixel-code-block",
     title: "Code Block",
-    description: "Syntax-highlighted code display with line numbers, copy button, and retro terminal themes.",
+    description:
+      "Syntax-highlighted code display with line numbers, copy button, and retro terminal themes.",
     category: "Special",
     installation: "",
     importCode: `import { PixelCodeBlock, PixelCode } from "@/components/ui/pixel/pixel-code-block"`,
@@ -3404,13 +4055,45 @@ const [step3, setStep3] = useState(2);
     componentCode: `/src/components/ui/pixel/pixel-code-block.tsx`,
     props: [
       { name: "code", type: "string", description: "Source code to display" },
-      { name: "language", type: "string", description: "Programming language (e.g., 'javascript', 'python')" },
-      { name: "title", type: "string", description: "Code block title/filename" },
-      { name: "variant", type: '"default" | "terminal" | "dark" | "light" | "matrix" | "amber"', default: '"default"', description: "Color theme" },
-      { name: "size", type: '"sm" | "md" | "lg"', default: '"md"', description: "Text size" },
-      { name: "showLineNumbers", type: "boolean", default: "true", description: "Show line numbers" },
-      { name: "showCopyButton", type: "boolean", default: "true", description: "Show copy button" },
-      { name: "highlightLines", type: "number[]", description: "Array of line numbers to highlight" },
+      {
+        name: "language",
+        type: "string",
+        description: "Programming language (e.g., 'javascript', 'python')",
+      },
+      {
+        name: "title",
+        type: "string",
+        description: "Code block title/filename",
+      },
+      {
+        name: "variant",
+        type: '"default" | "terminal" | "dark" | "light" | "matrix" | "amber"',
+        default: '"default"',
+        description: "Color theme",
+      },
+      {
+        name: "size",
+        type: '"sm" | "md" | "lg"',
+        default: '"md"',
+        description: "Text size",
+      },
+      {
+        name: "showLineNumbers",
+        type: "boolean",
+        default: "true",
+        description: "Show line numbers",
+      },
+      {
+        name: "showCopyButton",
+        type: "boolean",
+        default: "true",
+        description: "Show copy button",
+      },
+      {
+        name: "highlightLines",
+        type: "number[]",
+        description: "Array of line numbers to highlight",
+      },
     ],
     examples: [
       {
@@ -3450,7 +4133,8 @@ const [step3, setStep3] = useState(2);
   {
     slug: "pixel-timeline",
     title: "Timeline",
-    description: "Vertical and horizontal timelines with milestones, checkpoints, and progress tracking.",
+    description:
+      "Vertical and horizontal timelines with milestones, checkpoints, and progress tracking.",
     category: "Special",
     installation: "",
     importCode: `import { PixelTimeline, PixelTimelineCheckpoint } from "@/components/ui/pixel/pixel-timeline"`,
@@ -3465,12 +4149,40 @@ const [step3, setStep3] = useState(2);
 />`,
     componentCode: `/src/components/ui/pixel/pixel-timeline.tsx`,
     props: [
-      { name: "items", type: "TimelineItemType[]", description: "Timeline items array" },
-      { name: "orientation", type: '"vertical" | "horizontal"', default: '"vertical"', description: "Timeline direction" },
-      { name: "markerSize", type: '"sm" | "md" | "lg"', default: '"md"', description: "Marker size" },
-      { name: "markerShape", type: '"square" | "circle" | "diamond"', default: '"square"', description: "Marker shape" },
-      { name: "showConnector", type: "boolean", default: "true", description: "Show connecting lines" },
-      { name: "checkpoints", type: "Array<{ label: string, completed?: boolean, active?: boolean }>", description: "Checkpoint items for progress tracking" },
+      {
+        name: "items",
+        type: "TimelineItemType[]",
+        description: "Timeline items array",
+      },
+      {
+        name: "orientation",
+        type: '"vertical" | "horizontal"',
+        default: '"vertical"',
+        description: "Timeline direction",
+      },
+      {
+        name: "markerSize",
+        type: '"sm" | "md" | "lg"',
+        default: '"md"',
+        description: "Marker size",
+      },
+      {
+        name: "markerShape",
+        type: '"square" | "circle" | "diamond"',
+        default: '"square"',
+        description: "Marker shape",
+      },
+      {
+        name: "showConnector",
+        type: "boolean",
+        default: "true",
+        description: "Show connecting lines",
+      },
+      {
+        name: "checkpoints",
+        type: "Array<{ label: string, completed?: boolean, active?: boolean }>",
+        description: "Checkpoint items for progress tracking",
+      },
     ],
     examples: [
       {
@@ -3508,7 +4220,8 @@ const [step3, setStep3] = useState(2);
   {
     slug: "pixel-notification",
     title: "Notification",
-    description: "Toast notification system with auto-dismiss, stacking, variants, and action buttons.",
+    description:
+      "Toast notification system with auto-dismiss, stacking, variants, and action buttons.",
     category: "Special",
     installation: "",
     importCode: `import { PixelNotification, usePixelToast } from "@/components/ui/pixel/pixel-notification"`,
@@ -3529,12 +4242,30 @@ addToast({
     componentCode: `/src/components/ui/pixel/pixel-notification.tsx`,
     props: [
       { name: "title", type: "string", description: "Notification title" },
-      { name: "description", type: "string", description: "Notification message" },
-      { name: "variant", type: '"default" | "success" | "warning" | "error" | "info"', default: '"default"', description: "Notification style" },
+      {
+        name: "description",
+        type: "string",
+        description: "Notification message",
+      },
+      {
+        name: "variant",
+        type: '"default" | "success" | "warning" | "error" | "info"',
+        default: '"default"',
+        description: "Notification style",
+      },
       { name: "icon", type: "ReactNode", description: "Icon element" },
       { name: "onClose", type: "() => void", description: "Close callback" },
-      { name: "action", type: "{ label: string, onClick: () => void }", description: "Action button config" },
-      { name: "duration", type: "number", default: "5000", description: "Auto-dismiss duration (ms), 0 for persistent" },
+      {
+        name: "action",
+        type: "{ label: string, onClick: () => void }",
+        description: "Action button config",
+      },
+      {
+        name: "duration",
+        type: "number",
+        default: "5000",
+        description: "Auto-dismiss duration (ms), 0 for persistent",
+      },
     ],
     examples: [
       {
@@ -3571,7 +4302,8 @@ addToast({
   {
     slug: "pixel-chat",
     title: "Chat",
-    description: "Retro chat messenger with message bubbles, typing indicators, and multiple style variants.",
+    description:
+      "Retro chat messenger with message bubbles, typing indicators, and multiple style variants.",
     category: "Special",
     installation: "",
     importCode: `import { PixelChat, PixelMessageBubble } from "@/components/ui/pixel/pixel-chat"`,
@@ -3586,13 +4318,45 @@ addToast({
 />`,
     componentCode: `/src/components/ui/pixel/pixel-chat.tsx`,
     props: [
-      { name: "messages", type: "MessageType[]", description: "Array of chat messages" },
-      { name: "onSendMessage", type: "(message: string) => void", description: "Send message callback" },
-      { name: "variant", type: '"default" | "retro" | "terminal"', default: '"default"', description: "Chat style" },
-      { name: "size", type: '"sm" | "md" | "lg"', default: '"md"', description: "Chat window size" },
-      { name: "showTypingIndicator", type: "boolean", default: "false", description: "Show typing animation" },
-      { name: "typingUser", type: "string", description: "Name of user who is typing" },
-      { name: "placeholder", type: "string", default: '"Type a message..."', description: "Input placeholder" },
+      {
+        name: "messages",
+        type: "MessageType[]",
+        description: "Array of chat messages",
+      },
+      {
+        name: "onSendMessage",
+        type: "(message: string) => void",
+        description: "Send message callback",
+      },
+      {
+        name: "variant",
+        type: '"default" | "retro" | "terminal"',
+        default: '"default"',
+        description: "Chat style",
+      },
+      {
+        name: "size",
+        type: '"sm" | "md" | "lg"',
+        default: '"md"',
+        description: "Chat window size",
+      },
+      {
+        name: "showTypingIndicator",
+        type: "boolean",
+        default: "false",
+        description: "Show typing animation",
+      },
+      {
+        name: "typingUser",
+        type: "string",
+        description: "Name of user who is typing",
+      },
+      {
+        name: "placeholder",
+        type: "string",
+        default: '"Type a message..."',
+        description: "Input placeholder",
+      },
     ],
     examples: [
       {
@@ -3635,7 +4399,8 @@ addToast({
   {
     slug: "pixel-countdown",
     title: "Countdown",
-    description: "Countdown timer and stopwatch with flip-clock display, multiple variants, and controls.",
+    description:
+      "Countdown timer and stopwatch with flip-clock display, multiple variants, and controls.",
     category: "Special",
     installation: "",
     importCode: `import { PixelCountdown, PixelTimer } from "@/components/ui/pixel/pixel-countdown"`,
@@ -3650,17 +4415,69 @@ addToast({
 />`,
     componentCode: `/src/components/ui/pixel/pixel-countdown.tsx`,
     props: [
-      { name: "targetDate", type: "Date", description: "Target date for countdown" },
-      { name: "initialSeconds", type: "number", description: "Initial seconds (alternative to targetDate)" },
-      { name: "variant", type: '"default" | "retro" | "digital" | "flip"', default: '"default"', description: "Display style" },
-      { name: "size", type: '"sm" | "md" | "lg" | "xl"', default: '"md"', description: "Countdown size" },
-      { name: "showDays", type: "boolean", default: "true", description: "Show days unit" },
-      { name: "showHours", type: "boolean", default: "true", description: "Show hours unit" },
-      { name: "showMinutes", type: "boolean", default: "true", description: "Show minutes unit" },
-      { name: "showSeconds", type: "boolean", default: "true", description: "Show seconds unit" },
-      { name: "labels", type: "boolean", default: "true", description: "Show unit labels" },
-      { name: "onComplete", type: "() => void", description: "Callback when countdown reaches zero" },
-      { name: "showControls", type: "boolean", default: "true", description: "Show start/pause/reset buttons (PixelTimer only)" },
+      {
+        name: "targetDate",
+        type: "Date",
+        description: "Target date for countdown",
+      },
+      {
+        name: "initialSeconds",
+        type: "number",
+        description: "Initial seconds (alternative to targetDate)",
+      },
+      {
+        name: "variant",
+        type: '"default" | "retro" | "digital" | "flip"',
+        default: '"default"',
+        description: "Display style",
+      },
+      {
+        name: "size",
+        type: '"sm" | "md" | "lg" | "xl"',
+        default: '"md"',
+        description: "Countdown size",
+      },
+      {
+        name: "showDays",
+        type: "boolean",
+        default: "true",
+        description: "Show days unit",
+      },
+      {
+        name: "showHours",
+        type: "boolean",
+        default: "true",
+        description: "Show hours unit",
+      },
+      {
+        name: "showMinutes",
+        type: "boolean",
+        default: "true",
+        description: "Show minutes unit",
+      },
+      {
+        name: "showSeconds",
+        type: "boolean",
+        default: "true",
+        description: "Show seconds unit",
+      },
+      {
+        name: "labels",
+        type: "boolean",
+        default: "true",
+        description: "Show unit labels",
+      },
+      {
+        name: "onComplete",
+        type: "() => void",
+        description: "Callback when countdown reaches zero",
+      },
+      {
+        name: "showControls",
+        type: "boolean",
+        default: "true",
+        description: "Show start/pause/reset buttons (PixelTimer only)",
+      },
     ],
     examples: [
       {
@@ -3706,7 +4523,9 @@ export function getComponentBySlug(slug: string): ComponentDoc | undefined {
   return componentRegistry.find((comp) => comp.slug === slug);
 }
 
-export function getComponentsByCategory(category: ComponentCategory): ComponentDoc[] {
+export function getComponentsByCategory(
+  category: ComponentCategory,
+): ComponentDoc[] {
   return componentRegistry.filter((comp) => comp.category === category);
 }
 

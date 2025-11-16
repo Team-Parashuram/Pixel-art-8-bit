@@ -1,126 +1,389 @@
 "use client";
 
 import { useState } from "react";
-import { PixelButton } from "@/components/ui/pixel/pixel-button";
-import { PixelCard, PixelCardContent, PixelCardDescription, PixelCardHeader, PixelCardTitle, PixelCardFooter } from "@/components/ui/pixel/pixel-card";
-import { PixelInput } from "@/components/ui/pixel/pixel-input";
-import { PixelBadge } from "@/components/ui/pixel/pixel-badge";
-import { PixelCheckbox } from "@/components/ui/pixel/pixel-checkbox";
-import { PixelTabs, PixelTabsContent, PixelTabsList, PixelTabsTrigger } from "@/components/ui/pixel/pixel-tabs";
-import { PixelAccordion, PixelAccordionContent, PixelAccordionItem, PixelAccordionTrigger } from "@/components/ui/pixel/pixel-accordion";
-import { PixelSelect, PixelSelectContent, PixelSelectItem, PixelSelectTrigger, PixelSelectValue } from "@/components/ui/pixel/pixel-select";
-import { PixelSwitch } from "@/components/ui/pixel/pixel-switch";
-import { PixelRadioGroup, PixelRadioGroupItem } from "@/components/ui/pixel/pixel-radio-group";
-import { PixelTextarea } from "@/components/ui/pixel/pixel-textarea";
-import { PixelInputOTP, PixelInputOTPGroup, PixelInputOTPSlot, PixelInputOTPSeparator } from "@/components/ui/pixel/pixel-input-otp";
-import { PixelDropzone } from "@/components/ui/pixel/pixel-dropzone";
-import { PixelInventoryPicker } from "@/components/ui/pixel/pixel-inventory-picker";
-import { PixelSlider } from "@/components/ui/pixel/pixel-slider";
-import { PixelLabel } from "@/components/ui/pixel/pixel-label";
-import { PixelRating } from "@/components/ui/pixel/pixel-rating";
-import { PixelAvatar, PixelAvatarFallback, PixelAvatarImage } from "@/components/ui/pixel/pixel-avatar";
-import { PixelSkeleton } from "@/components/ui/pixel/pixel-skeleton";
-import { PixelTable, PixelTableBody, PixelTableCell, PixelTableHead, PixelTableHeader, PixelTableRow } from "@/components/ui/pixel/pixel-table";
-import { PixelKbd } from "@/components/ui/pixel/pixel-kbd";
-import { PixelEmpty, PixelEmptyDescription, PixelEmptyMedia, PixelEmptyTitle } from "@/components/ui/pixel/pixel-empty";
-import { PixelAlert, PixelAlertDescription, PixelAlertTitle } from "@/components/ui/pixel/pixel-alert";
-import { PixelProgress } from "@/components/ui/pixel/pixel-progress";
-import { PixelSpinner } from "@/components/ui/pixel/pixel-spinner";
-import { PixelBreadcrumb, PixelBreadcrumbItem, PixelBreadcrumbLink, PixelBreadcrumbList, PixelBreadcrumbSeparator } from "@/components/ui/pixel/pixel-breadcrumb";
-import { PixelPagination, PixelPaginationContent, PixelPaginationItem, PixelPaginationLink, PixelPaginationNext, PixelPaginationPrevious } from "@/components/ui/pixel/pixel-pagination";
-import { PixelDialog, PixelDialogContent, PixelDialogDescription, PixelDialogHeader, PixelDialogTitle, PixelDialogTrigger } from "@/components/ui/pixel/pixel-dialog";
-import { PixelAlertDialog, PixelAlertDialogAction, PixelAlertDialogCancel, PixelAlertDialogContent, PixelAlertDialogDescription, PixelAlertDialogFooter, PixelAlertDialogHeader, PixelAlertDialogTitle, PixelAlertDialogTrigger } from "@/components/ui/pixel/pixel-alert-dialog";
-import { PixelPopover, PixelPopoverContent, PixelPopoverTrigger } from "@/components/ui/pixel/pixel-popover";
-import { PixelTooltip, PixelTooltipContent, PixelTooltipProvider, PixelTooltipTrigger } from "@/components/ui/pixel/pixel-tooltip";
-import { PixelDropdownMenu, PixelDropdownMenuContent, PixelDropdownMenuItem, PixelDropdownMenuTrigger } from "@/components/ui/pixel/pixel-dropdown-menu";
-import { PixelContextMenu, PixelContextMenuContent, PixelContextMenuItem, PixelContextMenuTrigger } from "@/components/ui/pixel/pixel-context-menu";
-import { PixelMenubar, PixelMenubarMenu, PixelMenubarTrigger, PixelMenubarContent, PixelMenubarItem, PixelMenubarSeparator } from "@/components/ui/pixel/pixel-menubar";
-import { PixelNavigationMenu, PixelNavigationMenuList, PixelNavigationMenuItem, PixelNavigationMenuTrigger, PixelNavigationMenuContent, PixelNavigationMenuLink } from "@/components/ui/pixel/pixel-navigation-menu";
-import { PixelCommand, PixelCommandInput, PixelCommandList, PixelCommandEmpty, PixelCommandGroup, PixelCommandItem } from "@/components/ui/pixel/pixel-command";
-import { PixelTimelineNavigation, PixelTimelineStep, PixelTimelineSteps } from "@/components/ui/pixel/pixel-timeline-navigation";
-import { PixelSheet, PixelSheetContent, PixelSheetHeader, PixelSheetTitle, PixelSheetTrigger } from "@/components/ui/pixel/pixel-sheet";
-import { PixelDrawer, PixelDrawerTrigger, PixelDrawerContent, PixelDrawerHeader, PixelDrawerTitle, PixelDrawerDescription, PixelDrawerClose } from "@/components/ui/pixel/pixel-drawer";
-import { PixelToastProvider, usePixelToast as useSimpleToast } from "@/components/ui/pixel/pixel-toast";
-import { PixelToaster } from "@/components/ui/pixel/pixel-sonner";
 import { toast } from "sonner";
-import { PixelSeparator } from "@/components/ui/pixel/pixel-separator";
-import { PixelCollapsible, PixelCollapsibleContent, PixelCollapsibleTrigger } from "@/components/ui/pixel/pixel-collapsible";
-import { PixelScrollArea } from "@/components/ui/pixel/pixel-scroll-area";
-import { PixelAspectRatio } from "@/components/ui/pixel/pixel-aspect-ratio";
-import { PixelHoverCard, PixelHoverCardContent, PixelHoverCardTrigger } from "@/components/ui/pixel/pixel-hover-card";
-import { PixelWarningTooltip, PixelWarningTooltipTrigger, PixelWarningTooltipContent, PixelWarningTooltipProvider } from "@/components/ui/pixel/pixel-warning-tooltip";
-import { PixelUndoChipProvider, usePixelUndoChip } from "@/components/ui/pixel/pixel-undo-chip";
-import { PixelAIBubble } from "@/components/ui/pixel/pixel-ai-bubble";
-import { PixelHero, PixelHeroContent, PixelHeroTitle, PixelHeroSubtitle, PixelHeroDescription, PixelHeroActions, PixelHeroBadge } from "@/components/ui/pixel/pixel-hero";
-import { PixelBentoGrid, PixelBentoItem, PixelBentoHeader, PixelBentoTitle, PixelBentoDescription, PixelBentoIcon, PixelBentoContent } from "@/components/ui/pixel/pixel-bento";
-import { PixelFeatures, PixelFeatureItem, PixelFeatureIcon, PixelFeatureTitle, PixelFeatureDescription } from "@/components/ui/pixel/pixel-features";
-import { PixelCta, PixelCtaContent, PixelCtaTitle, PixelCtaDescription, PixelCtaActions, PixelCtaHighlight } from "@/components/ui/pixel/pixel-cta";
-import { PixelPricing, PixelPricingCard, PixelPricingTitle, PixelPricingPrice, PixelPricingPeriod, PixelPricingDescription, PixelPricingFeatures, PixelPricingFeature, PixelPricingActions, PixelPricingBadge } from "@/components/ui/pixel/pixel-pricing";
-import { PixelFooter, PixelFooterGrid, PixelFooterSection, PixelFooterTitle, PixelFooterLinks, PixelFooterLink, PixelFooterDivider, PixelFooterBottom, PixelFooterCopyright, PixelFooterSocial, PixelFooterSocialLink } from "@/components/ui/pixel/pixel-footer";
-import { PixelTestimonials, PixelTestimonialCard, PixelTestimonialQuote, PixelTestimonialAuthor, PixelTestimonialAvatar, PixelTestimonialInfo, PixelTestimonialName, PixelTestimonialRole, PixelTestimonialRating } from "@/components/ui/pixel/pixel-testimonials";
-import { PixelStats, PixelStatItem, PixelStatIcon, PixelStatValue, PixelStatLabel, PixelStatTrend } from "@/components/ui/pixel/pixel-stats";
-import { PixelFaq, PixelFaqList, PixelFaqItem, PixelFaqQuestion, PixelFaqAnswer } from "@/components/ui/pixel/pixel-faq";
-
-// Import special components
-import { PixelLoader } from "@/components/ui/pixel/pixel-loader";
-import { PixelTerminal } from "@/components/ui/pixel/pixel-terminal";
-import { PixelHealthBar, PixelManaBar, PixelXPBar, PixelInventory, PixelInventorySlot, PixelAchievement, PixelDamageNumber } from "@/components/ui/pixel/pixel-game-ui";
-import { PixelWindow, PixelWindowMenuBar, PixelWindowContent } from "@/components/ui/pixel/pixel-window";
-import { PixelAudioVisualizer } from "@/components/ui/pixel/pixel-audio-visualizer";
-import { PixelCodeBlock, PixelCode } from "@/components/ui/pixel/pixel-code-block";
-import { PixelTimeline, PixelTimelineCheckpoint } from "@/components/ui/pixel/pixel-timeline";
-import { PixelNotification, usePixelToast } from "@/components/ui/pixel/pixel-notification";
-import { PixelChat, PixelMessageBubble } from "@/components/ui/pixel/pixel-chat";
-import { PixelCountdown, PixelTimer } from "@/components/ui/pixel/pixel-countdown";
-
+import { PixelAurora } from "@/components/ui/pixel/animations/pixel-aurora";
+import PixelBlobCursor from "@/components/ui/pixel/animations/pixel-blob-cursor";
 // Import animation components
 import { PixelBlurText } from "@/components/ui/pixel/animations/pixel-blur-text";
+import { PixelBounceCards } from "@/components/ui/pixel/animations/pixel-bounce-cards";
+import { PixelCircularText } from "@/components/ui/pixel/animations/pixel-circular-text";
+import { PixelCountUp } from "@/components/ui/pixel/animations/pixel-count-up";
+import { PixelDecayCard } from "@/components/ui/pixel/animations/pixel-decay-card";
+import { PixelDotGrid } from "@/components/ui/pixel/animations/pixel-dot-grid";
+import { PixelGalaxy } from "@/components/ui/pixel/animations/pixel-galaxy";
+import { PixelGlareCard } from "@/components/ui/pixel/animations/pixel-glare-card";
 import { PixelGlitchText } from "@/components/ui/pixel/animations/pixel-glitch-text";
 import { PixelGradientText } from "@/components/ui/pixel/animations/pixel-gradient-text";
-import { PixelShinyText } from "@/components/ui/pixel/animations/pixel-shiny-text";
-import { PixelCountUp } from "@/components/ui/pixel/animations/pixel-count-up";
-import { PixelCircularText } from "@/components/ui/pixel/animations/pixel-circular-text";
-import { PixelSpotlightCard } from "@/components/ui/pixel/animations/pixel-spotlight-card";
-import { PixelGlareCard } from "@/components/ui/pixel/animations/pixel-glare-card";
-import { PixelSplitText } from "@/components/ui/pixel/animations/pixel-split-text";
-import { PixelRotatingText } from "@/components/ui/pixel/animations/pixel-rotating-text";
+import { PixelGridMotion } from "@/components/ui/pixel/animations/pixel-grid-motion";
+import { PixelImageTrail } from "@/components/ui/pixel/animations/pixel-image-trail";
 import { PixelLetterGlitch } from "@/components/ui/pixel/animations/pixel-letter-glitch";
-import { PixelShuffleText } from "@/components/ui/pixel/animations/pixel-shuffle-text";
-import { PixelTextPressure } from "@/components/ui/pixel/animations/pixel-text-pressure";
-import { PixelTrueFocus } from "@/components/ui/pixel/animations/pixel-true-focus";
-import { PixelTiltedCard } from "@/components/ui/pixel/animations/pixel-tilted-card";
-import { PixelDecayCard } from "@/components/ui/pixel/animations/pixel-decay-card";
-import { PixelStickerPeel } from "@/components/ui/pixel/animations/pixel-sticker-peel";
-import { PixelBounceCards } from "@/components/ui/pixel/animations/pixel-bounce-cards";
-import { PixelDotGrid } from "@/components/ui/pixel/animations/pixel-dot-grid";
-import { PixelSquares } from "@/components/ui/pixel/animations/pixel-squares";
-import { PixelWaves } from "@/components/ui/pixel/animations/pixel-waves";
-import { PixelRibbons } from "@/components/ui/pixel/animations/pixel-ribbons";
 import { PixelMetaBalls } from "@/components/ui/pixel/animations/pixel-meta-balls";
 import { PixelPlasma } from "@/components/ui/pixel/animations/pixel-plasma";
-import { PixelGridMotion } from "@/components/ui/pixel/animations/pixel-grid-motion";
-import { PixelAurora } from "@/components/ui/pixel/animations/pixel-aurora";
-import { PixelGalaxy } from "@/components/ui/pixel/animations/pixel-galaxy";
+import { PixelRibbons } from "@/components/ui/pixel/animations/pixel-ribbons";
 import { PixelRippleGrid } from "@/components/ui/pixel/animations/pixel-ripple-grid";
-import PixelBlobCursor from "@/components/ui/pixel/animations/pixel-blob-cursor";
+import { PixelRotatingText } from "@/components/ui/pixel/animations/pixel-rotating-text";
+import { PixelShinyText } from "@/components/ui/pixel/animations/pixel-shiny-text";
+import { PixelShuffleText } from "@/components/ui/pixel/animations/pixel-shuffle-text";
 import PixelSplashCursor from "@/components/ui/pixel/animations/pixel-splash-cursor";
+import { PixelSplitText } from "@/components/ui/pixel/animations/pixel-split-text";
+import { PixelSpotlightCard } from "@/components/ui/pixel/animations/pixel-spotlight-card";
+import { PixelSquares } from "@/components/ui/pixel/animations/pixel-squares";
+import { PixelStickerPeel } from "@/components/ui/pixel/animations/pixel-sticker-peel";
 import PixelTargetCursor from "@/components/ui/pixel/animations/pixel-target-cursor";
+import { PixelTextPressure } from "@/components/ui/pixel/animations/pixel-text-pressure";
+import { PixelTiltedCard } from "@/components/ui/pixel/animations/pixel-tilted-card";
 import PixelTrail from "@/components/ui/pixel/animations/pixel-trail";
-import { PixelImageTrail } from "@/components/ui/pixel/animations/pixel-image-trail";
+import { PixelTrueFocus } from "@/components/ui/pixel/animations/pixel-true-focus";
+import { PixelWaves } from "@/components/ui/pixel/animations/pixel-waves";
+import {
+  PixelAccordion,
+  PixelAccordionContent,
+  PixelAccordionItem,
+  PixelAccordionTrigger,
+} from "@/components/ui/pixel/pixel-accordion";
+import { PixelAIBubble } from "@/components/ui/pixel/pixel-ai-bubble";
+import {
+  PixelAlert,
+  PixelAlertDescription,
+  PixelAlertTitle,
+} from "@/components/ui/pixel/pixel-alert";
+import {
+  PixelAlertDialog,
+  PixelAlertDialogAction,
+  PixelAlertDialogCancel,
+  PixelAlertDialogContent,
+  PixelAlertDialogDescription,
+  PixelAlertDialogFooter,
+  PixelAlertDialogHeader,
+  PixelAlertDialogTitle,
+  PixelAlertDialogTrigger,
+} from "@/components/ui/pixel/pixel-alert-dialog";
+import { PixelAspectRatio } from "@/components/ui/pixel/pixel-aspect-ratio";
+import { PixelAudioVisualizer } from "@/components/ui/pixel/pixel-audio-visualizer";
+import {
+  PixelAvatar,
+  PixelAvatarFallback,
+  PixelAvatarImage,
+} from "@/components/ui/pixel/pixel-avatar";
+import { PixelBadge } from "@/components/ui/pixel/pixel-badge";
+import {
+  PixelBentoContent,
+  PixelBentoDescription,
+  PixelBentoGrid,
+  PixelBentoHeader,
+  PixelBentoIcon,
+  PixelBentoItem,
+  PixelBentoTitle,
+} from "@/components/ui/pixel/pixel-bento";
+import {
+  PixelBreadcrumb,
+  PixelBreadcrumbItem,
+  PixelBreadcrumbLink,
+  PixelBreadcrumbList,
+  PixelBreadcrumbSeparator,
+} from "@/components/ui/pixel/pixel-breadcrumb";
+import { PixelButton } from "@/components/ui/pixel/pixel-button";
+import {
+  PixelCard,
+  PixelCardContent,
+  PixelCardDescription,
+  PixelCardFooter,
+  PixelCardHeader,
+  PixelCardTitle,
+} from "@/components/ui/pixel/pixel-card";
+import {
+  PixelChat,
+  PixelMessageBubble,
+} from "@/components/ui/pixel/pixel-chat";
+import { PixelCheckbox } from "@/components/ui/pixel/pixel-checkbox";
+import {
+  PixelCode,
+  PixelCodeBlock,
+} from "@/components/ui/pixel/pixel-code-block";
+import {
+  PixelCollapsible,
+  PixelCollapsibleContent,
+  PixelCollapsibleTrigger,
+} from "@/components/ui/pixel/pixel-collapsible";
+import {
+  PixelCommand,
+  PixelCommandEmpty,
+  PixelCommandGroup,
+  PixelCommandInput,
+  PixelCommandItem,
+  PixelCommandList,
+} from "@/components/ui/pixel/pixel-command";
+import {
+  PixelContextMenu,
+  PixelContextMenuContent,
+  PixelContextMenuItem,
+  PixelContextMenuTrigger,
+} from "@/components/ui/pixel/pixel-context-menu";
+import {
+  PixelCountdown,
+  PixelTimer,
+} from "@/components/ui/pixel/pixel-countdown";
+import {
+  PixelCta,
+  PixelCtaActions,
+  PixelCtaContent,
+  PixelCtaDescription,
+  PixelCtaHighlight,
+  PixelCtaTitle,
+} from "@/components/ui/pixel/pixel-cta";
+import {
+  PixelDialog,
+  PixelDialogContent,
+  PixelDialogDescription,
+  PixelDialogHeader,
+  PixelDialogTitle,
+  PixelDialogTrigger,
+} from "@/components/ui/pixel/pixel-dialog";
+import {
+  PixelDrawer,
+  PixelDrawerClose,
+  PixelDrawerContent,
+  PixelDrawerDescription,
+  PixelDrawerHeader,
+  PixelDrawerTitle,
+  PixelDrawerTrigger,
+} from "@/components/ui/pixel/pixel-drawer";
+import {
+  PixelDropdownMenu,
+  PixelDropdownMenuContent,
+  PixelDropdownMenuItem,
+  PixelDropdownMenuTrigger,
+} from "@/components/ui/pixel/pixel-dropdown-menu";
+import { PixelDropzone } from "@/components/ui/pixel/pixel-dropzone";
+import {
+  PixelEmpty,
+  PixelEmptyDescription,
+  PixelEmptyMedia,
+  PixelEmptyTitle,
+} from "@/components/ui/pixel/pixel-empty";
+import {
+  PixelFaq,
+  PixelFaqAnswer,
+  PixelFaqItem,
+  PixelFaqList,
+  PixelFaqQuestion,
+} from "@/components/ui/pixel/pixel-faq";
+import {
+  PixelFeatureDescription,
+  PixelFeatureIcon,
+  PixelFeatureItem,
+  PixelFeatures,
+  PixelFeatureTitle,
+} from "@/components/ui/pixel/pixel-features";
+import {
+  PixelFooter,
+  PixelFooterBottom,
+  PixelFooterCopyright,
+  PixelFooterDivider,
+  PixelFooterGrid,
+  PixelFooterLink,
+  PixelFooterLinks,
+  PixelFooterSection,
+  PixelFooterSocial,
+  PixelFooterSocialLink,
+  PixelFooterTitle,
+} from "@/components/ui/pixel/pixel-footer";
+import {
+  PixelAchievement,
+  PixelDamageNumber,
+  PixelHealthBar,
+  PixelInventory,
+  PixelInventorySlot,
+  PixelManaBar,
+  PixelXPBar,
+} from "@/components/ui/pixel/pixel-game-ui";
+import {
+  PixelHero,
+  PixelHeroActions,
+  PixelHeroBadge,
+  PixelHeroContent,
+  PixelHeroDescription,
+  PixelHeroSubtitle,
+  PixelHeroTitle,
+} from "@/components/ui/pixel/pixel-hero";
+import {
+  PixelHoverCard,
+  PixelHoverCardContent,
+  PixelHoverCardTrigger,
+} from "@/components/ui/pixel/pixel-hover-card";
+import { PixelInput } from "@/components/ui/pixel/pixel-input";
+import {
+  PixelInputOTP,
+  PixelInputOTPGroup,
+  PixelInputOTPSeparator,
+  PixelInputOTPSlot,
+} from "@/components/ui/pixel/pixel-input-otp";
+import { PixelInventoryPicker } from "@/components/ui/pixel/pixel-inventory-picker";
+import { PixelKbd } from "@/components/ui/pixel/pixel-kbd";
+import { PixelLabel } from "@/components/ui/pixel/pixel-label";
+// Import special components
+import { PixelLoader } from "@/components/ui/pixel/pixel-loader";
+import {
+  PixelMenubar,
+  PixelMenubarContent,
+  PixelMenubarItem,
+  PixelMenubarMenu,
+  PixelMenubarSeparator,
+  PixelMenubarTrigger,
+} from "@/components/ui/pixel/pixel-menubar";
+import {
+  PixelNavigationMenu,
+  PixelNavigationMenuContent,
+  PixelNavigationMenuItem,
+  PixelNavigationMenuLink,
+  PixelNavigationMenuList,
+  PixelNavigationMenuTrigger,
+} from "@/components/ui/pixel/pixel-navigation-menu";
+import {
+  PixelNotification,
+  usePixelToast,
+} from "@/components/ui/pixel/pixel-notification";
+import {
+  PixelPagination,
+  PixelPaginationContent,
+  PixelPaginationItem,
+  PixelPaginationLink,
+  PixelPaginationNext,
+  PixelPaginationPrevious,
+} from "@/components/ui/pixel/pixel-pagination";
 import { PixelParallaxHero } from "@/components/ui/pixel/pixel-parallax-hero";
+import {
+  PixelPopover,
+  PixelPopoverContent,
+  PixelPopoverTrigger,
+} from "@/components/ui/pixel/pixel-popover";
+import {
+  PixelPricing,
+  PixelPricingActions,
+  PixelPricingBadge,
+  PixelPricingCard,
+  PixelPricingDescription,
+  PixelPricingFeature,
+  PixelPricingFeatures,
+  PixelPricingPeriod,
+  PixelPricingPrice,
+  PixelPricingTitle,
+} from "@/components/ui/pixel/pixel-pricing";
+import { PixelProgress } from "@/components/ui/pixel/pixel-progress";
+import {
+  PixelRadioGroup,
+  PixelRadioGroupItem,
+} from "@/components/ui/pixel/pixel-radio-group";
+import { PixelRating } from "@/components/ui/pixel/pixel-rating";
+import { PixelScrollArea } from "@/components/ui/pixel/pixel-scroll-area";
+import {
+  PixelSelect,
+  PixelSelectContent,
+  PixelSelectItem,
+  PixelSelectTrigger,
+  PixelSelectValue,
+} from "@/components/ui/pixel/pixel-select";
+import { PixelSeparator } from "@/components/ui/pixel/pixel-separator";
+import {
+  PixelSheet,
+  PixelSheetContent,
+  PixelSheetHeader,
+  PixelSheetTitle,
+  PixelSheetTrigger,
+} from "@/components/ui/pixel/pixel-sheet";
+import { PixelSkeleton } from "@/components/ui/pixel/pixel-skeleton";
+import { PixelSlider } from "@/components/ui/pixel/pixel-slider";
+import { PixelToaster } from "@/components/ui/pixel/pixel-sonner";
+import { PixelSpinner } from "@/components/ui/pixel/pixel-spinner";
+import {
+  PixelStatIcon,
+  PixelStatItem,
+  PixelStatLabel,
+  PixelStats,
+  PixelStatTrend,
+  PixelStatValue,
+} from "@/components/ui/pixel/pixel-stats";
+import { PixelSwitch } from "@/components/ui/pixel/pixel-switch";
+import {
+  PixelTable,
+  PixelTableBody,
+  PixelTableCell,
+  PixelTableHead,
+  PixelTableHeader,
+  PixelTableRow,
+} from "@/components/ui/pixel/pixel-table";
+import {
+  PixelTabs,
+  PixelTabsContent,
+  PixelTabsList,
+  PixelTabsTrigger,
+} from "@/components/ui/pixel/pixel-tabs";
+import { PixelTerminal } from "@/components/ui/pixel/pixel-terminal";
+import {
+  PixelTestimonialAuthor,
+  PixelTestimonialAvatar,
+  PixelTestimonialCard,
+  PixelTestimonialInfo,
+  PixelTestimonialName,
+  PixelTestimonialQuote,
+  PixelTestimonialRating,
+  PixelTestimonialRole,
+  PixelTestimonials,
+} from "@/components/ui/pixel/pixel-testimonials";
+import { PixelTextarea } from "@/components/ui/pixel/pixel-textarea";
+import {
+  PixelTimeline,
+  PixelTimelineCheckpoint,
+} from "@/components/ui/pixel/pixel-timeline";
+import {
+  PixelTimelineNavigation,
+  PixelTimelineStep,
+  PixelTimelineSteps,
+} from "@/components/ui/pixel/pixel-timeline-navigation";
+import {
+  PixelToastProvider,
+  usePixelToast as useSimpleToast,
+} from "@/components/ui/pixel/pixel-toast";
+import {
+  PixelTooltip,
+  PixelTooltipContent,
+  PixelTooltipProvider,
+  PixelTooltipTrigger,
+} from "@/components/ui/pixel/pixel-tooltip";
+import {
+  PixelUndoChipProvider,
+  usePixelUndoChip,
+} from "@/components/ui/pixel/pixel-undo-chip";
+import {
+  PixelWarningTooltip,
+  PixelWarningTooltipContent,
+  PixelWarningTooltipProvider,
+  PixelWarningTooltipTrigger,
+} from "@/components/ui/pixel/pixel-warning-tooltip";
+import {
+  PixelWindow,
+  PixelWindowContent,
+  PixelWindowMenuBar,
+} from "@/components/ui/pixel/pixel-window";
 
 // Helper component for Toast demo
 function ToastDemo() {
   const { addToast } = useSimpleToast();
-  
+
   return (
     <div className="flex gap-4 flex-wrap">
       <PixelButton onClick={() => addToast("This is a toast notification!")}>
         Show Toast
       </PixelButton>
-      <PixelButton 
+      <PixelButton
         variant="secondary"
-        onClick={() => addToast("Success!", { label: "Undo", onClick: () => console.log("Undo clicked") })}
+        onClick={() =>
+          addToast("Success!", {
+            label: "Undo",
+            onClick: () => console.log("Undo clicked"),
+          })
+        }
       >
         Toast with Action
       </PixelButton>
@@ -144,7 +407,10 @@ function SonnerDemo() {
       <PixelButton onClick={() => toast.success("Success message!")}>
         Success Toast
       </PixelButton>
-      <PixelButton variant="secondary" onClick={() => toast.error("Error message!")}>
+      <PixelButton
+        variant="secondary"
+        onClick={() => toast.error("Error message!")}
+      >
         Error Toast
       </PixelButton>
       <PixelButton onClick={() => toast("Default message")}>
@@ -160,34 +426,40 @@ function SonnerDemo() {
 // Helper component for Undo Chip demo
 function UndoChipDemo() {
   const { showUndoChip } = usePixelUndoChip();
-  
+
   return (
     <div className="flex gap-4 flex-wrap">
-      <PixelButton 
-        onClick={() => showUndoChip("Item deleted", {
-          onUndo: () => console.log("Undo delete"),
-          variant: "default"
-        })}
+      <PixelButton
+        onClick={() =>
+          showUndoChip("Item deleted", {
+            onUndo: () => console.log("Undo delete"),
+            variant: "default",
+          })
+        }
       >
         Delete Item
       </PixelButton>
-      
-      <PixelButton 
+
+      <PixelButton
         variant="secondary"
-        onClick={() => showUndoChip("Message sent", {
-          onUndo: () => console.log("Undo send"),
-          variant: "info"
-        })}
+        onClick={() =>
+          showUndoChip("Message sent", {
+            onUndo: () => console.log("Undo send"),
+            variant: "info",
+          })
+        }
       >
         Send Message
       </PixelButton>
-      
-      <PixelButton 
-        onClick={() => showUndoChip("Changes saved", {
-          onUndo: () => console.log("Undo changes"),
-          variant: "default",
-          duration: 8000
-        })}
+
+      <PixelButton
+        onClick={() =>
+          showUndoChip("Changes saved", {
+            onUndo: () => console.log("Undo changes"),
+            variant: "default",
+            duration: 8000,
+          })
+        }
       >
         Save Changes
       </PixelButton>
@@ -214,12 +486,36 @@ export function ComponentPreview({ slug }: { slug: string }) {
   const [dropzoneFiles, setDropzoneFiles] = useState<File[]>([]);
   const [inventorySelection, setInventorySelection] = useState<string[]>([]);
   const inventoryItems = [
-    { id: "blade", label: "Blade", icon: "🗡️", quantity: 1, rarity: "common" as const },
-    { id: "shield", label: "Shield", icon: "🛡️", quantity: 1, rarity: "rare" as const },
-    { id: "potion", label: "Potion", icon: "🧪", quantity: 3, rarity: "epic" as const },
-    { id: "orb", label: "Orb", icon: "🔮", quantity: 1, rarity: "legendary" as const },
+    {
+      id: "blade",
+      label: "Blade",
+      icon: "🗡️",
+      quantity: 1,
+      rarity: "common" as const,
+    },
+    {
+      id: "shield",
+      label: "Shield",
+      icon: "🛡️",
+      quantity: 1,
+      rarity: "rare" as const,
+    },
+    {
+      id: "potion",
+      label: "Potion",
+      icon: "🧪",
+      quantity: 3,
+      rarity: "epic" as const,
+    },
+    {
+      id: "orb",
+      label: "Orb",
+      icon: "🔮",
+      quantity: 1,
+      rarity: "legendary" as const,
+    },
   ];
-  
+
   switch (slug) {
     case "pixel-button":
       return (
@@ -230,13 +526,15 @@ export function ComponentPreview({ slug }: { slug: string }) {
           <PixelButton variant="destructive">Destructive</PixelButton>
         </div>
       );
-    
+
     case "pixel-card":
       return (
         <PixelCard className="w-[350px]">
           <PixelCardHeader>
             <PixelCardTitle>Card Title</PixelCardTitle>
-            <PixelCardDescription>Card description goes here</PixelCardDescription>
+            <PixelCardDescription>
+              Card description goes here
+            </PixelCardDescription>
           </PixelCardHeader>
           <PixelCardContent>
             <p>This is the card content area.</p>
@@ -246,10 +544,10 @@ export function ComponentPreview({ slug }: { slug: string }) {
           </PixelCardFooter>
         </PixelCard>
       );
-    
+
     case "pixel-input":
       return <PixelInput placeholder="Enter text..." className="max-w-sm" />;
-    
+
     case "pixel-input-otp": {
       const hasError = otpValue.length > 0 && otpValue.length < 6;
       return (
@@ -258,7 +556,11 @@ export function ComponentPreview({ slug }: { slug: string }) {
           onChange={setOtpValue}
           maxLength={6}
           label="Verification Code"
-          helperText={hasError ? "Enter all 6 digits" : "Type the 6-digit code we sent you"}
+          helperText={
+            hasError
+              ? "Enter all 6 digits"
+              : "Type the 6-digit code we sent you"
+          }
           hasError={hasError}
           render={({ slots }) => (
             <PixelInputOTPGroup className="gap-3">
@@ -282,7 +584,11 @@ export function ComponentPreview({ slug }: { slug: string }) {
       return (
         <PixelDropzone
           label="Upload Assets"
-          description={<p className="text-xs text-black/70 dark:text-white/70">Drop sprites or click to browse</p>}
+          description={
+            <p className="text-xs text-black/70 dark:text-white/70">
+              Drop sprites or click to browse
+            </p>
+          }
           helperText={helper}
           hasError={dropzoneFiles.length >= 4}
           maxFiles={4}
@@ -308,7 +614,7 @@ export function ComponentPreview({ slug }: { slug: string }) {
         />
       );
     }
-    
+
     case "pixel-badge":
       return (
         <div className="flex gap-2 flex-wrap">
@@ -318,15 +624,19 @@ export function ComponentPreview({ slug }: { slug: string }) {
           <PixelBadge variant="error">Error</PixelBadge>
         </div>
       );
-    
+
     case "pixel-checkbox":
       return (
         <div className="flex items-center space-x-2">
-          <PixelCheckbox id="preview" checked={checked} onCheckedChange={(c) => setChecked(c as boolean)} />
+          <PixelCheckbox
+            id="preview"
+            checked={checked}
+            onCheckedChange={(c) => setChecked(c as boolean)}
+          />
           <PixelLabel htmlFor="preview">Accept terms and conditions</PixelLabel>
         </div>
       );
-    
+
     case "pixel-select":
       return (
         <PixelSelect value={selectValue} onValueChange={setSelectValue}>
@@ -340,7 +650,7 @@ export function ComponentPreview({ slug }: { slug: string }) {
           </PixelSelectContent>
         </PixelSelect>
       );
-    
+
     case "pixel-tabs":
       return (
         <PixelTabs defaultValue="tab1" className="w-[400px]">
@@ -352,20 +662,24 @@ export function ComponentPreview({ slug }: { slug: string }) {
           <PixelTabsContent value="tab2">Content for tab 2</PixelTabsContent>
         </PixelTabs>
       );
-    
+
     case "pixel-hero":
       return (
         <PixelHero variant="default" size="md" className="w-full">
           <PixelHeroContent>
             <PixelHeroBadge>🎮 New Release</PixelHeroBadge>
             <PixelHeroTitle size="md">Pixel UI</PixelHeroTitle>
-            <PixelHeroSubtitle size="sm">8-Bit Retro Components</PixelHeroSubtitle>
+            <PixelHeroSubtitle size="sm">
+              8-Bit Retro Components
+            </PixelHeroSubtitle>
             <PixelHeroDescription>
               Build nostalgic web experiences with pixel-perfect components
             </PixelHeroDescription>
             <PixelHeroActions>
               <PixelButton size="sm">Get Started</PixelButton>
-              <PixelButton size="sm" variant="ghost">Learn More</PixelButton>
+              <PixelButton size="sm" variant="ghost">
+                Learn More
+              </PixelButton>
             </PixelHeroActions>
           </PixelHeroContent>
         </PixelHero>
@@ -379,7 +693,11 @@ export function ComponentPreview({ slug }: { slug: string }) {
           title="Parallax Hero"
           description="Layered panels glide with your cursor to create true 8-bit immersion."
           primaryAction={{ label: "Explore", href: "/docs/components" }}
-          secondaryAction={{ label: "GitHub", href: "https://github.com/Team-Parashuram/Pixel-art-8-bit", variant: "ghost" }}
+          secondaryAction={{
+            label: "GitHub",
+            href: "https://github.com/Team-Parashuram/Pixel-art-8-bit",
+            variant: "ghost",
+          }}
           stats={[
             { label: "Layers", value: "4" },
             { label: "FPS", value: "60" },
@@ -387,7 +705,7 @@ export function ComponentPreview({ slug }: { slug: string }) {
           ]}
         />
       );
-    
+
     case "pixel-bento":
       return (
         <PixelBentoGrid columns={3} className="w-full">
@@ -398,7 +716,9 @@ export function ComponentPreview({ slug }: { slug: string }) {
               <PixelBentoDescription>Main content area</PixelBentoDescription>
             </PixelBentoHeader>
             <PixelBentoContent>
-              <p className="text-sm">Large featured section with 2-column span</p>
+              <p className="text-sm">
+                Large featured section with 2-column span
+              </p>
             </PixelBentoContent>
           </PixelBentoItem>
           <PixelBentoItem variant="secondary">
@@ -419,7 +739,7 @@ export function ComponentPreview({ slug }: { slug: string }) {
           </PixelBentoItem>
         </PixelBentoGrid>
       );
-    
+
     case "pixel-features":
       return (
         <PixelFeatures columns={3} gap="lg" className="w-full">
@@ -446,7 +766,7 @@ export function ComponentPreview({ slug }: { slug: string }) {
           </PixelFeatureItem>
         </PixelFeatures>
       );
-    
+
     case "pixel-cta":
       return (
         <PixelCta variant="primary" size="md" className="w-full">
@@ -457,12 +777,14 @@ export function ComponentPreview({ slug }: { slug: string }) {
             </PixelCtaDescription>
             <PixelCtaActions>
               <PixelButton size="lg">Start Building</PixelButton>
-              <PixelButton variant="ghost" size="lg">Learn More</PixelButton>
+              <PixelButton variant="ghost" size="lg">
+                Learn More
+              </PixelButton>
             </PixelCtaActions>
           </PixelCtaContent>
         </PixelCta>
       );
-    
+
     case "pixel-accordion":
       return (
         <PixelAccordion type="single" collapsible className="w-full">
@@ -476,15 +798,19 @@ export function ComponentPreview({ slug }: { slug: string }) {
           </PixelAccordionItem>
         </PixelAccordion>
       );
-    
+
     case "pixel-switch":
       return (
         <div className="flex items-center space-x-2">
-          <PixelSwitch id="switch" checked={switchValue} onCheckedChange={setSwitchValue} />
+          <PixelSwitch
+            id="switch"
+            checked={switchValue}
+            onCheckedChange={setSwitchValue}
+          />
           <PixelLabel htmlFor="switch">Airplane Mode</PixelLabel>
         </div>
       );
-    
+
     case "pixel-radio-group":
       return (
         <PixelRadioGroup value={radioValue} onValueChange={setRadioValue}>
@@ -498,26 +824,36 @@ export function ComponentPreview({ slug }: { slug: string }) {
           </div>
         </PixelRadioGroup>
       );
-    
+
     case "pixel-textarea":
-      return <PixelTextarea placeholder="Type your message..." className="max-w-sm" />;
-    
+      return (
+        <PixelTextarea
+          placeholder="Type your message..."
+          className="max-w-sm"
+        />
+      );
+
     case "pixel-slider":
       return (
         <div className="w-[300px]">
-          <PixelSlider value={sliderValue} onValueChange={setSliderValue} max={100} step={1} />
+          <PixelSlider
+            value={sliderValue}
+            onValueChange={setSliderValue}
+            max={100}
+            step={1}
+          />
         </div>
       );
-    
+
     case "pixel-label":
       return <PixelLabel>This is a label</PixelLabel>;
-    
-    case "pixel-rating":
+
+    case "pixel-rating": {
       const [rating, setRating] = useState(3);
       return (
         <div className="space-y-4">
-          <PixelRating 
-            value={rating} 
+          <PixelRating
+            value={rating}
             onRatingChange={setRating}
             variant="gold"
             size="lg"
@@ -525,7 +861,8 @@ export function ComponentPreview({ slug }: { slug: string }) {
           <p className="text-sm">Current rating: {rating} stars</p>
         </div>
       );
-    
+    }
+
     case "pixel-avatar":
       return (
         <div className="flex gap-4">
@@ -538,7 +875,7 @@ export function ComponentPreview({ slug }: { slug: string }) {
           </PixelAvatar>
         </div>
       );
-    
+
     case "pixel-skeleton":
       return (
         <div className="space-y-2">
@@ -547,7 +884,7 @@ export function ComponentPreview({ slug }: { slug: string }) {
           <PixelSkeleton className="w-1/2 h-12" />
         </div>
       );
-    
+
     case "pixel-table":
       return (
         <PixelTable>
@@ -569,7 +906,7 @@ export function ComponentPreview({ slug }: { slug: string }) {
           </PixelTableBody>
         </PixelTable>
       );
-    
+
     case "pixel-kbd":
       return (
         <div className="flex gap-2 items-center">
@@ -580,32 +917,49 @@ export function ComponentPreview({ slug }: { slug: string }) {
           <span>to copy</span>
         </div>
       );
-    
+
     case "pixel-empty":
       return (
         <PixelEmpty>
           <PixelEmptyMedia variant="icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <circle cx="12" cy="12" r="10" />
+              <path d="M12 6v6l4 2" />
+            </svg>
           </PixelEmptyMedia>
           <PixelEmptyTitle>No items found</PixelEmptyTitle>
-          <PixelEmptyDescription>Get started by creating a new item</PixelEmptyDescription>
+          <PixelEmptyDescription>
+            Get started by creating a new item
+          </PixelEmptyDescription>
         </PixelEmpty>
       );
-    
+
     case "pixel-alert":
       return (
         <PixelAlert>
           <PixelAlertTitle>Heads up!</PixelAlertTitle>
-          <PixelAlertDescription>This is an alert message with important information.</PixelAlertDescription>
+          <PixelAlertDescription>
+            This is an alert message with important information.
+          </PixelAlertDescription>
         </PixelAlert>
       );
-    
+
     case "pixel-progress":
       return <PixelProgress value={60} className="w-[300px]" />;
-    
+
     case "pixel-spinner":
       return <PixelSpinner />;
-    
+
     case "pixel-warning-tooltip":
       return (
         <PixelWarningTooltipProvider>
@@ -650,21 +1004,27 @@ export function ComponentPreview({ slug }: { slug: string }) {
           </div>
         </PixelWarningTooltipProvider>
       );
-    
+
     case "pixel-undo-chip":
       return <UndoChipDemoWrapper />;
-    
+
     case "pixel-ai-bubble":
       return (
         <div className="flex flex-col gap-4">
           <PixelAIBubble variant="thinking" message="I'm thinking..." />
           <PixelAIBubble variant="typing" animate={true} />
-          <PixelAIBubble variant="processing" message="Analyzing your request..." />
+          <PixelAIBubble
+            variant="processing"
+            message="Analyzing your request..."
+          />
           <PixelAIBubble variant="ready" message="Answer ready!" />
-          <PixelAIBubble variant="error" message="Failed to generate response" />
+          <PixelAIBubble
+            variant="error"
+            message="Failed to generate response"
+          />
         </div>
       );
-    
+
     case "pixel-breadcrumb":
       return (
         <PixelBreadcrumb>
@@ -683,7 +1043,7 @@ export function ComponentPreview({ slug }: { slug: string }) {
           </PixelBreadcrumbList>
         </PixelBreadcrumb>
       );
-    
+
     case "pixel-pagination":
       return (
         <PixelPagination>
@@ -706,7 +1066,7 @@ export function ComponentPreview({ slug }: { slug: string }) {
           </PixelPaginationContent>
         </PixelPagination>
       );
-    
+
     case "pixel-dialog":
       return (
         <PixelDialog>
@@ -716,13 +1076,15 @@ export function ComponentPreview({ slug }: { slug: string }) {
           <PixelDialogContent>
             <PixelDialogHeader>
               <PixelDialogTitle>Dialog Title</PixelDialogTitle>
-              <PixelDialogDescription>This is a dialog description</PixelDialogDescription>
+              <PixelDialogDescription>
+                This is a dialog description
+              </PixelDialogDescription>
             </PixelDialogHeader>
             <p>Dialog content goes here.</p>
           </PixelDialogContent>
         </PixelDialog>
       );
-    
+
     case "pixel-alert-dialog":
       return (
         <PixelAlertDialog>
@@ -743,7 +1105,7 @@ export function ComponentPreview({ slug }: { slug: string }) {
           </PixelAlertDialogContent>
         </PixelAlertDialog>
       );
-    
+
     case "pixel-popover":
       return (
         <PixelPopover>
@@ -755,7 +1117,7 @@ export function ComponentPreview({ slug }: { slug: string }) {
           </PixelPopoverContent>
         </PixelPopover>
       );
-    
+
     case "pixel-tooltip":
       return (
         <PixelTooltipProvider>
@@ -769,7 +1131,7 @@ export function ComponentPreview({ slug }: { slug: string }) {
           </PixelTooltip>
         </PixelTooltipProvider>
       );
-    
+
     case "pixel-dropdown-menu":
       return (
         <PixelDropdownMenu>
@@ -783,7 +1145,7 @@ export function ComponentPreview({ slug }: { slug: string }) {
           </PixelDropdownMenuContent>
         </PixelDropdownMenu>
       );
-    
+
     case "pixel-context-menu":
       return (
         <PixelContextMenu>
@@ -799,7 +1161,7 @@ export function ComponentPreview({ slug }: { slug: string }) {
           </PixelContextMenuContent>
         </PixelContextMenu>
       );
-    
+
     case "pixel-menubar":
       return (
         <PixelMenubar>
@@ -834,7 +1196,7 @@ export function ComponentPreview({ slug }: { slug: string }) {
           </PixelMenubarMenu>
         </PixelMenubar>
       );
-    
+
     case "pixel-navigation-menu":
       return (
         <PixelNavigationMenu>
@@ -843,8 +1205,16 @@ export function ComponentPreview({ slug }: { slug: string }) {
               <PixelNavigationMenuTrigger>Menu</PixelNavigationMenuTrigger>
               <PixelNavigationMenuContent>
                 <ul className="grid gap-3 p-4 w-[300px]">
-                  <li><PixelNavigationMenuLink href="#" className="block p-2">Item 1</PixelNavigationMenuLink></li>
-                  <li><PixelNavigationMenuLink href="#" className="block p-2">Item 2</PixelNavigationMenuLink></li>
+                  <li>
+                    <PixelNavigationMenuLink href="#" className="block p-2">
+                      Item 1
+                    </PixelNavigationMenuLink>
+                  </li>
+                  <li>
+                    <PixelNavigationMenuLink href="#" className="block p-2">
+                      Item 2
+                    </PixelNavigationMenuLink>
+                  </li>
                 </ul>
               </PixelNavigationMenuContent>
             </PixelNavigationMenuItem>
@@ -854,7 +1224,7 @@ export function ComponentPreview({ slug }: { slug: string }) {
           </PixelNavigationMenuList>
         </PixelNavigationMenu>
       );
-    
+
     case "pixel-command":
       return (
         <PixelCommand className="max-w-md">
@@ -869,7 +1239,7 @@ export function ComponentPreview({ slug }: { slug: string }) {
           </PixelCommandList>
         </PixelCommand>
       );
-    
+
     case "pixel-sheet":
       return (
         <PixelSheet>
@@ -884,7 +1254,7 @@ export function ComponentPreview({ slug }: { slug: string }) {
           </PixelSheetContent>
         </PixelSheet>
       );
-    
+
     case "pixel-drawer":
       return (
         <PixelDrawer>
@@ -894,7 +1264,9 @@ export function ComponentPreview({ slug }: { slug: string }) {
           <PixelDrawerContent>
             <PixelDrawerHeader>
               <PixelDrawerTitle>Drawer Title</PixelDrawerTitle>
-              <PixelDrawerDescription>This is a drawer description</PixelDrawerDescription>
+              <PixelDrawerDescription>
+                This is a drawer description
+              </PixelDrawerDescription>
             </PixelDrawerHeader>
             <div className="p-4">
               <p>Drawer content goes here</p>
@@ -902,13 +1274,13 @@ export function ComponentPreview({ slug }: { slug: string }) {
           </PixelDrawerContent>
         </PixelDrawer>
       );
-    
+
     case "pixel-toast":
       return <ToastDemoWrapper />;
-    
+
     case "pixel-sonner":
       return <SonnerDemo />;
-    
+
     case "pixel-separator":
       return (
         <div className="space-y-4">
@@ -917,7 +1289,7 @@ export function ComponentPreview({ slug }: { slug: string }) {
           <p>Below separator</p>
         </div>
       );
-    
+
     case "pixel-collapsible":
       return (
         <PixelCollapsible>
@@ -929,7 +1301,7 @@ export function ComponentPreview({ slug }: { slug: string }) {
           </PixelCollapsibleContent>
         </PixelCollapsible>
       );
-    
+
     case "pixel-scroll-area":
       return (
         <PixelScrollArea className="h-[200px] w-[350px] p-4">
@@ -940,7 +1312,7 @@ export function ComponentPreview({ slug }: { slug: string }) {
           </div>
         </PixelScrollArea>
       );
-    
+
     case "pixel-aspect-ratio":
       return (
         <div className="w-[300px]">
@@ -951,7 +1323,7 @@ export function ComponentPreview({ slug }: { slug: string }) {
           </PixelAspectRatio>
         </div>
       );
-    
+
     case "pixel-hover-card":
       return (
         <PixelHoverCard>
@@ -963,7 +1335,7 @@ export function ComponentPreview({ slug }: { slug: string }) {
           </PixelHoverCardContent>
         </PixelHoverCard>
       );
-    
+
     // Animation Components
     case "pixel-blur-text":
       return (
@@ -971,35 +1343,35 @@ export function ComponentPreview({ slug }: { slug: string }) {
           <PixelBlurText text="Pixel Perfect!" variant="primary" size="lg" />
         </div>
       );
-    
+
     case "pixel-glitch-text":
       return (
         <div className="space-y-4">
           <PixelGlitchText text="SYSTEM ERROR" variant="cyber" size="xl" />
         </div>
       );
-    
+
     case "pixel-gradient-text":
       return (
         <div className="space-y-4">
           <PixelGradientText text="RAINBOW" variant="sunset" size="lg" />
         </div>
       );
-    
+
     case "pixel-shiny-text":
       return (
         <div className="space-y-4">
           <PixelShinyText text="LEGENDARY" variant="gold" size="lg" />
         </div>
       );
-    
+
     case "pixel-count-up":
       return (
         <div className="space-y-4">
           <PixelCountUp to={9999} separator="," variant="success" size="xl" />
         </div>
       );
-    
+
     case "pixel-circular-text":
       return (
         <div className="flex justify-center items-center p-12">
@@ -1011,19 +1383,27 @@ export function ComponentPreview({ slug }: { slug: string }) {
           />
         </div>
       );
-    
+
     case "pixel-spotlight-card":
       return (
-        <PixelSpotlightCard variant="primary" size="md" className="w-full max-w-sm">
+        <PixelSpotlightCard
+          variant="primary"
+          size="md"
+          className="w-full max-w-sm"
+        >
           <h3 className="text-xl font-bold mb-2 dark:text-white">Featured</h3>
-          <p className="dark:text-white/80">Hover to reveal spotlight effect!</p>
+          <p className="dark:text-white/80">
+            Hover to reveal spotlight effect!
+          </p>
         </PixelSpotlightCard>
       );
-    
+
     case "pixel-glare-card":
       return (
         <PixelGlareCard variant="glass" size="md" className="w-full max-w-sm">
-          <h3 className="text-xl font-bold mb-2 dark:text-white">Premium Card</h3>
+          <h3 className="text-xl font-bold mb-2 dark:text-white">
+            Premium Card
+          </h3>
           <p className="dark:text-white/80">With beautiful glare effect</p>
         </PixelGlareCard>
       );
@@ -1071,14 +1451,10 @@ export function ComponentPreview({ slug }: { slug: string }) {
       );
 
     case "pixel-tilted-card":
-      return (
-        <PixelTiltedCard className="w-full max-w-sm" />
-      );
+      return <PixelTiltedCard className="w-full max-w-sm" />;
 
     case "pixel-decay-card":
-      return (
-        <PixelDecayCard className="w-full max-w-sm" />
-      );
+      return <PixelDecayCard className="w-full max-w-sm" />;
 
     case "pixel-sticker-peel":
       return (
@@ -1198,7 +1574,7 @@ export function ComponentPreview({ slug }: { slug: string }) {
           <PixelImageTrail images={["/example1.png", "/example2.png"]} />
         </div>
       );
-    
+
     case "pixel-pricing":
       return (
         <PixelPricing columns={3} gap="md" className="max-w-5xl mx-auto">
@@ -1216,7 +1592,7 @@ export function ComponentPreview({ slug }: { slug: string }) {
               <PixelButton variant="secondary">Choose Plan</PixelButton>
             </PixelPricingActions>
           </PixelPricingCard>
-          
+
           <PixelPricingCard variant="featured">
             <PixelPricingBadge>Popular</PixelPricingBadge>
             <PixelPricingTitle>Pro</PixelPricingTitle>
@@ -1232,7 +1608,7 @@ export function ComponentPreview({ slug }: { slug: string }) {
               <PixelButton>Choose Plan</PixelButton>
             </PixelPricingActions>
           </PixelPricingCard>
-          
+
           <PixelPricingCard variant="default">
             <PixelPricingTitle>Firm</PixelPricingTitle>
             <PixelPricingPrice>$99</PixelPricingPrice>
@@ -1249,7 +1625,7 @@ export function ComponentPreview({ slug }: { slug: string }) {
           </PixelPricingCard>
         </PixelPricing>
       );
-    
+
     case "pixel-footer":
       return (
         <PixelFooter variant="default" size="md">
@@ -1257,38 +1633,54 @@ export function ComponentPreview({ slug }: { slug: string }) {
             <PixelFooterSection>
               <PixelFooterTitle>Product</PixelFooterTitle>
               <PixelFooterLinks>
-                <PixelFooterLink><a href="#">Features</a></PixelFooterLink>
-                <PixelFooterLink><a href="#">Pricing</a></PixelFooterLink>
+                <PixelFooterLink>
+                  <a href="#">Features</a>
+                </PixelFooterLink>
+                <PixelFooterLink>
+                  <a href="#">Pricing</a>
+                </PixelFooterLink>
               </PixelFooterLinks>
             </PixelFooterSection>
-            
+
             <PixelFooterSection>
               <PixelFooterTitle>Company</PixelFooterTitle>
               <PixelFooterLinks>
-                <PixelFooterLink><a href="#">About</a></PixelFooterLink>
-                <PixelFooterLink><a href="#">Blog</a></PixelFooterLink>
+                <PixelFooterLink>
+                  <a href="#">About</a>
+                </PixelFooterLink>
+                <PixelFooterLink>
+                  <a href="#">Blog</a>
+                </PixelFooterLink>
               </PixelFooterLinks>
             </PixelFooterSection>
-            
+
             <PixelFooterSection>
               <PixelFooterTitle>Resources</PixelFooterTitle>
               <PixelFooterLinks>
-                <PixelFooterLink><a href="#">Docs</a></PixelFooterLink>
-                <PixelFooterLink><a href="#">Guides</a></PixelFooterLink>
+                <PixelFooterLink>
+                  <a href="#">Docs</a>
+                </PixelFooterLink>
+                <PixelFooterLink>
+                  <a href="#">Guides</a>
+                </PixelFooterLink>
               </PixelFooterLinks>
             </PixelFooterSection>
-            
+
             <PixelFooterSection>
               <PixelFooterTitle>Legal</PixelFooterTitle>
               <PixelFooterLinks>
-                <PixelFooterLink><a href="#">Privacy</a></PixelFooterLink>
-                <PixelFooterLink><a href="#">Terms</a></PixelFooterLink>
+                <PixelFooterLink>
+                  <a href="#">Privacy</a>
+                </PixelFooterLink>
+                <PixelFooterLink>
+                  <a href="#">Terms</a>
+                </PixelFooterLink>
               </PixelFooterLinks>
             </PixelFooterSection>
           </PixelFooterGrid>
-          
+
           <PixelFooterDivider />
-          
+
           <PixelFooterBottom>
             <PixelFooterCopyright>© 2025 Pixel UI</PixelFooterCopyright>
             <PixelFooterSocial>
@@ -1298,7 +1690,7 @@ export function ComponentPreview({ slug }: { slug: string }) {
           </PixelFooterBottom>
         </PixelFooter>
       );
-    
+
     case "pixel-testimonials":
       return (
         <PixelTestimonials columns={3} gap="md" className="max-w-5xl mx-auto">
@@ -1315,7 +1707,7 @@ export function ComponentPreview({ slug }: { slug: string }) {
               </PixelTestimonialInfo>
             </PixelTestimonialAuthor>
           </PixelTestimonialCard>
-          
+
           <PixelTestimonialCard variant="primary">
             <PixelTestimonialRating />
             <PixelTestimonialQuote>
@@ -1329,7 +1721,7 @@ export function ComponentPreview({ slug }: { slug: string }) {
               </PixelTestimonialInfo>
             </PixelTestimonialAuthor>
           </PixelTestimonialCard>
-          
+
           <PixelTestimonialCard variant="default">
             <PixelTestimonialRating />
             <PixelTestimonialQuote>
@@ -1345,7 +1737,7 @@ export function ComponentPreview({ slug }: { slug: string }) {
           </PixelTestimonialCard>
         </PixelTestimonials>
       );
-    
+
     case "pixel-stats":
       return (
         <PixelStats columns={4} gap="md" className="max-w-6xl mx-auto">
@@ -1355,19 +1747,19 @@ export function ComponentPreview({ slug }: { slug: string }) {
             <PixelStatLabel>Active Users</PixelStatLabel>
             <PixelStatTrend trend="up">+12%</PixelStatTrend>
           </PixelStatItem>
-          
+
           <PixelStatItem variant="primary">
             <PixelStatIcon>⭐</PixelStatIcon>
             <PixelStatValue>4.9/5</PixelStatValue>
             <PixelStatLabel>User Rating</PixelStatLabel>
           </PixelStatItem>
-          
+
           <PixelStatItem variant="secondary">
             <PixelStatIcon>🚀</PixelStatIcon>
             <PixelStatValue>99.9%</PixelStatValue>
             <PixelStatLabel>Uptime</PixelStatLabel>
           </PixelStatItem>
-          
+
           <PixelStatItem variant="gradient">
             <PixelStatIcon>💰</PixelStatIcon>
             <PixelStatValue>$2M+</PixelStatValue>
@@ -1376,63 +1768,74 @@ export function ComponentPreview({ slug }: { slug: string }) {
           </PixelStatItem>
         </PixelStats>
       );
-    
+
     case "pixel-faq":
       return (
         <PixelFaq variant="default" className="max-w-3xl mx-auto">
           <PixelFaqList>
             <PixelFaqItem defaultOpen>
-              <PixelFaqQuestion>How do I install the components?</PixelFaqQuestion>
+              <PixelFaqQuestion>
+                How do I install the components?
+              </PixelFaqQuestion>
               <PixelFaqAnswer>
-                You can install components by copying the code from our docs or via npm.
+                You can install components by copying the code from our docs or
+                via npm.
               </PixelFaqAnswer>
             </PixelFaqItem>
-            
+
             <PixelFaqItem>
               <PixelFaqQuestion>Is this library free to use?</PixelFaqQuestion>
               <PixelFaqAnswer>
                 Yes! All components are completely free and open source.
               </PixelFaqAnswer>
             </PixelFaqItem>
-            
+
             <PixelFaqItem>
               <PixelFaqQuestion>Can I customize the styling?</PixelFaqQuestion>
               <PixelFaqAnswer>
-                Absolutely! All components support className prop for easy customization.
+                Absolutely! All components support className prop for easy
+                customization.
               </PixelFaqAnswer>
             </PixelFaqItem>
           </PixelFaqList>
         </PixelFaq>
       );
-    
+
     case "pixel-loader":
       return (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
-            <h4 className="text-sm font-bold mb-2 text-center font-pixel">Cassette</h4>
+            <h4 className="text-sm font-bold mb-2 text-center font-pixel">
+              Cassette
+            </h4>
             <PixelLoader variant="cassette" size="sm" text="LOADING" />
           </div>
           <div>
-            <h4 className="text-sm font-bold mb-2 text-center font-pixel">Floppy</h4>
+            <h4 className="text-sm font-bold mb-2 text-center font-pixel">
+              Floppy
+            </h4>
             <PixelLoader variant="floppy" size="sm" text="READING" />
           </div>
           <div>
-            <h4 className="text-sm font-bold mb-2 text-center font-pixel">CRT</h4>
+            <h4 className="text-sm font-bold mb-2 text-center font-pixel">
+              CRT
+            </h4>
             <PixelLoader variant="crt" size="sm" text="BOOTING" />
           </div>
         </div>
       );
-    
+
     case "pixel-terminal":
       return (
-        <PixelTerminal 
-          variant="matrix" 
+        <PixelTerminal
+          variant="matrix"
           size="md"
           prompt="user@pixel:~$"
           commands={{
-            hello: () => 'Hello! Welcome to Pixel Terminal 👋',
+            hello: () => "Hello! Welcome to Pixel Terminal 👋",
             info: () => 'Pixel Terminal v1.0\nType "help" for commands',
-            joke: () => 'Why do programmers prefer dark mode?\nBecause light attracts bugs! 🐛',
+            joke: () =>
+              "Why do programmers prefer dark mode?\nBecause light attracts bugs! 🐛",
           }}
           welcomeMessage={`Pixel Terminal v1.0
 Type 'help' for available commands.
@@ -1441,7 +1844,7 @@ Try: hello, info, joke
 `}
         />
       );
-    
+
     case "pixel-game-ui":
       return (
         <div className="space-y-8 max-w-4xl mx-auto">
@@ -1459,7 +1862,12 @@ Try: hello, info, joke
             <div className="space-y-3">
               <PixelHealthBar current={85} max={100} label="HP" />
               <PixelManaBar current={60} max={100} label="MP" />
-              <PixelXPBar currentXP={350} requiredXP={500} level={12} showLevel={false} />
+              <PixelXPBar
+                currentXP={350}
+                requiredXP={500}
+                level={12}
+                showLevel={false}
+              />
             </div>
           </div>
 
@@ -1494,44 +1902,41 @@ Try: hello, info, joke
           </div>
         </div>
       );
-    
+
     case "pixel-window":
       return (
-        <PixelWindow 
-          title="My Computer" 
-          icon="💻" 
-          className="w-[400px]"
-        >
+        <PixelWindow title="My Computer" icon="💻" className="w-[400px]">
           <PixelWindowContent>
             <div className="p-4">
-              <h3 className="font-bold font-pixel mb-2">Welcome to Pixel Window!</h3>
+              <h3 className="font-bold font-pixel mb-2">
+                Welcome to Pixel Window!
+              </h3>
               <p className="text-sm mb-4">
-                This is a draggable, resizable window component styled like Windows 95/98.
+                This is a draggable, resizable window component styled like
+                Windows 95/98.
               </p>
               <div className="flex gap-2">
                 <PixelButton size="sm">Open</PixelButton>
-                <PixelButton size="sm" variant="secondary">Save</PixelButton>
+                <PixelButton size="sm" variant="secondary">
+                  Save
+                </PixelButton>
               </div>
             </div>
           </PixelWindowContent>
         </PixelWindow>
       );
-    
+
     case "pixel-audio-visualizer":
       return (
         <div className="max-w-2xl mx-auto">
-          <PixelAudioVisualizer 
-            variant="bars" 
-            size="md"
-            animate={true}
-          />
+          <PixelAudioVisualizer variant="bars" size="md" animate={true} />
         </div>
       );
-    
+
     case "pixel-code-block":
       return (
         <div className="space-y-6">
-          <PixelCodeBlock 
+          <PixelCodeBlock
             code={`function greet(name) {\n  console.log(\`Hello, \${name}!\`);\n  return true;\n}\n\ngreet("World");`}
             language="javascript"
             title="example.js"
@@ -1544,11 +1949,11 @@ Try: hello, info, joke
           </div>
         </div>
       );
-    
+
     case "pixel-timeline":
       return (
         <div className="max-w-3xl">
-          <PixelTimeline 
+          <PixelTimeline
             items={[
               {
                 title: "Project Started",
@@ -1577,7 +1982,7 @@ Try: hello, info, joke
           />
         </div>
       );
-    
+
     case "pixel-notification":
       return (
         <div className="space-y-4 max-w-md mx-auto">
@@ -1607,7 +2012,7 @@ Try: hello, info, joke
           />
         </div>
       );
-    
+
     case "pixel-chat":
       return (
         <div className="flex justify-center">
@@ -1641,7 +2046,7 @@ Try: hello, info, joke
           />
         </div>
       );
-    
+
     case "pixel-countdown":
       return (
         <div className="space-y-8">
@@ -1664,41 +2069,70 @@ Try: hello, info, joke
           </div>
         </div>
       );
-    case "pixel-timeline-navigation":
+    case "pixel-timeline-navigation": {
       const [timelineStep, setTimelineStep] = useState(2);
       return (
         <div className="space-y-12">
           <div>
             <h3 className="text-lg font-bold mb-4">Horizontal Timeline</h3>
-            <PixelTimelineNavigation 
+            <PixelTimelineNavigation
               currentStep={timelineStep}
               onStepClick={setTimelineStep}
             >
               <PixelTimelineSteps>
-                <PixelTimelineStep step={1} label="Account" description="Setup account" />
-                <PixelTimelineStep step={2} label="Profile" description="Add details" />
-                <PixelTimelineStep step={3} label="Complete" description="Finish setup" />
+                <PixelTimelineStep
+                  step={1}
+                  label="Account"
+                  description="Setup account"
+                />
+                <PixelTimelineStep
+                  step={2}
+                  label="Profile"
+                  description="Add details"
+                />
+                <PixelTimelineStep
+                  step={3}
+                  label="Complete"
+                  description="Finish setup"
+                />
               </PixelTimelineSteps>
             </PixelTimelineNavigation>
           </div>
-          
+
           <div>
             <h3 className="text-lg font-bold mb-4">Vertical Timeline</h3>
-            <PixelTimelineNavigation 
+            <PixelTimelineNavigation
               currentStep={2}
               orientation="vertical"
               size="sm"
             >
               <PixelTimelineSteps>
-                <PixelTimelineStep step={1} label="Start" description="Begin your journey" />
-                <PixelTimelineStep step={2} label="Progress" description="Working on it" />
-                <PixelTimelineStep step={3} label="Review" description="Almost there" />
-                <PixelTimelineStep step={4} label="Done" description="All complete" />
+                <PixelTimelineStep
+                  step={1}
+                  label="Start"
+                  description="Begin your journey"
+                />
+                <PixelTimelineStep
+                  step={2}
+                  label="Progress"
+                  description="Working on it"
+                />
+                <PixelTimelineStep
+                  step={3}
+                  label="Review"
+                  description="Almost there"
+                />
+                <PixelTimelineStep
+                  step={4}
+                  label="Done"
+                  description="All complete"
+                />
               </PixelTimelineSteps>
             </PixelTimelineNavigation>
           </div>
         </div>
       );
+    }
     default:
       return (
         <div className="text-center py-8">

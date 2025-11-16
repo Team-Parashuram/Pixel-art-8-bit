@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import * as AspectRatioPrimitive from "@radix-ui/react-aspect-ratio"
+import * as AspectRatioPrimitive from "@radix-ui/react-aspect-ratio";
+import * as React from "react";
 
-const PixelAspectRatio = AspectRatioPrimitive.Root
+const PixelAspectRatio = AspectRatioPrimitive.Root;
 
-export { PixelAspectRatio }
+export { PixelAspectRatio };

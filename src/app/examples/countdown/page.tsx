@@ -1,7 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { PixelCountdown, PixelTimer } from "@/components/ui/pixel/pixel-countdown";
+import {
+  PixelCountdown,
+  PixelTimer,
+} from "@/components/ui/pixel/pixel-countdown";
 
 export default function CountdownExamples() {
   const [completed, setCompleted] = useState(false);
@@ -18,7 +21,7 @@ export default function CountdownExamples() {
       {/* Basic Countdown */}
       <section>
         <h2 className="text-3xl font-bold mb-8 font-pixel">Basic Countdown</h2>
-        
+
         <div className="flex justify-center">
           <PixelCountdown targetDate={futureDate} />
         </div>
@@ -27,45 +30,41 @@ export default function CountdownExamples() {
       {/* Size Variants */}
       <section>
         <h2 className="text-3xl font-bold mb-8 font-pixel">Size Variants</h2>
-        
+
         <div className="space-y-12">
           <div>
-            <h3 className="text-lg font-bold mb-4 font-pixel text-center">Small</h3>
+            <h3 className="text-lg font-bold mb-4 font-pixel text-center">
+              Small
+            </h3>
             <div className="flex justify-center">
-              <PixelCountdown
-                targetDate={futureDate}
-                size="sm"
-              />
+              <PixelCountdown targetDate={futureDate} size="sm" />
             </div>
           </div>
 
           <div>
-            <h3 className="text-lg font-bold mb-4 font-pixel text-center">Medium</h3>
+            <h3 className="text-lg font-bold mb-4 font-pixel text-center">
+              Medium
+            </h3>
             <div className="flex justify-center">
-              <PixelCountdown
-                targetDate={futureDate}
-                size="md"
-              />
+              <PixelCountdown targetDate={futureDate} size="md" />
             </div>
           </div>
 
           <div>
-            <h3 className="text-lg font-bold mb-4 font-pixel text-center">Large</h3>
+            <h3 className="text-lg font-bold mb-4 font-pixel text-center">
+              Large
+            </h3>
             <div className="flex justify-center">
-              <PixelCountdown
-                targetDate={futureDate}
-                size="lg"
-              />
+              <PixelCountdown targetDate={futureDate} size="lg" />
             </div>
           </div>
 
           <div>
-            <h3 className="text-lg font-bold mb-4 font-pixel text-center">Extra Large</h3>
+            <h3 className="text-lg font-bold mb-4 font-pixel text-center">
+              Extra Large
+            </h3>
             <div className="flex justify-center">
-              <PixelCountdown
-                targetDate={futureDate}
-                size="xl"
-              />
+              <PixelCountdown targetDate={futureDate} size="xl" />
             </div>
           </div>
         </div>
@@ -74,10 +73,12 @@ export default function CountdownExamples() {
       {/* Color Variants */}
       <section>
         <h2 className="text-3xl font-bold mb-8 font-pixel">Color Variants</h2>
-        
+
         <div className="space-y-12">
           <div>
-            <h3 className="text-lg font-bold mb-4 font-pixel text-center">Default</h3>
+            <h3 className="text-lg font-bold mb-4 font-pixel text-center">
+              Default
+            </h3>
             <div className="flex justify-center">
               <PixelCountdown
                 targetDate={futureDate}
@@ -88,7 +89,9 @@ export default function CountdownExamples() {
           </div>
 
           <div>
-            <h3 className="text-lg font-bold mb-4 font-pixel text-center">Retro</h3>
+            <h3 className="text-lg font-bold mb-4 font-pixel text-center">
+              Retro
+            </h3>
             <div className="flex justify-center">
               <PixelCountdown
                 targetDate={futureDate}
@@ -99,7 +102,9 @@ export default function CountdownExamples() {
           </div>
 
           <div>
-            <h3 className="text-lg font-bold mb-4 font-pixel text-center">Digital (Red)</h3>
+            <h3 className="text-lg font-bold mb-4 font-pixel text-center">
+              Digital (Red)
+            </h3>
             <div className="flex justify-center">
               <PixelCountdown
                 targetDate={futureDate}
@@ -110,7 +115,9 @@ export default function CountdownExamples() {
           </div>
 
           <div>
-            <h3 className="text-lg font-bold mb-4 font-pixel text-center">Flip</h3>
+            <h3 className="text-lg font-bold mb-4 font-pixel text-center">
+              Flip
+            </h3>
             <div className="flex justify-center">
               <PixelCountdown
                 targetDate={futureDate}
@@ -125,33 +132,32 @@ export default function CountdownExamples() {
       {/* Without Labels */}
       <section>
         <h2 className="text-3xl font-bold mb-8 font-pixel">Without Labels</h2>
-        
+
         <div className="flex justify-center">
-          <PixelCountdown
-            targetDate={futureDate}
-            labels={false}
-            size="lg"
-          />
+          <PixelCountdown targetDate={futureDate} labels={false} size="lg" />
         </div>
       </section>
 
       {/* Selective Units */}
       <section>
-        <h2 className="text-3xl font-bold mb-8 font-pixel">Selective Time Units</h2>
-        
+        <h2 className="text-3xl font-bold mb-8 font-pixel">
+          Selective Time Units
+        </h2>
+
         <div className="space-y-12">
           <div>
-            <h3 className="text-lg font-bold mb-4 font-pixel text-center">Hours, Minutes, Seconds</h3>
+            <h3 className="text-lg font-bold mb-4 font-pixel text-center">
+              Hours, Minutes, Seconds
+            </h3>
             <div className="flex justify-center">
-              <PixelCountdown
-                targetDate={futureDate}
-                showDays={false}
-              />
+              <PixelCountdown targetDate={futureDate} showDays={false} />
             </div>
           </div>
 
           <div>
-            <h3 className="text-lg font-bold mb-4 font-pixel text-center">Minutes and Seconds Only</h3>
+            <h3 className="text-lg font-bold mb-4 font-pixel text-center">
+              Minutes and Seconds Only
+            </h3>
             <div className="flex justify-center">
               <PixelCountdown
                 targetDate={futureDate}
@@ -162,7 +168,9 @@ export default function CountdownExamples() {
           </div>
 
           <div>
-            <h3 className="text-lg font-bold mb-4 font-pixel text-center">Seconds Only</h3>
+            <h3 className="text-lg font-bold mb-4 font-pixel text-center">
+              Seconds Only
+            </h3>
             <div className="flex justify-center">
               <PixelCountdown
                 initialSeconds={60}
@@ -180,25 +188,23 @@ export default function CountdownExamples() {
       {/* Event Countdown */}
       <section>
         <h2 className="text-3xl font-bold mb-8 font-pixel">Event Countdown</h2>
-        
+
         <div className="border-4 border-black p-8 bg-pixel-secondary shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
           <h3 className="text-2xl font-bold mb-6 font-pixel text-center">
             🎉 New Year Countdown 🎉
           </h3>
           <div className="flex justify-center">
-            <PixelCountdown
-              targetDate={newYear}
-              variant="flip"
-              size="lg"
-            />
+            <PixelCountdown targetDate={newYear} variant="flip" size="lg" />
           </div>
         </div>
       </section>
 
       {/* With Completion Handler */}
       <section>
-        <h2 className="text-3xl font-bold mb-8 font-pixel">With Completion Handler</h2>
-        
+        <h2 className="text-3xl font-bold mb-8 font-pixel">
+          With Completion Handler
+        </h2>
+
         <div className="border-4 border-black p-8 bg-white dark:bg-[#2a2a2a] shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
           <div className="flex justify-center mb-6">
             <PixelCountdown
@@ -210,7 +216,7 @@ export default function CountdownExamples() {
               size="lg"
             />
           </div>
-          
+
           {completed && (
             <div className="text-center">
               <p className="text-2xl font-bold font-pixel text-pixel-success mb-4">
@@ -232,21 +238,24 @@ export default function CountdownExamples() {
 
       {/* Timer with Controls */}
       <section>
-        <h2 className="text-3xl font-bold mb-8 font-pixel">Timer with Controls</h2>
-        
+        <h2 className="text-3xl font-bold mb-8 font-pixel">
+          Timer with Controls
+        </h2>
+
         <div className="space-y-12">
           <div>
-            <h3 className="text-lg font-bold mb-4 font-pixel text-center">5 Minute Timer</h3>
+            <h3 className="text-lg font-bold mb-4 font-pixel text-center">
+              5 Minute Timer
+            </h3>
             <div className="flex justify-center">
-              <PixelTimer
-                initialMinutes={5}
-                initialSeconds={0}
-              />
+              <PixelTimer initialMinutes={5} initialSeconds={0} />
             </div>
           </div>
 
           <div>
-            <h3 className="text-lg font-bold mb-4 font-pixel text-center">Retro Timer</h3>
+            <h3 className="text-lg font-bold mb-4 font-pixel text-center">
+              Retro Timer
+            </h3>
             <div className="flex justify-center">
               <PixelTimer
                 initialMinutes={3}
@@ -258,7 +267,9 @@ export default function CountdownExamples() {
           </div>
 
           <div>
-            <h3 className="text-lg font-bold mb-4 font-pixel text-center">Digital Timer</h3>
+            <h3 className="text-lg font-bold mb-4 font-pixel text-center">
+              Digital Timer
+            </h3>
             <div className="flex justify-center">
               <PixelTimer
                 initialMinutes={10}
@@ -274,7 +285,7 @@ export default function CountdownExamples() {
       {/* Pomodoro Timer */}
       <section>
         <h2 className="text-3xl font-bold mb-8 font-pixel">Pomodoro Timer</h2>
-        
+
         <div className="border-4 border-black p-8 bg-pixel-error shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
           <h3 className="text-2xl font-bold mb-6 font-pixel text-center text-white">
             🍅 Focus Time
@@ -293,8 +304,10 @@ export default function CountdownExamples() {
 
       {/* Timer Without Controls */}
       <section>
-        <h2 className="text-3xl font-bold mb-8 font-pixel">Timer Without Controls</h2>
-        
+        <h2 className="text-3xl font-bold mb-8 font-pixel">
+          Timer Without Controls
+        </h2>
+
         <div className="flex justify-center">
           <PixelTimer
             initialMinutes={2}
@@ -320,7 +333,7 @@ export default function CountdownExamples() {
 />`}
             </code>
           </div>
-          
+
           <div>
             <p className="font-bold mb-2">Seconds Countdown:</p>
             <code className="block bg-white dark:bg-black p-4 border-2 border-black overflow-x-auto">
@@ -333,7 +346,7 @@ export default function CountdownExamples() {
 />`}
             </code>
           </div>
-          
+
           <div>
             <p className="font-bold mb-2">Timer with Controls:</p>
             <code className="block bg-white dark:bg-black p-4 border-2 border-black overflow-x-auto">

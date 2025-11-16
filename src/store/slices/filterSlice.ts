@@ -1,6 +1,11 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 
-export type SortOption = "price-asc" | "price-desc" | "name-asc" | "name-desc" | "none";
+export type SortOption =
+  | "price-asc"
+  | "price-desc"
+  | "name-asc"
+  | "name-desc"
+  | "none";
 
 export interface FilterState {
   searchTerm: string;
@@ -32,7 +37,7 @@ const filterSlice = createSlice({
     toggleCategory: (state, action: PayloadAction<string>) => {
       const category = action.payload;
       const index = state.selectedCategories.indexOf(category);
-      
+
       if (index > -1) {
         state.selectedCategories.splice(index, 1);
       } else {
@@ -45,7 +50,10 @@ const filterSlice = createSlice({
     clearCategories: (state) => {
       state.selectedCategories = [];
     },
-    setPriceRange: (state, action: PayloadAction<{ min: number; max: number }>) => {
+    setPriceRange: (
+      state,
+      action: PayloadAction<{ min: number; max: number }>,
+    ) => {
       state.priceRange = action.payload;
     },
     setMinPrice: (state, action: PayloadAction<number>) => {

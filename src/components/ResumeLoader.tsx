@@ -1,8 +1,8 @@
-'use client'
+"use client";
 
-import { useState, useEffect } from 'react';
-import Hyperspeed from './Hyperspeed';
-import Orb from './Orb';
+import { useEffect, useState } from "react";
+import Hyperspeed from "./Hyperspeed";
+import Orb from "./Orb";
 
 interface ResumeLoaderProps {
   onComplete?: () => void;
@@ -16,7 +16,7 @@ const loadingSteps = [
   "Discovering projects...",
   "Parsing education details...",
   "Generating portfolio design...",
-  "Finalizing your website..."
+  "Finalizing your website...",
 ];
 
 export function ResumeLoader({ onComplete }: ResumeLoaderProps) {
@@ -25,7 +25,7 @@ export function ResumeLoader({ onComplete }: ResumeLoaderProps) {
 
   useEffect(() => {
     const stepInterval = setInterval(() => {
-      setStep(prev => {
+      setStep((prev) => {
         if (prev < loadingSteps.length - 1) {
           return prev + 1;
         }
@@ -34,7 +34,7 @@ export function ResumeLoader({ onComplete }: ResumeLoaderProps) {
     }, 600);
 
     const progressInterval = setInterval(() => {
-      setProgress(prev => {
+      setProgress((prev) => {
         if (prev < 100) {
           return prev + 1;
         }
@@ -111,7 +111,7 @@ export function ResumeLoader({ onComplete }: ResumeLoaderProps) {
             <div
               key={index}
               className={`h-2 w-2 rounded-full transition-all duration-300 ${
-                index <= step ? 'bg-blue-500 scale-100' : 'bg-gray-700 scale-75'
+                index <= step ? "bg-blue-500 scale-100" : "bg-gray-700 scale-75"
               }`}
             />
           ))}

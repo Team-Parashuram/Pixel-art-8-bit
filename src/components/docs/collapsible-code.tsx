@@ -1,9 +1,9 @@
 "use client";
 
-import { useState } from "react";
-import { CodeBlock } from "./code-block";
-import { PixelButton } from "@/components/ui/pixel/pixel-button";
 import { ChevronDown, ChevronUp } from "lucide-react";
+import { useState } from "react";
+import { PixelButton } from "@/components/ui/pixel/pixel-button";
+import { CodeBlock } from "./code-block";
 
 interface CollapsibleCodeProps {
   code: string;
@@ -11,20 +11,21 @@ interface CollapsibleCodeProps {
   previewLines?: number;
 }
 
-export function CollapsibleCode({ 
-  code, 
+export function CollapsibleCode({
+  code,
   language = "tsx",
-  previewLines = 50 
+  previewLines = 50,
 }: CollapsibleCodeProps) {
   const [isExpanded, setIsExpanded] = useState(false);
-  
-  const lines = code.split('\n');
+
+  const lines = code.split("\n");
   const totalLines = lines.length;
   const shouldCollapse = totalLines > previewLines;
-  
-  const displayCode = shouldCollapse && !isExpanded 
-    ? lines.slice(0, previewLines).join('\n') + '\n\n// ... (more code below)'
-    : code;
+
+  const displayCode =
+    shouldCollapse && !isExpanded
+      ? lines.slice(0, previewLines).join("\n") + "\n\n// ... (more code below)"
+      : code;
 
   if (!shouldCollapse) {
     return <CodeBlock code={code} language={language} />;
@@ -33,7 +34,7 @@ export function CollapsibleCode({
   return (
     <div className="relative">
       <CodeBlock code={displayCode} language={language} />
-      
+
       <div className="mt-4 flex items-center justify-center">
         <PixelButton
           onClick={() => setIsExpanded(!isExpanded)}

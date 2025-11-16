@@ -1,13 +1,14 @@
-import React, { useRef, useEffect, ReactNode } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import type React from "react";
+import { type ReactNode, useEffect, useRef } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
 
 interface AnimatedContentProps {
   children: ReactNode;
   distance?: number;
-  direction?: 'vertical' | 'horizontal';
+  direction?: "vertical" | "horizontal";
   reverse?: boolean;
   duration?: number;
   ease?: string | ((progress: number) => number);
@@ -22,16 +23,16 @@ interface AnimatedContentProps {
 const AnimatedContent: React.FC<AnimatedContentProps> = ({
   children,
   distance = 100,
-  direction = 'vertical',
+  direction = "vertical",
   reverse = false,
   duration = 0.8,
-  ease = 'power3.out',
+  ease = "power3.out",
   initialOpacity = 0,
   animateOpacity = true,
   scale = 1,
   threshold = 0.1,
   delay = 0,
-  onComplete
+  onComplete,
 }) => {
   const ref = useRef<HTMLDivElement>(null);
 
@@ -39,14 +40,14 @@ const AnimatedContent: React.FC<AnimatedContentProps> = ({
     const el = ref.current;
     if (!el) return;
 
-    const axis = direction === 'horizontal' ? 'x' : 'y';
+    const axis = direction === "horizontal" ? "x" : "y";
     const offset = reverse ? -distance : distance;
     const startPct = (1 - threshold) * 100;
 
     gsap.set(el, {
       [axis]: offset,
       scale,
-      opacity: animateOpacity ? initialOpacity : 1
+      opacity: animateOpacity ? initialOpacity : 1,
     });
 
     gsap.to(el, {
@@ -60,13 +61,13 @@ const AnimatedContent: React.FC<AnimatedContentProps> = ({
       scrollTrigger: {
         trigger: el,
         start: `top ${startPct}%`,
-        toggleActions: 'play none none none',
-        once: true
-      }
+        toggleActions: "play none none none",
+        once: true,
+      },
     });
 
     return () => {
-      ScrollTrigger.getAll().forEach(t => t.kill());
+      ScrollTrigger.getAll().forEach((t) => t.kill());
       gsap.killTweensOf(el);
     };
   }, [
@@ -80,7 +81,7 @@ const AnimatedContent: React.FC<AnimatedContentProps> = ({
     scale,
     threshold,
     delay,
-    onComplete
+    onComplete,
   ]);
 
   return <div ref={ref}>{children}</div>;

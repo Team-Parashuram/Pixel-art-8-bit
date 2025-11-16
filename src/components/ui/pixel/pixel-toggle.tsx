@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import * as TogglePrimitive from "@radix-ui/react-toggle"
-import { cva, type VariantProps } from "class-variance-authority"
-import { cn } from "@/lib/utils"
+import * as TogglePrimitive from "@radix-ui/react-toggle";
+import { cva, type VariantProps } from "class-variance-authority";
+import * as React from "react";
+import { cn } from "@/lib/utils";
 
 const pixelToggleVariants = cva(
   "inline-flex items-center justify-center gap-2 font-[family-name:var(--font-press-start)] text-xs border-4 border-black duration-0 transition-colors",
@@ -25,8 +25,8 @@ const pixelToggleVariants = cva(
       variant: "default",
       size: "default",
     },
-  }
-)
+  },
+);
 
 const PixelToggle = React.forwardRef<
   React.ElementRef<typeof TogglePrimitive.Root>,
@@ -38,8 +38,8 @@ const PixelToggle = React.forwardRef<
     className={cn(pixelToggleVariants({ variant, size, className }))}
     {...props}
   />
-))
+));
 
-PixelToggle.displayName = TogglePrimitive.Root.displayName
+PixelToggle.displayName = TogglePrimitive.Root.displayName;
 
-export { PixelToggle, pixelToggleVariants }
+export { PixelToggle, pixelToggleVariants };

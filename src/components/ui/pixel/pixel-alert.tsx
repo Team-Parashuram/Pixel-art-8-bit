@@ -1,8 +1,13 @@
 "use client";
 
-import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
-import { AlertCircle, CheckCircle2, XCircle, AlertTriangle } from "lucide-react";
+import {
+  AlertCircle,
+  AlertTriangle,
+  CheckCircle2,
+  XCircle,
+} from "lucide-react";
+import * as React from "react";
 import { cn } from "@/lib/utils";
 
 const pixelAlertVariants = cva(
@@ -10,7 +15,8 @@ const pixelAlertVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-white border-black text-black dark:bg-[#1a1a1a] dark:border-[#ff8c00] dark:text-white",
+        default:
+          "bg-white border-black text-black dark:bg-[#1a1a1a] dark:border-[#ff8c00] dark:text-white",
         info: "bg-[#add8e6] border-[#0000ff] text-black",
         success: "bg-[#90ee90] border-[#00ff00] text-black",
         warning: "bg-[#ffd700] border-[#ffa500] text-black",
@@ -20,7 +26,7 @@ const pixelAlertVariants = cva(
     defaultVariants: {
       variant: "default",
     },
-  }
+  },
 );
 
 const iconMap = {
@@ -38,7 +44,10 @@ export interface PixelAlertProps
 }
 
 const PixelAlert = React.forwardRef<HTMLDivElement, PixelAlertProps>(
-  ({ className, variant = "default", showIcon = true, children, ...props }, ref) => {
+  (
+    { className, variant = "default", showIcon = true, children, ...props },
+    ref,
+  ) => {
     const Icon = iconMap[variant || "default"];
 
     return (
@@ -54,7 +63,7 @@ const PixelAlert = React.forwardRef<HTMLDivElement, PixelAlertProps>(
         </div>
       </div>
     );
-  }
+  },
 );
 PixelAlert.displayName = "PixelAlert";
 

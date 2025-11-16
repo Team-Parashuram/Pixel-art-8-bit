@@ -1,37 +1,31 @@
 "use client";
 
-import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
+import type * as React from "react";
 
-const timelineVariants = cva(
-  "relative",
-  {
-    variants: {
-      orientation: {
-        vertical: "flex flex-col",
-        horizontal: "flex flex-row overflow-x-auto pb-4",
-      },
+const timelineVariants = cva("relative", {
+  variants: {
+    orientation: {
+      vertical: "flex flex-col",
+      horizontal: "flex flex-row overflow-x-auto pb-4",
     },
-    defaultVariants: {
-      orientation: "vertical",
-    },
-  }
-);
+  },
+  defaultVariants: {
+    orientation: "vertical",
+  },
+});
 
-const timelineItemVariants = cva(
-  "relative flex gap-4",
-  {
-    variants: {
-      orientation: {
-        vertical: "flex-row pb-8 last:pb-0",
-        horizontal: "flex-col items-center min-w-[200px]",
-      },
+const timelineItemVariants = cva("relative flex gap-4", {
+  variants: {
+    orientation: {
+      vertical: "flex-row pb-8 last:pb-0",
+      horizontal: "flex-col items-center min-w-[200px]",
     },
-    defaultVariants: {
-      orientation: "vertical",
-    },
-  }
-);
+  },
+  defaultVariants: {
+    orientation: "vertical",
+  },
+});
 
 const timelineMarkerVariants = cva(
   "relative flex-shrink-0 border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]",
@@ -60,23 +54,20 @@ const timelineMarkerVariants = cva(
       size: "md",
       shape: "square",
     },
-  }
+  },
 );
 
-const timelineConnectorVariants = cva(
-  "border-4 border-black border-dashed",
-  {
-    variants: {
-      orientation: {
-        vertical: "absolute left-5 top-12 bottom-0 w-0",
-        horizontal: "absolute top-5 left-12 right-0 h-0",
-      },
+const timelineConnectorVariants = cva("border-4 border-black border-dashed", {
+  variants: {
+    orientation: {
+      vertical: "absolute left-5 top-12 bottom-0 w-0",
+      horizontal: "absolute top-5 left-12 right-0 h-0",
     },
-    defaultVariants: {
-      orientation: "vertical",
-    },
-  }
-);
+  },
+  defaultVariants: {
+    orientation: "vertical",
+  },
+});
 
 export interface TimelineItemType {
   title: string;
@@ -140,14 +131,22 @@ export function PixelTimelineItem({
     <div className={timelineItemVariants({ orientation })}>
       {/* Marker */}
       <div className="relative flex-shrink-0">
-        <div className={timelineMarkerVariants({ variant, size: markerSize, shape: markerShape })}>
+        <div
+          className={timelineMarkerVariants({
+            variant,
+            size: markerSize,
+            shape: markerShape,
+          })}
+        >
           {icon && (
-            <div className={`flex items-center justify-center w-full h-full ${markerShape === "diamond" ? "-rotate-45" : ""}`}>
+            <div
+              className={`flex items-center justify-center w-full h-full ${markerShape === "diamond" ? "-rotate-45" : ""}`}
+            >
               {icon}
             </div>
           )}
         </div>
-        
+
         {/* Connector Line */}
         {showConnector && (
           <div className={timelineConnectorVariants({ orientation })} />

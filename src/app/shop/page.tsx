@@ -1,38 +1,60 @@
 "use client";
 
-import { PixelButton } from "@/components/ui/pixel/pixel-button";
-import { PixelCard, PixelCardContent, PixelCardFooter, PixelCardHeader, PixelCardTitle } from "@/components/ui/pixel/pixel-card";
-import { PixelBadge } from "@/components/ui/pixel/pixel-badge";
-import { PixelInput } from "@/components/ui/pixel/pixel-input";
-import { PixelSelect, PixelSelectContent, PixelSelectItem, PixelSelectTrigger, PixelSelectValue } from "@/components/ui/pixel/pixel-select";
-import { ShoppingCart, Heart, Trash2, Plus, Minus, Star, Search, X, SlidersHorizontal } from "lucide-react";
-import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { 
-  addToCart, 
-  removeFromCart, 
-  incrementQuantity, 
-  decrementQuantity, 
-  addToWishlist, 
-  removeFromWishlist,
-  moveToCart,
-  clearCart,
-  type Product 
-} from "@/store/slices/shoppingCartSlice";
 import {
-  setSearchTerm,
-  toggleCategory,
-  setPriceRange,
-  setSortBy,
-  resetFilters,
-  type SortOption,
-} from "@/store/slices/filterSlice";
-import {
-  selectFilteredProducts,
-  selectAvailableCategories,
-  selectPriceStats,
-} from "@/store/selectors/productSelectors";
+  Heart,
+  Minus,
+  Plus,
+  Search,
+  ShoppingCart,
+  SlidersHorizontal,
+  Star,
+  Trash2,
+  X,
+} from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
+import { PixelBadge } from "@/components/ui/pixel/pixel-badge";
+import { PixelButton } from "@/components/ui/pixel/pixel-button";
+import {
+  PixelCard,
+  PixelCardContent,
+  PixelCardFooter,
+  PixelCardHeader,
+  PixelCardTitle,
+} from "@/components/ui/pixel/pixel-card";
+import { PixelInput } from "@/components/ui/pixel/pixel-input";
+import {
+  PixelSelect,
+  PixelSelectContent,
+  PixelSelectItem,
+  PixelSelectTrigger,
+  PixelSelectValue,
+} from "@/components/ui/pixel/pixel-select";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import {
+  selectAvailableCategories,
+  selectFilteredProducts,
+  selectPriceStats,
+} from "@/store/selectors/productSelectors";
+import {
+  resetFilters,
+  type SortOption,
+  setPriceRange,
+  setSearchTerm,
+  setSortBy,
+  toggleCategory,
+} from "@/store/slices/filterSlice";
+import {
+  addToCart,
+  addToWishlist,
+  clearCart,
+  decrementQuantity,
+  incrementQuantity,
+  moveToCart,
+  type Product,
+  removeFromCart,
+  removeFromWishlist,
+} from "@/store/slices/shoppingCartSlice";
 
 // Sample products for demo
 const sampleProducts: Product[] = [
@@ -82,13 +104,26 @@ const sampleProducts: Product[] = [
 
 export default function ShopPage() {
   const dispatch = useAppDispatch();
-  const { items: cartItems, wishlist, total, itemCount } = useAppSelector((state) => state.shoppingCart);
-  const { searchTerm, selectedCategories, priceRange, sortBy } = useAppSelector((state) => state.filter);
-  
+  const {
+    items: cartItems,
+    wishlist,
+    total,
+    itemCount,
+  } = useAppSelector((state) => state.shoppingCart);
+  const { searchTerm, selectedCategories, priceRange, sortBy } = useAppSelector(
+    (state) => state.filter,
+  );
+
   // Use memoized selector for filtered products
-  const filteredProducts = useAppSelector((state) => selectFilteredProducts(state, sampleProducts));
-  const availableCategories = useAppSelector((state) => selectAvailableCategories(state, sampleProducts));
-  const priceStats = useAppSelector((state) => selectPriceStats(state, sampleProducts));
+  const filteredProducts = useAppSelector((state) =>
+    selectFilteredProducts(state, sampleProducts),
+  );
+  const availableCategories = useAppSelector((state) =>
+    selectAvailableCategories(state, sampleProducts),
+  );
+  const priceStats = useAppSelector((state) =>
+    selectPriceStats(state, sampleProducts),
+  );
 
   const [showFilters, setShowFilters] = useState(true);
   const [minPrice, setMinPrice] = useState(priceRange.min);
@@ -98,9 +133,9 @@ export default function ShopPage() {
     dispatch(setPriceRange({ min: minPrice, max: maxPrice }));
   };
 
-  const activeFiltersCount = 
-    (searchTerm ? 1 : 0) + 
-    selectedCategories.length + 
+  const activeFiltersCount =
+    (searchTerm ? 1 : 0) +
+    selectedCategories.length +
     (priceRange.min !== 0 || priceRange.max !== 1000 ? 1 : 0) +
     (sortBy !== "none" ? 1 : 0);
 
@@ -122,9 +157,7 @@ export default function ShopPage() {
                 Total: ${total.toFixed(2)}
               </PixelBadge>
               <Link href="/examples">
-                <PixelButton variant="secondary">
-                  Dashboard
-                </PixelButton>
+                <PixelButton variant="secondary">Dashboard</PixelButton>
               </Link>
             </div>
           </div>
@@ -159,14 +192,18 @@ export default function ShopPage() {
                 <PixelCardContent className="space-y-6">
                   {/* Search */}
                   <div>
-                    <label className="text-sm font-bold mb-2 block">Search</label>
+                    <label className="text-sm font-bold mb-2 block">
+                      Search
+                    </label>
                     <div className="relative">
                       <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                       <PixelInput
                         type="text"
                         placeholder="Search products..."
                         value={searchTerm}
-                        onChange={(e) => dispatch(setSearchTerm(e.target.value))}
+                        onChange={(e) =>
+                          dispatch(setSearchTerm(e.target.value))
+                        }
                         className="pl-10"
                       />
                       {searchTerm && (
@@ -184,7 +221,9 @@ export default function ShopPage() {
 
                   {/* Categories */}
                   <div>
-                    <label className="text-sm font-bold mb-2 block">Categories</label>
+                    <label className="text-sm font-bold mb-2 block">
+                      Categories
+                    </label>
                     <div className="space-y-2">
                       {availableCategories.map((category) => (
                         <label
@@ -199,7 +238,13 @@ export default function ShopPage() {
                           />
                           <span className="text-sm">{category}</span>
                           <span className="text-xs text-muted-foreground ml-auto">
-                            ({sampleProducts.filter((p) => p.category === category).length})
+                            (
+                            {
+                              sampleProducts.filter(
+                                (p) => p.category === category,
+                              ).length
+                            }
+                            )
                           </span>
                         </label>
                       ))}
@@ -208,7 +253,9 @@ export default function ShopPage() {
 
                   {/* Price Range */}
                   <div>
-                    <label className="text-sm font-bold mb-2 block">Price Range</label>
+                    <label className="text-sm font-bold mb-2 block">
+                      Price Range
+                    </label>
                     <div className="space-y-3">
                       <div className="flex gap-2 items-center">
                         <PixelInput
@@ -242,20 +289,32 @@ export default function ShopPage() {
 
                   {/* Sort By */}
                   <div>
-                    <label className="text-sm font-bold mb-2 block">Sort By</label>
+                    <label className="text-sm font-bold mb-2 block">
+                      Sort By
+                    </label>
                     <PixelSelect
                       value={sortBy}
-                      onValueChange={(value) => dispatch(setSortBy(value as SortOption))}
+                      onValueChange={(value) =>
+                        dispatch(setSortBy(value as SortOption))
+                      }
                     >
                       <PixelSelectTrigger>
                         <PixelSelectValue placeholder="Select sort order" />
                       </PixelSelectTrigger>
                       <PixelSelectContent>
                         <PixelSelectItem value="none">Default</PixelSelectItem>
-                        <PixelSelectItem value="price-asc">Price: Low to High</PixelSelectItem>
-                        <PixelSelectItem value="price-desc">Price: High to Low</PixelSelectItem>
-                        <PixelSelectItem value="name-asc">Name: A to Z</PixelSelectItem>
-                        <PixelSelectItem value="name-desc">Name: Z to A</PixelSelectItem>
+                        <PixelSelectItem value="price-asc">
+                          Price: Low to High
+                        </PixelSelectItem>
+                        <PixelSelectItem value="price-desc">
+                          Price: High to Low
+                        </PixelSelectItem>
+                        <PixelSelectItem value="name-asc">
+                          Name: A to Z
+                        </PixelSelectItem>
+                        <PixelSelectItem value="name-desc">
+                          Name: Z to A
+                        </PixelSelectItem>
                       </PixelSelectContent>
                     </PixelSelect>
                   </div>
@@ -294,7 +353,9 @@ export default function ShopPage() {
             {filteredProducts.length === 0 ? (
               <PixelCard>
                 <PixelCardContent className="text-center py-12">
-                  <p className="text-muted-foreground text-lg mb-4">No products found</p>
+                  <p className="text-muted-foreground text-lg mb-4">
+                    No products found
+                  </p>
                   <p className="text-sm text-muted-foreground mb-4">
                     Try adjusting your filters or search terms
                   </p>
@@ -313,84 +374,108 @@ export default function ShopPage() {
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {filteredProducts.map((product) => {
-                const inCart = cartItems.find((item) => item.id === product.id);
-                const inWishlist = wishlist.find((item) => item.id === product.id);
+                  const inCart = cartItems.find(
+                    (item) => item.id === product.id,
+                  );
+                  const inWishlist = wishlist.find(
+                    (item) => item.id === product.id,
+                  );
 
-                return (
-                  <PixelCard key={product.id}>
-                    <PixelCardHeader>
-                      <div className="flex items-center justify-between">
-                        <PixelCardTitle>{product.name}</PixelCardTitle>
-                        <button
-                          onClick={() => {
-                            if (inWishlist) {
-                              dispatch(removeFromWishlist(product.id));
-                            } else {
-                              dispatch(addToWishlist(product));
+                  return (
+                    <PixelCard key={product.id}>
+                      <PixelCardHeader>
+                        <div className="flex items-center justify-between">
+                          <PixelCardTitle>{product.name}</PixelCardTitle>
+                          <button
+                            onClick={() => {
+                              if (inWishlist) {
+                                dispatch(removeFromWishlist(product.id));
+                              } else {
+                                dispatch(addToWishlist(product));
+                              }
+                            }}
+                            className="hover:scale-110 transition-transform"
+                            aria-label={
+                              inWishlist
+                                ? "Remove from wishlist"
+                                : "Add to wishlist"
                             }
-                          }}
-                          className="hover:scale-110 transition-transform"
-                          aria-label={inWishlist ? "Remove from wishlist" : "Add to wishlist"}
-                          title={inWishlist ? "Remove from wishlist" : "Add to wishlist"}
-                        >
-                          <Heart
-                            className={`h-5 w-5 ${
-                              inWishlist ? "fill-red-500 text-red-500" : ""
-                            }`}
-                          />
-                        </button>
-                      </div>
-                    </PixelCardHeader>
-                    <PixelCardContent>
-                      <div className="text-6xl text-center my-4">{product.image}</div>
-                      <div className="flex items-center justify-between">
-                        <PixelBadge variant="default">{product.category}</PixelBadge>
-                        <span className="text-xl font-bold dark:text-pixel-dark-secondary">
-                          ${product.price}
-                        </span>
-                      </div>
-                    </PixelCardContent>
-                    <PixelCardFooter>
-                      {inCart ? (
-                        <div className="flex items-center gap-2 w-full">
-                          <PixelButton
-                            size="sm"
-                            variant="ghost"
-                            onClick={() => dispatch(decrementQuantity(product.id))}
+                            title={
+                              inWishlist
+                                ? "Remove from wishlist"
+                                : "Add to wishlist"
+                            }
                           >
-                            <Minus className="h-4 w-4" />
-                          </PixelButton>
-                          <span className="font-bold text-lg px-4">{inCart.quantity}</span>
-                          <PixelButton
-                            size="sm"
-                            variant="ghost"
-                            onClick={() => dispatch(incrementQuantity(product.id))}
-                          >
-                            <Plus className="h-4 w-4" />
-                          </PixelButton>
-                          <PixelButton
-                            size="sm"
-                            variant="destructive"
-                            onClick={() => dispatch(removeFromCart(product.id))}
-                            className="ml-auto"
-                          >
-                            <Trash2 className="h-4 w-4" />
-                          </PixelButton>
+                            <Heart
+                              className={`h-5 w-5 ${
+                                inWishlist ? "fill-red-500 text-red-500" : ""
+                              }`}
+                            />
+                          </button>
                         </div>
-                      ) : (
-                        <PixelButton
-                          onClick={() => dispatch(addToCart(product))}
-                          className="w-full"
-                        >
-                          <ShoppingCart className="mr-2 h-4 w-4" />
-                          Add to Cart
-                        </PixelButton>
-                      )}
-                    </PixelCardFooter>
-                  </PixelCard>
-                );
-              })}
-            </div>
+                      </PixelCardHeader>
+                      <PixelCardContent>
+                        <div className="text-6xl text-center my-4">
+                          {product.image}
+                        </div>
+                        <div className="flex items-center justify-between">
+                          <PixelBadge variant="default">
+                            {product.category}
+                          </PixelBadge>
+                          <span className="text-xl font-bold dark:text-pixel-dark-secondary">
+                            ${product.price}
+                          </span>
+                        </div>
+                      </PixelCardContent>
+                      <PixelCardFooter>
+                        {inCart ? (
+                          <div className="flex items-center gap-2 w-full">
+                            <PixelButton
+                              size="sm"
+                              variant="ghost"
+                              onClick={() =>
+                                dispatch(decrementQuantity(product.id))
+                              }
+                            >
+                              <Minus className="h-4 w-4" />
+                            </PixelButton>
+                            <span className="font-bold text-lg px-4">
+                              {inCart.quantity}
+                            </span>
+                            <PixelButton
+                              size="sm"
+                              variant="ghost"
+                              onClick={() =>
+                                dispatch(incrementQuantity(product.id))
+                              }
+                            >
+                              <Plus className="h-4 w-4" />
+                            </PixelButton>
+                            <PixelButton
+                              size="sm"
+                              variant="destructive"
+                              onClick={() =>
+                                dispatch(removeFromCart(product.id))
+                              }
+                              className="ml-auto"
+                            >
+                              <Trash2 className="h-4 w-4" />
+                            </PixelButton>
+                          </div>
+                        ) : (
+                          <PixelButton
+                            onClick={() => dispatch(addToCart(product))}
+                            className="w-full"
+                          >
+                            <ShoppingCart className="mr-2 h-4 w-4" />
+                            Add to Cart
+                          </PixelButton>
+                        )}
+                      </PixelCardFooter>
+                    </PixelCard>
+                  );
+                })}
+              </div>
             )}
           </section>
 
@@ -438,7 +523,9 @@ export default function ShopPage() {
                     <div className="pt-4 border-t-4 border-black dark:border-[#ff8c00]">
                       <div className="flex justify-between items-center text-xl font-bold">
                         <span>Total:</span>
-                        <span className="dark:text-pixel-dark-secondary">${total.toFixed(2)}</span>
+                        <span className="dark:text-pixel-dark-secondary">
+                          ${total.toFixed(2)}
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -491,7 +578,9 @@ export default function ShopPage() {
                           <PixelButton
                             size="sm"
                             variant="ghost"
-                            onClick={() => dispatch(removeFromWishlist(item.id))}
+                            onClick={() =>
+                              dispatch(removeFromWishlist(item.id))
+                            }
                           >
                             <Trash2 className="h-3 w-3" />
                           </PixelButton>

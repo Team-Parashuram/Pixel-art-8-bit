@@ -21,7 +21,11 @@ const PixelTableHeader = React.forwardRef<
   HTMLTableSectionElement,
   React.HTMLAttributes<HTMLTableSectionElement>
 >(({ className, ...props }, ref) => (
-  <thead ref={ref} className={cn("bg-[#ff8c00] text-white", className)} {...props} />
+  <thead
+    ref={ref}
+    className={cn("bg-[#ff8c00] text-white", className)}
+    {...props}
+  />
 ));
 PixelTableHeader.displayName = "PixelTableHeader";
 
@@ -45,7 +49,7 @@ const PixelTableFooter = React.forwardRef<
     ref={ref}
     className={cn(
       "border-t-4 border-black bg-[#ffd700] font-medium text-black dark:border-[#ff8c00]",
-      className
+      className,
     )}
     {...props}
   />
@@ -60,7 +64,7 @@ const PixelTableRow = React.forwardRef<
     ref={ref}
     className={cn(
       "border-b-2 border-black transition-none duration-0 hover:bg-black/5 dark:border-[#ff8c00] dark:hover:bg-white/5",
-      className
+      className,
     )}
     {...props}
   />
@@ -75,7 +79,7 @@ const PixelTableHead = React.forwardRef<
     ref={ref}
     className={cn(
       "h-12 px-4 text-left align-middle font-bold uppercase text-xs tracking-wider [&:has([role=checkbox])]:pr-0",
-      className
+      className,
     )}
     {...props}
   />

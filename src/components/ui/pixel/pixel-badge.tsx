@@ -1,7 +1,7 @@
 "use client";
 
-import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
+import type * as React from "react";
 import { cn } from "@/lib/utils";
 
 const pixelBadgeVariants = cva(
@@ -22,7 +22,7 @@ const pixelBadgeVariants = cva(
     defaultVariants: {
       variant: "default",
     },
-  }
+  },
 );
 
 export interface PixelBadgeProps
@@ -31,7 +31,10 @@ export interface PixelBadgeProps
 
 function PixelBadge({ className, variant, ...props }: PixelBadgeProps) {
   return (
-    <div className={cn(pixelBadgeVariants({ variant }), className)} {...props} />
+    <div
+      className={cn(pixelBadgeVariants({ variant }), className)}
+      {...props}
+    />
   );
 }
 

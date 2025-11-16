@@ -3,7 +3,11 @@
     "name": "Pixel Button",
     "description": "A retro 8-bit styled button component with pixel-perfect borders and instant state changes",
     "files": ["components/ui/pixel/pixel-button.tsx"],
-    "dependencies": ["class-variance-authority", "lucide-react", "@radix-ui/react-slot"],
+    "dependencies": [
+      "class-variance-authority",
+      "lucide-react",
+      "@radix-ui/react-slot"
+    ],
     "registryDependencies": []
   },
   "pixel-card": {

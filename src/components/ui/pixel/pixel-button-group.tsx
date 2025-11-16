@@ -1,7 +1,7 @@
-import { Slot } from "@radix-ui/react-slot"
-import { cva, type VariantProps } from "class-variance-authority"
-import { cn } from "@/lib/utils"
-import { PixelSeparator } from "./pixel-separator"
+import { Slot } from "@radix-ui/react-slot";
+import { cva, type VariantProps } from "class-variance-authority";
+import { cn } from "@/lib/utils";
+import { PixelSeparator } from "./pixel-separator";
 
 const pixelButtonGroupVariants = cva(
   "flex w-fit items-stretch font-[family-name:var(--font-press-start)]",
@@ -17,14 +17,15 @@ const pixelButtonGroupVariants = cva(
     defaultVariants: {
       orientation: "horizontal",
     },
-  }
-)
+  },
+);
 
 function PixelButtonGroup({
   className,
   orientation,
   ...props
-}: React.ComponentProps<"div"> & VariantProps<typeof pixelButtonGroupVariants>) {
+}: React.ComponentProps<"div"> &
+  VariantProps<typeof pixelButtonGroupVariants>) {
   return (
     <div
       role="group"
@@ -32,7 +33,7 @@ function PixelButtonGroup({
       className={cn(pixelButtonGroupVariants({ orientation }), className)}
       {...props}
     />
-  )
+  );
 }
 
 function PixelButtonGroupText({
@@ -40,19 +41,19 @@ function PixelButtonGroupText({
   asChild = false,
   ...props
 }: React.ComponentProps<"div"> & {
-  asChild?: boolean
+  asChild?: boolean;
 }) {
-  const Comp = asChild ? Slot : "div"
+  const Comp = asChild ? Slot : "div";
 
   return (
     <Comp
       className={cn(
         "flex items-center gap-2 border-4 border-black bg-[#e0e0e0] dark:bg-[#3a3a3a] px-4 py-2 text-xs font-bold",
-        className
+        className,
       )}
       {...props}
     />
-  )
+  );
 }
 
 function PixelButtonGroupSeparator({
@@ -63,11 +64,16 @@ function PixelButtonGroupSeparator({
     <div
       className={cn(
         "bg-black group-data-[orientation=horizontal]/button-group:w-px group-data-[orientation=vertical]/button-group:h-px",
-        className
+        className,
       )}
       {...props}
     />
-  )
+  );
 }
 
-export { PixelButtonGroup, PixelButtonGroupText, PixelButtonGroupSeparator, pixelButtonGroupVariants }
+export {
+  PixelButtonGroup,
+  PixelButtonGroupText,
+  PixelButtonGroupSeparator,
+  pixelButtonGroupVariants,
+};

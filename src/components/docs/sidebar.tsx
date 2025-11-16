@@ -1,12 +1,12 @@
 "use client";
 
-import * as React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import * as React from "react";
+import { categories, componentRegistry } from "@/lib/component-registry";
 import { cn } from "@/lib/utils";
-import { componentRegistry, categories } from "@/lib/component-registry";
 
-const SCROLL_POSITION_KEY = 'docs-sidebar-scroll';
+const SCROLL_POSITION_KEY = "docs-sidebar-scroll";
 
 export function DocsSidebar() {
   const pathname = usePathname();
@@ -21,8 +21,8 @@ export function DocsSidebar() {
       sessionStorage.setItem(SCROLL_POSITION_KEY, sidebar.scrollTop.toString());
     };
 
-    sidebar.addEventListener('scroll', handleScroll, { passive: true });
-    return () => sidebar.removeEventListener('scroll', handleScroll);
+    sidebar.addEventListener("scroll", handleScroll, { passive: true });
+    return () => sidebar.removeEventListener("scroll", handleScroll);
   }, []);
 
   // Restore scroll position on mount and after navigation
@@ -60,9 +60,11 @@ export function DocsSidebar() {
 
       <nav className="space-y-4">
         {categories.map((category) => {
-          const categoryComponents = componentRegistry.filter((c) => c.category === category);
+          const categoryComponents = componentRegistry.filter(
+            (c) => c.category === category,
+          );
           const hasActiveComponent = categoryComponents.some(
-            (c) => pathname === `/docs/components/${c.slug}`
+            (c) => pathname === `/docs/components/${c.slug}`,
           );
 
           return (
@@ -83,7 +85,7 @@ export function DocsSidebar() {
                         "block px-3 py-2 text-xs font-medium transition-none duration-0 pixel-borders border-2",
                         isActive
                           ? "bg-[#ff8c00] text-white border-black dark:border-[#ff8c00]"
-                          : "bg-white border-black hover:bg-black/5 dark:bg-[#1a1a1a] dark:border-[#ff8c00] dark:hover:bg-white/5"
+                          : "bg-white border-black hover:bg-black/5 dark:bg-[#1a1a1a] dark:border-[#ff8c00] dark:hover:bg-white/5",
                       )}
                     >
                       {component.title}

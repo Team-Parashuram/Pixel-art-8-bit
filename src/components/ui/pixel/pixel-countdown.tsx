@@ -1,31 +1,28 @@
 "use client";
 
-import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
+import * as React from "react";
 
-const countdownVariants = cva(
-  "flex items-center gap-2 font-pixel font-bold",
-  {
-    variants: {
-      variant: {
-        default: "",
-        retro: "",
-        digital: "",
-        flip: "",
-      },
-      size: {
-        sm: "text-2xl",
-        md: "text-4xl",
-        lg: "text-6xl",
-        xl: "text-8xl",
-      },
+const countdownVariants = cva("flex items-center gap-2 font-pixel font-bold", {
+  variants: {
+    variant: {
+      default: "",
+      retro: "",
+      digital: "",
+      flip: "",
     },
-    defaultVariants: {
-      variant: "default",
-      size: "md",
+    size: {
+      sm: "text-2xl",
+      md: "text-4xl",
+      lg: "text-6xl",
+      xl: "text-8xl",
     },
-  }
-);
+  },
+  defaultVariants: {
+    variant: "default",
+    size: "md",
+  },
+});
 
 const digitVariants = cva(
   "border-4 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] flex items-center justify-center",
@@ -48,7 +45,7 @@ const digitVariants = cva(
       variant: "default",
       size: "md",
     },
-  }
+  },
 );
 
 interface PixelCountdownProps extends VariantProps<typeof countdownVariants> {
@@ -87,7 +84,7 @@ export function PixelCountdown({
     const calculateTimeLeft = () => {
       if (targetDate) {
         const difference = targetDate.getTime() - new Date().getTime();
-        
+
         if (difference <= 0) {
           onComplete?.();
           return { days: 0, hours: 0, minutes: 0, seconds: 0 };
@@ -101,7 +98,7 @@ export function PixelCountdown({
         };
       } else if (initialSeconds !== undefined) {
         const total = Math.max(0, initialSeconds);
-        
+
         if (total <= 0) {
           onComplete?.();
           return { days: 0, hours: 0, minutes: 0, seconds: 0 };
@@ -130,7 +127,7 @@ export function PixelCountdown({
     return () => clearInterval(timer);
   }, [targetDate, initialSeconds, onComplete]);
 
-    return (
+  return (
     <div className={countdownVariants({ variant, size, className })}>
       {showDays && (
         <PixelCountdownUnit
@@ -141,7 +138,7 @@ export function PixelCountdown({
         />
       )}
       {showDays && showHours && <PixelColon size={size || undefined} />}
-      
+
       {showHours && (
         <PixelCountdownUnit
           value={timeLeft.hours}
@@ -151,7 +148,7 @@ export function PixelCountdown({
         />
       )}
       {showHours && showMinutes && <PixelColon size={size || undefined} />}
-      
+
       {showMinutes && (
         <PixelCountdownUnit
           value={timeLeft.minutes}
@@ -161,7 +158,7 @@ export function PixelCountdown({
         />
       )}
       {showMinutes && showSeconds && <PixelColon size={size || undefined} />}
-      
+
       {showSeconds && (
         <PixelCountdownUnit
           value={timeLeft.seconds}
@@ -172,7 +169,8 @@ export function PixelCountdown({
       )}
     </div>
   );
-}interface PixelCountdownUnitProps {
+}
+interface PixelCountdownUnitProps {
   value: number;
   label?: string;
   variant?: "default" | "retro" | "digital" | "flip";
@@ -197,7 +195,9 @@ export function PixelCountdownUnit({
         ))}
       </div>
       {label && (
-        <div className={`font-bold ${size === "sm" ? "text-xs" : size === "md" ? "text-sm" : size === "lg" ? "text-base" : "text-lg"}`}>
+        <div
+          className={`font-bold ${size === "sm" ? "text-xs" : size === "md" ? "text-sm" : size === "lg" ? "text-base" : "text-lg"}`}
+        >
           {label}
         </div>
       )}
@@ -237,7 +237,7 @@ export function PixelTimer({
   className,
 }: PixelTimerProps) {
   const [totalSeconds, setTotalSeconds] = React.useState(
-    initialMinutes * 60 + initialSeconds
+    initialMinutes * 60 + initialSeconds,
   );
   const [isRunning, setIsRunning] = React.useState(false);
   const [isPaused, setIsPaused] = React.useState(false);
@@ -309,7 +309,7 @@ export function PixelTimer({
               START
             </button>
           )}
-          
+
           {isRunning && !isPaused && (
             <button
               onClick={handlePause}
@@ -318,7 +318,7 @@ export function PixelTimer({
               PAUSE
             </button>
           )}
-          
+
           {isPaused && (
             <button
               onClick={handleResume}
@@ -327,7 +327,7 @@ export function PixelTimer({
               RESUME
             </button>
           )}
-          
+
           <button
             onClick={handleReset}
             className="px-6 py-3 border-4 border-black bg-pixel-error hover:bg-pixel-dark-secondary shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[1px] hover:translate-y-[1px] font-bold font-pixel"

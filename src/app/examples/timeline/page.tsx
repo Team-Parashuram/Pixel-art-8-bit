@@ -1,10 +1,14 @@
-import { PixelTimeline, PixelTimelineCheckpoint } from "@/components/ui/pixel/pixel-timeline";
+import {
+  PixelTimeline,
+  PixelTimelineCheckpoint,
+} from "@/components/ui/pixel/pixel-timeline";
 
 export default function TimelineExamples() {
   const basicTimeline = [
     {
       title: "Project Started",
-      description: "Initial planning and requirements gathering phase completed.",
+      description:
+        "Initial planning and requirements gathering phase completed.",
       date: "Jan 2024",
       variant: "success" as const,
       icon: "🚀",
@@ -35,19 +39,22 @@ export default function TimelineExamples() {
   const careerTimeline = [
     {
       title: "Senior Developer",
-      description: "Leading frontend architecture and mentoring junior developers at Tech Corp.",
+      description:
+        "Leading frontend architecture and mentoring junior developers at Tech Corp.",
       date: "2023 - Present",
       variant: "primary" as const,
     },
     {
       title: "Full Stack Developer",
-      description: "Built and maintained multiple web applications using React and Node.js.",
+      description:
+        "Built and maintained multiple web applications using React and Node.js.",
       date: "2021 - 2023",
       variant: "success" as const,
     },
     {
       title: "Junior Developer",
-      description: "Started career working on internal tools and learning modern frameworks.",
+      description:
+        "Started career working on internal tools and learning modern frameworks.",
       date: "2019 - 2021",
       variant: "success" as const,
     },
@@ -73,8 +80,10 @@ export default function TimelineExamples() {
     <div className="container mx-auto px-4 py-16 space-y-24">
       {/* Basic Timeline */}
       <section>
-        <h2 className="text-3xl font-bold mb-8 font-pixel">Vertical Timeline</h2>
-        
+        <h2 className="text-3xl font-bold mb-8 font-pixel">
+          Vertical Timeline
+        </h2>
+
         <div className="max-w-3xl">
           <PixelTimeline items={basicTimeline} />
         </div>
@@ -82,8 +91,10 @@ export default function TimelineExamples() {
 
       {/* Horizontal Timeline */}
       <section>
-        <h2 className="text-3xl font-bold mb-8 font-pixel">Horizontal Timeline</h2>
-        
+        <h2 className="text-3xl font-bold mb-8 font-pixel">
+          Horizontal Timeline
+        </h2>
+
         <div className="overflow-x-auto">
           <PixelTimeline items={basicTimeline} orientation="horizontal" />
         </div>
@@ -92,30 +103,21 @@ export default function TimelineExamples() {
       {/* Different Marker Sizes */}
       <section>
         <h2 className="text-3xl font-bold mb-8 font-pixel">Marker Sizes</h2>
-        
+
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
           <div>
             <h3 className="text-lg font-bold mb-4 font-pixel">Small</h3>
-            <PixelTimeline
-              items={basicTimeline.slice(0, 2)}
-              markerSize="sm"
-            />
+            <PixelTimeline items={basicTimeline.slice(0, 2)} markerSize="sm" />
           </div>
 
           <div>
             <h3 className="text-lg font-bold mb-4 font-pixel">Medium</h3>
-            <PixelTimeline
-              items={basicTimeline.slice(0, 2)}
-              markerSize="md"
-            />
+            <PixelTimeline items={basicTimeline.slice(0, 2)} markerSize="md" />
           </div>
 
           <div>
             <h3 className="text-lg font-bold mb-4 font-pixel">Large</h3>
-            <PixelTimeline
-              items={basicTimeline.slice(0, 2)}
-              markerSize="lg"
-            />
+            <PixelTimeline items={basicTimeline.slice(0, 2)} markerSize="lg" />
           </div>
         </div>
       </section>
@@ -123,7 +125,7 @@ export default function TimelineExamples() {
       {/* Marker Shapes */}
       <section>
         <h2 className="text-3xl font-bold mb-8 font-pixel">Marker Shapes</h2>
-        
+
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
           <div>
             <h3 className="text-lg font-bold mb-4 font-pixel">Square</h3>
@@ -154,7 +156,7 @@ export default function TimelineExamples() {
       {/* Career Timeline */}
       <section>
         <h2 className="text-3xl font-bold mb-8 font-pixel">Career Timeline</h2>
-        
+
         <div className="max-w-3xl">
           <PixelTimeline
             items={careerTimeline}
@@ -166,36 +168,51 @@ export default function TimelineExamples() {
 
       {/* Checkpoint Progress - Vertical */}
       <section>
-        <h2 className="text-3xl font-bold mb-8 font-pixel">Checkpoint Progress (Vertical)</h2>
-        
+        <h2 className="text-3xl font-bold mb-8 font-pixel">
+          Checkpoint Progress (Vertical)
+        </h2>
+
         <div className="max-w-2xl">
-          <PixelTimelineCheckpoint checkpoints={checkpoints} orientation="vertical" />
+          <PixelTimelineCheckpoint
+            checkpoints={checkpoints}
+            orientation="vertical"
+          />
         </div>
       </section>
 
       {/* Checkpoint Progress - Horizontal */}
       <section>
-        <h2 className="text-3xl font-bold mb-8 font-pixel">Checkpoint Progress (Horizontal)</h2>
-        
+        <h2 className="text-3xl font-bold mb-8 font-pixel">
+          Checkpoint Progress (Horizontal)
+        </h2>
+
         <div className="overflow-x-auto">
-          <PixelTimelineCheckpoint checkpoints={checkpoints} orientation="horizontal" />
+          <PixelTimelineCheckpoint
+            checkpoints={checkpoints}
+            orientation="horizontal"
+          />
         </div>
       </section>
 
       {/* Order Tracking */}
       <section>
         <h2 className="text-3xl font-bold mb-8 font-pixel">Order Tracking</h2>
-        
+
         <div className="border-4 border-black p-8 bg-white dark:bg-[#2a2a2a] shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
           <h3 className="text-xl font-bold mb-6 font-pixel">Order #12345</h3>
-          <PixelTimelineCheckpoint checkpoints={orderCheckpoints} orientation="horizontal" />
+          <PixelTimelineCheckpoint
+            checkpoints={orderCheckpoints}
+            orientation="horizontal"
+          />
         </div>
       </section>
 
       {/* No Connector */}
       <section>
-        <h2 className="text-3xl font-bold mb-8 font-pixel">Without Connectors</h2>
-        
+        <h2 className="text-3xl font-bold mb-8 font-pixel">
+          Without Connectors
+        </h2>
+
         <div className="max-w-3xl">
           <PixelTimeline
             items={basicTimeline.slice(0, 3)}
@@ -207,7 +224,7 @@ export default function TimelineExamples() {
       {/* Color Variants */}
       <section>
         <h2 className="text-3xl font-bold mb-8 font-pixel">Color Variants</h2>
-        
+
         <div className="max-w-3xl">
           <PixelTimeline
             items={[
@@ -250,7 +267,7 @@ export default function TimelineExamples() {
               {`<PixelTimeline items={timelineItems} />`}
             </code>
           </div>
-          
+
           <div>
             <p className="font-bold mb-2">Horizontal with Custom Markers:</p>
             <code className="block bg-white dark:bg-black p-4 border-2 border-black overflow-x-auto">
@@ -262,7 +279,7 @@ export default function TimelineExamples() {
 />`}
             </code>
           </div>
-          
+
           <div>
             <p className="font-bold mb-2">Checkpoint Progress:</p>
             <code className="block bg-white dark:bg-black p-4 border-2 border-black overflow-x-auto">

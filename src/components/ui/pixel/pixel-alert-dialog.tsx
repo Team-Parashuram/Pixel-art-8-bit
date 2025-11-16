@@ -1,26 +1,26 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import * as AlertDialogPrimitive from "@radix-ui/react-alert-dialog"
-import { cn } from "@/lib/utils"
-import { pixelButtonVariants } from "./pixel-button"
+import * as AlertDialogPrimitive from "@radix-ui/react-alert-dialog";
+import type * as React from "react";
+import { cn } from "@/lib/utils";
+import { pixelButtonVariants } from "./pixel-button";
 
 function PixelAlertDialog({
   ...props
 }: React.ComponentProps<typeof AlertDialogPrimitive.Root>) {
-  return <AlertDialogPrimitive.Root {...props} />
+  return <AlertDialogPrimitive.Root {...props} />;
 }
 
 function PixelAlertDialogTrigger({
   ...props
 }: React.ComponentProps<typeof AlertDialogPrimitive.Trigger>) {
-  return <AlertDialogPrimitive.Trigger {...props} />
+  return <AlertDialogPrimitive.Trigger {...props} />;
 }
 
 function PixelAlertDialogPortal({
   ...props
 }: React.ComponentProps<typeof AlertDialogPrimitive.Portal>) {
-  return <AlertDialogPrimitive.Portal {...props} />
+  return <AlertDialogPrimitive.Portal {...props} />;
 }
 
 function PixelAlertDialogOverlay({
@@ -29,13 +29,10 @@ function PixelAlertDialogOverlay({
 }: React.ComponentProps<typeof AlertDialogPrimitive.Overlay>) {
   return (
     <AlertDialogPrimitive.Overlay
-      className={cn(
-        "fixed inset-0 z-50 bg-black/80 duration-0",
-        className
-      )}
+      className={cn("fixed inset-0 z-50 bg-black/80 duration-0", className)}
       {...props}
     />
-  )
+  );
 }
 
 function PixelAlertDialogContent({
@@ -49,12 +46,12 @@ function PixelAlertDialogContent({
         className={cn(
           "fixed left-[50%] top-[50%] z-50 w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border-4 border-black bg-[#fffacd] dark:bg-[#2a2a2a] p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] duration-0 sm:rounded-none",
           "font-[family-name:var(--font-press-start)]",
-          className
+          className,
         )}
         {...props}
       />
     </PixelAlertDialogPortal>
-  )
+  );
 }
 
 function PixelAlertDialogHeader({
@@ -65,11 +62,11 @@ function PixelAlertDialogHeader({
     <div
       className={cn(
         "flex flex-col space-y-2 text-center sm:text-left",
-        className
+        className,
       )}
       {...props}
     />
-  )
+  );
 }
 
 function PixelAlertDialogFooter({
@@ -80,11 +77,11 @@ function PixelAlertDialogFooter({
     <div
       className={cn(
         "flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2",
-        className
+        className,
       )}
       {...props}
     />
-  )
+  );
 }
 
 function PixelAlertDialogTitle({
@@ -93,13 +90,10 @@ function PixelAlertDialogTitle({
 }: React.ComponentProps<typeof AlertDialogPrimitive.Title>) {
   return (
     <AlertDialogPrimitive.Title
-      className={cn(
-        "text-lg font-bold leading-none tracking-tight",
-        className
-      )}
+      className={cn("text-lg font-bold leading-none tracking-tight", className)}
       {...props}
     />
-  )
+  );
 }
 
 function PixelAlertDialogDescription({
@@ -111,7 +105,7 @@ function PixelAlertDialogDescription({
       className={cn("text-sm text-[#555] dark:text-[#aaa]", className)}
       {...props}
     />
-  )
+  );
 }
 
 function PixelAlertDialogAction({
@@ -123,7 +117,7 @@ function PixelAlertDialogAction({
       className={cn(pixelButtonVariants(), className)}
       {...props}
     />
-  )
+  );
 }
 
 function PixelAlertDialogCancel({
@@ -135,7 +129,7 @@ function PixelAlertDialogCancel({
       className={cn(pixelButtonVariants({ variant: "secondary" }), className)}
       {...props}
     />
-  )
+  );
 }
 
 export {
@@ -150,4 +144,4 @@ export {
   PixelAlertDialogDescription,
   PixelAlertDialogAction,
   PixelAlertDialogCancel,
-}
+};

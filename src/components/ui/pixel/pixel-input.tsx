@@ -13,13 +13,13 @@ const PixelInput = React.forwardRef<HTMLInputElement, PixelInputProps>(
         type={type}
         className={cn(
           "flex w-full pixel-borders border-[3px] border-black bg-white px-4 py-3 text-sm transition-none duration-0 file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-black/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff8c00] focus-visible:ring-offset-0 disabled:cursor-not-allowed disabled:opacity-50 dark:border-[#ff8c00] dark:bg-[#1a1a1a] dark:text-white dark:placeholder:text-white/50 dark:focus-visible:ring-[#ffd700]",
-          className
+          className,
         )}
         ref={ref}
         {...props}
       />
     );
-  }
+  },
 );
 PixelInput.displayName = "PixelInput";
 

@@ -1,9 +1,9 @@
 "use client";
 
-import * as React from "react";
 import Link from "next/link";
-import { cn } from "@/lib/utils";
+import * as React from "react";
 import { PixelButton } from "@/components/ui/pixel/pixel-button";
+import { cn } from "@/lib/utils";
 
 export type PixelParallaxHeroShape = "square" | "circle" | "diamond" | "pill";
 
@@ -44,7 +44,7 @@ export interface PixelParallaxHeroAction {
 }
 
 export interface PixelParallaxHeroProps
-  extends Omit<React.HTMLAttributes<HTMLDivElement>, 'title'> {
+  extends Omit<React.HTMLAttributes<HTMLDivElement>, "title"> {
   badge?: React.ReactNode;
   title?: React.ReactNode;
   subtitle?: React.ReactNode;
@@ -109,7 +109,8 @@ const usePrefersReducedMotion = () => {
     const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
     setPrefersReducedMotion(mediaQuery.matches);
 
-    const handler = (event: MediaQueryListEvent) => setPrefersReducedMotion(event.matches);
+    const handler = (event: MediaQueryListEvent) =>
+      setPrefersReducedMotion(event.matches);
     mediaQuery.addEventListener("change", handler);
     return () => mediaQuery.removeEventListener("change", handler);
   }, []);
@@ -133,7 +134,7 @@ const getShapeClassName = (shape: PixelParallaxHeroShape | undefined) => {
 
 function renderAction(
   action?: PixelParallaxHeroAction,
-  fallbackVariant: PixelParallaxHeroAction["variant"] = "default"
+  fallbackVariant: PixelParallaxHeroAction["variant"] = "default",
 ) {
   if (!action) return null;
 
@@ -141,7 +142,11 @@ function renderAction(
 
   if (href) {
     return (
-      <PixelButton variant={variant ?? fallbackVariant} size={size ?? "lg"} asChild>
+      <PixelButton
+        variant={variant ?? fallbackVariant}
+        size={size ?? "lg"}
+        asChild
+      >
         <Link href={href} className="inline-flex items-center gap-2">
           {icon}
           {label}
@@ -151,7 +156,11 @@ function renderAction(
   }
 
   return (
-    <PixelButton variant={variant ?? fallbackVariant} size={size ?? "lg"} onClick={onClick}>
+    <PixelButton
+      variant={variant ?? fallbackVariant}
+      size={size ?? "lg"}
+      onClick={onClick}
+    >
       <span className="inline-flex items-center gap-2">
         {icon}
         {label}
@@ -160,7 +169,10 @@ function renderAction(
   );
 }
 
-const PixelParallaxHero = React.forwardRef<HTMLDivElement, PixelParallaxHeroProps>(
+const PixelParallaxHero = React.forwardRef<
+  HTMLDivElement,
+  PixelParallaxHeroProps
+>(
   (
     {
       badge,
@@ -175,7 +187,7 @@ const PixelParallaxHero = React.forwardRef<HTMLDivElement, PixelParallaxHeroProp
       className,
       ...props
     },
-    ref
+    ref,
   ) => {
     const prefersReducedMotion = usePrefersReducedMotion();
     const containerRef = React.useRef<HTMLDivElement>(null);
@@ -189,14 +201,19 @@ const PixelParallaxHero = React.forwardRef<HTMLDivElement, PixelParallaxHeroProp
       const percentY = ((event.clientY - rect.top) / rect.height - 0.5) * 2;
 
       if (frameRef.current) cancelAnimationFrame(frameRef.current);
-      frameRef.current = requestAnimationFrame(() => setOffset({ x: percentX, y: percentY }));
+      frameRef.current = requestAnimationFrame(() =>
+        setOffset({ x: percentX, y: percentY }),
+      );
     };
 
     const resetOffset = () => setOffset({ x: 0, y: 0 });
 
-    React.useEffect(() => () => {
-      if (frameRef.current) cancelAnimationFrame(frameRef.current);
-    }, []);
+    React.useEffect(
+      () => () => {
+        if (frameRef.current) cancelAnimationFrame(frameRef.current);
+      },
+      [],
+    );
 
     return (
       <section
@@ -205,19 +222,23 @@ const PixelParallaxHero = React.forwardRef<HTMLDivElement, PixelParallaxHeroProp
           if (typeof ref === "function") {
             ref(node);
           } else if (ref) {
-            (ref as React.MutableRefObject<HTMLDivElement | null>).current = node;
+            (ref as React.MutableRefObject<HTMLDivElement | null>).current =
+              node;
           }
         }}
         className={cn(
           "relative overflow-hidden pixel-borders border-4 border-black bg-[#fff6e5] dark:bg-[#050505] dark:border-[#ff8c00] shadow-[8px_8px_0px_rgba(0,0,0,1)]",
           "px-6 py-12 md:px-10 md:py-16 lg:px-16 lg:py-20",
-          className
+          className,
         )}
         onMouseMove={handleMouseMove}
         onMouseLeave={resetOffset}
         {...props}
       >
-        <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+        <div
+          className="absolute inset-0 pointer-events-none"
+          aria-hidden="true"
+        >
           <div
             className="absolute inset-0 opacity-40"
             style={{
@@ -229,7 +250,11 @@ const PixelParallaxHero = React.forwardRef<HTMLDivElement, PixelParallaxHeroProp
         </div>
 
         <div className="relative grid gap-10 lg:grid-cols-2">
-          <div className={cn("space-y-6", contentAlign === "center" && "text-center")}
+          <div
+            className={cn(
+              "space-y-6",
+              contentAlign === "center" && "text-center",
+            )}
           >
             {badge ? (
               <div className="inline-flex items-center gap-2 rounded-none border-2 border-black bg-[#ff8c00] px-3 py-1 text-xs font-bold uppercase tracking-wide text-white dark:border-[#ff8c00]">
@@ -254,7 +279,11 @@ const PixelParallaxHero = React.forwardRef<HTMLDivElement, PixelParallaxHeroProp
             </div>
 
             {(primaryAction || secondaryAction) && (
-              <div className={cn("flex flex-wrap gap-4", contentAlign === "center" && "justify-center")}
+              <div
+                className={cn(
+                  "flex flex-wrap gap-4",
+                  contentAlign === "center" && "justify-center",
+                )}
               >
                 {renderAction(primaryAction)}
                 {renderAction(secondaryAction, "ghost")}
@@ -275,7 +304,9 @@ const PixelParallaxHero = React.forwardRef<HTMLDivElement, PixelParallaxHeroProp
                       {stat.label}
                     </dt>
                     {stat.hint ? (
-                      <p className="mt-1 text-[11px] text-black/60 dark:text-white/60">{stat.hint}</p>
+                      <p className="mt-1 text-[11px] text-black/60 dark:text-white/60">
+                        {stat.hint}
+                      </p>
                     ) : null}
                   </div>
                 ))}
@@ -284,10 +315,14 @@ const PixelParallaxHero = React.forwardRef<HTMLDivElement, PixelParallaxHeroProp
           </div>
 
           <div className="relative h-80 rounded-none border-4 border-black bg-linear-to-br from-[#330a00] via-[#12002a] to-[#001a2a] dark:border-[#ff8c00] md:h-[420px]">
-            <div className="absolute inset-0 opacity-40" aria-hidden="true" style={{
-              backgroundImage:
-                "linear-gradient(120deg, rgba(255,140,0,0.25) 0%, rgba(255,215,0,0.05) 50%, transparent 80%)",
-            }} />
+            <div
+              className="absolute inset-0 opacity-40"
+              aria-hidden="true"
+              style={{
+                backgroundImage:
+                  "linear-gradient(120deg, rgba(255,140,0,0.25) 0%, rgba(255,215,0,0.05) 50%, transparent 80%)",
+              }}
+            />
 
             {layers.map((layer, index) => (
               <span
@@ -296,15 +331,19 @@ const PixelParallaxHero = React.forwardRef<HTMLDivElement, PixelParallaxHeroProp
                   "absolute block pixel-borders border-2 border-black/40 dark:border-white/30",
                   getShapeClassName(layer.shape ?? "square"),
                   layer.blurClassName,
-                  layer.className
+                  layer.className,
                 )}
                 style={{
-                  width: layer.shape === "pill" ? (layer.size ?? 120) * 1.8 : layer.size ?? 160,
+                  width:
+                    layer.shape === "pill"
+                      ? (layer.size ?? 120) * 1.8
+                      : (layer.size ?? 160),
                   height: layer.size ?? 160,
                   opacity: layer.opacity ?? 0.8,
                   backgroundColor: layer.color ?? "#ff8c00",
                   borderColor: layer.borderColor,
-                  transform: `translate3d(${offset.x * 20 * (layer.speed ?? 0.15)}px, ${offset.y * 20 * (layer.speed ?? 0.15)}px, 0)` +
+                  transform:
+                    `translate3d(${offset.x * 20 * (layer.speed ?? 0.15)}px, ${offset.y * 20 * (layer.speed ?? 0.15)}px, 0)` +
                     (layer.shape === "diamond" ? " rotate(45deg)" : ""),
                   ...layer.position,
                 }}
@@ -313,16 +352,22 @@ const PixelParallaxHero = React.forwardRef<HTMLDivElement, PixelParallaxHeroProp
 
             <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 text-center">
               <div className="pixel-borders border-4 border-white/80 bg-black/70 px-6 py-4 text-white shadow-[8px_8px_0px_rgba(0,0,0,0.6)]">
-                <p className="text-sm uppercase tracking-[0.4em] text-white/60">Retro Mode</p>
-                <p className="text-3xl font-black tracking-wide text-[#00f0ff]">Parallax</p>
-                <p className="text-xs text-white/70">Move your cursor to explore depth</p>
+                <p className="text-sm uppercase tracking-[0.4em] text-white/60">
+                  Retro Mode
+                </p>
+                <p className="text-3xl font-black tracking-wide text-[#00f0ff]">
+                  Parallax
+                </p>
+                <p className="text-xs text-white/70">
+                  Move your cursor to explore depth
+                </p>
               </div>
             </div>
           </div>
         </div>
       </section>
     );
-  }
+  },
 );
 
 PixelParallaxHero.displayName = "PixelParallaxHero";

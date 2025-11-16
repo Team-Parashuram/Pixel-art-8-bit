@@ -1,20 +1,20 @@
 "use client";
 
 import { PixelButton } from "@/components/ui/pixel/pixel-button";
-import { 
+import {
   PixelPricing,
-  PixelPricingCard,
-  PixelPricingBadge,
-  PixelPricingTitle,
-  PixelPricingPrice,
-  PixelPricingPeriod,
-  PixelPricingDescription,
-  PixelPricingFeatures,
-  PixelPricingFeature,
   PixelPricingActions,
+  PixelPricingBadge,
+  PixelPricingCard,
+  PixelPricingDescription,
+  PixelPricingFeature,
+  PixelPricingFeatures,
   PixelPricingHeader,
+  PixelPricingPeriod,
+  PixelPricingPrice,
+  PixelPricingSectionDescription,
   PixelPricingSectionTitle,
-  PixelPricingSectionDescription
+  PixelPricingTitle,
 } from "@/components/ui/pixel/pixel-pricing";
 
 export default function PricingExamples() {
@@ -39,13 +39,15 @@ export default function PricingExamples() {
             Simple three-tier pricing layout with featured card
           </p>
         </div>
-        
+
         <PixelPricing columns={3} gap="md">
           <PixelPricingCard variant="default">
             <PixelPricingTitle>Starter</PixelPricingTitle>
             <PixelPricingPrice>$9</PixelPricingPrice>
             <PixelPricingPeriod>per month</PixelPricingPeriod>
-            <PixelPricingDescription>Perfect for individuals starting out</PixelPricingDescription>
+            <PixelPricingDescription>
+              Perfect for individuals starting out
+            </PixelPricingDescription>
             <PixelPricingFeatures>
               <PixelPricingFeature>10 Projects</PixelPricingFeature>
               <PixelPricingFeature>5GB Storage</PixelPricingFeature>
@@ -53,16 +55,20 @@ export default function PricingExamples() {
               <PixelPricingFeature>Basic Analytics</PixelPricingFeature>
             </PixelPricingFeatures>
             <PixelPricingActions>
-              <PixelButton variant="secondary" className="w-full">Choose Plan</PixelButton>
+              <PixelButton variant="secondary" className="w-full">
+                Choose Plan
+              </PixelButton>
             </PixelPricingActions>
           </PixelPricingCard>
-          
+
           <PixelPricingCard variant="featured">
             <PixelPricingBadge>Most Popular</PixelPricingBadge>
             <PixelPricingTitle>Professional</PixelPricingTitle>
             <PixelPricingPrice>$29</PixelPricingPrice>
             <PixelPricingPeriod>per month</PixelPricingPeriod>
-            <PixelPricingDescription>Perfect for growing teams</PixelPricingDescription>
+            <PixelPricingDescription>
+              Perfect for growing teams
+            </PixelPricingDescription>
             <PixelPricingFeatures>
               <PixelPricingFeature>Unlimited Projects</PixelPricingFeature>
               <PixelPricingFeature>50GB Storage</PixelPricingFeature>
@@ -74,12 +80,14 @@ export default function PricingExamples() {
               <PixelButton className="w-full">Choose Plan</PixelButton>
             </PixelPricingActions>
           </PixelPricingCard>
-          
+
           <PixelPricingCard variant="default">
             <PixelPricingTitle>Firm</PixelPricingTitle>
             <PixelPricingPrice>$99</PixelPricingPrice>
             <PixelPricingPeriod>per month</PixelPricingPeriod>
-            <PixelPricingDescription>For large organizations</PixelPricingDescription>
+            <PixelPricingDescription>
+              For large organizations
+            </PixelPricingDescription>
             <PixelPricingFeatures>
               <PixelPricingFeature>Unlimited Everything</PixelPricingFeature>
               <PixelPricingFeature>500GB Storage</PixelPricingFeature>
@@ -88,7 +96,9 @@ export default function PricingExamples() {
               <PixelPricingFeature>SSO & Advanced Security</PixelPricingFeature>
             </PixelPricingFeatures>
             <PixelPricingActions>
-              <PixelButton variant="secondary" className="w-full">Contact Sales</PixelButton>
+              <PixelButton variant="secondary" className="w-full">
+                Contact Sales
+              </PixelButton>
             </PixelPricingActions>
           </PixelPricingCard>
         </PixelPricing>
@@ -104,30 +114,37 @@ export default function PricingExamples() {
             Add a title and description above the pricing cards
           </p>
         </div>
-        
+
         <PixelPricing columns={3} gap="md">
           <PixelPricingHeader>
-            <PixelPricingSectionTitle>Choose Your Plan</PixelPricingSectionTitle>
+            <PixelPricingSectionTitle>
+              Choose Your Plan
+            </PixelPricingSectionTitle>
             <PixelPricingSectionDescription>
-              Select the perfect pricing tier for your needs. Upgrade or downgrade anytime.
+              Select the perfect pricing tier for your needs. Upgrade or
+              downgrade anytime.
             </PixelPricingSectionDescription>
           </PixelPricingHeader>
-          
+
           <PixelPricingCard variant="default">
             <PixelPricingTitle>Basic</PixelPricingTitle>
             <PixelPricingPrice>$0</PixelPricingPrice>
             <PixelPricingPeriod>forever</PixelPricingPeriod>
-            <PixelPricingDescription>Get started for free</PixelPricingDescription>
+            <PixelPricingDescription>
+              Get started for free
+            </PixelPricingDescription>
             <PixelPricingFeatures>
               <PixelPricingFeature>3 Projects</PixelPricingFeature>
               <PixelPricingFeature>1GB Storage</PixelPricingFeature>
               <PixelPricingFeature>Community Support</PixelPricingFeature>
             </PixelPricingFeatures>
             <PixelPricingActions>
-              <PixelButton variant="ghost" className="w-full">Get Started</PixelButton>
+              <PixelButton variant="ghost" className="w-full">
+                Get Started
+              </PixelButton>
             </PixelPricingActions>
           </PixelPricingCard>
-          
+
           <PixelPricingCard variant="primary">
             <PixelPricingTitle>Pro</PixelPricingTitle>
             <PixelPricingPrice>$19</PixelPricingPrice>
@@ -143,7 +160,7 @@ export default function PricingExamples() {
               <PixelButton className="w-full">Upgrade Now</PixelButton>
             </PixelPricingActions>
           </PixelPricingCard>
-          
+
           <PixelPricingCard variant="secondary">
             <PixelPricingTitle>Team</PixelPricingTitle>
             <PixelPricingPrice>$49</PixelPricingPrice>
@@ -172,13 +189,15 @@ export default function PricingExamples() {
             Simpler layout with just two options
           </p>
         </div>
-        
+
         <PixelPricing columns={2} gap="lg" className="max-w-4xl mx-auto">
           <PixelPricingCard variant="default">
             <PixelPricingTitle>Monthly</PixelPricingTitle>
             <PixelPricingPrice>$15</PixelPricingPrice>
             <PixelPricingPeriod>per month</PixelPricingPeriod>
-            <PixelPricingDescription>Pay as you go, cancel anytime</PixelPricingDescription>
+            <PixelPricingDescription>
+              Pay as you go, cancel anytime
+            </PixelPricingDescription>
             <PixelPricingFeatures>
               <PixelPricingFeature>Full Access</PixelPricingFeature>
               <PixelPricingFeature>20GB Storage</PixelPricingFeature>
@@ -186,16 +205,20 @@ export default function PricingExamples() {
               <PixelPricingFeature>Regular Updates</PixelPricingFeature>
             </PixelPricingFeatures>
             <PixelPricingActions>
-              <PixelButton variant="secondary" className="w-full">Choose Monthly</PixelButton>
+              <PixelButton variant="secondary" className="w-full">
+                Choose Monthly
+              </PixelButton>
             </PixelPricingActions>
           </PixelPricingCard>
-          
+
           <PixelPricingCard variant="featured">
             <PixelPricingBadge>Save 30%</PixelPricingBadge>
             <PixelPricingTitle>Yearly</PixelPricingTitle>
             <PixelPricingPrice>$126</PixelPricingPrice>
             <PixelPricingPeriod>per year</PixelPricingPeriod>
-            <PixelPricingDescription>Best value for long-term users</PixelPricingDescription>
+            <PixelPricingDescription>
+              Best value for long-term users
+            </PixelPricingDescription>
             <PixelPricingFeatures>
               <PixelPricingFeature>Full Access</PixelPricingFeature>
               <PixelPricingFeature>50GB Storage</PixelPricingFeature>
@@ -219,7 +242,7 @@ export default function PricingExamples() {
             Maximum columns with compact pricing tiers
           </p>
         </div>
-        
+
         <PixelPricing columns={4} gap="sm">
           <PixelPricingCard variant="default">
             <PixelPricingTitle>Free</PixelPricingTitle>
@@ -230,10 +253,12 @@ export default function PricingExamples() {
               <PixelPricingFeature>1GB Storage</PixelPricingFeature>
             </PixelPricingFeatures>
             <PixelPricingActions>
-              <PixelButton variant="ghost" className="w-full">Start Free</PixelButton>
+              <PixelButton variant="ghost" className="w-full">
+                Start Free
+              </PixelButton>
             </PixelPricingActions>
           </PixelPricingCard>
-          
+
           <PixelPricingCard variant="primary">
             <PixelPricingTitle>Starter</PixelPricingTitle>
             <PixelPricingPrice>$9</PixelPricingPrice>
@@ -246,7 +271,7 @@ export default function PricingExamples() {
               <PixelButton className="w-full">Get Started</PixelButton>
             </PixelPricingActions>
           </PixelPricingCard>
-          
+
           <PixelPricingCard variant="secondary">
             <PixelPricingTitle>Pro</PixelPricingTitle>
             <PixelPricingPrice>$29</PixelPricingPrice>
@@ -259,7 +284,7 @@ export default function PricingExamples() {
               <PixelButton className="w-full">Upgrade</PixelButton>
             </PixelPricingActions>
           </PixelPricingCard>
-          
+
           <PixelPricingCard variant="dark">
             <PixelPricingTitle>Firm</PixelPricingTitle>
             <PixelPricingPrice>Custom</PixelPricingPrice>
@@ -269,7 +294,9 @@ export default function PricingExamples() {
               <PixelPricingFeature>Custom Storage</PixelPricingFeature>
             </PixelPricingFeatures>
             <PixelPricingActions>
-              <PixelButton variant="secondary" className="w-full">Contact Us</PixelButton>
+              <PixelButton variant="secondary" className="w-full">
+                Contact Us
+              </PixelButton>
             </PixelPricingActions>
           </PixelPricingCard>
         </PixelPricing>
@@ -285,7 +312,7 @@ export default function PricingExamples() {
             Dark background with orange borders
           </p>
         </div>
-        
+
         <PixelPricing columns={3} gap="md" variant="dark">
           <PixelPricingHeader>
             <PixelPricingSectionTitle>Premium Plans</PixelPricingSectionTitle>
@@ -293,7 +320,7 @@ export default function PricingExamples() {
               Unlock the full potential with our premium pricing options
             </PixelPricingSectionDescription>
           </PixelPricingHeader>
-          
+
           <PixelPricingCard variant="dark">
             <PixelPricingTitle>Silver</PixelPricingTitle>
             <PixelPricingPrice>$49</PixelPricingPrice>
@@ -305,10 +332,12 @@ export default function PricingExamples() {
               <PixelPricingFeature>Premium Support</PixelPricingFeature>
             </PixelPricingFeatures>
             <PixelPricingActions>
-              <PixelButton variant="secondary" className="w-full">Choose Silver</PixelButton>
+              <PixelButton variant="secondary" className="w-full">
+                Choose Silver
+              </PixelButton>
             </PixelPricingActions>
           </PixelPricingCard>
-          
+
           <PixelPricingCard variant="dark">
             <PixelPricingBadge>Popular</PixelPricingBadge>
             <PixelPricingTitle>Gold</PixelPricingTitle>
@@ -325,7 +354,7 @@ export default function PricingExamples() {
               <PixelButton className="w-full">Choose Gold</PixelButton>
             </PixelPricingActions>
           </PixelPricingCard>
-          
+
           <PixelPricingCard variant="dark">
             <PixelPricingTitle>Platinum</PixelPricingTitle>
             <PixelPricingPrice>$199</PixelPricingPrice>
@@ -334,11 +363,15 @@ export default function PricingExamples() {
             <PixelPricingFeatures>
               <PixelPricingFeature>Unlimited Everything</PixelPricingFeature>
               <PixelPricingFeature>1TB Storage</PixelPricingFeature>
-              <PixelPricingFeature>Dedicated Account Manager</PixelPricingFeature>
+              <PixelPricingFeature>
+                Dedicated Account Manager
+              </PixelPricingFeature>
               <PixelPricingFeature>White Label Options</PixelPricingFeature>
             </PixelPricingFeatures>
             <PixelPricingActions>
-              <PixelButton variant="secondary" className="w-full">Choose Platinum</PixelButton>
+              <PixelButton variant="secondary" className="w-full">
+                Choose Platinum
+              </PixelButton>
             </PixelPricingActions>
           </PixelPricingCard>
         </PixelPricing>
@@ -354,17 +387,19 @@ export default function PricingExamples() {
             Simplified pricing cards for quick comparisons
           </p>
         </div>
-        
+
         <PixelPricing columns={3} gap="md" className="max-w-4xl mx-auto">
           <PixelPricingCard variant="default">
             <PixelPricingTitle>Basic</PixelPricingTitle>
             <PixelPricingPrice>$5</PixelPricingPrice>
             <PixelPricingPeriod>/month</PixelPricingPeriod>
             <PixelPricingActions>
-              <PixelButton variant="secondary" className="w-full">Select</PixelButton>
+              <PixelButton variant="secondary" className="w-full">
+                Select
+              </PixelButton>
             </PixelPricingActions>
           </PixelPricingCard>
-          
+
           <PixelPricingCard variant="featured">
             <PixelPricingBadge>Best Value</PixelPricingBadge>
             <PixelPricingTitle>Standard</PixelPricingTitle>
@@ -374,13 +409,15 @@ export default function PricingExamples() {
               <PixelButton className="w-full">Select</PixelButton>
             </PixelPricingActions>
           </PixelPricingCard>
-          
+
           <PixelPricingCard variant="default">
             <PixelPricingTitle>Premium</PixelPricingTitle>
             <PixelPricingPrice>$35</PixelPricingPrice>
             <PixelPricingPeriod>/month</PixelPricingPeriod>
             <PixelPricingActions>
-              <PixelButton variant="secondary" className="w-full">Select</PixelButton>
+              <PixelButton variant="secondary" className="w-full">
+                Select
+              </PixelButton>
             </PixelPricingActions>
           </PixelPricingCard>
         </PixelPricing>

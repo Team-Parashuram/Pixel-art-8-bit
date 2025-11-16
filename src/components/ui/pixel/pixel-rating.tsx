@@ -1,7 +1,7 @@
 "use client";
 
-import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
+import * as React from "react";
 import { cn } from "@/lib/utils";
 
 const pixelRatingVariants = cva(
@@ -23,7 +23,7 @@ const pixelRatingVariants = cva(
       variant: "default",
       size: "md",
     },
-  }
+  },
 );
 
 export interface PixelRatingProps
@@ -47,7 +47,7 @@ const PixelRating = React.forwardRef<HTMLDivElement, PixelRatingProps>(
       readOnly = false,
       ...props
     },
-    ref
+    ref,
   ) => {
     const [hoverValue, setHoverValue] = React.useState<number | null>(null);
     const [currentValue, setCurrentValue] = React.useState(value);
@@ -78,19 +78,17 @@ const PixelRating = React.forwardRef<HTMLDivElement, PixelRatingProps>(
               className={cn(
                 "transition-none duration-0 pixel-borders p-1",
                 !readOnly && "cursor-pointer hover:scale-110",
-                readOnly && "cursor-default"
+                readOnly && "cursor-default",
               )}
               aria-label={`Rate ${star} out of ${maxStars}`}
             >
-              <span className={isFilled ? "opacity-100" : "opacity-30"}>
-                ★
-              </span>
+              <span className={isFilled ? "opacity-100" : "opacity-30"}>★</span>
             </button>
           );
         })}
       </div>
     );
-  }
+  },
 );
 
 PixelRating.displayName = "PixelRating";

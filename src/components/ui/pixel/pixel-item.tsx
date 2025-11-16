@@ -1,7 +1,7 @@
-import { Slot } from "@radix-ui/react-slot"
-import { cva, type VariantProps } from "class-variance-authority"
-import { cn } from "@/lib/utils"
-import { PixelSeparator } from "./pixel-separator"
+import { Slot } from "@radix-ui/react-slot";
+import { cva, type VariantProps } from "class-variance-authority";
+import { cn } from "@/lib/utils";
+import { PixelSeparator } from "./pixel-separator";
 
 function PixelItemGroup({ className, ...props }: React.ComponentProps<"div">) {
   return (
@@ -9,23 +9,18 @@ function PixelItemGroup({ className, ...props }: React.ComponentProps<"div">) {
       className={cn(
         "flex flex-col border-4 border-black bg-[#fffacd] dark:bg-[#2a2a2a] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]",
         "font-[family-name:var(--font-press-start)]",
-        className
+        className,
       )}
       {...props}
     />
-  )
+  );
 }
 
 function PixelItemSeparator({
   className,
   ...props
 }: React.ComponentProps<typeof PixelSeparator>) {
-  return (
-    <PixelSeparator
-      className={cn("my-0", className)}
-      {...props}
-    />
-  )
+  return <PixelSeparator className={cn("my-0", className)} {...props} />;
 }
 
 const pixelItemVariants = cva(
@@ -46,8 +41,8 @@ const pixelItemVariants = cva(
       variant: "default",
       size: "default",
     },
-  }
-)
+  },
+);
 
 function PixelItem({
   className,
@@ -57,14 +52,14 @@ function PixelItem({
   ...props
 }: React.ComponentProps<"div"> &
   VariantProps<typeof pixelItemVariants> & { asChild?: boolean }) {
-  const Comp = asChild ? Slot : "div"
+  const Comp = asChild ? Slot : "div";
 
   return (
     <Comp
       className={cn(pixelItemVariants({ variant, size }), className)}
       {...props}
     />
-  )
+  );
 }
 
 function PixelItemIcon({
@@ -72,17 +67,17 @@ function PixelItemIcon({
   asChild = false,
   ...props
 }: React.ComponentProps<"div"> & { asChild?: boolean }) {
-  const Comp = asChild ? Slot : "div"
+  const Comp = asChild ? Slot : "div";
 
   return (
     <Comp
       className={cn(
         "flex shrink-0 items-center justify-center [&>svg]:size-5",
-        className
+        className,
       )}
       {...props}
     />
-  )
+  );
 }
 
 function PixelItemContent({
@@ -94,19 +89,16 @@ function PixelItemContent({
       className={cn("flex flex-1 flex-col gap-1 min-w-0", className)}
       {...props}
     />
-  )
+  );
 }
 
-function PixelItemTitle({
-  className,
-  ...props
-}: React.ComponentProps<"div">) {
+function PixelItemTitle({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       className={cn("text-xs font-bold leading-none", className)}
       {...props}
     />
-  )
+  );
 }
 
 function PixelItemDescription({
@@ -115,10 +107,13 @@ function PixelItemDescription({
 }: React.ComponentProps<"div">) {
   return (
     <div
-      className={cn("text-xs text-[#555] dark:text-[#aaa] leading-snug", className)}
+      className={cn(
+        "text-xs text-[#555] dark:text-[#aaa] leading-snug",
+        className,
+      )}
       {...props}
     />
-  )
+  );
 }
 
 function PixelItemAction({
@@ -126,17 +121,17 @@ function PixelItemAction({
   asChild = false,
   ...props
 }: React.ComponentProps<"div"> & { asChild?: boolean }) {
-  const Comp = asChild ? Slot : "div"
+  const Comp = asChild ? Slot : "div";
 
   return (
     <Comp
       className={cn(
         "flex shrink-0 items-center gap-2 [&>svg]:size-4",
-        className
+        className,
       )}
       {...props}
     />
-  )
+  );
 }
 
 export {
@@ -149,4 +144,4 @@ export {
   PixelItemDescription,
   PixelItemAction,
   pixelItemVariants,
-}
+};

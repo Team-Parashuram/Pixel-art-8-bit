@@ -1,7 +1,7 @@
 "use client";
 
-import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
+import * as React from "react";
 
 const chatContainerVariants = cva(
   "border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] font-pixel flex flex-col",
@@ -22,7 +22,7 @@ const chatContainerVariants = cva(
       variant: "default",
       size: "md",
     },
-  }
+  },
 );
 
 const messageVariants = cva(
@@ -38,7 +38,7 @@ const messageVariants = cva(
     defaultVariants: {
       sender: "other",
     },
-  }
+  },
 );
 
 export interface MessageType {
@@ -161,14 +161,18 @@ interface PixelMessageProps {
 
 export function PixelMessage({ message, isCurrentUser }: PixelMessageProps) {
   return (
-    <div className={`flex gap-3 ${isCurrentUser ? "flex-row-reverse" : "flex-row"}`}>
+    <div
+      className={`flex gap-3 ${isCurrentUser ? "flex-row-reverse" : "flex-row"}`}
+    >
       {/* Avatar */}
       <div className="flex-shrink-0 w-10 h-10 border-2 border-black bg-pixel-secondary shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] flex items-center justify-center font-bold">
         {message.avatar || (isCurrentUser ? "U" : "O")}
       </div>
 
       {/* Message Content */}
-      <div className={`flex flex-col gap-1 ${isCurrentUser ? "items-end" : "items-start"}`}>
+      <div
+        className={`flex flex-col gap-1 ${isCurrentUser ? "items-end" : "items-start"}`}
+      >
         <div className="flex items-center gap-2 text-xs text-pixel-dark-muted dark:text-pixel-light-muted">
           {!isCurrentUser && message.username && (
             <span className="font-bold">{message.username}</span>
@@ -187,9 +191,18 @@ export function PixelMessage({ message, isCurrentUser }: PixelMessageProps) {
 export function PixelTypingDots() {
   return (
     <div className="flex gap-1">
-      <div className="w-2 h-2 bg-black dark:bg-white animate-bounce" style={{ animationDelay: "0ms" }} />
-      <div className="w-2 h-2 bg-black dark:bg-white animate-bounce" style={{ animationDelay: "150ms" }} />
-      <div className="w-2 h-2 bg-black dark:bg-white animate-bounce" style={{ animationDelay: "300ms" }} />
+      <div
+        className="w-2 h-2 bg-black dark:bg-white animate-bounce"
+        style={{ animationDelay: "0ms" }}
+      />
+      <div
+        className="w-2 h-2 bg-black dark:bg-white animate-bounce"
+        style={{ animationDelay: "150ms" }}
+      />
+      <div
+        className="w-2 h-2 bg-black dark:bg-white animate-bounce"
+        style={{ animationDelay: "300ms" }}
+      />
     </div>
   );
 }
@@ -211,16 +224,16 @@ export function PixelMessageBubble({
   className,
 }: PixelMessageBubbleProps) {
   return (
-    <div className={`flex flex-col gap-1 ${sender === "user" ? "items-end" : sender === "system" ? "items-center" : "items-start"} ${className || ""}`}>
+    <div
+      className={`flex flex-col gap-1 ${sender === "user" ? "items-end" : sender === "system" ? "items-center" : "items-start"} ${className || ""}`}
+    >
       {(username || timestamp) && (
         <div className="flex items-center gap-2 text-xs text-pixel-dark-muted dark:text-pixel-light-muted font-pixel">
           {username && <span className="font-bold">{username}</span>}
           {timestamp && <span>{timestamp}</span>}
         </div>
       )}
-      <div className={messageVariants({ sender })}>
-        {text}
-      </div>
+      <div className={messageVariants({ sender })}>{text}</div>
     </div>
   );
 }

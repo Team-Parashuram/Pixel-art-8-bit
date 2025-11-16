@@ -1,8 +1,8 @@
 "use client";
 
+import { cva, type VariantProps } from "class-variance-authority";
 import * as React from "react";
 import { cn } from "@/lib/utils";
-import { cva, type VariantProps } from "class-variance-authority";
 
 const pixelGradientTextVariants = cva(
   "font-bold uppercase tracking-wider pixel-font inline-block bg-clip-text text-transparent",
@@ -26,7 +26,7 @@ const pixelGradientTextVariants = cva(
       variant: "sunset",
       size: "md",
     },
-  }
+  },
 );
 
 export interface PixelGradientTextProps
@@ -51,15 +51,16 @@ const PixelGradientText = React.forwardRef<
       className,
       ...props
     },
-    ref
+    ref,
   ) => {
     return (
       <div
         ref={ref}
         className={cn(
           pixelGradientTextVariants({ variant, size }),
-          showBorder && "pixel-borders border-2 border-black dark:border-white p-4",
-          className
+          showBorder &&
+            "pixel-borders border-2 border-black dark:border-white p-4",
+          className,
         )}
         style={{
           backgroundSize: "200% 200%",
@@ -70,7 +71,7 @@ const PixelGradientText = React.forwardRef<
         {text}
       </div>
     );
-  }
+  },
 );
 
 PixelGradientText.displayName = "PixelGradientText";

@@ -1,7 +1,7 @@
 /**
  * This file contains the complete list of all 75+ animation components
  * to be added to the component registry.
- * 
+ *
  * Copy these entries into component-registry.ts
  */
 

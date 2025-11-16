@@ -1,7 +1,7 @@
 "use client";
 
-import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
+import * as React from "react";
 import { cn } from "@/lib/utils";
 
 const pixelAudioVisualizerVariants = cva(
@@ -25,7 +25,7 @@ const pixelAudioVisualizerVariants = cva(
       variant: "bars",
       size: "md",
     },
-  }
+  },
 );
 
 export interface PixelAudioVisualizerProps
@@ -54,7 +54,7 @@ const PixelAudioVisualizer = React.forwardRef<
       showGrid = false,
       ...props
     },
-    ref
+    ref,
   ) => {
     const [bars, setBars] = React.useState<number[]>([]);
 
@@ -63,7 +63,8 @@ const PixelAudioVisualizer = React.forwardRef<
       if (!animate) return;
 
       const interval = setInterval(() => {
-        const newBars = audioData || Array.from({ length: barCount }, () => Math.random());
+        const newBars =
+          audioData || Array.from({ length: barCount }, () => Math.random());
         setBars(newBars);
       }, 100);
 
@@ -79,7 +80,10 @@ const PixelAudioVisualizer = React.forwardRef<
     return (
       <div
         ref={ref}
-        className={cn(pixelAudioVisualizerVariants({ variant, size }), className)}
+        className={cn(
+          pixelAudioVisualizerVariants({ variant, size }),
+          className,
+        )}
         {...props}
       >
         {/* Grid overlay */}
@@ -110,7 +114,7 @@ const PixelAudioVisualizer = React.forwardRef<
         )}
       </div>
     );
-  }
+  },
 );
 PixelAudioVisualizer.displayName = "PixelAudioVisualizer";
 
@@ -154,13 +158,16 @@ const EqualizerVisualizer: React.FC<{
         const activeSegments = Math.ceil((height / 100) * segments);
 
         return (
-          <div key={i} className="flex flex-col-reverse gap-1 h-full flex-1 max-w-3">
+          <div
+            key={i}
+            className="flex flex-col-reverse gap-1 h-full flex-1 max-w-3"
+          >
             {Array.from({ length: segments }).map((_, j) => (
               <div
                 key={j}
                 className={cn(
                   "h-full border-2 border-black transition-all duration-100",
-                  j < activeSegments ? "opacity-100" : "opacity-20"
+                  j < activeSegments ? "opacity-100" : "opacity-20",
                 )}
                 style={{
                   backgroundColor: j < activeSegments ? color : "#333",
@@ -273,57 +280,64 @@ const PixelAudioPlayer = React.forwardRef<
     onPlayPause?: () => void;
     playing?: boolean;
   }
->(({ className, title, artist, onPlayPause, playing = false, ...props }, ref) => {
-  return (
-    <div
-      ref={ref}
-      className={cn(
-        "border-4 border-black bg-gradient-to-b from-[#2a2a2a] to-[#1a1a1a] p-4 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]",
-        className
-      )}
-      {...props}
-    >
-      {/* Display */}
-      <div className="border-4 border-black bg-[#00ff00]/10 p-3 mb-4">
-        <div className="text-[#00ff00] font-pixel text-sm">
-          <div className="flex items-center justify-between mb-2">
-            <span>♪ NOW PLAYING</span>
-            <span className="animate-pulse">●</span>
+>(
+  (
+    { className, title, artist, onPlayPause, playing = false, ...props },
+    ref,
+  ) => {
+    return (
+      <div
+        ref={ref}
+        className={cn(
+          "border-4 border-black bg-gradient-to-b from-[#2a2a2a] to-[#1a1a1a] p-4 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]",
+          className,
+        )}
+        {...props}
+      >
+        {/* Display */}
+        <div className="border-4 border-black bg-[#00ff00]/10 p-3 mb-4">
+          <div className="text-[#00ff00] font-pixel text-sm">
+            <div className="flex items-center justify-between mb-2">
+              <span>♪ NOW PLAYING</span>
+              <span className="animate-pulse">●</span>
+            </div>
+            <div className="text-lg font-bold truncate">
+              {title || "Track Title"}
+            </div>
+            <div className="text-xs opacity-70">{artist || "Artist Name"}</div>
           </div>
-          <div className="text-lg font-bold truncate">{title || "Track Title"}</div>
-          <div className="text-xs opacity-70">{artist || "Artist Name"}</div>
         </div>
-      </div>
 
-      {/* Controls */}
-      <div className="flex items-center justify-center gap-2">
-        <button className="w-10 h-10 border-4 border-black bg-[#c0c0c0] hover:bg-[#d0d0d0] flex items-center justify-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:shadow-none active:translate-x-[2px] active:translate-y-[2px]">
-          ⏮
-        </button>
-        <button
-          onClick={onPlayPause}
-          className="w-12 h-12 border-4 border-black bg-[#00ff00] hover:bg-[#00ff00]/80 flex items-center justify-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:shadow-none active:translate-x-[2px] active:translate-y-[2px] font-bold text-xl"
-        >
-          {playing ? "⏸" : "▶"}
-        </button>
-        <button className="w-10 h-10 border-4 border-black bg-[#c0c0c0] hover:bg-[#d0d0d0] flex items-center justify-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:shadow-none active:translate-x-[2px] active:translate-y-[2px]">
-          ⏭
-        </button>
-      </div>
+        {/* Controls */}
+        <div className="flex items-center justify-center gap-2">
+          <button className="w-10 h-10 border-4 border-black bg-[#c0c0c0] hover:bg-[#d0d0d0] flex items-center justify-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:shadow-none active:translate-x-[2px] active:translate-y-[2px]">
+            ⏮
+          </button>
+          <button
+            onClick={onPlayPause}
+            className="w-12 h-12 border-4 border-black bg-[#00ff00] hover:bg-[#00ff00]/80 flex items-center justify-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:shadow-none active:translate-x-[2px] active:translate-y-[2px] font-bold text-xl"
+          >
+            {playing ? "⏸" : "▶"}
+          </button>
+          <button className="w-10 h-10 border-4 border-black bg-[#c0c0c0] hover:bg-[#d0d0d0] flex items-center justify-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:shadow-none active:translate-x-[2px] active:translate-y-[2px]">
+            ⏭
+          </button>
+        </div>
 
-      {/* Progress Bar */}
-      <div className="mt-4">
-        <div className="w-full h-2 border-2 border-black bg-[#1a1a1a]">
-          <div className="h-full w-1/3 bg-[#00ff00]" />
-        </div>
-        <div className="flex justify-between text-[#00ff00] text-xs font-pixel mt-1">
-          <span>1:23</span>
-          <span>3:45</span>
+        {/* Progress Bar */}
+        <div className="mt-4">
+          <div className="w-full h-2 border-2 border-black bg-[#1a1a1a]">
+            <div className="h-full w-1/3 bg-[#00ff00]" />
+          </div>
+          <div className="flex justify-between text-[#00ff00] text-xs font-pixel mt-1">
+            <span>1:23</span>
+            <span>3:45</span>
+          </div>
         </div>
       </div>
-    </div>
-  );
-});
+    );
+  },
+);
 PixelAudioPlayer.displayName = "PixelAudioPlayer";
 
 export { PixelAudioVisualizer, PixelAudioPlayer };

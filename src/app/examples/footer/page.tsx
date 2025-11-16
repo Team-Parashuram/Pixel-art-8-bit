@@ -1,20 +1,20 @@
 "use client";
 
 import { PixelButton } from "@/components/ui/pixel/pixel-button";
-import { 
+import {
   PixelFooter,
-  PixelFooterGrid,
-  PixelFooterSection,
-  PixelFooterTitle,
-  PixelFooterLinks,
-  PixelFooterLink,
-  PixelFooterDivider,
   PixelFooterBottom,
   PixelFooterCopyright,
+  PixelFooterDescription,
+  PixelFooterDivider,
+  PixelFooterGrid,
+  PixelFooterLink,
+  PixelFooterLinks,
+  PixelFooterLogo,
+  PixelFooterSection,
   PixelFooterSocial,
   PixelFooterSocialLink,
-  PixelFooterLogo,
-  PixelFooterDescription
+  PixelFooterTitle,
 } from "@/components/ui/pixel/pixel-footer";
 
 export default function FooterExamples() {
@@ -39,54 +39,88 @@ export default function FooterExamples() {
             Full-featured footer with multiple sections and social links
           </p>
         </div>
-        
+
         <PixelFooter variant="default" size="md">
           <PixelFooterGrid>
             <PixelFooterSection>
               <PixelFooterTitle>Product</PixelFooterTitle>
               <PixelFooterLinks>
-                <PixelFooterLink><a href="#">Features</a></PixelFooterLink>
-                <PixelFooterLink><a href="#">Pricing</a></PixelFooterLink>
-                <PixelFooterLink><a href="#">Changelog</a></PixelFooterLink>
-                <PixelFooterLink><a href="#">Roadmap</a></PixelFooterLink>
+                <PixelFooterLink>
+                  <a href="#">Features</a>
+                </PixelFooterLink>
+                <PixelFooterLink>
+                  <a href="#">Pricing</a>
+                </PixelFooterLink>
+                <PixelFooterLink>
+                  <a href="#">Changelog</a>
+                </PixelFooterLink>
+                <PixelFooterLink>
+                  <a href="#">Roadmap</a>
+                </PixelFooterLink>
               </PixelFooterLinks>
             </PixelFooterSection>
-            
+
             <PixelFooterSection>
               <PixelFooterTitle>Company</PixelFooterTitle>
               <PixelFooterLinks>
-                <PixelFooterLink><a href="#">About Us</a></PixelFooterLink>
-                <PixelFooterLink><a href="#">Blog</a></PixelFooterLink>
-                <PixelFooterLink><a href="#">Careers</a></PixelFooterLink>
-                <PixelFooterLink><a href="#">Press Kit</a></PixelFooterLink>
+                <PixelFooterLink>
+                  <a href="#">About Us</a>
+                </PixelFooterLink>
+                <PixelFooterLink>
+                  <a href="#">Blog</a>
+                </PixelFooterLink>
+                <PixelFooterLink>
+                  <a href="#">Careers</a>
+                </PixelFooterLink>
+                <PixelFooterLink>
+                  <a href="#">Press Kit</a>
+                </PixelFooterLink>
               </PixelFooterLinks>
             </PixelFooterSection>
-            
+
             <PixelFooterSection>
               <PixelFooterTitle>Resources</PixelFooterTitle>
               <PixelFooterLinks>
-                <PixelFooterLink><a href="#">Documentation</a></PixelFooterLink>
-                <PixelFooterLink><a href="#">Guides</a></PixelFooterLink>
-                <PixelFooterLink><a href="#">API Reference</a></PixelFooterLink>
-                <PixelFooterLink><a href="#">Support</a></PixelFooterLink>
+                <PixelFooterLink>
+                  <a href="#">Documentation</a>
+                </PixelFooterLink>
+                <PixelFooterLink>
+                  <a href="#">Guides</a>
+                </PixelFooterLink>
+                <PixelFooterLink>
+                  <a href="#">API Reference</a>
+                </PixelFooterLink>
+                <PixelFooterLink>
+                  <a href="#">Support</a>
+                </PixelFooterLink>
               </PixelFooterLinks>
             </PixelFooterSection>
-            
+
             <PixelFooterSection>
               <PixelFooterTitle>Legal</PixelFooterTitle>
               <PixelFooterLinks>
-                <PixelFooterLink><a href="#">Privacy Policy</a></PixelFooterLink>
-                <PixelFooterLink><a href="#">Terms of Service</a></PixelFooterLink>
-                <PixelFooterLink><a href="#">Cookie Policy</a></PixelFooterLink>
-                <PixelFooterLink><a href="#">License</a></PixelFooterLink>
+                <PixelFooterLink>
+                  <a href="#">Privacy Policy</a>
+                </PixelFooterLink>
+                <PixelFooterLink>
+                  <a href="#">Terms of Service</a>
+                </PixelFooterLink>
+                <PixelFooterLink>
+                  <a href="#">Cookie Policy</a>
+                </PixelFooterLink>
+                <PixelFooterLink>
+                  <a href="#">License</a>
+                </PixelFooterLink>
               </PixelFooterLinks>
             </PixelFooterSection>
           </PixelFooterGrid>
-          
+
           <PixelFooterDivider />
-          
+
           <PixelFooterBottom>
-            <PixelFooterCopyright>© 2025 Pixel UI. All rights reserved.</PixelFooterCopyright>
+            <PixelFooterCopyright>
+              © 2025 Pixel UI. All rights reserved.
+            </PixelFooterCopyright>
             <PixelFooterSocial>
               <PixelFooterSocialLink href="#">🐦</PixelFooterSocialLink>
               <PixelFooterSocialLink href="#">📘</PixelFooterSocialLink>
@@ -107,48 +141,69 @@ export default function FooterExamples() {
             Include branding and company description
           </p>
         </div>
-        
+
         <PixelFooter variant="default" size="md">
           <PixelFooterGrid>
             <PixelFooterSection>
               <PixelFooterLogo>🎮 PIXEL UI</PixelFooterLogo>
               <PixelFooterDescription>
-                Build retro-styled interfaces with our pixel-perfect component library.
+                Build retro-styled interfaces with our pixel-perfect component
+                library.
               </PixelFooterDescription>
             </PixelFooterSection>
-            
+
             <PixelFooterSection>
               <PixelFooterTitle>Quick Links</PixelFooterTitle>
               <PixelFooterLinks>
-                <PixelFooterLink><a href="#">Home</a></PixelFooterLink>
-                <PixelFooterLink><a href="#">Components</a></PixelFooterLink>
-                <PixelFooterLink><a href="#">Examples</a></PixelFooterLink>
+                <PixelFooterLink>
+                  <a href="#">Home</a>
+                </PixelFooterLink>
+                <PixelFooterLink>
+                  <a href="#">Components</a>
+                </PixelFooterLink>
+                <PixelFooterLink>
+                  <a href="#">Examples</a>
+                </PixelFooterLink>
               </PixelFooterLinks>
             </PixelFooterSection>
-            
+
             <PixelFooterSection>
               <PixelFooterTitle>Support</PixelFooterTitle>
               <PixelFooterLinks>
-                <PixelFooterLink><a href="#">Help Center</a></PixelFooterLink>
-                <PixelFooterLink><a href="#">Contact</a></PixelFooterLink>
-                <PixelFooterLink><a href="#">Status</a></PixelFooterLink>
+                <PixelFooterLink>
+                  <a href="#">Help Center</a>
+                </PixelFooterLink>
+                <PixelFooterLink>
+                  <a href="#">Contact</a>
+                </PixelFooterLink>
+                <PixelFooterLink>
+                  <a href="#">Status</a>
+                </PixelFooterLink>
               </PixelFooterLinks>
             </PixelFooterSection>
-            
+
             <PixelFooterSection>
               <PixelFooterTitle>Connect</PixelFooterTitle>
               <PixelFooterLinks>
-                <PixelFooterLink><a href="#">Twitter</a></PixelFooterLink>
-                <PixelFooterLink><a href="#">GitHub</a></PixelFooterLink>
-                <PixelFooterLink><a href="#">Discord</a></PixelFooterLink>
+                <PixelFooterLink>
+                  <a href="#">Twitter</a>
+                </PixelFooterLink>
+                <PixelFooterLink>
+                  <a href="#">GitHub</a>
+                </PixelFooterLink>
+                <PixelFooterLink>
+                  <a href="#">Discord</a>
+                </PixelFooterLink>
               </PixelFooterLinks>
             </PixelFooterSection>
           </PixelFooterGrid>
-          
+
           <PixelFooterDivider />
-          
+
           <PixelFooterBottom>
-            <PixelFooterCopyright>Made with ❤️ by Pixel UI Team</PixelFooterCopyright>
+            <PixelFooterCopyright>
+              Made with ❤️ by Pixel UI Team
+            </PixelFooterCopyright>
             <PixelFooterSocial>
               <PixelFooterSocialLink href="#">🐦</PixelFooterSocialLink>
               <PixelFooterSocialLink href="#">🐙</PixelFooterSocialLink>
@@ -167,14 +222,20 @@ export default function FooterExamples() {
             Minimalist footer with essential links only
           </p>
         </div>
-        
+
         <PixelFooter variant="default" size="sm">
           <PixelFooterBottom>
             <PixelFooterCopyright>© 2025 Pixel UI</PixelFooterCopyright>
             <div className="flex gap-4">
-              <PixelFooterLink><a href="#">Privacy</a></PixelFooterLink>
-              <PixelFooterLink><a href="#">Terms</a></PixelFooterLink>
-              <PixelFooterLink><a href="#">Contact</a></PixelFooterLink>
+              <PixelFooterLink>
+                <a href="#">Privacy</a>
+              </PixelFooterLink>
+              <PixelFooterLink>
+                <a href="#">Terms</a>
+              </PixelFooterLink>
+              <PixelFooterLink>
+                <a href="#">Contact</a>
+              </PixelFooterLink>
             </div>
             <PixelFooterSocial>
               <PixelFooterSocialLink href="#">🐦</PixelFooterSocialLink>
@@ -194,7 +255,7 @@ export default function FooterExamples() {
             Dark background with orange accents
           </p>
         </div>
-        
+
         <PixelFooter variant="dark" size="md">
           <PixelFooterGrid>
             <PixelFooterSection>
@@ -203,39 +264,59 @@ export default function FooterExamples() {
                 The ultimate retro gaming platform for developers and designers.
               </PixelFooterDescription>
             </PixelFooterSection>
-            
+
             <PixelFooterSection>
               <PixelFooterTitle>Platform</PixelFooterTitle>
               <PixelFooterLinks>
-                <PixelFooterLink><a href="#">Overview</a></PixelFooterLink>
-                <PixelFooterLink><a href="#">Features</a></PixelFooterLink>
-                <PixelFooterLink><a href="#">Pricing</a></PixelFooterLink>
+                <PixelFooterLink>
+                  <a href="#">Overview</a>
+                </PixelFooterLink>
+                <PixelFooterLink>
+                  <a href="#">Features</a>
+                </PixelFooterLink>
+                <PixelFooterLink>
+                  <a href="#">Pricing</a>
+                </PixelFooterLink>
               </PixelFooterLinks>
             </PixelFooterSection>
-            
+
             <PixelFooterSection>
               <PixelFooterTitle>Developers</PixelFooterTitle>
               <PixelFooterLinks>
-                <PixelFooterLink><a href="#">Documentation</a></PixelFooterLink>
-                <PixelFooterLink><a href="#">API</a></PixelFooterLink>
-                <PixelFooterLink><a href="#">SDKs</a></PixelFooterLink>
+                <PixelFooterLink>
+                  <a href="#">Documentation</a>
+                </PixelFooterLink>
+                <PixelFooterLink>
+                  <a href="#">API</a>
+                </PixelFooterLink>
+                <PixelFooterLink>
+                  <a href="#">SDKs</a>
+                </PixelFooterLink>
               </PixelFooterLinks>
             </PixelFooterSection>
-            
+
             <PixelFooterSection>
               <PixelFooterTitle>Community</PixelFooterTitle>
               <PixelFooterLinks>
-                <PixelFooterLink><a href="#">Forum</a></PixelFooterLink>
-                <PixelFooterLink><a href="#">Discord</a></PixelFooterLink>
-                <PixelFooterLink><a href="#">Events</a></PixelFooterLink>
+                <PixelFooterLink>
+                  <a href="#">Forum</a>
+                </PixelFooterLink>
+                <PixelFooterLink>
+                  <a href="#">Discord</a>
+                </PixelFooterLink>
+                <PixelFooterLink>
+                  <a href="#">Events</a>
+                </PixelFooterLink>
               </PixelFooterLinks>
             </PixelFooterSection>
           </PixelFooterGrid>
-          
+
           <PixelFooterDivider />
-          
+
           <PixelFooterBottom>
-            <PixelFooterCopyright>© 2025 Retro App. Powered by Pixel UI.</PixelFooterCopyright>
+            <PixelFooterCopyright>
+              © 2025 Retro App. Powered by Pixel UI.
+            </PixelFooterCopyright>
             <PixelFooterSocial>
               <PixelFooterSocialLink href="#">🐦</PixelFooterSocialLink>
               <PixelFooterSocialLink href="#">📘</PixelFooterSocialLink>
@@ -255,51 +336,78 @@ export default function FooterExamples() {
             Orange background with prominent branding
           </p>
         </div>
-        
+
         <PixelFooter variant="primary" size="lg">
           <PixelFooterGrid>
             <PixelFooterSection>
               <PixelFooterLogo>🎯 PIXEL STUDIO</PixelFooterLogo>
               <PixelFooterDescription>
-                Create stunning pixel-art interfaces with our professional tools and components.
+                Create stunning pixel-art interfaces with our professional tools
+                and components.
               </PixelFooterDescription>
             </PixelFooterSection>
-            
+
             <PixelFooterSection>
               <PixelFooterTitle>Products</PixelFooterTitle>
               <PixelFooterLinks>
-                <PixelFooterLink><a href="#">UI Kit</a></PixelFooterLink>
-                <PixelFooterLink><a href="#">Icons</a></PixelFooterLink>
-                <PixelFooterLink><a href="#">Templates</a></PixelFooterLink>
-                <PixelFooterLink><a href="#">Animations</a></PixelFooterLink>
+                <PixelFooterLink>
+                  <a href="#">UI Kit</a>
+                </PixelFooterLink>
+                <PixelFooterLink>
+                  <a href="#">Icons</a>
+                </PixelFooterLink>
+                <PixelFooterLink>
+                  <a href="#">Templates</a>
+                </PixelFooterLink>
+                <PixelFooterLink>
+                  <a href="#">Animations</a>
+                </PixelFooterLink>
               </PixelFooterLinks>
             </PixelFooterSection>
-            
+
             <PixelFooterSection>
               <PixelFooterTitle>Resources</PixelFooterTitle>
               <PixelFooterLinks>
-                <PixelFooterLink><a href="#">Blog</a></PixelFooterLink>
-                <PixelFooterLink><a href="#">Tutorials</a></PixelFooterLink>
-                <PixelFooterLink><a href="#">Newsletter</a></PixelFooterLink>
-                <PixelFooterLink><a href="#">Community</a></PixelFooterLink>
+                <PixelFooterLink>
+                  <a href="#">Blog</a>
+                </PixelFooterLink>
+                <PixelFooterLink>
+                  <a href="#">Tutorials</a>
+                </PixelFooterLink>
+                <PixelFooterLink>
+                  <a href="#">Newsletter</a>
+                </PixelFooterLink>
+                <PixelFooterLink>
+                  <a href="#">Community</a>
+                </PixelFooterLink>
               </PixelFooterLinks>
             </PixelFooterSection>
-            
+
             <PixelFooterSection>
               <PixelFooterTitle>Company</PixelFooterTitle>
               <PixelFooterLinks>
-                <PixelFooterLink><a href="#">About</a></PixelFooterLink>
-                <PixelFooterLink><a href="#">Careers</a></PixelFooterLink>
-                <PixelFooterLink><a href="#">Partners</a></PixelFooterLink>
-                <PixelFooterLink><a href="#">Contact</a></PixelFooterLink>
+                <PixelFooterLink>
+                  <a href="#">About</a>
+                </PixelFooterLink>
+                <PixelFooterLink>
+                  <a href="#">Careers</a>
+                </PixelFooterLink>
+                <PixelFooterLink>
+                  <a href="#">Partners</a>
+                </PixelFooterLink>
+                <PixelFooterLink>
+                  <a href="#">Contact</a>
+                </PixelFooterLink>
               </PixelFooterLinks>
             </PixelFooterSection>
           </PixelFooterGrid>
-          
+
           <PixelFooterDivider />
-          
+
           <PixelFooterBottom>
-            <PixelFooterCopyright>© 2025 Pixel Studio. All rights reserved.</PixelFooterCopyright>
+            <PixelFooterCopyright>
+              © 2025 Pixel Studio. All rights reserved.
+            </PixelFooterCopyright>
             <PixelFooterSocial>
               <PixelFooterSocialLink href="#">🐦</PixelFooterSocialLink>
               <PixelFooterSocialLink href="#">📘</PixelFooterSocialLink>
@@ -321,7 +429,7 @@ export default function FooterExamples() {
             Gold background for premium feel
           </p>
         </div>
-        
+
         <PixelFooter variant="secondary" size="md">
           <PixelFooterGrid>
             <PixelFooterSection>
@@ -330,39 +438,59 @@ export default function FooterExamples() {
                 Premium pixel components for professional projects.
               </PixelFooterDescription>
             </PixelFooterSection>
-            
+
             <PixelFooterSection>
               <PixelFooterTitle>Solutions</PixelFooterTitle>
               <PixelFooterLinks>
-                <PixelFooterLink><a href="#">Enterprise</a></PixelFooterLink>
-                <PixelFooterLink><a href="#">Startups</a></PixelFooterLink>
-                <PixelFooterLink><a href="#">Agencies</a></PixelFooterLink>
+                <PixelFooterLink>
+                  <a href="#">Enterprise</a>
+                </PixelFooterLink>
+                <PixelFooterLink>
+                  <a href="#">Startups</a>
+                </PixelFooterLink>
+                <PixelFooterLink>
+                  <a href="#">Agencies</a>
+                </PixelFooterLink>
               </PixelFooterLinks>
             </PixelFooterSection>
-            
+
             <PixelFooterSection>
               <PixelFooterTitle>Learn</PixelFooterTitle>
               <PixelFooterLinks>
-                <PixelFooterLink><a href="#">Documentation</a></PixelFooterLink>
-                <PixelFooterLink><a href="#">Video Tutorials</a></PixelFooterLink>
-                <PixelFooterLink><a href="#">Best Practices</a></PixelFooterLink>
+                <PixelFooterLink>
+                  <a href="#">Documentation</a>
+                </PixelFooterLink>
+                <PixelFooterLink>
+                  <a href="#">Video Tutorials</a>
+                </PixelFooterLink>
+                <PixelFooterLink>
+                  <a href="#">Best Practices</a>
+                </PixelFooterLink>
               </PixelFooterLinks>
             </PixelFooterSection>
-            
+
             <PixelFooterSection>
               <PixelFooterTitle>Support</PixelFooterTitle>
               <PixelFooterLinks>
-                <PixelFooterLink><a href="#">Help Center</a></PixelFooterLink>
-                <PixelFooterLink><a href="#">Contact Us</a></PixelFooterLink>
-                <PixelFooterLink><a href="#">FAQ</a></PixelFooterLink>
+                <PixelFooterLink>
+                  <a href="#">Help Center</a>
+                </PixelFooterLink>
+                <PixelFooterLink>
+                  <a href="#">Contact Us</a>
+                </PixelFooterLink>
+                <PixelFooterLink>
+                  <a href="#">FAQ</a>
+                </PixelFooterLink>
               </PixelFooterLinks>
             </PixelFooterSection>
           </PixelFooterGrid>
-          
+
           <PixelFooterDivider />
-          
+
           <PixelFooterBottom>
-            <PixelFooterCopyright>© 2025 Premium Pixels Inc.</PixelFooterCopyright>
+            <PixelFooterCopyright>
+              © 2025 Premium Pixels Inc.
+            </PixelFooterCopyright>
             <PixelFooterSocial>
               <PixelFooterSocialLink href="#">🐦</PixelFooterSocialLink>
               <PixelFooterSocialLink href="#">📘</PixelFooterSocialLink>

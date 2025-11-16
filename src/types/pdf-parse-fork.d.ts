@@ -1,4 +1,4 @@
-declare module 'pdf-parse-fork' {
+declare module "pdf-parse-fork" {
   interface PDFInfo {
     PDFFormatVersion: string;
     IsAcroFormPresent: boolean;
@@ -33,7 +33,7 @@ declare module 'pdf-parse-fork' {
       pagerender?: (pageData: any) => string;
       max?: number;
       version?: string;
-    }
+    },
   ): Promise<PDFData>;
 
   export default pdfParse;
