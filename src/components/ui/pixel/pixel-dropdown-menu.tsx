@@ -1,20 +1,20 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu"
-import { Check, ChevronRight } from "lucide-react"
-import { cn } from "@/lib/utils"
+import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu";
+import { Check, ChevronRight } from "lucide-react";
+import type * as React from "react";
+import { cn } from "@/lib/utils";
 
 function PixelDropdownMenu({
   ...props
 }: React.ComponentProps<typeof DropdownMenuPrimitive.Root>) {
-  return <DropdownMenuPrimitive.Root {...props} />
+  return <DropdownMenuPrimitive.Root {...props} />;
 }
 
 function PixelDropdownMenuTrigger({
   ...props
 }: React.ComponentProps<typeof DropdownMenuPrimitive.Trigger>) {
-  return <DropdownMenuPrimitive.Trigger {...props} />
+  return <DropdownMenuPrimitive.Trigger {...props} />;
 }
 
 function PixelDropdownMenuContent({
@@ -29,12 +29,12 @@ function PixelDropdownMenuContent({
         className={cn(
           "z-50 min-w-[8rem] overflow-hidden border-4 border-black bg-[#fffacd] dark:bg-[#2a2a2a] p-1 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]",
           "font-[family-name:var(--font-press-start)] text-xs duration-0",
-          className
+          className,
         )}
         {...props}
       />
     </DropdownMenuPrimitive.Portal>
-  )
+  );
 }
 
 function PixelDropdownMenuItem({
@@ -42,7 +42,7 @@ function PixelDropdownMenuItem({
   inset,
   ...props
 }: React.ComponentProps<typeof DropdownMenuPrimitive.Item> & {
-  inset?: boolean
+  inset?: boolean;
 }) {
   return (
     <DropdownMenuPrimitive.Item
@@ -51,11 +51,11 @@ function PixelDropdownMenuItem({
         "hover:bg-[#ff6b6b] hover:text-white focus:bg-[#ff6b6b] focus:text-white",
         "data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
         inset && "pl-8",
-        className
+        className,
       )}
       {...props}
     />
-  )
+  );
 }
 
 function PixelDropdownMenuCheckboxItem({
@@ -70,7 +70,7 @@ function PixelDropdownMenuCheckboxItem({
         "relative flex cursor-pointer select-none items-center py-1.5 pl-8 pr-2 text-xs outline-none transition-colors duration-0",
         "hover:bg-[#ff6b6b] hover:text-white focus:bg-[#ff6b6b] focus:text-white",
         "data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
-        className
+        className,
       )}
       checked={checked}
       {...props}
@@ -82,7 +82,7 @@ function PixelDropdownMenuCheckboxItem({
       </span>
       {children}
     </DropdownMenuPrimitive.CheckboxItem>
-  )
+  );
 }
 
 function PixelDropdownMenuRadioItem({
@@ -96,7 +96,7 @@ function PixelDropdownMenuRadioItem({
         "relative flex cursor-pointer select-none items-center py-1.5 pl-8 pr-2 text-xs outline-none transition-colors duration-0",
         "hover:bg-[#ff6b6b] hover:text-white focus:bg-[#ff6b6b] focus:text-white",
         "data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
-        className
+        className,
       )}
       {...props}
     >
@@ -107,7 +107,7 @@ function PixelDropdownMenuRadioItem({
       </span>
       {children}
     </DropdownMenuPrimitive.RadioItem>
-  )
+  );
 }
 
 function PixelDropdownMenuLabel({
@@ -115,18 +115,18 @@ function PixelDropdownMenuLabel({
   inset,
   ...props
 }: React.ComponentProps<typeof DropdownMenuPrimitive.Label> & {
-  inset?: boolean
+  inset?: boolean;
 }) {
   return (
     <DropdownMenuPrimitive.Label
       className={cn(
         "px-2 py-1.5 text-xs font-bold",
         inset && "pl-8",
-        className
+        className,
       )}
       {...props}
     />
-  )
+  );
 }
 
 function PixelDropdownMenuSeparator({
@@ -138,19 +138,19 @@ function PixelDropdownMenuSeparator({
       className={cn("my-1 h-px bg-black", className)}
       {...props}
     />
-  )
+  );
 }
 
 function PixelDropdownMenuGroup({
   ...props
 }: React.ComponentProps<typeof DropdownMenuPrimitive.Group>) {
-  return <DropdownMenuPrimitive.Group {...props} />
+  return <DropdownMenuPrimitive.Group {...props} />;
 }
 
 function PixelDropdownMenuSub({
   ...props
 }: React.ComponentProps<typeof DropdownMenuPrimitive.Sub>) {
-  return <DropdownMenuPrimitive.Sub {...props} />
+  return <DropdownMenuPrimitive.Sub {...props} />;
 }
 
 function PixelDropdownMenuSubTrigger({
@@ -159,7 +159,7 @@ function PixelDropdownMenuSubTrigger({
   children,
   ...props
 }: React.ComponentProps<typeof DropdownMenuPrimitive.SubTrigger> & {
-  inset?: boolean
+  inset?: boolean;
 }) {
   return (
     <DropdownMenuPrimitive.SubTrigger
@@ -168,14 +168,14 @@ function PixelDropdownMenuSubTrigger({
         "hover:bg-[#ff6b6b] hover:text-white focus:bg-[#ff6b6b] focus:text-white",
         "data-[state=open]:bg-[#ff6b6b] data-[state=open]:text-white",
         inset && "pl-8",
-        className
+        className,
       )}
       {...props}
     >
       {children}
       <ChevronRight className="ml-auto h-4 w-4" />
     </DropdownMenuPrimitive.SubTrigger>
-  )
+  );
 }
 
 function PixelDropdownMenuSubContent({
@@ -187,17 +187,17 @@ function PixelDropdownMenuSubContent({
       className={cn(
         "z-50 min-w-[8rem] overflow-hidden border-4 border-black bg-[#fffacd] dark:bg-[#2a2a2a] p-1 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]",
         "font-[family-name:var(--font-press-start)] text-xs duration-0",
-        className
+        className,
       )}
       {...props}
     />
-  )
+  );
 }
 
 function PixelDropdownMenuRadioGroup({
   ...props
 }: React.ComponentProps<typeof DropdownMenuPrimitive.RadioGroup>) {
-  return <DropdownMenuPrimitive.RadioGroup {...props} />
+  return <DropdownMenuPrimitive.RadioGroup {...props} />;
 }
 
 export {
@@ -214,4 +214,4 @@ export {
   PixelDropdownMenuSubTrigger,
   PixelDropdownMenuSubContent,
   PixelDropdownMenuRadioGroup,
-}
+};

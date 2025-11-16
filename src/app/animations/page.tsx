@@ -1,7 +1,18 @@
 "use client";
 
-import { useState } from "react";
+import { Award, Home, Sparkles, Zap } from "lucide-react";
 import Link from "next/link";
+import { useState } from "react";
+// Import all animation components
+import { PixelBlurText } from "@/components/ui/pixel/animations/pixel-blur-text";
+import { PixelCircularText } from "@/components/ui/pixel/animations/pixel-circular-text";
+import { PixelCountUp } from "@/components/ui/pixel/animations/pixel-count-up";
+import { PixelGlareCard } from "@/components/ui/pixel/animations/pixel-glare-card";
+import { PixelGlitchText } from "@/components/ui/pixel/animations/pixel-glitch-text";
+import { PixelGradientText } from "@/components/ui/pixel/animations/pixel-gradient-text";
+import { PixelShinyText } from "@/components/ui/pixel/animations/pixel-shiny-text";
+import { PixelSpotlightCard } from "@/components/ui/pixel/animations/pixel-spotlight-card";
+import { PixelBadge } from "@/components/ui/pixel/pixel-badge";
 import { PixelButton } from "@/components/ui/pixel/pixel-button";
 import {
   PixelCard,
@@ -10,21 +21,13 @@ import {
   PixelCardHeader,
   PixelCardTitle,
 } from "@/components/ui/pixel/pixel-card";
-import { PixelBadge } from "@/components/ui/pixel/pixel-badge";
-import { PixelTabs, PixelTabsContent, PixelTabsList, PixelTabsTrigger } from "@/components/ui/pixel/pixel-tabs";
 import { PixelSeparator } from "@/components/ui/pixel/pixel-separator";
-
-// Import all animation components
-import { PixelBlurText } from "@/components/ui/pixel/animations/pixel-blur-text";
-import { PixelGlitchText } from "@/components/ui/pixel/animations/pixel-glitch-text";
-import { PixelGradientText } from "@/components/ui/pixel/animations/pixel-gradient-text";
-import { PixelShinyText } from "@/components/ui/pixel/animations/pixel-shiny-text";
-import { PixelCountUp } from "@/components/ui/pixel/animations/pixel-count-up";
-import { PixelCircularText } from "@/components/ui/pixel/animations/pixel-circular-text";
-import { PixelSpotlightCard } from "@/components/ui/pixel/animations/pixel-spotlight-card";
-import { PixelGlareCard } from "@/components/ui/pixel/animations/pixel-glare-card";
-
-import { Home, Sparkles, Zap, Award } from "lucide-react";
+import {
+  PixelTabs,
+  PixelTabsContent,
+  PixelTabsList,
+  PixelTabsTrigger,
+} from "@/components/ui/pixel/pixel-tabs";
 
 export default function AnimationsShowcase() {
   return (
@@ -43,9 +46,7 @@ export default function AnimationsShowcase() {
             </div>
             <div className="flex gap-4">
               <Link href="/docs/components">
-                <PixelButton variant="secondary">
-                  📖 Documentation
-                </PixelButton>
+                <PixelButton variant="secondary">📖 Documentation</PixelButton>
               </Link>
               <Link href="/">
                 <PixelButton>
@@ -87,11 +88,17 @@ export default function AnimationsShowcase() {
                 </PixelCardHeader>
                 <PixelCardContent className="space-y-6">
                   <div className="p-8 bg-black/5 dark:bg-white/5 rounded pixel-borders">
-                    <PixelBlurText text="Pixel Perfect!" variant="primary" size="lg" />
+                    <PixelBlurText
+                      text="Pixel Perfect!"
+                      variant="primary"
+                      size="lg"
+                    />
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="p-6 bg-black/5 dark:bg-white/5 rounded pixel-borders">
-                      <p className="text-xs mb-2 dark:text-white/60">Hover Triggered</p>
+                      <p className="text-xs mb-2 dark:text-white/60">
+                        Hover Triggered
+                      </p>
                       <PixelBlurText
                         text="Hover Me"
                         variant="secondary"
@@ -100,8 +107,14 @@ export default function AnimationsShowcase() {
                       />
                     </div>
                     <div className="p-6 bg-black/5 dark:bg-white/5 rounded pixel-borders">
-                      <p className="text-xs mb-2 dark:text-white/60">Accent Variant</p>
-                      <PixelBlurText text="Retro Style" variant="accent" size="md" />
+                      <p className="text-xs mb-2 dark:text-white/60">
+                        Accent Variant
+                      </p>
+                      <PixelBlurText
+                        text="Retro Style"
+                        variant="accent"
+                        size="md"
+                      />
                     </div>
                   </div>
                 </PixelCardContent>
@@ -122,11 +135,17 @@ export default function AnimationsShowcase() {
                 </PixelCardHeader>
                 <PixelCardContent className="space-y-6">
                   <div className="p-8 bg-black/5 dark:bg-white/5 rounded pixel-borders">
-                    <PixelGlitchText text="SYSTEM ERROR" variant="cyber" size="xl" />
+                    <PixelGlitchText
+                      text="SYSTEM ERROR"
+                      variant="cyber"
+                      size="xl"
+                    />
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="p-6 bg-black/5 dark:bg-white/5 rounded pixel-borders">
-                      <p className="text-xs mb-2 dark:text-white/60">Hover to Glitch</p>
+                      <p className="text-xs mb-2 dark:text-white/60">
+                        Hover to Glitch
+                      </p>
                       <PixelGlitchText
                         text="CLICK ME"
                         variant="primary"
@@ -134,7 +153,9 @@ export default function AnimationsShowcase() {
                       />
                     </div>
                     <div className="p-6 bg-black/5 dark:bg-white/5 rounded pixel-borders">
-                      <p className="text-xs mb-2 dark:text-white/60">No Shadows</p>
+                      <p className="text-xs mb-2 dark:text-white/60">
+                        No Shadows
+                      </p>
                       <PixelGlitchText
                         text="CLEAN"
                         variant="default"
@@ -162,19 +183,35 @@ export default function AnimationsShowcase() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="p-6 bg-black/5 dark:bg-white/5 rounded pixel-borders">
                       <p className="text-xs mb-2 dark:text-white/60">Sunset</p>
-                      <PixelGradientText text="SUNSET" variant="sunset" size="lg" />
+                      <PixelGradientText
+                        text="SUNSET"
+                        variant="sunset"
+                        size="lg"
+                      />
                     </div>
                     <div className="p-6 bg-black/5 dark:bg-white/5 rounded pixel-borders">
                       <p className="text-xs mb-2 dark:text-white/60">Ocean</p>
-                      <PixelGradientText text="OCEAN" variant="ocean" size="lg" />
+                      <PixelGradientText
+                        text="OCEAN"
+                        variant="ocean"
+                        size="lg"
+                      />
                     </div>
                     <div className="p-6 bg-black/5 dark:bg-white/5 rounded pixel-borders">
                       <p className="text-xs mb-2 dark:text-white/60">Forest</p>
-                      <PixelGradientText text="FOREST" variant="forest" size="lg" />
+                      <PixelGradientText
+                        text="FOREST"
+                        variant="forest"
+                        size="lg"
+                      />
                     </div>
                     <div className="p-6 bg-black/5 dark:bg-white/5 rounded pixel-borders">
                       <p className="text-xs mb-2 dark:text-white/60">Cyber</p>
-                      <PixelGradientText text="CYBER" variant="cyber" size="lg" />
+                      <PixelGradientText
+                        text="CYBER"
+                        variant="cyber"
+                        size="lg"
+                      />
                     </div>
                   </div>
                 </PixelCardContent>
@@ -197,15 +234,27 @@ export default function AnimationsShowcase() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="p-6 bg-black/5 dark:bg-white/5 rounded pixel-borders">
                       <p className="text-xs mb-2 dark:text-white/60">Gold</p>
-                      <PixelShinyText text="LEGENDARY" variant="gold" size="lg" />
+                      <PixelShinyText
+                        text="LEGENDARY"
+                        variant="gold"
+                        size="lg"
+                      />
                     </div>
                     <div className="p-6 bg-black/5 dark:bg-white/5 rounded pixel-borders">
                       <p className="text-xs mb-2 dark:text-white/60">Silver</p>
-                      <PixelShinyText text="PREMIUM" variant="silver" size="lg" />
+                      <PixelShinyText
+                        text="PREMIUM"
+                        variant="silver"
+                        size="lg"
+                      />
                     </div>
                     <div className="p-6 bg-black/5 dark:bg-white/5 rounded pixel-borders">
                       <p className="text-xs mb-2 dark:text-white/60">Rainbow</p>
-                      <PixelShinyText text="RAINBOW" variant="rainbow" size="lg" />
+                      <PixelShinyText
+                        text="RAINBOW"
+                        variant="rainbow"
+                        size="lg"
+                      />
                     </div>
                     <div className="p-6 bg-black/5 dark:bg-white/5 rounded pixel-borders">
                       <p className="text-xs mb-2 dark:text-white/60">Fire</p>
@@ -287,7 +336,11 @@ export default function AnimationsShowcase() {
                 </PixelCardHeader>
                 <PixelCardContent className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <PixelGlareCard variant="glass" size="lg" glareColor="#ffd700">
+                    <PixelGlareCard
+                      variant="glass"
+                      size="lg"
+                      glareColor="#ffd700"
+                    >
                       <h3 className="text-xl font-bold mb-2 dark:text-white">
                         Glass Effect
                       </h3>
@@ -295,11 +348,7 @@ export default function AnimationsShowcase() {
                         Beautiful glassmorphism with golden glare!
                       </p>
                     </PixelGlareCard>
-                    <PixelGlareCard
-                      variant="primary"
-                      size="lg"
-                      playOnce={true}
-                    >
+                    <PixelGlareCard variant="primary" size="lg" playOnce={true}>
                       <h3 className="text-xl font-bold mb-2 dark:text-white">
                         Play Once
                       </h3>

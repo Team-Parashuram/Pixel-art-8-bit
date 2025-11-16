@@ -1,8 +1,8 @@
 "use client";
 
-import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { Check, Circle } from "lucide-react";
+import * as React from "react";
 import { cn } from "@/lib/utils";
 
 const timelineNavigationVariants = cva(
@@ -17,7 +17,7 @@ const timelineNavigationVariants = cva(
     defaultVariants: {
       orientation: "horizontal",
     },
-  }
+  },
 );
 
 const timelineStepVariants = cva(
@@ -38,7 +38,7 @@ const timelineStepVariants = cva(
       orientation: "horizontal",
       status: "upcoming",
     },
-  }
+  },
 );
 
 const timelineIconVariants = cva(
@@ -47,8 +47,10 @@ const timelineIconVariants = cva(
     variants: {
       status: {
         completed: "bg-green-500 text-white shadow-pixel",
-        current: "bg-pixel-light-primary dark:bg-pixel-dark-primary text-black dark:text-white shadow-pixel animate-pulse",
-        upcoming: "bg-white dark:bg-pixel-dark-surface text-black dark:text-white shadow-pixel-sm",
+        current:
+          "bg-pixel-light-primary dark:bg-pixel-dark-primary text-black dark:text-white shadow-pixel animate-pulse",
+        upcoming:
+          "bg-white dark:bg-pixel-dark-surface text-black dark:text-white shadow-pixel-sm",
       },
       size: {
         sm: "w-8 h-8 text-xs",
@@ -60,7 +62,7 @@ const timelineIconVariants = cva(
       status: "upcoming",
       size: "md",
     },
-  }
+  },
 );
 
 const timelineConnectorVariants = cva(
@@ -81,7 +83,7 @@ const timelineConnectorVariants = cva(
       orientation: "horizontal",
       status: "upcoming",
     },
-  }
+  },
 );
 
 interface TimelineNavigationContextValue {
@@ -99,7 +101,7 @@ function useTimelineNavigation() {
   const context = React.useContext(TimelineNavigationContext);
   if (!context) {
     throw new Error(
-      "Timeline components must be used within a PixelTimelineNavigation"
+      "Timeline components must be used within a PixelTimelineNavigation",
     );
   }
   return context;
@@ -127,24 +129,32 @@ const PixelTimelineNavigation = React.forwardRef<
       children,
       ...props
     },
-    ref
+    ref,
   ) => {
     const contextOrientation = orientation ?? "horizontal";
-    
+
     return (
       <TimelineNavigationContext.Provider
-        value={{ currentStep, orientation: contextOrientation, size, onStepClick }}
+        value={{
+          currentStep,
+          orientation: contextOrientation,
+          size,
+          onStepClick,
+        }}
       >
         <div
           ref={ref}
-          className={cn(timelineNavigationVariants({ orientation: contextOrientation }), className)}
+          className={cn(
+            timelineNavigationVariants({ orientation: contextOrientation }),
+            className,
+          )}
           {...props}
         >
           {children}
         </div>
       </TimelineNavigationContext.Provider>
     );
-  }
+  },
 );
 PixelTimelineNavigation.displayName = "PixelTimelineNavigation";
 
@@ -159,7 +169,8 @@ const PixelTimelineStep = React.forwardRef<
   HTMLDivElement,
   PixelTimelineStepProps
 >(({ className, step, label, description, icon, ...props }, ref) => {
-  const { currentStep, orientation, size, onStepClick } = useTimelineNavigation();
+  const { currentStep, orientation, size, onStepClick } =
+    useTimelineNavigation();
 
   const status =
     step < currentStep
@@ -182,7 +193,7 @@ const PixelTimelineStep = React.forwardRef<
           className={cn(
             timelineIconVariants({ status, size }),
             isClickable && "cursor-pointer hover:scale-110",
-            !isClickable && "cursor-default"
+            !isClickable && "cursor-default",
           )}
           disabled={!isClickable}
           type="button"
@@ -190,14 +201,26 @@ const PixelTimelineStep = React.forwardRef<
           title={label}
         >
           {status === "completed" ? (
-            <Check className={size === "sm" ? "h-4 w-4" : size === "lg" ? "h-8 w-8" : "h-6 w-6"} />
+            <Check
+              className={
+                size === "sm"
+                  ? "h-4 w-4"
+                  : size === "lg"
+                    ? "h-8 w-8"
+                    : "h-6 w-6"
+              }
+            />
           ) : icon ? (
             icon
           ) : status === "current" ? (
             <Circle
               className={cn(
-                size === "sm" ? "h-3 w-3" : size === "lg" ? "h-5 w-5" : "h-4 w-4",
-                "fill-current"
+                size === "sm"
+                  ? "h-3 w-3"
+                  : size === "lg"
+                    ? "h-5 w-5"
+                    : "h-4 w-4",
+                "fill-current",
               )}
             />
           ) : (
@@ -207,16 +230,21 @@ const PixelTimelineStep = React.forwardRef<
         <div
           className={cn(
             "flex flex-col",
-            orientation === "horizontal" ? "mt-2 text-center" : "ml-4"
+            orientation === "horizontal" ? "mt-2 text-center" : "ml-4",
           )}
         >
           <span
             className={cn(
               "font-bold uppercase tracking-wide",
-              size === "sm" ? "text-xs" : size === "lg" ? "text-base" : "text-sm",
-              status === "current" && "text-pixel-light-primary dark:text-pixel-dark-primary",
+              size === "sm"
+                ? "text-xs"
+                : size === "lg"
+                  ? "text-base"
+                  : "text-sm",
+              status === "current" &&
+                "text-pixel-light-primary dark:text-pixel-dark-primary",
               status === "completed" && "text-green-600 dark:text-green-400",
-              status === "upcoming" && "text-gray-500 dark:text-gray-400"
+              status === "upcoming" && "text-gray-500 dark:text-gray-400",
             )}
           >
             {label}
@@ -225,7 +253,7 @@ const PixelTimelineStep = React.forwardRef<
             <span
               className={cn(
                 "text-xs text-gray-600 dark:text-gray-400 mt-1",
-                orientation === "horizontal" ? "max-w-[120px]" : ""
+                orientation === "horizontal" ? "max-w-[120px]" : "",
               )}
             >
               {description}
@@ -257,7 +285,7 @@ const PixelTimelineConnector = React.forwardRef<
       ref={ref}
       className={cn(
         timelineConnectorVariants({ orientation, status }),
-        className
+        className,
       )}
       {...props}
     />

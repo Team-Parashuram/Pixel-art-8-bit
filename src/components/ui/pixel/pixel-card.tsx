@@ -11,7 +11,7 @@ const PixelCard = React.forwardRef<
     ref={ref}
     className={cn(
       "pixel-borders border-4 p-6 bg-[#fffacd] border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] dark:bg-[#1a1a1a] dark:border-[#ff8c00] dark:shadow-[6px_6px_0px_0px_rgba(255,140,0,0.3)]",
-      className
+      className,
     )}
     {...props}
   />
@@ -38,7 +38,7 @@ const PixelCardTitle = React.forwardRef<
     ref={ref}
     className={cn(
       "text-base font-bold uppercase tracking-wider font-[family-name:var(--font-pixel)] leading-relaxed dark:text-[#ffd700]",
-      className
+      className,
     )}
     {...props}
   />
@@ -53,7 +53,7 @@ const PixelCardDescription = React.forwardRef<
     ref={ref}
     className={cn(
       "text-sm text-black/80 dark:text-white/80 leading-relaxed",
-      className
+      className,
     )}
     {...props}
   />

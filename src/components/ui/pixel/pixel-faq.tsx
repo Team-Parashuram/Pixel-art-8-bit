@@ -1,25 +1,22 @@
 "use client";
 
-import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
+import * as React from "react";
 import { cn } from "@/lib/utils";
 
-const pixelFaqVariants = cva(
-  "relative w-full",
-  {
-    variants: {
-      variant: {
-        default: "bg-[#f5f5dc] dark:bg-[#1a1a1a]",
-        primary: "bg-[#ff8c00] text-white",
-        secondary: "bg-[#ffd700] text-black",
-        dark: "bg-black text-white",
-      },
+const pixelFaqVariants = cva("relative w-full", {
+  variants: {
+    variant: {
+      default: "bg-[#f5f5dc] dark:bg-[#1a1a1a]",
+      primary: "bg-[#ff8c00] text-white",
+      secondary: "bg-[#ffd700] text-black",
+      dark: "bg-black text-white",
     },
-    defaultVariants: {
-      variant: "default",
-    },
-  }
-);
+  },
+  defaultVariants: {
+    variant: "default",
+  },
+});
 
 export interface PixelFaqProps
   extends React.HTMLAttributes<HTMLDivElement>,
@@ -32,15 +29,17 @@ const PixelFaq = React.forwardRef<HTMLDivElement, PixelFaqProps>(
     return (
       <section
         ref={ref}
-        className={cn(pixelFaqVariants({ variant }), "py-16 md:py-24", className)}
+        className={cn(
+          pixelFaqVariants({ variant }),
+          "py-16 md:py-24",
+          className,
+        )}
         {...props}
       >
-        <div className="container mx-auto px-4 max-w-4xl">
-          {children}
-        </div>
+        <div className="container mx-auto px-4 max-w-4xl">{children}</div>
       </section>
     );
-  }
+  },
 );
 PixelFaq.displayName = "PixelFaq";
 
@@ -48,11 +47,7 @@ const PixelFaqList = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, children, ...props }, ref) => (
-  <div
-    ref={ref}
-    className={cn("space-y-4", className)}
-    {...props}
-  >
+  <div ref={ref} className={cn("space-y-4", className)} {...props}>
     {children}
   </div>
 ));
@@ -72,7 +67,7 @@ const pixelFaqItemVariants = cva(
     defaultVariants: {
       variant: "default",
     },
-  }
+  },
 );
 
 interface PixelFaqItemContextValue {
@@ -80,12 +75,16 @@ interface PixelFaqItemContextValue {
   toggle: () => void;
 }
 
-const PixelFaqItemContext = React.createContext<PixelFaqItemContextValue | undefined>(undefined);
+const PixelFaqItemContext = React.createContext<
+  PixelFaqItemContextValue | undefined
+>(undefined);
 
 const usePixelFaqItem = () => {
   const context = React.useContext(PixelFaqItemContext);
   if (!context) {
-    throw new Error("PixelFaqItem sub-components must be used within PixelFaqItem");
+    throw new Error(
+      "PixelFaqItem sub-components must be used within PixelFaqItem",
+    );
   }
   return context;
 };
@@ -99,7 +98,7 @@ export interface PixelFaqItemProps
 const PixelFaqItem = React.forwardRef<HTMLDivElement, PixelFaqItemProps>(
   ({ className, variant, defaultOpen = false, children, ...props }, ref) => {
     const [isOpen, setIsOpen] = React.useState(defaultOpen);
-    
+
     const toggle = React.useCallback(() => {
       setIsOpen((prev) => !prev);
     }, []);
@@ -110,8 +109,10 @@ const PixelFaqItem = React.forwardRef<HTMLDivElement, PixelFaqItemProps>(
           ref={ref}
           className={cn(
             pixelFaqItemVariants({ variant }),
-            isOpen ? "shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]" : "shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]",
-            className
+            isOpen
+              ? "shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]"
+              : "shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]",
+            className,
           )}
           {...props}
         >
@@ -119,7 +120,7 @@ const PixelFaqItem = React.forwardRef<HTMLDivElement, PixelFaqItemProps>(
         </div>
       </PixelFaqItemContext.Provider>
     );
-  }
+  },
 );
 PixelFaqItem.displayName = "PixelFaqItem";
 
@@ -128,7 +129,7 @@ const PixelFaqQuestion = React.forwardRef<
   React.ButtonHTMLAttributes<HTMLButtonElement>
 >(({ className, children, ...props }, ref) => {
   const { isOpen, toggle } = usePixelFaqItem();
-  
+
   return (
     <button
       ref={ref}
@@ -136,7 +137,7 @@ const PixelFaqQuestion = React.forwardRef<
       onClick={toggle}
       className={cn(
         "w-full text-left p-6 font-bold text-base md:text-lg flex items-center justify-between gap-4 uppercase tracking-wide hover:opacity-80 transition-opacity",
-        className
+        className,
       )}
       aria-expanded={isOpen}
       {...props}
@@ -145,7 +146,7 @@ const PixelFaqQuestion = React.forwardRef<
       <span
         className={cn(
           "flex-shrink-0 w-8 h-8 flex items-center justify-center border-2 border-current font-[family-name:var(--font-pixel)] text-2xl transition-transform",
-          isOpen && "rotate-45"
+          isOpen && "rotate-45",
         )}
         aria-hidden="true"
       >
@@ -177,11 +178,14 @@ const PixelFaqAnswer = React.forwardRef<
       className={cn(
         "overflow-hidden transition-none border-t-4 border-black/20 dark:border-white/20",
         !isOpen && "border-t-0",
-        className
+        className,
       )}
       {...props}
     >
-      <div ref={contentRef} className="p-6 pt-4 text-sm md:text-base opacity-80 leading-relaxed">
+      <div
+        ref={contentRef}
+        className="p-6 pt-4 text-sm md:text-base opacity-80 leading-relaxed"
+      >
         {children}
       </div>
     </div>
@@ -193,11 +197,7 @@ const PixelFaqHeader = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, children, ...props }, ref) => (
-  <div
-    ref={ref}
-    className={cn("text-center mb-12", className)}
-    {...props}
-  >
+  <div ref={ref} className={cn("text-center mb-12", className)} {...props}>
     {children}
   </div>
 ));
@@ -211,7 +211,7 @@ const PixelFaqSectionTitle = React.forwardRef<
     ref={ref}
     className={cn(
       "text-3xl md:text-5xl font-bold uppercase tracking-wider mb-4 font-[family-name:var(--font-pixel)]",
-      className
+      className,
     )}
     {...props}
   >
@@ -226,7 +226,10 @@ const PixelFaqSectionDescription = React.forwardRef<
 >(({ className, children, ...props }, ref) => (
   <p
     ref={ref}
-    className={cn("text-base md:text-xl opacity-80 max-w-3xl mx-auto", className)}
+    className={cn(
+      "text-base md:text-xl opacity-80 max-w-3xl mx-auto",
+      className,
+    )}
     {...props}
   >
     {children}
@@ -238,11 +241,7 @@ const PixelFaqCategory = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, children, ...props }, ref) => (
-  <div
-    ref={ref}
-    className={cn("mb-8", className)}
-    {...props}
-  >
+  <div ref={ref} className={cn("mb-8", className)} {...props}>
     {children}
   </div>
 ));
@@ -256,7 +255,7 @@ const PixelFaqCategoryTitle = React.forwardRef<
     ref={ref}
     className={cn(
       "text-xl md:text-2xl font-bold uppercase tracking-wide mb-4 pb-2 border-b-4 border-black dark:border-white font-[family-name:var(--font-pixel)]",
-      className
+      className,
     )}
     {...props}
   >

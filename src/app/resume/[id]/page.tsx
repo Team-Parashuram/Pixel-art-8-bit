@@ -1,22 +1,55 @@
-'use client'
+"use client";
 
-import { JSXElementConstructor, Key, ReactElement, ReactNode, ReactPortal, useEffect, useState } from 'react';
-import { useParams, useRouter } from 'next/navigation';
-
-import { PixelCard, PixelCardContent, PixelCardHeader, PixelCardTitle } from '@/components/ui/pixel/pixel-card';
-import { PixelButton } from '@/components/ui/pixel/pixel-button';
-import { PixelBadge } from '@/components/ui/pixel/pixel-badge';
-import { PixelHero, PixelHeroContent, PixelHeroTitle, PixelHeroDescription } from '@/components/ui/pixel/pixel-hero';
-import { PixelLoader } from '@/components/ui/pixel/pixel-loader';
-import { Mail, Github, Linkedin, Phone, MapPin, ExternalLink, Briefcase, GraduationCap, Code, FolderGit2, Download, ArrowLeft, Upload } from 'lucide-react';
-import { ResumeData } from '@/app/api/parse-resume/route';
+import {
+  ArrowLeft,
+  Briefcase,
+  Code,
+  Download,
+  ExternalLink,
+  FolderGit2,
+  Github,
+  GraduationCap,
+  Linkedin,
+  Mail,
+  MapPin,
+  Phone,
+  Upload,
+} from "lucide-react";
+import { useParams, useRouter } from "next/navigation";
+import {
+  JSXElementConstructor,
+  Key,
+  ReactElement,
+  ReactNode,
+  ReactPortal,
+  useEffect,
+  useState,
+} from "react";
+import type { ResumeData } from "@/app/api/parse-resume/route";
+import { PixelBadge } from "@/components/ui/pixel/pixel-badge";
+import { PixelButton } from "@/components/ui/pixel/pixel-button";
+import {
+  PixelCard,
+  PixelCardContent,
+  PixelCardHeader,
+  PixelCardTitle,
+} from "@/components/ui/pixel/pixel-card";
+import {
+  PixelHero,
+  PixelHeroContent,
+  PixelHeroDescription,
+  PixelHeroTitle,
+} from "@/components/ui/pixel/pixel-hero";
+import { PixelLoader } from "@/components/ui/pixel/pixel-loader";
 
 export default function PortfolioPage() {
   const params = useParams();
   const router = useRouter();
   const [data, setData] = useState<ResumeData | null>(null);
   const [loading, setLoading] = useState(true);
-  const [expandedProjects, setExpandedProjects] = useState<Set<number>>(new Set());
+  const [expandedProjects, setExpandedProjects] = useState<Set<number>>(
+    new Set(),
+  );
   const [currentPage, setCurrentPage] = useState(1);
   const [currentSkillsPage, setCurrentSkillsPage] = useState(1);
   const projectsPerPage = 2;
@@ -25,26 +58,26 @@ export default function PortfolioPage() {
   useEffect(() => {
     if (params.id) {
       fetch(`/api/parse-resume?id=${params.id}`)
-        .then(res => res.json())
-        .then(result => {
+        .then((res) => res.json())
+        .then((result) => {
           if (result.success) {
-            console.log('📊 Parsed Resume Data:', result.data);
+            console.log("📊 Parsed Resume Data:", result.data);
             setData(result.data);
           } else {
-            router.push('/resume');
+            router.push("/resume");
           }
           setLoading(false);
         })
         .catch(() => {
-          router.push('/resume');
+          router.push("/resume");
           setLoading(false);
         });
     }
   }, [params.id, router]);
 
   const generateTSXCode = () => {
-    if (!data) return '';
-    
+    if (!data) return "";
+
     // Generate complete portfolio code with all sections
     return `'use client'
 
@@ -63,6 +96,15 @@ export default function Portfolio() {
   const skillsPerPage = 12;
 
   const data = ${JSON.stringify(data, null, 2)};
+
+  // Helper function to ensure URLs have proper protocol
+  const normalizeUrl = (url: string | undefined): string => {
+    if (!url) return '';
+    if (url.startsWith('http://') || url.startsWith('https://')) {
+      return url;
+    }
+    return \`https://\${url}\`;
+  };
 
   const toggleProjectExpand = (index: number) => {
     const newExpanded = new Set(expandedProjects);
@@ -96,51 +138,45 @@ export default function Portfolio() {
       <PixelHero variant="gradient" size="md">
         <PixelHeroContent>
           <PixelHeroTitle className="mb-4 text-3xl md:text-5xl">
-            {data.name}
+            {data.personalInfo.name}
           </PixelHeroTitle>
           
-          {data.title && (
+          {data.personalInfo.location && (
             <PixelHeroDescription className="text-xl md:text-2xl mb-6">
-              {data.title}
+              {data.personalInfo.location}
             </PixelHeroDescription>
           )}
 
-          {data.summary && (
-            <p className="text-base md:text-lg mb-6 max-w-3xl mx-auto">
-              {data.summary}
-            </p>
-          )}
-
           <div className="flex flex-wrap gap-3 justify-center items-center">
-            {data.email && (
-              <a href={\`mailto:\${data.email}\`}>
+            {data.personalInfo.email && (
+              <a href={\`mailto:\${data.personalInfo.email}\`}>
                 <PixelButton size="sm">
                   <Mail className="mr-2 h-4 w-4" />
                   Contact Me
                 </PixelButton>
               </a>
             )}
-            {data.github && (
-              <a href={data.github} target="_blank" rel="noopener noreferrer">
+            {data.personalInfo.github && (
+              <a href={normalizeUrl(data.personalInfo.github)} target="_blank" rel="noopener noreferrer">
                 <PixelButton size="sm" variant="secondary">
                   <Github className="mr-2 h-4 w-4" />
                   GitHub
                 </PixelButton>
               </a>
             )}
-            {data.linkedin && (
-              <a href={data.linkedin} target="_blank" rel="noopener noreferrer">
+            {data.personalInfo.linkedin && (
+              <a href={normalizeUrl(data.personalInfo.linkedin)} target="_blank" rel="noopener noreferrer">
                 <PixelButton size="sm" variant="secondary">
                   <Linkedin className="mr-2 h-4 w-4" />
                   LinkedIn
                 </PixelButton>
               </a>
             )}
-            {data.phone && (
-              <a href={\`tel:\${data.phone}\`}>
+            {data.personalInfo.phone && (
+              <a href={\`tel:\${data.personalInfo.phone}\`}>
                 <PixelButton size="sm" variant="secondary">
                   <Phone className="mr-2 h-4 w-4" />
-                  {data.phone}
+                  {data.personalInfo.phone}
                 </PixelButton>
               </a>
             )}
@@ -226,7 +262,7 @@ export default function Portfolio() {
                         </h4>
                       </div>
                       <div className="text-right">
-                        <PixelBadge variant="default">{exp.duration}</PixelBadge>
+                        <PixelBadge variant="default">{exp.dates}</PixelBadge>
                         {exp.location && (
                           <div className="text-sm mt-2 flex items-center gap-1 justify-end">
                             <MapPin className="h-4 w-4" />
@@ -237,10 +273,10 @@ export default function Portfolio() {
                     </div>
                   </PixelCardHeader>
 
-                  {exp.description && exp.description.length > 0 && (
+                  {exp.responsibilities && exp.responsibilities.length > 0 && (
                     <PixelCardContent>
                       <ul className="list-disc list-inside space-y-2">
-                        {exp.description.map((item, i) => (
+                        {exp.responsibilities.map((item, i) => (
                           <li key={i} className="leading-relaxed">{item}</li>
                         ))}
                       </ul>
@@ -308,8 +344,8 @@ export default function Portfolio() {
                             </p>
                           )}
 
-                          {project.link && (
-                            <a href={project.link} target="_blank" rel="noopener noreferrer">
+                          {(project.link || project.github) && (
+                            <a href={normalizeUrl(project.link || project.github)} target="_blank" rel="noopener noreferrer">
                               <PixelButton variant="ghost" size="sm">
                                 View Project <ExternalLink className="ml-2 h-3 w-3" />
                               </PixelButton>
@@ -391,7 +427,7 @@ export default function Portfolio() {
                         )}
                       </div>
                       <div className="text-right">
-                        <PixelBadge variant="default">{edu.duration}</PixelBadge>
+                        <PixelBadge variant="default">{edu.dates}</PixelBadge>
                         {edu.gpa && (
                           <div className="text-sm mt-2">GPA: {edu.gpa}</div>
                         )}
@@ -417,7 +453,7 @@ export default function Portfolio() {
       {/* Footer */}
       <footer className="py-8 px-4 border-t-4 border-black dark:border-pixel-dark-primary">
         <div className="max-w-6xl mx-auto text-center space-y-1">
-          <p className="font-bold text-sm">© {new Date().getFullYear()} {data.name}. All rights reserved.</p>
+          <p className="font-bold text-sm">© {new Date().getFullYear()} {data.personalInfo.name}. All rights reserved.</p>
           <p className="text-xs">
             Built with ❤️ using Resume to Portfolio Generator
           </p>
@@ -430,11 +466,11 @@ export default function Portfolio() {
 
   const handleDownload = () => {
     const tsxCode = generateTSXCode();
-    const blob = new Blob([tsxCode], { type: 'text/plain' });
+    const blob = new Blob([tsxCode], { type: "text/plain" });
     const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
+    const a = document.createElement("a");
     a.href = url;
-    a.download = `${data?.personalInfo?.name?.replace(/\s+/g, '-').toLowerCase() || 'portfolio'}-portfolio.tsx`;
+    a.download = `${data?.personalInfo?.name?.replace(/\s+/g, "-").toLowerCase() || "portfolio"}-portfolio.tsx`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
@@ -463,10 +499,20 @@ export default function Portfolio() {
     return null;
   }
 
-  const hasAnySection = data.skills?.length > 0 || 
-                        data.experience?.length > 0 || 
-                        data.projects?.length > 0 || 
-                        data.education?.length > 0;
+  const hasAnySection =
+    data.skills?.length > 0 ||
+    data.experience?.length > 0 ||
+    data.projects?.length > 0 ||
+    data.education?.length > 0;
+
+  // Helper function to ensure URLs have proper protocol
+  const normalizeUrl = (url: string | undefined): string => {
+    if (!url) return "";
+    if (url.startsWith("http://") || url.startsWith("https://")) {
+      return url;
+    }
+    return `https://${url}`;
+  };
 
   const toggleProjectExpand = (index: number) => {
     const newExpanded = new Set(expandedProjects);
@@ -483,25 +529,31 @@ export default function Portfolio() {
   const totalPages = Math.ceil(totalProjects / projectsPerPage);
   const indexOfLastProject = currentPage * projectsPerPage;
   const indexOfFirstProject = indexOfLastProject - projectsPerPage;
-  const currentProjects = data?.projects?.slice(indexOfFirstProject, indexOfLastProject) || [];
+  const currentProjects =
+    data?.projects?.slice(indexOfFirstProject, indexOfLastProject) || [];
 
   // Pagination logic for skills
   const totalSkills = data?.skills?.length || 0;
   const totalSkillsPages = Math.ceil(totalSkills / skillsPerPage);
   const indexOfLastSkill = currentSkillsPage * skillsPerPage;
   const indexOfFirstSkill = indexOfLastSkill - skillsPerPage;
-  const currentSkills = data?.skills?.slice(indexOfFirstSkill, indexOfLastSkill) || [];
+  const currentSkills =
+    data?.skills?.slice(indexOfFirstSkill, indexOfLastSkill) || [];
 
   const handlePageChange = (pageNumber: number) => {
     setCurrentPage(pageNumber);
     // Scroll to projects section
-    document.getElementById('projects-section')?.scrollIntoView({ behavior: 'smooth' });
+    document
+      .getElementById("projects-section")
+      ?.scrollIntoView({ behavior: "smooth" });
   };
 
   const handleSkillsPageChange = (pageNumber: number) => {
     setCurrentSkillsPage(pageNumber);
     // Scroll to skills section
-    document.getElementById('skills-section')?.scrollIntoView({ behavior: 'smooth' });
+    document
+      .getElementById("skills-section")
+      ?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -533,12 +585,16 @@ export default function Portfolio() {
       </nav>
 
       {/* Hero Section */}
-      <PixelHero variant="dark" size="md" className="border-b-4 border-black dark:border-pixel-dark-primary">
+      <PixelHero
+        variant="dark"
+        size="md"
+        className="border-b-4 border-black dark:border-pixel-dark-primary"
+      >
         <PixelHeroContent className="py-12 md:py-16">
           <PixelHeroTitle className="mb-6 text-4xl md:text-5xl lg:text-7xl">
             {data.personalInfo.name}
           </PixelHeroTitle>
-          
+
           {data.personalInfo.location && (
             <PixelHeroDescription className="text-lg md:text-xl lg:text-2xl mb-8 font-semibold flex items-center justify-center gap-2">
               <MapPin className="h-5 w-5 md:h-6 md:w-6" />
@@ -556,7 +612,11 @@ export default function Portfolio() {
               </a>
             )}
             {data.personalInfo.github && (
-              <a href={data.personalInfo.github} target="_blank" rel="noopener noreferrer">
+              <a
+                href={normalizeUrl(data.personalInfo.github)}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <PixelButton size="sm" variant="secondary" className="gap-2">
                   <Github className="h-4 w-4" />
                   <span className="font-pixel">GitHub</span>
@@ -564,7 +624,11 @@ export default function Portfolio() {
               </a>
             )}
             {data.personalInfo.linkedin && (
-              <a href={data.personalInfo.linkedin} target="_blank" rel="noopener noreferrer">
+              <a
+                href={normalizeUrl(data.personalInfo.linkedin)}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <PixelButton size="sm" variant="secondary" className="gap-2">
                   <Linkedin className="h-4 w-4" />
                   <span className="font-pixel">LinkedIn</span>
@@ -575,7 +639,9 @@ export default function Portfolio() {
               <a href={`tel:${data.personalInfo.phone}`}>
                 <PixelButton size="sm" variant="secondary" className="gap-2">
                   <Phone className="h-4 w-4" />
-                  <span className="hidden sm:inline font-pixel">{data.personalInfo.phone}</span>
+                  <span className="hidden sm:inline font-pixel">
+                    {data.personalInfo.phone}
+                  </span>
                   <span className="sm:hidden font-pixel">Call</span>
                 </PixelButton>
               </a>
@@ -597,8 +663,10 @@ export default function Portfolio() {
               </PixelCardHeader>
               <PixelCardContent className="space-y-8">
                 <p className="text-center text-base md:text-lg leading-relaxed text-gray-700 dark:text-gray-300">
-                  The resume parser could not identify standard sections. 
-                  Try uploading a resume with clear section headers like <strong>Experience</strong>, <strong>Skills</strong>, <strong>Projects</strong>, and <strong>Education</strong>.
+                  The resume parser could not identify standard sections. Try
+                  uploading a resume with clear section headers like{" "}
+                  <strong>Experience</strong>, <strong>Skills</strong>,{" "}
+                  <strong>Projects</strong>, and <strong>Education</strong>.
                 </p>
                 <div className="flex justify-center">
                   <a href="/resume">
@@ -616,21 +684,26 @@ export default function Portfolio() {
 
       {/* Skills Section */}
       {data.skills && data.skills.length > 0 && (
-        <section id="skills-section" className="py-16 md:py-20 px-4 bg-white dark:bg-pixel-dark-surface/50">
+        <section
+          id="skills-section"
+          className="py-16 md:py-20 px-4 bg-white dark:bg-pixel-dark-surface/50"
+        >
           <div className="max-w-6xl mx-auto">
             <div className="flex items-center justify-center gap-3 mb-12">
               <Code className="h-7 w-7 md:h-8 md:w-8 text-pixel-warning dark:text-pixel-dark-secondary" />
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold uppercase tracking-wider font-pixel text-center dark:text-pixel-dark-secondary">
                 Skills
               </h2>
-              <PixelBadge variant="default" className="text-sm font-pixel">{totalSkills}</PixelBadge>
+              <PixelBadge variant="default" className="text-sm font-pixel">
+                {totalSkills}
+              </PixelBadge>
             </div>
-            
+
             <div className="flex flex-wrap gap-3 md:gap-4 justify-center max-w-5xl mx-auto min-h-40 items-center">
               {currentSkills.map((skill, index) => (
-                <PixelBadge 
-                  key={indexOfFirstSkill + index} 
-                  variant="warning" 
+                <PixelBadge
+                  key={indexOfFirstSkill + index}
+                  variant="warning"
                   className="text-sm md:text-base px-4 md:px-5 py-2 md:py-2.5 font-medium hover:scale-105 transition-transform"
                 >
                   {skill}
@@ -650,12 +723,17 @@ export default function Portfolio() {
                 >
                   ← Prev
                 </PixelButton>
-                
+
                 <div className="flex gap-2">
-                  {Array.from({ length: totalSkillsPages }, (_, i) => i + 1).map((pageNum) => (
+                  {Array.from(
+                    { length: totalSkillsPages },
+                    (_, i) => i + 1,
+                  ).map((pageNum) => (
                     <PixelButton
                       key={pageNum}
-                      variant={currentSkillsPage === pageNum ? "default" : "ghost"}
+                      variant={
+                        currentSkillsPage === pageNum ? "default" : "ghost"
+                      }
                       size="sm"
                       onClick={() => handleSkillsPageChange(pageNum)}
                       className="min-w-10 font-pixel"
@@ -689,12 +767,17 @@ export default function Portfolio() {
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold uppercase tracking-wider font-pixel text-center dark:text-pixel-dark-secondary">
                 Experience
               </h2>
-              <PixelBadge variant="default" className="text-sm font-pixel">{data.experience.length}</PixelBadge>
+              <PixelBadge variant="default" className="text-sm font-pixel">
+                {data.experience.length}
+              </PixelBadge>
             </div>
 
             <div className="space-y-6 md:space-y-8 max-w-5xl mx-auto">
               {data.experience.map((exp, index) => (
-                <PixelCard key={index} className="hover:shadow-xl transition-shadow duration-200">
+                <PixelCard
+                  key={index}
+                  className="hover:shadow-xl transition-shadow duration-200"
+                >
                   <PixelCardHeader>
                     <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
                       <div className="flex-1 space-y-2">
@@ -706,7 +789,12 @@ export default function Portfolio() {
                         </h4>
                       </div>
                       <div className="md:text-right flex flex-col gap-2.5">
-                        <PixelBadge variant="default" className="w-fit font-pixel text-sm">{exp.dates}</PixelBadge>
+                        <PixelBadge
+                          variant="default"
+                          className="w-fit font-pixel text-sm"
+                        >
+                          {exp.dates}
+                        </PixelBadge>
                         {exp.location && (
                           <div className="text-sm flex items-center gap-1.5 md:justify-end text-gray-600 dark:text-gray-400">
                             <MapPin className="h-4 w-4" />
@@ -721,7 +809,12 @@ export default function Portfolio() {
                     <PixelCardContent>
                       <ul className="list-disc list-inside space-y-3 text-sm md:text-base">
                         {exp.responsibilities.map((item, i) => (
-                          <li key={i} className="leading-relaxed text-gray-700 dark:text-gray-300 pl-2">{item}</li>
+                          <li
+                            key={i}
+                            className="leading-relaxed text-gray-700 dark:text-gray-300 pl-2"
+                          >
+                            {item}
+                          </li>
                         ))}
                       </ul>
                     </PixelCardContent>
@@ -735,23 +828,31 @@ export default function Portfolio() {
 
       {/* Projects Section */}
       {data.projects && data.projects.length > 0 && (
-        <section id="projects-section" className="py-16 md:py-20 px-4 bg-white dark:bg-pixel-dark-surface/50">
+        <section
+          id="projects-section"
+          className="py-16 md:py-20 px-4 bg-white dark:bg-pixel-dark-surface/50"
+        >
           <div className="max-w-6xl mx-auto container">
             <div className="flex items-center justify-center gap-3 mb-12">
               <FolderGit2 className="h-7 w-7 md:h-8 md:w-8 text-pixel-warning dark:text-pixel-dark-secondary" />
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold uppercase tracking-wider font-pixel text-center dark:text-pixel-dark-secondary">
                 Projects
               </h2>
-              <PixelBadge variant="default" className="text-sm font-pixel">{totalProjects}</PixelBadge>
+              <PixelBadge variant="default" className="text-sm font-pixel">
+                {totalProjects}
+              </PixelBadge>
             </div>
 
             <div className="grid md:grid-cols-2 gap-6 md:gap-8 max-w-5xl mx-auto">
               {currentProjects.map((project, idx) => {
                 const globalIndex = indexOfFirstProject + idx;
                 const isExpanded = expandedProjects.has(globalIndex);
-                
+
                 return (
-                  <PixelCard key={globalIndex} className="transition-all duration-200 hover:shadow-xl">
+                  <PixelCard
+                    key={globalIndex}
+                    className="transition-all duration-200 hover:shadow-xl"
+                  >
                     <PixelCardHeader>
                       <div className="flex justify-between items-start gap-3">
                         <PixelCardTitle className="text-lg md:text-xl lg:text-2xl flex-1 font-pixel">
@@ -763,27 +864,37 @@ export default function Portfolio() {
                           onClick={() => toggleProjectExpand(globalIndex)}
                           className="shrink-0 h-9 w-9 p-0 flex items-center justify-center text-xl font-bold hover:bg-pixel-warning/20 dark:hover:bg-pixel-dark-primary/20"
                         >
-                          {isExpanded ? '−' : '+'}
+                          {isExpanded ? "−" : "+"}
                         </PixelButton>
                       </div>
                     </PixelCardHeader>
-                    
+
                     <PixelCardContent className="space-y-4">
                       {/* Technologies */}
-                      {project.technologies && project.technologies.length > 0 && (
-                        <div className="flex flex-wrap gap-2">
-                          {project.technologies.slice(0, isExpanded ? undefined : 4).map((tech, i) => (
-                            <PixelBadge key={i} variant="success" className="text-xs md:text-sm px-3 py-1.5">
-                              {tech}
-                            </PixelBadge>
-                          ))}
-                          {!isExpanded && project.technologies.length > 4 && (
-                            <PixelBadge variant="default" className="text-xs md:text-sm px-3 py-1.5 font-pixel">
-                              +{project.technologies.length - 4}
-                            </PixelBadge>
-                          )}
-                        </div>
-                      )}
+                      {project.technologies &&
+                        project.technologies.length > 0 && (
+                          <div className="flex flex-wrap gap-2">
+                            {project.technologies
+                              .slice(0, isExpanded ? undefined : 4)
+                              .map((tech, i) => (
+                                <PixelBadge
+                                  key={i}
+                                  variant="success"
+                                  className="text-xs md:text-sm px-3 py-1.5"
+                                >
+                                  {tech}
+                                </PixelBadge>
+                              ))}
+                            {!isExpanded && project.technologies.length > 4 && (
+                              <PixelBadge
+                                variant="default"
+                                className="text-xs md:text-sm px-3 py-1.5 font-pixel"
+                              >
+                                +{project.technologies.length - 4}
+                              </PixelBadge>
+                            )}
+                          </div>
+                        )}
 
                       {/* Expanded content */}
                       {isExpanded && (
@@ -796,11 +907,17 @@ export default function Portfolio() {
 
                           {(project.link || project.github) && (
                             <a
-                              href={project.link || project.github}
+                              href={normalizeUrl(
+                                project.link || project.github,
+                              )}
                               target="_blank"
                               rel="noopener noreferrer"
                             >
-                              <PixelButton variant="secondary" size="sm" className="mt-2 gap-2">
+                              <PixelButton
+                                variant="secondary"
+                                size="sm"
+                                className="mt-2 gap-2"
+                              >
                                 <span className="font-pixel">View Project</span>
                                 <ExternalLink className="h-4 w-4" />
                               </PixelButton>
@@ -808,7 +925,7 @@ export default function Portfolio() {
                           )}
                         </>
                       )}
-                      
+
                       {/* Collapsed description */}
                       {!isExpanded && project.description && (
                         <p className="leading-relaxed text-sm text-gray-600 dark:text-gray-400 line-clamp-2">
@@ -833,19 +950,21 @@ export default function Portfolio() {
                 >
                   ← Prev
                 </PixelButton>
-                
+
                 <div className="flex gap-2">
-                  {Array.from({ length: totalPages }, (_, i) => i + 1).map((pageNum) => (
-                    <PixelButton
-                      key={pageNum}
-                      variant={currentPage === pageNum ? "default" : "ghost"}
-                      size="sm"
-                      onClick={() => handlePageChange(pageNum)}
-                      className="min-w-10 font-pixel"
-                    >
-                      {pageNum}
-                    </PixelButton>
-                  ))}
+                  {Array.from({ length: totalPages }, (_, i) => i + 1).map(
+                    (pageNum) => (
+                      <PixelButton
+                        key={pageNum}
+                        variant={currentPage === pageNum ? "default" : "ghost"}
+                        size="sm"
+                        onClick={() => handlePageChange(pageNum)}
+                        className="min-w-10 font-pixel"
+                      >
+                        {pageNum}
+                      </PixelButton>
+                    ),
+                  )}
                 </div>
 
                 <PixelButton
@@ -872,12 +991,17 @@ export default function Portfolio() {
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold uppercase tracking-wider font-pixel text-center dark:text-pixel-dark-secondary">
                 Education
               </h2>
-              <PixelBadge variant="default" className="text-sm font-pixel">{data.education.length}</PixelBadge>
+              <PixelBadge variant="default" className="text-sm font-pixel">
+                {data.education.length}
+              </PixelBadge>
             </div>
 
             <div className="space-y-6 md:space-y-8 max-w-5xl mx-auto">
               {data.education.map((edu, index) => (
-                <PixelCard key={index} className="hover:shadow-xl transition-shadow duration-200">
+                <PixelCard
+                  key={index}
+                  className="hover:shadow-xl transition-shadow duration-200"
+                >
                   <PixelCardHeader>
                     <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
                       <div className="flex-1 space-y-2">
@@ -888,20 +1012,30 @@ export default function Portfolio() {
                           {edu.degree}
                         </p>
                         {edu.field && (
-                          <p className="mt-1.5 text-base text-gray-700 dark:text-gray-300">{edu.field}</p>
+                          <p className="mt-1.5 text-base text-gray-700 dark:text-gray-300">
+                            {edu.field}
+                          </p>
                         )}
                       </div>
                       <div className="md:text-right flex flex-col gap-2.5">
-                        <PixelBadge variant="default" className="w-fit font-pixel text-sm">{edu.dates}</PixelBadge>
+                        <PixelBadge
+                          variant="default"
+                          className="w-fit font-pixel text-sm"
+                        >
+                          {edu.dates}
+                        </PixelBadge>
                         {edu.gpa && (
                           <div className="text-sm font-semibold">
-                            GPA: <span className="text-pixel-primary dark:text-pixel-dark-primary text-base">{edu.gpa}</span>
+                            GPA:{" "}
+                            <span className="text-pixel-primary dark:text-pixel-dark-primary text-base">
+                              {edu.gpa}
+                            </span>
                           </div>
                         )}
                       </div>
                     </div>
                   </PixelCardHeader>
-                  
+
                   {edu.location && (
                     <PixelCardContent>
                       <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
@@ -923,28 +1057,32 @@ export default function Portfolio() {
           {/* Contact Links */}
           <div className="flex flex-wrap gap-5 md:gap-6 justify-center items-center">
             {data.personalInfo.email && (
-              <a 
-                href={`mailto:${data.personalInfo.email}`} 
+              <a
+                href={`mailto:${data.personalInfo.email}`}
                 className="hover:text-pixel-warning dark:hover:text-pixel-dark-secondary transition-colors flex items-center gap-2 group"
               >
                 <Mail className="h-4 w-4 group-hover:scale-110 transition-transform" />
-                <span className="text-sm font-medium">{data.personalInfo.email}</span>
+                <span className="text-sm font-medium">
+                  {data.personalInfo.email}
+                </span>
               </a>
             )}
             {data.personalInfo.phone && (
-              <a 
-                href={`tel:${data.personalInfo.phone}`} 
+              <a
+                href={`tel:${data.personalInfo.phone}`}
                 className="hover:text-pixel-warning dark:hover:text-pixel-dark-secondary transition-colors flex items-center gap-2 group"
               >
                 <Phone className="h-4 w-4 group-hover:scale-110 transition-transform" />
-                <span className="text-sm font-medium">{data.personalInfo.phone}</span>
+                <span className="text-sm font-medium">
+                  {data.personalInfo.phone}
+                </span>
               </a>
             )}
             {data.personalInfo.github && (
-              <a 
-                href={data.personalInfo.github} 
-                target="_blank" 
-                rel="noopener noreferrer" 
+              <a
+                href={normalizeUrl(data.personalInfo.github)}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="hover:text-pixel-warning dark:hover:text-pixel-dark-secondary transition-colors flex items-center gap-2 group"
               >
                 <Github className="h-4 w-4 group-hover:scale-110 transition-transform" />
@@ -952,10 +1090,10 @@ export default function Portfolio() {
               </a>
             )}
             {data.personalInfo.linkedin && (
-              <a 
-                href={data.personalInfo.linkedin} 
-                target="_blank" 
-                rel="noopener noreferrer" 
+              <a
+                href={normalizeUrl(data.personalInfo.linkedin)}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="hover:text-pixel-warning dark:hover:text-pixel-dark-secondary transition-colors flex items-center gap-2 group"
               >
                 <Linkedin className="h-4 w-4 group-hover:scale-110 transition-transform" />
@@ -963,11 +1101,12 @@ export default function Portfolio() {
               </a>
             )}
           </div>
-          
+
           {/* Copyright */}
           <div className="border-t-2 border-black/10 dark:border-white/10 pt-6 space-y-2">
             <p className="font-bold text-sm md:text-base text-gray-800 dark:text-gray-200">
-              © {new Date().getFullYear()} {data.personalInfo.name}. All rights reserved.
+              © {new Date().getFullYear()} {data.personalInfo.name}. All rights
+              reserved.
             </p>
             <p className="text-xs md:text-sm text-gray-600 dark:text-gray-400 font-pixel uppercase tracking-wider">
               Built with Resume to Portfolio Generator 🎮✨

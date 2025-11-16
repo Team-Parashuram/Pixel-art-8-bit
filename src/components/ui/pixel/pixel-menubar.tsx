@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import * as MenubarPrimitive from "@radix-ui/react-menubar"
-import { Check, ChevronRight } from "lucide-react"
-import { cn } from "@/lib/utils"
+import * as MenubarPrimitive from "@radix-ui/react-menubar";
+import { Check, ChevronRight } from "lucide-react";
+import type * as React from "react";
+import { cn } from "@/lib/utils";
 
 function PixelMenubar({
   className,
@@ -14,17 +14,17 @@ function PixelMenubar({
       className={cn(
         "flex h-10 items-center space-x-1 border-4 border-black bg-[#fffacd] dark:bg-[#2a2a2a] p-1 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]",
         "font-[family-name:var(--font-press-start)] text-xs",
-        className
+        className,
       )}
       {...props}
     />
-  )
+  );
 }
 
 function PixelMenubarMenu({
   ...props
 }: React.ComponentProps<typeof MenubarPrimitive.Menu>) {
-  return <MenubarPrimitive.Menu {...props} />
+  return <MenubarPrimitive.Menu {...props} />;
 }
 
 function PixelMenubarTrigger({
@@ -38,11 +38,11 @@ function PixelMenubarTrigger({
         "hover:bg-[#ff6b6b] hover:text-white",
         "focus:bg-[#ff6b6b] focus:text-white",
         "data-[state=open]:bg-[#ff6b6b] data-[state=open]:text-white",
-        className
+        className,
       )}
       {...props}
     />
-  )
+  );
 }
 
 function PixelMenubarContent({
@@ -61,12 +61,12 @@ function PixelMenubarContent({
         className={cn(
           "z-50 min-w-[12rem] overflow-hidden border-4 border-black bg-[#fffacd] dark:bg-[#2a2a2a] p-1 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]",
           "font-[family-name:var(--font-press-start)] text-xs duration-0",
-          className
+          className,
         )}
         {...props}
       />
     </MenubarPrimitive.Portal>
-  )
+  );
 }
 
 function PixelMenubarItem({
@@ -74,7 +74,7 @@ function PixelMenubarItem({
   inset,
   ...props
 }: React.ComponentProps<typeof MenubarPrimitive.Item> & {
-  inset?: boolean
+  inset?: boolean;
 }) {
   return (
     <MenubarPrimitive.Item
@@ -83,11 +83,11 @@ function PixelMenubarItem({
         "hover:bg-[#ff6b6b] hover:text-white focus:bg-[#ff6b6b] focus:text-white",
         "data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
         inset && "pl-8",
-        className
+        className,
       )}
       {...props}
     />
-  )
+  );
 }
 
 function PixelMenubarCheckboxItem({
@@ -102,7 +102,7 @@ function PixelMenubarCheckboxItem({
         "relative flex cursor-pointer select-none items-center py-1.5 pl-8 pr-2 text-xs outline-none duration-0",
         "hover:bg-[#ff6b6b] hover:text-white focus:bg-[#ff6b6b] focus:text-white",
         "data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
-        className
+        className,
       )}
       checked={checked}
       {...props}
@@ -114,7 +114,7 @@ function PixelMenubarCheckboxItem({
       </span>
       {children}
     </MenubarPrimitive.CheckboxItem>
-  )
+  );
 }
 
 function PixelMenubarRadioItem({
@@ -128,7 +128,7 @@ function PixelMenubarRadioItem({
         "relative flex cursor-pointer select-none items-center py-1.5 pl-8 pr-2 text-xs outline-none duration-0",
         "hover:bg-[#ff6b6b] hover:text-white focus:bg-[#ff6b6b] focus:text-white",
         "data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
-        className
+        className,
       )}
       {...props}
     >
@@ -139,7 +139,7 @@ function PixelMenubarRadioItem({
       </span>
       {children}
     </MenubarPrimitive.RadioItem>
-  )
+  );
 }
 
 function PixelMenubarLabel({
@@ -147,18 +147,18 @@ function PixelMenubarLabel({
   inset,
   ...props
 }: React.ComponentProps<typeof MenubarPrimitive.Label> & {
-  inset?: boolean
+  inset?: boolean;
 }) {
   return (
     <MenubarPrimitive.Label
       className={cn(
         "px-2 py-1.5 text-xs font-bold",
         inset && "pl-8",
-        className
+        className,
       )}
       {...props}
     />
-  )
+  );
 }
 
 function PixelMenubarSeparator({
@@ -170,13 +170,13 @@ function PixelMenubarSeparator({
       className={cn("my-1 h-px bg-black", className)}
       {...props}
     />
-  )
+  );
 }
 
 function PixelMenubarSub({
   ...props
 }: React.ComponentProps<typeof MenubarPrimitive.Sub>) {
-  return <MenubarPrimitive.Sub {...props} />
+  return <MenubarPrimitive.Sub {...props} />;
 }
 
 function PixelMenubarSubTrigger({
@@ -185,7 +185,7 @@ function PixelMenubarSubTrigger({
   children,
   ...props
 }: React.ComponentProps<typeof MenubarPrimitive.SubTrigger> & {
-  inset?: boolean
+  inset?: boolean;
 }) {
   return (
     <MenubarPrimitive.SubTrigger
@@ -194,14 +194,14 @@ function PixelMenubarSubTrigger({
         "hover:bg-[#ff6b6b] hover:text-white focus:bg-[#ff6b6b] focus:text-white",
         "data-[state=open]:bg-[#ff6b6b] data-[state=open]:text-white",
         inset && "pl-8",
-        className
+        className,
       )}
       {...props}
     >
       {children}
       <ChevronRight className="ml-auto h-4 w-4" />
     </MenubarPrimitive.SubTrigger>
-  )
+  );
 }
 
 function PixelMenubarSubContent({
@@ -213,29 +213,29 @@ function PixelMenubarSubContent({
       className={cn(
         "z-50 min-w-[8rem] overflow-hidden border-4 border-black bg-[#fffacd] dark:bg-[#2a2a2a] p-1 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]",
         "font-[family-name:var(--font-press-start)] text-xs duration-0",
-        className
+        className,
       )}
       {...props}
     />
-  )
+  );
 }
 
 function PixelMenubarGroup({
   ...props
 }: React.ComponentProps<typeof MenubarPrimitive.Group>) {
-  return <MenubarPrimitive.Group {...props} />
+  return <MenubarPrimitive.Group {...props} />;
 }
 
 function PixelMenubarPortal({
   ...props
 }: React.ComponentProps<typeof MenubarPrimitive.Portal>) {
-  return <MenubarPrimitive.Portal {...props} />
+  return <MenubarPrimitive.Portal {...props} />;
 }
 
 function PixelMenubarRadioGroup({
   ...props
 }: React.ComponentProps<typeof MenubarPrimitive.RadioGroup>) {
-  return <MenubarPrimitive.RadioGroup {...props} />
+  return <MenubarPrimitive.RadioGroup {...props} />;
 }
 
 export {
@@ -254,4 +254,4 @@ export {
   PixelMenubarGroup,
   PixelMenubarPortal,
   PixelMenubarRadioGroup,
-}
+};

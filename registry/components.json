@@ -3,7 +3,11 @@
     "name": "Pixel Button",
     "description": "A retro 8-bit styled button component with pixel-perfect borders and instant state changes",
     "files": ["components/ui/pixel/pixel-button.tsx"],
-    "dependencies": ["class-variance-authority", "lucide-react", "@radix-ui/react-slot"],
+    "dependencies": [
+      "class-variance-authority",
+      "lucide-react",
+      "@radix-ui/react-slot"
+    ],
     "registryDependencies": []
   },
   "pixel-card": {
@@ -18,6 +22,27 @@
     "description": "A text input field with retro pixel borders and styling",
     "files": ["components/ui/pixel/pixel-input.tsx"],
     "dependencies": [],
+    "registryDependencies": []
+  },
+  "pixel-input-otp": {
+    "name": "Pixel Input OTP",
+    "description": "Multi-digit verification input with grouped slots and helper messaging",
+    "files": ["components/ui/pixel/pixel-input-otp.tsx"],
+    "dependencies": ["input-otp"],
+    "registryDependencies": []
+  },
+  "pixel-dropzone": {
+    "name": "Pixel Dropzone",
+    "description": "Drag-and-drop upload zone with previews and helper messaging",
+    "files": ["components/ui/pixel/pixel-dropzone.tsx"],
+    "dependencies": ["lucide-react"],
+    "registryDependencies": []
+  },
+  "pixel-inventory-picker": {
+    "name": "Pixel Inventory Picker",
+    "description": "Retro inventory grid with rarity indicators and multi-select",
+    "files": ["components/ui/pixel/pixel-inventory-picker.tsx"],
+    "dependencies": ["lucide-react"],
     "registryDependencies": []
   },
   "pixel-badge": {
@@ -124,6 +149,13 @@
     "files": ["components/ui/pixel/pixel-popover.tsx"],
     "dependencies": ["@radix-ui/react-popover"],
     "registryDependencies": []
+  },
+  "pixel-parallax-hero": {
+    "name": "Pixel Parallax Hero",
+    "description": "Hero section with layered parallax animation and retro stats",
+    "files": ["components/ui/pixel/pixel-parallax-hero.tsx"],
+    "dependencies": [],
+    "registryDependencies": ["pixel-button"]
   },
   "pixel-table": {
     "name": "Pixel Table",

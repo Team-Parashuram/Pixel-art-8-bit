@@ -1,6 +1,13 @@
-import React, { useEffect, useMemo, useRef, ReactNode, RefObject } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import type React from "react";
+import {
+  type ReactNode,
+  type RefObject,
+  useEffect,
+  useMemo,
+  useRef,
+} from "react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -19,21 +26,21 @@ interface ScrollFloatProps {
 const ScrollFloat: React.FC<ScrollFloatProps> = ({
   children,
   scrollContainerRef,
-  containerClassName = '',
-  textClassName = '',
+  containerClassName = "",
+  textClassName = "",
   animationDuration = 1,
-  ease = 'back.inOut(2)',
-  scrollStart = 'center bottom+=50%',
-  scrollEnd = 'bottom bottom-=40%',
-  stagger = 0.03
+  ease = "back.inOut(2)",
+  scrollStart = "center bottom+=50%",
+  scrollEnd = "bottom bottom-=40%",
+  stagger = 0.03,
 }) => {
   const containerRef = useRef<HTMLHeadingElement>(null);
 
   const splitText = useMemo(() => {
-    const text = typeof children === 'string' ? children : '';
-    return text.split('').map((char, index) => (
+    const text = typeof children === "string" ? children : "";
+    return text.split("").map((char, index) => (
       <span className="inline-block word" key={index}>
-        {char === ' ' ? '\u00A0' : char}
+        {char === " " ? "\u00A0" : char}
       </span>
     ));
   }, [children]);
@@ -42,19 +49,22 @@ const ScrollFloat: React.FC<ScrollFloatProps> = ({
     const el = containerRef.current;
     if (!el) return;
 
-    const scroller = scrollContainerRef && scrollContainerRef.current ? scrollContainerRef.current : window;
+    const scroller =
+      scrollContainerRef && scrollContainerRef.current
+        ? scrollContainerRef.current
+        : window;
 
-    const charElements = el.querySelectorAll('.inline-block');
+    const charElements = el.querySelectorAll(".inline-block");
 
     gsap.fromTo(
       charElements,
       {
-        willChange: 'opacity, transform',
+        willChange: "opacity, transform",
         opacity: 0,
         yPercent: 120,
         scaleY: 2.3,
         scaleX: 0.7,
-        transformOrigin: '50% 0%'
+        transformOrigin: "50% 0%",
       },
       {
         duration: animationDuration,
@@ -69,15 +79,29 @@ const ScrollFloat: React.FC<ScrollFloatProps> = ({
           scroller,
           start: scrollStart,
           end: scrollEnd,
-          scrub: true
-        }
-      }
+          scrub: true,
+        },
+      },
     );
-  }, [scrollContainerRef, animationDuration, ease, scrollStart, scrollEnd, stagger]);
+  }, [
+    scrollContainerRef,
+    animationDuration,
+    ease,
+    scrollStart,
+    scrollEnd,
+    stagger,
+  ]);
 
   return (
-    <h2 ref={containerRef} className={`my-5 overflow-hidden ${containerClassName}`}>
-      <span className={`inline-block text-[clamp(1.6rem,4vw,3rem)] leading-[1.5] ${textClassName}`}>{splitText}</span>
+    <h2
+      ref={containerRef}
+      className={`my-5 overflow-hidden ${containerClassName}`}
+    >
+      <span
+        className={`inline-block text-[clamp(1.6rem,4vw,3rem)] leading-[1.5] ${textClassName}`}
+      >
+        {splitText}
+      </span>
     </h2>
   );
 };

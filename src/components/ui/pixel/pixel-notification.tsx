@@ -1,7 +1,7 @@
 "use client";
 
-import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
+import * as React from "react";
 
 const notificationVariants = cva(
   "relative border-4 border-black p-4 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] font-pixel flex items-start gap-3 min-w-[280px] max-w-[420px]",
@@ -25,7 +25,7 @@ const notificationVariants = cva(
       variant: "default",
       position: "top-right",
     },
-  }
+  },
 );
 
 export interface NotificationType {
@@ -41,7 +41,8 @@ export interface NotificationType {
   };
 }
 
-interface PixelNotificationProps extends VariantProps<typeof notificationVariants> {
+interface PixelNotificationProps
+  extends VariantProps<typeof notificationVariants> {
   title: string;
   description?: string;
   icon?: React.ReactNode;
@@ -80,7 +81,7 @@ export function PixelNotification({
             {description}
           </p>
         )}
-        
+
         {/* Action Button */}
         {action && (
           <button
@@ -150,12 +151,14 @@ interface ToastOptions {
 let toastId = 0;
 
 export function usePixelToast() {
-  const [toasts, setToasts] = React.useState<(NotificationType & { timestamp: number })[]>([]);
+  const [toasts, setToasts] = React.useState<
+    (NotificationType & { timestamp: number })[]
+  >([]);
 
   const addToast = React.useCallback((options: ToastOptions) => {
     const id = `toast-${++toastId}`;
     const duration = options.duration ?? 5000;
-    
+
     const newToast = {
       id,
       ...options,

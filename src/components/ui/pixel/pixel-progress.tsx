@@ -34,7 +34,7 @@ const PixelProgress = React.forwardRef<HTMLDivElement, PixelProgressProps>(
         </div>
       </div>
     );
-  }
+  },
 );
 PixelProgress.displayName = "PixelProgress";
 

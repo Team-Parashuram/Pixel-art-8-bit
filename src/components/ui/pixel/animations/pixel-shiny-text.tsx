@@ -1,8 +1,8 @@
 "use client";
 
+import { cva, type VariantProps } from "class-variance-authority";
 import * as React from "react";
 import { cn } from "@/lib/utils";
-import { cva, type VariantProps } from "class-variance-authority";
 
 const pixelShinyTextVariants = cva(
   "font-bold uppercase tracking-wider pixel-font inline-block bg-clip-text text-transparent",
@@ -11,8 +11,7 @@ const pixelShinyTextVariants = cva(
       variant: {
         gold: "bg-gradient-to-r from-[#ffd700] via-[#ffffff] to-[#ffd700]",
         silver: "bg-gradient-to-r from-[#c0c0c0] via-[#ffffff] to-[#c0c0c0]",
-        rainbow:
-          "bg-gradient-to-r from-[#ff0000] via-[#00ff00] to-[#0000ff]",
+        rainbow: "bg-gradient-to-r from-[#ff0000] via-[#00ff00] to-[#0000ff]",
         fire: "bg-gradient-to-r from-[#ff8c00] via-[#ffff00] to-[#ff8c00]",
       },
       size: {
@@ -26,7 +25,7 @@ const pixelShinyTextVariants = cva(
       variant: "gold",
       size: "md",
     },
-  }
+  },
 );
 
 export interface PixelShinyTextProps
@@ -40,7 +39,7 @@ export interface PixelShinyTextProps
 const PixelShinyText = React.forwardRef<HTMLDivElement, PixelShinyTextProps>(
   (
     { text, speed = 5, disabled = false, variant, size, className, ...props },
-    ref
+    ref,
   ) => {
     return (
       <div
@@ -48,19 +47,21 @@ const PixelShinyText = React.forwardRef<HTMLDivElement, PixelShinyTextProps>(
         className={cn(
           pixelShinyTextVariants({ variant, size }),
           disabled && "opacity-50",
-          className
+          className,
         )}
         style={{
           backgroundSize: "200% 100%",
           backgroundPosition: disabled ? "0% center" : undefined,
-          animation: !disabled ? `pixel-shine ${speed}s linear infinite` : "none",
+          animation: !disabled
+            ? `pixel-shine ${speed}s linear infinite`
+            : "none",
         }}
         {...props}
       >
         {text}
       </div>
     );
-  }
+  },
 );
 
 PixelShinyText.displayName = "PixelShinyText";

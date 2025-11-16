@@ -1,20 +1,37 @@
 "use client";
 
+import {
+  Award,
+  Code,
+  Heart,
+  Home,
+  Rocket,
+  Star,
+  Target,
+  Trophy,
+  Users,
+  Zap,
+} from "lucide-react";
 import Link from "next/link";
-import { Home, Star, Trophy, Heart, Rocket, Code, Zap, Award, Users, Target } from "lucide-react";
+import {
+  PixelBentoContent,
+  PixelBentoDescription,
+  PixelBentoFooter,
+  PixelBentoGrid,
+  PixelBentoHeader,
+  PixelBentoIcon,
+  PixelBentoItem,
+  PixelBentoPattern,
+  PixelBentoTitle,
+} from "@/components/ui/pixel/pixel-bento";
 import { PixelButton } from "@/components/ui/pixel/pixel-button";
 import {
-  PixelBentoGrid,
-  PixelBentoItem,
-  PixelBentoHeader,
-  PixelBentoTitle,
-  PixelBentoDescription,
-  PixelBentoContent,
-  PixelBentoIcon,
-  PixelBentoFooter,
-  PixelBentoPattern,
-} from "@/components/ui/pixel/pixel-bento";
-import { PixelCard, PixelCardContent, PixelCardDescription, PixelCardHeader, PixelCardTitle } from "@/components/ui/pixel/pixel-card";
+  PixelCard,
+  PixelCardContent,
+  PixelCardDescription,
+  PixelCardHeader,
+  PixelCardTitle,
+} from "@/components/ui/pixel/pixel-card";
 
 export default function BentoExamplesPage() {
   return (
@@ -32,9 +49,7 @@ export default function BentoExamplesPage() {
           </div>
           <div className="flex gap-4">
             <Link href="/docs/components/pixel-bento">
-              <PixelButton variant="secondary">
-                📖 Documentation
-              </PixelButton>
+              <PixelButton variant="secondary">📖 Documentation</PixelButton>
             </Link>
             <Link href="/">
               <PixelButton>
@@ -54,32 +69,40 @@ export default function BentoExamplesPage() {
             <PixelCard>
               <PixelCardHeader>
                 <PixelCardTitle>Simple 3-Column Grid</PixelCardTitle>
-                <PixelCardDescription>Basic bento grid with equal-sized items</PixelCardDescription>
+                <PixelCardDescription>
+                  Basic bento grid with equal-sized items
+                </PixelCardDescription>
               </PixelCardHeader>
             </PixelCard>
           </div>
-          
+
           <div className="container mx-auto px-4">
             <PixelBentoGrid columns={3}>
               <PixelBentoItem hover="lift">
                 <PixelBentoHeader>
                   <PixelBentoIcon>🎮</PixelBentoIcon>
                   <PixelBentoTitle>Gaming</PixelBentoTitle>
-                  <PixelBentoDescription>Retro gaming components</PixelBentoDescription>
+                  <PixelBentoDescription>
+                    Retro gaming components
+                  </PixelBentoDescription>
                 </PixelBentoHeader>
               </PixelBentoItem>
               <PixelBentoItem hover="lift">
                 <PixelBentoHeader>
                   <PixelBentoIcon>🎨</PixelBentoIcon>
                   <PixelBentoTitle>Design</PixelBentoTitle>
-                  <PixelBentoDescription>Pixel-perfect styling</PixelBentoDescription>
+                  <PixelBentoDescription>
+                    Pixel-perfect styling
+                  </PixelBentoDescription>
                 </PixelBentoHeader>
               </PixelBentoItem>
               <PixelBentoItem hover="lift">
                 <PixelBentoHeader>
                   <PixelBentoIcon>⚡</PixelBentoIcon>
                   <PixelBentoTitle>Fast</PixelBentoTitle>
-                  <PixelBentoDescription>Zero transitions</PixelBentoDescription>
+                  <PixelBentoDescription>
+                    Zero transitions
+                  </PixelBentoDescription>
                 </PixelBentoHeader>
               </PixelBentoItem>
             </PixelBentoGrid>
@@ -92,14 +115,21 @@ export default function BentoExamplesPage() {
             <PixelCard>
               <PixelCardHeader>
                 <PixelCardTitle>Featured Layout</PixelCardTitle>
-                <PixelCardDescription>Large featured item with smaller cards</PixelCardDescription>
+                <PixelCardDescription>
+                  Large featured item with smaller cards
+                </PixelCardDescription>
               </PixelCardHeader>
             </PixelCard>
           </div>
-          
+
           <div className="container mx-auto px-4">
             <PixelBentoGrid columns={3}>
-              <PixelBentoItem span={2} rowSpan={2} variant="primary" hover="lift">
+              <PixelBentoItem
+                span={2}
+                rowSpan={2}
+                variant="primary"
+                hover="lift"
+              >
                 <PixelBentoPattern pattern="dots" />
                 <PixelBentoHeader>
                   <PixelBentoIcon>🚀</PixelBentoIcon>
@@ -109,10 +139,15 @@ export default function BentoExamplesPage() {
                   </PixelBentoDescription>
                 </PixelBentoHeader>
                 <PixelBentoContent>
-                  <p className="mt-4">Large content area for featured items, projects, or announcements. This spans 2 columns and 2 rows.</p>
+                  <p className="mt-4">
+                    Large content area for featured items, projects, or
+                    announcements. This spans 2 columns and 2 rows.
+                  </p>
                 </PixelBentoContent>
                 <PixelBentoFooter>
-                  <button className="text-sm font-bold hover:underline">Learn More →</button>
+                  <button className="text-sm font-bold hover:underline">
+                    Learn More →
+                  </button>
                 </PixelBentoFooter>
               </PixelBentoItem>
               <PixelBentoItem variant="secondary" hover="glow">
@@ -135,39 +170,49 @@ export default function BentoExamplesPage() {
             <PixelCard>
               <PixelCardHeader>
                 <PixelCardTitle>Pattern Backgrounds</PixelCardTitle>
-                <PixelCardDescription>Items with decorative patterns</PixelCardDescription>
+                <PixelCardDescription>
+                  Items with decorative patterns
+                </PixelCardDescription>
               </PixelCardHeader>
             </PixelCard>
           </div>
-          
+
           <div className="container mx-auto px-4">
             <PixelBentoGrid columns={2}>
               <PixelBentoItem variant="gradient" hover="lift">
                 <PixelBentoPattern pattern="dots" />
                 <PixelBentoHeader>
                   <PixelBentoTitle>Dots Pattern</PixelBentoTitle>
-                  <PixelBentoDescription>Subtle dot background</PixelBentoDescription>
+                  <PixelBentoDescription>
+                    Subtle dot background
+                  </PixelBentoDescription>
                 </PixelBentoHeader>
               </PixelBentoItem>
               <PixelBentoItem variant="dark" hover="lift">
                 <PixelBentoPattern pattern="grid" />
                 <PixelBentoHeader>
                   <PixelBentoTitle>Grid Pattern</PixelBentoTitle>
-                  <PixelBentoDescription>Grid line background</PixelBentoDescription>
+                  <PixelBentoDescription>
+                    Grid line background
+                  </PixelBentoDescription>
                 </PixelBentoHeader>
               </PixelBentoItem>
               <PixelBentoItem variant="primary" hover="lift">
                 <PixelBentoPattern pattern="checkerboard" />
                 <PixelBentoHeader>
                   <PixelBentoTitle>Checkerboard</PixelBentoTitle>
-                  <PixelBentoDescription>Classic checkerboard</PixelBentoDescription>
+                  <PixelBentoDescription>
+                    Classic checkerboard
+                  </PixelBentoDescription>
                 </PixelBentoHeader>
               </PixelBentoItem>
               <PixelBentoItem variant="secondary" hover="lift">
                 <PixelBentoPattern pattern="scanlines" />
                 <PixelBentoHeader>
                   <PixelBentoTitle>Scanlines</PixelBentoTitle>
-                  <PixelBentoDescription>Retro scanline effect</PixelBentoDescription>
+                  <PixelBentoDescription>
+                    Retro scanline effect
+                  </PixelBentoDescription>
                 </PixelBentoHeader>
               </PixelBentoItem>
             </PixelBentoGrid>
@@ -180,11 +225,13 @@ export default function BentoExamplesPage() {
             <PixelCard>
               <PixelCardHeader>
                 <PixelCardTitle>Dashboard Layout</PixelCardTitle>
-                <PixelCardDescription>Complex dashboard-style grid with stats</PixelCardDescription>
+                <PixelCardDescription>
+                  Complex dashboard-style grid with stats
+                </PixelCardDescription>
               </PixelCardHeader>
             </PixelCard>
           </div>
-          
+
           <div className="container mx-auto px-4">
             <PixelBentoGrid columns={4}>
               <PixelBentoItem span={2} variant="primary" hover="glow">
@@ -209,22 +256,30 @@ export default function BentoExamplesPage() {
                 <div className="text-3xl font-bold mt-4">42</div>
               </PixelBentoItem>
               <PixelBentoItem hover="lift">
-                <PixelBentoIcon><Users className="h-8 w-8" /></PixelBentoIcon>
+                <PixelBentoIcon>
+                  <Users className="h-8 w-8" />
+                </PixelBentoIcon>
                 <PixelBentoTitle>Users</PixelBentoTitle>
                 <div className="text-2xl font-bold mt-4">10K+</div>
               </PixelBentoItem>
               <PixelBentoItem hover="lift">
-                <PixelBentoIcon><Target className="h-8 w-8" /></PixelBentoIcon>
+                <PixelBentoIcon>
+                  <Target className="h-8 w-8" />
+                </PixelBentoIcon>
                 <PixelBentoTitle>Goals</PixelBentoTitle>
                 <div className="text-2xl font-bold mt-4">95%</div>
               </PixelBentoItem>
               <PixelBentoItem hover="lift">
-                <PixelBentoIcon><Zap className="h-8 w-8" /></PixelBentoIcon>
+                <PixelBentoIcon>
+                  <Zap className="h-8 w-8" />
+                </PixelBentoIcon>
                 <PixelBentoTitle>Speed</PixelBentoTitle>
                 <div className="text-2xl font-bold mt-4">Fast</div>
               </PixelBentoItem>
               <PixelBentoItem hover="lift">
-                <PixelBentoIcon><Award className="h-8 w-8" /></PixelBentoIcon>
+                <PixelBentoIcon>
+                  <Award className="h-8 w-8" />
+                </PixelBentoIcon>
                 <PixelBentoTitle>Awards</PixelBentoTitle>
                 <div className="text-2xl font-bold mt-4">12</div>
               </PixelBentoItem>
@@ -238,36 +293,53 @@ export default function BentoExamplesPage() {
             <PixelCard>
               <PixelCardHeader>
                 <PixelCardTitle>Portfolio Grid</PixelCardTitle>
-                <PixelCardDescription>Showcase projects with varying spans</PixelCardDescription>
+                <PixelCardDescription>
+                  Showcase projects with varying spans
+                </PixelCardDescription>
               </PixelCardHeader>
             </PixelCard>
           </div>
-          
+
           <div className="container mx-auto px-4">
             <PixelBentoGrid columns={3}>
               <PixelBentoItem span={2} variant="gradient" hover="lift">
                 <PixelBentoPattern pattern="dots" />
                 <PixelBentoHeader>
-                  <PixelBentoIcon><Rocket className="h-10 w-10" /></PixelBentoIcon>
+                  <PixelBentoIcon>
+                    <Rocket className="h-10 w-10" />
+                  </PixelBentoIcon>
                   <PixelBentoTitle>Project Alpha</PixelBentoTitle>
-                  <PixelBentoDescription>Featured project showcase</PixelBentoDescription>
+                  <PixelBentoDescription>
+                    Featured project showcase
+                  </PixelBentoDescription>
                 </PixelBentoHeader>
                 <PixelBentoContent>
-                  <p className="text-sm mt-4">A revolutionary approach to retro design in modern web applications.</p>
+                  <p className="text-sm mt-4">
+                    A revolutionary approach to retro design in modern web
+                    applications.
+                  </p>
                 </PixelBentoContent>
               </PixelBentoItem>
               <PixelBentoItem variant="primary" hover="lift">
-                <PixelBentoIcon><Code className="h-10 w-10" /></PixelBentoIcon>
+                <PixelBentoIcon>
+                  <Code className="h-10 w-10" />
+                </PixelBentoIcon>
                 <PixelBentoTitle>Project Beta</PixelBentoTitle>
               </PixelBentoItem>
               <PixelBentoItem variant="secondary" hover="lift">
-                <PixelBentoIcon><Star className="h-10 w-10" /></PixelBentoIcon>
+                <PixelBentoIcon>
+                  <Star className="h-10 w-10" />
+                </PixelBentoIcon>
                 <PixelBentoTitle>Project Gamma</PixelBentoTitle>
               </PixelBentoItem>
               <PixelBentoItem span={2} variant="dark" hover="lift">
-                <PixelBentoIcon><Trophy className="h-10 w-10" /></PixelBentoIcon>
+                <PixelBentoIcon>
+                  <Trophy className="h-10 w-10" />
+                </PixelBentoIcon>
                 <PixelBentoTitle>Project Delta</PixelBentoTitle>
-                <PixelBentoDescription>Award-winning design</PixelBentoDescription>
+                <PixelBentoDescription>
+                  Award-winning design
+                </PixelBentoDescription>
               </PixelBentoItem>
             </PixelBentoGrid>
           </div>
@@ -279,22 +351,28 @@ export default function BentoExamplesPage() {
             <PixelCard>
               <PixelCardHeader>
                 <PixelCardTitle>Ghost Items</PixelCardTitle>
-                <PixelCardDescription>Dashed border placeholder items for coming soon features</PixelCardDescription>
+                <PixelCardDescription>
+                  Dashed border placeholder items for coming soon features
+                </PixelCardDescription>
               </PixelCardHeader>
             </PixelCard>
           </div>
-          
+
           <div className="container mx-auto px-4">
             <PixelBentoGrid columns={3}>
               <PixelBentoItem variant="primary" hover="lift">
                 <PixelBentoIcon>✅</PixelBentoIcon>
                 <PixelBentoTitle>Active Feature</PixelBentoTitle>
-                <PixelBentoDescription>Currently available</PixelBentoDescription>
+                <PixelBentoDescription>
+                  Currently available
+                </PixelBentoDescription>
               </PixelBentoItem>
               <PixelBentoItem variant="ghost">
                 <PixelBentoIcon>🚧</PixelBentoIcon>
                 <PixelBentoTitle>Coming Soon</PixelBentoTitle>
-                <PixelBentoDescription>Feature in development</PixelBentoDescription>
+                <PixelBentoDescription>
+                  Feature in development
+                </PixelBentoDescription>
               </PixelBentoItem>
               <PixelBentoItem variant="ghost">
                 <PixelBentoIcon>💡</PixelBentoIcon>
@@ -326,7 +404,8 @@ export default function BentoExamplesPage() {
         <PixelCard>
           <PixelCardContent className="text-center">
             <p className="text-sm dark:text-white/70">
-              Want to see more examples? Check out the full documentation for all bento variants and customization options.
+              Want to see more examples? Check out the full documentation for
+              all bento variants and customization options.
             </p>
             <div className="mt-4 flex gap-4 justify-center">
               <Link href="/docs/components/pixel-bento">

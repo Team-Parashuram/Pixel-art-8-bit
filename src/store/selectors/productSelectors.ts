@@ -1,10 +1,11 @@
 import { createSelector } from "@reduxjs/toolkit";
-import type { RootState } from "../store";
 import type { Product } from "../slices/shoppingCartSlice";
+import type { RootState } from "../store";
 
 // Base selectors
 export const selectSearchTerm = (state: RootState) => state.filter.searchTerm;
-export const selectSelectedCategories = (state: RootState) => state.filter.selectedCategories;
+export const selectSelectedCategories = (state: RootState) =>
+  state.filter.selectedCategories;
 export const selectPriceRange = (state: RootState) => state.filter.priceRange;
 export const selectSortBy = (state: RootState) => state.filter.sortBy;
 
@@ -24,21 +25,21 @@ export const selectFilteredProducts = createSelector(
     if (searchTerm) {
       const lowerSearch = searchTerm.toLowerCase();
       filtered = filtered.filter((product) =>
-        product.name.toLowerCase().includes(lowerSearch)
+        product.name.toLowerCase().includes(lowerSearch),
       );
     }
 
     // Filter by categories
     if (selectedCategories.length > 0) {
       filtered = filtered.filter((product) =>
-        selectedCategories.includes(product.category)
+        selectedCategories.includes(product.category),
       );
     }
 
     // Filter by price range
     filtered = filtered.filter(
       (product) =>
-        product.price >= priceRange.min && product.price <= priceRange.max
+        product.price >= priceRange.min && product.price <= priceRange.max,
     );
 
     // Sort products
@@ -62,7 +63,7 @@ export const selectFilteredProducts = createSelector(
     }
 
     return filtered;
-  }
+  },
 );
 
 // Selector for unique categories from products
@@ -71,7 +72,7 @@ export const selectAvailableCategories = createSelector(
   (products) => {
     const categories = new Set(products.map((p) => p.category));
     return Array.from(categories).sort();
-  }
+  },
 );
 
 // Selector for price statistics
@@ -88,5 +89,5 @@ export const selectPriceStats = createSelector(
       max: Math.ceil(Math.max(...prices)),
       average: prices.reduce((sum, price) => sum + price, 0) / prices.length,
     };
-  }
+  },
 );

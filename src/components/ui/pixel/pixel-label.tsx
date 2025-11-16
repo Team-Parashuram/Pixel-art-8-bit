@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import * as LabelPrimitive from "@radix-ui/react-label"
-import { cn } from "@/lib/utils"
+import * as LabelPrimitive from "@radix-ui/react-label";
+import type * as React from "react";
+import { cn } from "@/lib/utils";
 
 function PixelLabel({
   className,
@@ -13,11 +13,11 @@ function PixelLabel({
       className={cn(
         "text-sm font-bold leading-none font-[family-name:var(--font-press-start)] select-none cursor-pointer",
         "peer-disabled:cursor-not-allowed peer-disabled:opacity-50",
-        className
+        className,
       )}
       {...props}
     />
-  )
+  );
 }
 
-export { PixelLabel }
+export { PixelLabel };

@@ -1,7 +1,7 @@
 "use client";
 
-import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
+import * as React from "react";
 import { cn } from "@/lib/utils";
 
 const pixelBentoGridVariants = cva(
@@ -34,7 +34,7 @@ const pixelBentoGridVariants = cva(
       columns: "auto",
       gap: "none",
     },
-  }
+  },
 );
 
 const pixelBentoItemVariants = cva(
@@ -48,8 +48,7 @@ const pixelBentoItemVariants = cva(
           "bg-[#ff8c00] text-white border-black dark:bg-[#ff8c00] dark:border-[#ffd700] shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] dark:shadow-[6px_6px_0px_0px_rgba(255,215,0,0.3)]",
         secondary:
           "bg-[#ffd700] text-black border-black dark:bg-[#ffd700] dark:border-[#ff8c00] shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]",
-        dark:
-          "bg-[#1a1a1a] text-white border-[#ff8c00] dark:bg-[#000000] dark:border-[#ffd700] shadow-[6px_6px_0px_0px_rgba(255,140,0,0.5)]",
+        dark: "bg-[#1a1a1a] text-white border-[#ff8c00] dark:bg-[#000000] dark:border-[#ffd700] shadow-[6px_6px_0px_0px_rgba(255,140,0,0.5)]",
         gradient:
           "bg-gradient-to-br from-[#ff8c00] to-[#ffd700] text-white border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]",
         ghost:
@@ -80,7 +79,7 @@ const pixelBentoItemVariants = cva(
       rowSpan: 1,
       hover: "none",
     },
-  }
+  },
 );
 
 export interface PixelBentoGridProps
@@ -91,10 +90,13 @@ const PixelBentoGrid = React.forwardRef<HTMLDivElement, PixelBentoGridProps>(
   ({ className, variant, columns, gap, ...props }, ref) => (
     <div
       ref={ref}
-      className={cn(pixelBentoGridVariants({ variant, columns, gap }), className)}
+      className={cn(
+        pixelBentoGridVariants({ variant, columns, gap }),
+        className,
+      )}
       {...props}
     />
-  )
+  ),
 );
 PixelBentoGrid.displayName = "PixelBentoGrid";
 
@@ -108,11 +110,11 @@ const PixelBentoItem = React.forwardRef<HTMLDivElement, PixelBentoItemProps>(
       ref={ref}
       className={cn(
         pixelBentoItemVariants({ variant, span, rowSpan, hover }),
-        className
+        className,
       )}
       {...props}
     />
-  )
+  ),
 );
 PixelBentoItem.displayName = "PixelBentoItem";
 
@@ -120,11 +122,7 @@ const PixelBentoHeader = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => (
-  <div
-    ref={ref}
-    className={cn("mb-4 space-y-2", className)}
-    {...props}
-  />
+  <div ref={ref} className={cn("mb-4 space-y-2", className)} {...props} />
 ));
 PixelBentoHeader.displayName = "PixelBentoHeader";
 
@@ -136,7 +134,7 @@ const PixelBentoTitle = React.forwardRef<
     ref={ref}
     className={cn(
       "text-2xl font-bold uppercase tracking-wide font-[family-name:var(--font-pixel)]",
-      className
+      className,
     )}
     {...props}
   />
@@ -147,11 +145,7 @@ const PixelBentoDescription = React.forwardRef<
   HTMLParagraphElement,
   React.HTMLAttributes<HTMLParagraphElement>
 >(({ className, ...props }, ref) => (
-  <p
-    ref={ref}
-    className={cn("text-sm opacity-80", className)}
-    {...props}
-  />
+  <p ref={ref} className={cn("text-sm opacity-80", className)} {...props} />
 ));
 PixelBentoDescription.displayName = "PixelBentoDescription";
 
@@ -159,11 +153,7 @@ const PixelBentoContent = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => (
-  <div
-    ref={ref}
-    className={cn("", className)}
-    {...props}
-  />
+  <div ref={ref} className={cn("", className)} {...props} />
 ));
 PixelBentoContent.displayName = "PixelBentoContent";
 
@@ -171,11 +161,7 @@ const PixelBentoIcon = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => (
-  <div
-    ref={ref}
-    className={cn("text-4xl mb-4", className)}
-    {...props}
-  />
+  <div ref={ref} className={cn("text-4xl mb-4", className)} {...props} />
 ));
 PixelBentoIcon.displayName = "PixelBentoIcon";
 
@@ -185,7 +171,10 @@ const PixelBentoFooter = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={cn("mt-4 pt-4 border-t-4 border-black/10 dark:border-white/10", className)}
+    className={cn(
+      "mt-4 pt-4 border-t-4 border-black/10 dark:border-white/10",
+      className,
+    )}
     {...props}
   />
 ));
@@ -200,8 +189,10 @@ const PixelBentoPattern = React.forwardRef<
   const patternClasses = {
     dots: "bg-[radial-gradient(circle,_rgba(0,0,0,0.1)_1px,_transparent_1px)] bg-[size:16px_16px] dark:bg-[radial-gradient(circle,_rgba(255,255,255,0.05)_1px,_transparent_1px)]",
     grid: "bg-[linear-gradient(rgba(0,0,0,0.05)_1px,_transparent_1px),linear-gradient(90deg,_rgba(0,0,0,0.05)_1px,_transparent_1px)] bg-[size:16px_16px] dark:bg-[linear-gradient(rgba(255,255,255,0.03)_1px,_transparent_1px),linear-gradient(90deg,_rgba(255,255,255,0.03)_1px,_transparent_1px)]",
-    checkerboard: "bg-[linear-gradient(45deg,_rgba(0,0,0,0.05)_25%,_transparent_25%,_transparent_75%,_rgba(0,0,0,0.05)_75%),linear-gradient(45deg,_rgba(0,0,0,0.05)_25%,_transparent_25%,_transparent_75%,_rgba(0,0,0,0.05)_75%)] bg-[size:32px_32px] bg-[position:0_0,16px_16px]",
-    scanlines: "bg-[linear-gradient(0deg,_rgba(0,0,0,0.05)_50%,_transparent_50%)] bg-[size:100%_4px] dark:bg-[linear-gradient(0deg,_rgba(255,255,255,0.03)_50%,_transparent_50%)]",
+    checkerboard:
+      "bg-[linear-gradient(45deg,_rgba(0,0,0,0.05)_25%,_transparent_25%,_transparent_75%,_rgba(0,0,0,0.05)_75%),linear-gradient(45deg,_rgba(0,0,0,0.05)_25%,_transparent_25%,_transparent_75%,_rgba(0,0,0,0.05)_75%)] bg-[size:32px_32px] bg-[position:0_0,16px_16px]",
+    scanlines:
+      "bg-[linear-gradient(0deg,_rgba(0,0,0,0.05)_50%,_transparent_50%)] bg-[size:100%_4px] dark:bg-[linear-gradient(0deg,_rgba(255,255,255,0.03)_50%,_transparent_50%)]",
   };
 
   return (
@@ -210,7 +201,7 @@ const PixelBentoPattern = React.forwardRef<
       className={cn(
         "absolute inset-0 pointer-events-none opacity-50",
         patternClasses[pattern],
-        className
+        className,
       )}
       {...props}
     />

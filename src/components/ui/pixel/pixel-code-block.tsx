@@ -1,7 +1,7 @@
 "use client";
 
-import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
+import * as React from "react";
 import { cn } from "@/lib/utils";
 
 const pixelCodeBlockVariants = cva(
@@ -26,7 +26,7 @@ const pixelCodeBlockVariants = cva(
       variant: "default",
       size: "md",
     },
-  }
+  },
 );
 
 export interface PixelCodeBlockProps
@@ -54,7 +54,7 @@ const PixelCodeBlock = React.forwardRef<HTMLDivElement, PixelCodeBlockProps>(
       highlightLines = [],
       ...props
     },
-    ref
+    ref,
   ) => {
     const [copied, setCopied] = React.useState(false);
     const lines = code.split("\n");
@@ -76,7 +76,9 @@ const PixelCodeBlock = React.forwardRef<HTMLDivElement, PixelCodeBlockProps>(
           <div className="flex items-center justify-between px-4 py-2 border-b-4 border-black bg-black/30">
             <div className="flex items-center gap-2">
               {title && (
-                <span className="font-bold font-pixel text-xs uppercase">{title}</span>
+                <span className="font-bold font-pixel text-xs uppercase">
+                  {title}
+                </span>
               )}
               {language && !title && (
                 <span className="font-bold font-pixel text-xs uppercase opacity-70">
@@ -109,7 +111,7 @@ const PixelCodeBlock = React.forwardRef<HTMLDivElement, PixelCodeBlockProps>(
                     key={index}
                     className={cn(
                       "flex",
-                      isHighlighted && "bg-yellow-500/20 -mx-4 px-4"
+                      isHighlighted && "bg-yellow-500/20 -mx-4 px-4",
                     )}
                   >
                     {showLineNumbers && (
@@ -135,7 +137,7 @@ const PixelCodeBlock = React.forwardRef<HTMLDivElement, PixelCodeBlockProps>(
         />
       </div>
     );
-  }
+  },
 );
 PixelCodeBlock.displayName = "PixelCodeBlock";
 
@@ -148,7 +150,7 @@ const PixelCode = React.forwardRef<
     ref={ref}
     className={cn(
       "px-2 py-1 font-mono text-sm border-2 border-black bg-[#f5f5dc] dark:bg-[#1a1a1a] shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]",
-      className
+      className,
     )}
     {...props}
   >

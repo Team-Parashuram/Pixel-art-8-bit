@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import {
-  PixelAudioVisualizer,
   PixelAudioPlayer,
+  PixelAudioVisualizer,
 } from "@/components/ui/pixel/pixel-audio-visualizer";
 import { PixelButton } from "@/components/ui/pixel/pixel-button";
 
@@ -18,7 +18,9 @@ export default function AudioVisualizerExamples() {
 
         <div className="grid grid-cols-1 gap-12">
           <div>
-            <h3 className="text-xl font-bold mb-4 font-pixel">Default Bars (Green)</h3>
+            <h3 className="text-xl font-bold mb-4 font-pixel">
+              Default Bars (Green)
+            </h3>
             <PixelAudioVisualizer variant="bars" size="md" barCount={32} />
           </div>
 
@@ -33,7 +35,9 @@ export default function AudioVisualizerExamples() {
           </div>
 
           <div>
-            <h3 className="text-xl font-bold mb-4 font-pixel">Purple Bars (More Bars)</h3>
+            <h3 className="text-xl font-bold mb-4 font-pixel">
+              Purple Bars (More Bars)
+            </h3>
             <PixelAudioVisualizer
               variant="bars"
               size="lg"
@@ -43,7 +47,9 @@ export default function AudioVisualizerExamples() {
           </div>
 
           <div>
-            <h3 className="text-xl font-bold mb-4 font-pixel">Orange Bars (Less Bars)</h3>
+            <h3 className="text-xl font-bold mb-4 font-pixel">
+              Orange Bars (Less Bars)
+            </h3>
             <PixelAudioVisualizer
               variant="bars"
               size="md"
@@ -56,11 +62,15 @@ export default function AudioVisualizerExamples() {
 
       {/* Equalizer Visualizer */}
       <section>
-        <h2 className="text-3xl font-bold mb-8 font-pixel">Equalizer Visualizer</h2>
+        <h2 className="text-3xl font-bold mb-8 font-pixel">
+          Equalizer Visualizer
+        </h2>
 
         <div className="grid grid-cols-1 gap-12">
           <div>
-            <h3 className="text-xl font-bold mb-4 font-pixel">Classic Equalizer</h3>
+            <h3 className="text-xl font-bold mb-4 font-pixel">
+              Classic Equalizer
+            </h3>
             <PixelAudioVisualizer variant="equalizer" size="md" barCount={20} />
           </div>
 
@@ -75,7 +85,9 @@ export default function AudioVisualizerExamples() {
           </div>
 
           <div>
-            <h3 className="text-xl font-bold mb-4 font-pixel">Blue Equalizer (Wide)</h3>
+            <h3 className="text-xl font-bold mb-4 font-pixel">
+              Blue Equalizer (Wide)
+            </h3>
             <PixelAudioVisualizer
               variant="equalizer"
               size="md"
@@ -103,7 +115,9 @@ export default function AudioVisualizerExamples() {
 
         <div className="grid grid-cols-1 gap-12">
           <div>
-            <h3 className="text-xl font-bold mb-4 font-pixel">Smooth Wave (Green)</h3>
+            <h3 className="text-xl font-bold mb-4 font-pixel">
+              Smooth Wave (Green)
+            </h3>
             <PixelAudioVisualizer variant="wave" size="md" barCount={50} />
           </div>
 
@@ -128,7 +142,9 @@ export default function AudioVisualizerExamples() {
           </div>
 
           <div>
-            <h3 className="text-xl font-bold mb-4 font-pixel">Yellow Wave (Extra Large)</h3>
+            <h3 className="text-xl font-bold mb-4 font-pixel">
+              Yellow Wave (Extra Large)
+            </h3>
             <PixelAudioVisualizer
               variant="wave"
               size="xl"
@@ -141,26 +157,36 @@ export default function AudioVisualizerExamples() {
 
       {/* Spectrum Visualizer */}
       <section>
-        <h2 className="text-3xl font-bold mb-8 font-pixel">Spectrum Visualizer</h2>
+        <h2 className="text-3xl font-bold mb-8 font-pixel">
+          Spectrum Visualizer
+        </h2>
 
         <div className="grid grid-cols-1 gap-12">
           <div>
-            <h3 className="text-xl font-bold mb-4 font-pixel">Rainbow Spectrum</h3>
+            <h3 className="text-xl font-bold mb-4 font-pixel">
+              Rainbow Spectrum
+            </h3>
             <PixelAudioVisualizer variant="spectrum" size="md" barCount={32} />
           </div>
 
           <div>
-            <h3 className="text-xl font-bold mb-4 font-pixel">Large Spectrum</h3>
+            <h3 className="text-xl font-bold mb-4 font-pixel">
+              Large Spectrum
+            </h3>
             <PixelAudioVisualizer variant="spectrum" size="lg" barCount={48} />
           </div>
 
           <div>
-            <h3 className="text-xl font-bold mb-4 font-pixel">Extra Large Spectrum</h3>
+            <h3 className="text-xl font-bold mb-4 font-pixel">
+              Extra Large Spectrum
+            </h3>
             <PixelAudioVisualizer variant="spectrum" size="xl" barCount={64} />
           </div>
 
           <div>
-            <h3 className="text-xl font-bold mb-4 font-pixel">With Grid Overlay</h3>
+            <h3 className="text-xl font-bold mb-4 font-pixel">
+              With Grid Overlay
+            </h3>
             <PixelAudioVisualizer
               variant="spectrum"
               size="lg"
@@ -173,7 +199,9 @@ export default function AudioVisualizerExamples() {
 
       {/* Audio Players */}
       <section>
-        <h2 className="text-3xl font-bold mb-8 font-pixel">Audio Player Widgets</h2>
+        <h2 className="text-3xl font-bold mb-8 font-pixel">
+          Audio Player Widgets
+        </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           <div>
@@ -195,7 +223,9 @@ export default function AudioVisualizerExamples() {
           </div>
 
           <div>
-            <h3 className="text-xl font-bold mb-4 font-pixel">Podcast Player</h3>
+            <h3 className="text-xl font-bold mb-4 font-pixel">
+              Podcast Player
+            </h3>
             <PixelAudioPlayer
               title="Tech Talk Episode 42"
               artist="The Pixel Podcast"
@@ -214,7 +244,9 @@ export default function AudioVisualizerExamples() {
 
       {/* Combined Example */}
       <section>
-        <h2 className="text-3xl font-bold mb-8 font-pixel">Complete Audio System</h2>
+        <h2 className="text-3xl font-bold mb-8 font-pixel">
+          Complete Audio System
+        </h2>
 
         <div className="max-w-3xl mx-auto space-y-6">
           <PixelAudioPlayer
@@ -338,9 +370,10 @@ export default function AudioVisualizerExamples() {
         <div className="mt-6 p-4 border-2 border-black bg-yellow-100 dark:bg-yellow-900/20">
           <p className="font-bold mb-2">💡 Note:</p>
           <p className="text-sm">
-            The visualizers use simulated audio data for demo purposes. In a real
-            application, you would connect them to the Web Audio API to visualize actual
-            audio input. Use the <code>audioData</code> prop to pass real frequency data.
+            The visualizers use simulated audio data for demo purposes. In a
+            real application, you would connect them to the Web Audio API to
+            visualize actual audio input. Use the <code>audioData</code> prop to
+            pass real frequency data.
           </p>
         </div>
       </section>

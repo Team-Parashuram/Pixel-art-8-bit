@@ -1,8 +1,8 @@
 "use client";
 
-import * as React from "react";
 import * as RadioGroupPrimitive from "@radix-ui/react-radio-group";
 import { Circle } from "lucide-react";
+import * as React from "react";
 import { cn } from "@/lib/utils";
 
 const PixelRadioGroup = React.forwardRef<
@@ -28,7 +28,7 @@ const PixelRadioGroupItem = React.forwardRef<
       ref={ref}
       className={cn(
         "aspect-square h-6 w-6 pixel-borders border-[3px] border-black bg-white text-[#ff8c00] transition-none duration-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#ff8c00] disabled:cursor-not-allowed disabled:opacity-50 dark:border-[#ff8c00] dark:bg-[#1a1a1a] dark:text-[#ffd700] dark:focus-visible:ring-[#ffd700]",
-        className
+        className,
       )}
       {...props}
     >

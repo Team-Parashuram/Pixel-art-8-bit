@@ -1,31 +1,33 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import * as SheetPrimitive from "@radix-ui/react-dialog"
-import { X } from "lucide-react"
-import { cn } from "@/lib/utils"
-import { cva, type VariantProps } from "class-variance-authority"
+import * as SheetPrimitive from "@radix-ui/react-dialog";
+import { cva, type VariantProps } from "class-variance-authority";
+import { X } from "lucide-react";
+import type * as React from "react";
+import { cn } from "@/lib/utils";
 
-function PixelSheet({ ...props }: React.ComponentProps<typeof SheetPrimitive.Root>) {
-  return <SheetPrimitive.Root {...props} />
+function PixelSheet({
+  ...props
+}: React.ComponentProps<typeof SheetPrimitive.Root>) {
+  return <SheetPrimitive.Root {...props} />;
 }
 
 function PixelSheetTrigger({
   ...props
 }: React.ComponentProps<typeof SheetPrimitive.Trigger>) {
-  return <SheetPrimitive.Trigger {...props} />
+  return <SheetPrimitive.Trigger {...props} />;
 }
 
 function PixelSheetClose({
   ...props
 }: React.ComponentProps<typeof SheetPrimitive.Close>) {
-  return <SheetPrimitive.Close {...props} />
+  return <SheetPrimitive.Close {...props} />;
 }
 
 function PixelSheetPortal({
   ...props
 }: React.ComponentProps<typeof SheetPrimitive.Portal>) {
-  return <SheetPrimitive.Portal {...props} />
+  return <SheetPrimitive.Portal {...props} />;
 }
 
 function PixelSheetOverlay({
@@ -34,13 +36,10 @@ function PixelSheetOverlay({
 }: React.ComponentProps<typeof SheetPrimitive.Overlay>) {
   return (
     <SheetPrimitive.Overlay
-      className={cn(
-        "fixed inset-0 z-50 bg-black/80 duration-0",
-        className
-      )}
+      className={cn("fixed inset-0 z-50 bg-black/80 duration-0", className)}
       {...props}
     />
-  )
+  );
 }
 
 const sheetVariants = cva(
@@ -51,14 +50,15 @@ const sheetVariants = cva(
         top: "inset-x-0 top-0 border-b-4 border-black",
         bottom: "inset-x-0 bottom-0 border-t-4 border-black",
         left: "inset-y-0 left-0 h-full w-3/4 border-r-4 border-black sm:max-w-sm",
-        right: "inset-y-0 right-0 h-full w-3/4 border-l-4 border-black sm:max-w-sm",
+        right:
+          "inset-y-0 right-0 h-full w-3/4 border-l-4 border-black sm:max-w-sm",
       },
     },
     defaultVariants: {
       side: "right",
     },
-  }
-)
+  },
+);
 
 interface PixelSheetContentProps
   extends React.ComponentProps<typeof SheetPrimitive.Content>,
@@ -84,7 +84,7 @@ function PixelSheetContent({
         </SheetPrimitive.Close>
       </SheetPrimitive.Content>
     </PixelSheetPortal>
-  )
+  );
 }
 
 function PixelSheetHeader({
@@ -95,11 +95,11 @@ function PixelSheetHeader({
     <div
       className={cn(
         "flex flex-col space-y-2 text-center sm:text-left",
-        className
+        className,
       )}
       {...props}
     />
-  )
+  );
 }
 
 function PixelSheetFooter({
@@ -110,11 +110,11 @@ function PixelSheetFooter({
     <div
       className={cn(
         "flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2",
-        className
+        className,
       )}
       {...props}
     />
-  )
+  );
 }
 
 function PixelSheetTitle({
@@ -126,7 +126,7 @@ function PixelSheetTitle({
       className={cn("text-lg font-bold", className)}
       {...props}
     />
-  )
+  );
 }
 
 function PixelSheetDescription({
@@ -138,7 +138,7 @@ function PixelSheetDescription({
       className={cn("text-sm text-[#555] dark:text-[#aaa]", className)}
       {...props}
     />
-  )
+  );
 }
 
 export {
@@ -152,4 +152,4 @@ export {
   PixelSheetFooter,
   PixelSheetTitle,
   PixelSheetDescription,
-}
+};

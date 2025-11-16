@@ -1,8 +1,8 @@
 "use client";
 
-import * as React from "react";
 import * as CheckboxPrimitive from "@radix-ui/react-checkbox";
 import { Check } from "lucide-react";
+import * as React from "react";
 import { cn } from "@/lib/utils";
 
 const PixelCheckbox = React.forwardRef<
@@ -13,7 +13,7 @@ const PixelCheckbox = React.forwardRef<
     ref={ref}
     className={cn(
       "peer h-6 w-6 shrink-0 pixel-borders border-[3px] border-black bg-white transition-none duration-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff8c00] disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-[#ff8c00] data-[state=checked]:text-white dark:border-[#ff8c00] dark:bg-[#1a1a1a] dark:data-[state=checked]:bg-[#ff8c00]",
-      className
+      className,
     )}
     {...props}
   >

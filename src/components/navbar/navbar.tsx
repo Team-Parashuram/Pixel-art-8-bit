@@ -1,7 +1,7 @@
 "use client";
 
+import { Github, Globe, Linkedin, Twitter } from "lucide-react";
 import Link from "next/link";
-import { Github, Linkedin, Twitter, Globe } from "lucide-react";
 import { ModeToggle } from "@/components/theme/theme-button";
 import { PixelButton } from "@/components/ui/pixel/pixel-button";
 
@@ -32,6 +32,11 @@ export function Navbar() {
             <Link href="/patterns">
               <PixelButton variant="ghost" size="sm">
                 Patterns
+              </PixelButton>
+            </Link>
+            <Link href="/resume">
+              <PixelButton variant="default" size="sm">
+                Portfolio Maker
               </PixelButton>
             </Link>
           </div>

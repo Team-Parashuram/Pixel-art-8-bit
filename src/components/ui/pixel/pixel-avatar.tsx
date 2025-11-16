@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import * as AvatarPrimitive from "@radix-ui/react-avatar"
-import { cn } from "@/lib/utils"
+import * as AvatarPrimitive from "@radix-ui/react-avatar";
+import type * as React from "react";
+import { cn } from "@/lib/utils";
 
 function PixelAvatar({
   className,
@@ -12,11 +12,11 @@ function PixelAvatar({
     <AvatarPrimitive.Root
       className={cn(
         "relative flex h-16 w-16 shrink-0 overflow-hidden border-4 border-black bg-[#fffacd] dark:bg-[#2a2a2a] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] duration-0",
-        className
+        className,
       )}
       {...props}
     />
-  )
+  );
 }
 
 function PixelAvatarImage({
@@ -29,7 +29,7 @@ function PixelAvatarImage({
       style={{ imageRendering: "pixelated" }}
       {...props}
     />
-  )
+  );
 }
 
 function PixelAvatarFallback({
@@ -40,11 +40,11 @@ function PixelAvatarFallback({
     <AvatarPrimitive.Fallback
       className={cn(
         "flex h-full w-full items-center justify-center bg-[#ff6b6b] text-white font-[family-name:var(--font-press-start)] text-xs",
-        className
+        className,
       )}
       {...props}
     />
-  )
+  );
 }
 
-export { PixelAvatar, PixelAvatarImage, PixelAvatarFallback }
+export { PixelAvatar, PixelAvatarImage, PixelAvatarFallback };

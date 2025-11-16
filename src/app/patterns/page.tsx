@@ -1,26 +1,57 @@
 "use client";
 
 import { useState } from "react";
-import { PixelLoader } from "@/components/ui/pixel/pixel-loader";
-import { PixelTerminal } from "@/components/ui/pixel/pixel-terminal";
-import { PixelHealthBar, PixelManaBar, PixelXPBar, PixelInventory, PixelInventorySlot, PixelAchievement } from "@/components/ui/pixel/pixel-game-ui";
-import { PixelWindow } from "@/components/ui/pixel/pixel-window";
 import { PixelAudioVisualizer } from "@/components/ui/pixel/pixel-audio-visualizer";
-import { PixelCodeBlock } from "@/components/ui/pixel/pixel-code-block";
-import { PixelTimeline, PixelTimelineCheckpoint } from "@/components/ui/pixel/pixel-timeline";
-import { PixelNotification } from "@/components/ui/pixel/pixel-notification";
-import { PixelChat } from "@/components/ui/pixel/pixel-chat";
-import { PixelCountdown, PixelTimer } from "@/components/ui/pixel/pixel-countdown";
-import { PixelButton } from "@/components/ui/pixel/pixel-button";
-import { PixelCard, PixelCardContent, PixelCardHeader, PixelCardTitle } from "@/components/ui/pixel/pixel-card";
 import { PixelBadge } from "@/components/ui/pixel/pixel-badge";
-import { PixelHero, PixelHeroContent, PixelHeroTitle, PixelHeroSubtitle, PixelHeroDescription, PixelHeroActions, PixelHeroBadge } from "@/components/ui/pixel/pixel-hero";
-import { PixelStats, PixelStatItem, PixelStatValue, PixelStatLabel } from "@/components/ui/pixel/pixel-stats";
+import { PixelButton } from "@/components/ui/pixel/pixel-button";
+import {
+  PixelCard,
+  PixelCardContent,
+  PixelCardHeader,
+  PixelCardTitle,
+} from "@/components/ui/pixel/pixel-card";
+import { PixelChat } from "@/components/ui/pixel/pixel-chat";
+import { PixelCodeBlock } from "@/components/ui/pixel/pixel-code-block";
+import {
+  PixelCountdown,
+  PixelTimer,
+} from "@/components/ui/pixel/pixel-countdown";
+import {
+  PixelAchievement,
+  PixelHealthBar,
+  PixelInventory,
+  PixelInventorySlot,
+  PixelManaBar,
+  PixelXPBar,
+} from "@/components/ui/pixel/pixel-game-ui";
+import {
+  PixelHero,
+  PixelHeroActions,
+  PixelHeroBadge,
+  PixelHeroContent,
+  PixelHeroDescription,
+  PixelHeroSubtitle,
+  PixelHeroTitle,
+} from "@/components/ui/pixel/pixel-hero";
+import { PixelLoader } from "@/components/ui/pixel/pixel-loader";
+import { PixelNotification } from "@/components/ui/pixel/pixel-notification";
+import {
+  PixelStatItem,
+  PixelStatLabel,
+  PixelStats,
+  PixelStatValue,
+} from "@/components/ui/pixel/pixel-stats";
+import { PixelTerminal } from "@/components/ui/pixel/pixel-terminal";
+import {
+  PixelTimeline,
+  PixelTimelineCheckpoint,
+} from "@/components/ui/pixel/pixel-timeline";
+import { PixelWindow } from "@/components/ui/pixel/pixel-window";
 
 export default function PatternsPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [showAchievement, setShowAchievement] = useState(false);
-  
+
   // Simulate initial loading
   if (isLoading) {
     setTimeout(() => setIsLoading(false), 3000);
@@ -90,7 +121,9 @@ export default function PatternsPage() {
           <div className="max-w-5xl mx-auto text-center space-y-8">
             {/* Badge */}
             <div className="flex justify-center">
-              <PixelHeroBadge className="text-lg px-6 py-2">🎮 LIVE NOW</PixelHeroBadge>
+              <PixelHeroBadge className="text-lg px-6 py-2">
+                🎮 LIVE NOW
+              </PixelHeroBadge>
             </div>
 
             {/* Title */}
@@ -101,6 +134,7 @@ export default function PatternsPage() {
               <p className="text-xl md:text-2xl text-[#ff8c00] font-pixel">
                 Built with Special Components
               </p>
+
               <p className="text-base md:text-lg text-black/70 dark:text-gray-400 max-w-2xl mx-auto">
                 Experience the ultimate 8-bit gaming platform powered by cutting-edge retro UI components
               </p>
@@ -118,8 +152,12 @@ export default function PatternsPage() {
 
             {/* Actions */}
             <div className="flex flex-wrap gap-4 justify-center pt-4">
-              <PixelButton size="lg" onClick={() => setShowAchievement(true)}>START PLAYING</PixelButton>
-              <PixelButton size="lg" variant="secondary">VIEW LEADERBOARD</PixelButton>
+              <PixelButton size="lg" onClick={() => setShowAchievement(true)}>
+                START PLAYING
+              </PixelButton>
+              <PixelButton size="lg" variant="secondary">
+                VIEW LEADERBOARD
+              </PixelButton>
             </div>
           </div>
         </div>
@@ -177,7 +215,9 @@ export default function PatternsPage() {
                   <span className="text-3xl">🧙‍♂️</span>
                   <div>
                     <div className="text-2xl">PIXEL WIZARD</div>
-                    <div className="text-sm text-pixel-dark-secondary">Level 42 • Archmage</div>
+                    <div className="text-sm text-pixel-dark-secondary">
+                      Level 42 • Archmage
+                    </div>
                   </div>
                 </PixelCardTitle>
               </PixelCardHeader>
@@ -189,13 +229,19 @@ export default function PatternsPage() {
                 </div>
 
                 <div>
-                  <h3 className="font-bold font-pixel mb-3 text-lg">📦 INVENTORY</h3>
+                  <h3 className="font-bold font-pixel mb-3 text-lg">
+                    📦 INVENTORY
+                  </h3>
                   <PixelInventory columns={5} title="">
                     <PixelInventorySlot item="⚔️" rarity="legendary" count={1} />
                     <PixelInventorySlot item="🛡️" rarity="epic" count={1} />
                     <PixelInventorySlot item="💊" rarity="common" count={99} />
                     <PixelInventorySlot item="🔮" rarity="rare" count={5} />
-                    <PixelInventorySlot item="👑" rarity="legendary" count={1} />
+                    <PixelInventorySlot
+                      item="👑"
+                      rarity="legendary"
+                      count={1}
+                    />
                     <PixelInventorySlot item="🗝️" rarity="rare" count={3} />
                     <PixelInventorySlot item="💎" rarity="epic" count={42} />
                     <PixelInventorySlot item="🧪" rarity="common" count={15} />
@@ -212,7 +258,10 @@ export default function PatternsPage() {
                 <PixelCardTitle>⭐ QUEST LOG</PixelCardTitle>
               </PixelCardHeader>
               <PixelCardContent>
-                <PixelTimelineCheckpoint checkpoints={checkpoints} orientation="vertical" />
+                <PixelTimelineCheckpoint
+                  checkpoints={checkpoints}
+                  orientation="vertical"
+                />
               </PixelCardContent>
             </PixelCard>
           </div>
@@ -362,7 +411,9 @@ function unlockAchievement(id) {
                   <span className="font-pixel text-sm">Difficulty</span>
                   <PixelBadge variant="warning">HARD</PixelBadge>
                 </div>
-                <PixelButton size="sm" className="w-full mt-4">SAVE SETTINGS</PixelButton>
+                <PixelButton size="sm" className="w-full mt-4">
+                  SAVE SETTINGS
+                </PixelButton>
               </div>
             </PixelWindow>
 
@@ -372,7 +423,9 @@ function unlockAchievement(id) {
                   <span className="text-2xl">🏆</span>
                   <div className="flex-1">
                     <div className="font-pixel text-sm">Retro Master</div>
-                    <div className="text-xs text-pixel-dark-secondary">500 points</div>
+                    <div className="text-xs text-pixel-dark-secondary">
+                      500 points
+                    </div>
                   </div>
                 </div>
                 <div className="flex items-center gap-3 p-2 border-2 border-gray-500 bg-gray-500/10">
@@ -416,6 +469,7 @@ function unlockAchievement(id) {
 
             <div className="text-center">
               <h3 className="text-xl font-bold font-pixel mb-6 text-[#00aa00] dark:text-[#00ff00]">BOSS BATTLE COUNTDOWN</h3>
+
               <PixelCountdown
                 initialSeconds={300}
                 variant="flip"
@@ -453,8 +507,6 @@ function unlockAchievement(id) {
           </div>
         </div>
       </section>
-
-     
     </div>
   );
 }

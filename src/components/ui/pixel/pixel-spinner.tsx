@@ -1,7 +1,7 @@
 "use client";
 
-import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
+import * as React from "react";
 import { cn } from "@/lib/utils";
 
 const pixelSpinnerVariants = cva(
@@ -17,7 +17,7 @@ const pixelSpinnerVariants = cva(
     defaultVariants: {
       size: "md",
     },
-  }
+  },
 );
 
 export interface PixelSpinnerProps
@@ -37,17 +37,30 @@ const PixelSpinner = React.forwardRef<HTMLDivElement, PixelSpinnerProps>(
         <span className="sr-only">Loading...</span>
       </div>
     );
-  }
+  },
 );
 PixelSpinner.displayName = "PixelSpinner";
 
 // Alternative: Static loading indicator with pixel blocks
 const PixelLoadingDots = ({ className }: { className?: string }) => {
   return (
-    <div className={cn("flex gap-2", className)} role="status" aria-label="Loading">
-      <div className="h-3 w-3 pixel-borders border-2 border-black bg-[#ff8c00] animate-bounce" style={{ animationDelay: "0ms" }} />
-      <div className="h-3 w-3 pixel-borders border-2 border-black bg-[#ff8c00] animate-bounce" style={{ animationDelay: "150ms" }} />
-      <div className="h-3 w-3 pixel-borders border-2 border-black bg-[#ff8c00] animate-bounce" style={{ animationDelay: "300ms" }} />
+    <div
+      className={cn("flex gap-2", className)}
+      role="status"
+      aria-label="Loading"
+    >
+      <div
+        className="h-3 w-3 pixel-borders border-2 border-black bg-[#ff8c00] animate-bounce"
+        style={{ animationDelay: "0ms" }}
+      />
+      <div
+        className="h-3 w-3 pixel-borders border-2 border-black bg-[#ff8c00] animate-bounce"
+        style={{ animationDelay: "150ms" }}
+      />
+      <div
+        className="h-3 w-3 pixel-borders border-2 border-black bg-[#ff8c00] animate-bounce"
+        style={{ animationDelay: "300ms" }}
+      />
       <span className="sr-only">Loading...</span>
     </div>
   );

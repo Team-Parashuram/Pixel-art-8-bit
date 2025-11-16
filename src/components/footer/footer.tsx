@@ -1,7 +1,7 @@
 "use client";
 
+import { Github, Globe, Heart, Linkedin, Twitter } from "lucide-react";
 import Link from "next/link";
-import { Github, Linkedin, Twitter, Globe, Heart } from "lucide-react";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -16,7 +16,8 @@ export function Footer() {
               Pixel UI
             </h3>
             <p className="text-sm text-black/70 dark:text-white/70 leading-relaxed">
-              An 8-bit retro component library bringing nostalgic gaming aesthetics to modern web development.
+              An 8-bit retro component library bringing nostalgic gaming
+              aesthetics to modern web development.
             </p>
           </div>
 
@@ -27,19 +28,25 @@ export function Footer() {
             </h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link href="/docs/components" className="hover:text-[#ff8c00] dark:hover:text-[#ff8c00] transition-colors">
+                <Link
+                  href="/docs/components"
+                  className="hover:text-[#ff8c00] dark:hover:text-[#ff8c00] transition-colors"
+                >
                   Components
                 </Link>
               </li>
               <li>
-                <Link href="/examples" className="hover:text-[#ff8c00] dark:hover:text-[#ff8c00] transition-colors">
+                <Link
+                  href="/examples"
+                  className="hover:text-[#ff8c00] dark:hover:text-[#ff8c00] transition-colors"
+                >
                   Examples
                 </Link>
               </li>
               <li>
-                <a 
-                  href="https://github.com/Team-Parashuram/Pixel-art-8-bit" 
-                  target="_blank" 
+                <a
+                  href="https://github.com/Team-Parashuram/Pixel-art-8-bit"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-[#ff8c00] dark:hover:text-[#ff8c00] transition-colors"
                 >
@@ -56,9 +63,9 @@ export function Footer() {
             </h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <a 
-                  href="https://github.com/Team-Parashuram/Pixel-art-8-bit/blob/main/README.md" 
-                  target="_blank" 
+                <a
+                  href="https://github.com/Team-Parashuram/Pixel-art-8-bit/blob/main/README.md"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-[#ff8c00] dark:hover:text-[#ff8c00] transition-colors"
                 >
@@ -66,9 +73,9 @@ export function Footer() {
                 </a>
               </li>
               <li>
-                <a 
-                  href="https://github.com/Team-Parashuram/Pixel-art-8-bit/issues" 
-                  target="_blank" 
+                <a
+                  href="https://github.com/Team-Parashuram/Pixel-art-8-bit/issues"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-[#ff8c00] dark:hover:text-[#ff8c00] transition-colors"
                 >
@@ -76,9 +83,9 @@ export function Footer() {
                 </a>
               </li>
               <li>
-                <a 
-                  href="https://github.com/Team-Parashuram/Pixel-art-8-bit/blob/main/LICENSE" 
-                  target="_blank" 
+                <a
+                  href="https://github.com/Team-Parashuram/Pixel-art-8-bit/blob/main/LICENSE"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-[#ff8c00] dark:hover:text-[#ff8c00] transition-colors"
                 >
@@ -147,7 +154,9 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="border-t-2 border-black dark:border-[#ff8c00] mt-8 pt-8 text-center">
           <p className="text-sm text-black/70 dark:text-white/70 flex items-center justify-center gap-2">
-            © {currentYear} Pixel UI. Built with <Heart className="h-4 w-4 text-red-500 fill-red-500" /> by Team Parashuram
+            © {currentYear} Pixel UI. Built with{" "}
+            <Heart className="h-4 w-4 text-red-500 fill-red-500" /> by Team
+            Parashuram
           </p>
           <p className="text-xs text-black/60 dark:text-white/60 mt-2">
             Open source component library for retro 8-bit design enthusiasts

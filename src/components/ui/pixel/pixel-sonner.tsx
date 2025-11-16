@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import {
   CircleCheckIcon,
@@ -6,12 +6,12 @@ import {
   Loader2Icon,
   OctagonXIcon,
   TriangleAlertIcon,
-} from "lucide-react"
-import { useTheme } from "next-themes"
-import { Toaster as Sonner, type ToasterProps } from "sonner"
+} from "lucide-react";
+import { useTheme } from "next-themes";
+import { Toaster as Sonner, type ToasterProps } from "sonner";
 
 const PixelToaster = ({ ...props }: ToasterProps) => {
-  const { theme = "system" } = useTheme()
+  const { theme = "system" } = useTheme();
 
   return (
     <Sonner
@@ -28,7 +28,8 @@ const PixelToaster = ({ ...props }: ToasterProps) => {
         classNames: {
           toast:
             "group toast group-[.toaster]:border-4 group-[.toaster]:border-black group-[.toaster]:bg-[#fffacd] dark:group-[.toaster]:bg-[#2a2a2a] group-[.toaster]:text-black dark:group-[.toaster]:text-white group-[.toaster]:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]",
-          description: "group-[.toast]:text-[#555] dark:group-[.toast]:text-[#aaa]",
+          description:
+            "group-[.toast]:text-[#555] dark:group-[.toast]:text-[#aaa]",
           actionButton:
             "group-[.toast]:bg-[#ff6b6b] group-[.toast]:text-white group-[.toast]:border-2 group-[.toast]:border-black",
           cancelButton:
@@ -45,7 +46,7 @@ const PixelToaster = ({ ...props }: ToasterProps) => {
       }
       {...props}
     />
-  )
-}
+  );
+};
 
-export { PixelToaster }
+export { PixelToaster };

@@ -1,8 +1,8 @@
 "use client";
 
+import { cva, type VariantProps } from "class-variance-authority";
 import * as React from "react";
 import { cn } from "@/lib/utils";
-import { cva, type VariantProps } from "class-variance-authority";
 
 const pixelSpotlightCardVariants = cva(
   "relative overflow-hidden pixel-borders transition-all duration-200",
@@ -15,8 +15,7 @@ const pixelSpotlightCardVariants = cva(
           "bg-[#ff8c00]/10 dark:bg-[#ff8c00]/5 border-2 border-[#ff8c00]",
         secondary:
           "bg-[#ffd700]/10 dark:bg-[#ffd700]/5 border-2 border-[#ffd700]",
-        accent:
-          "bg-[#5227FF]/10 dark:bg-[#5227FF]/5 border-2 border-[#5227FF]",
+        accent: "bg-[#5227FF]/10 dark:bg-[#5227FF]/5 border-2 border-[#5227FF]",
       },
       size: {
         sm: "p-4",
@@ -28,7 +27,7 @@ const pixelSpotlightCardVariants = cva(
       variant: "default",
       size: "md",
     },
-  }
+  },
 );
 
 export interface PixelSpotlightCardProps
@@ -52,7 +51,7 @@ const PixelSpotlightCard = React.forwardRef<
       children,
       ...props
     },
-    ref
+    ref,
   ) => {
     const divRef = React.useRef<HTMLDivElement>(null);
     const [position, setPosition] = React.useState({ x: 0, y: 0 });
@@ -82,10 +81,7 @@ const PixelSpotlightCard = React.forwardRef<
     return (
       <div
         ref={divRef}
-        className={cn(
-          pixelSpotlightCardVariants({ variant, size }),
-          className
-        )}
+        className={cn(pixelSpotlightCardVariants({ variant, size }), className)}
         onMouseMove={handleMouseMove}
         onMouseEnter={handleFocus}
         onMouseLeave={handleBlur}
@@ -101,7 +97,7 @@ const PixelSpotlightCard = React.forwardRef<
         <div className="relative z-10">{children}</div>
       </div>
     );
-  }
+  },
 );
 
 PixelSpotlightCard.displayName = "PixelSpotlightCard";

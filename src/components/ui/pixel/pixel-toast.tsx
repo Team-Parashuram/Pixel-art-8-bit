@@ -1,7 +1,7 @@
 "use client";
 
-import * as React from "react";
 import { X } from "lucide-react";
+import * as React from "react";
 import { cn } from "@/lib/utils";
 
 type ToastPosition = "top-right" | "bottom-right" | "top-left" | "bottom-left";
@@ -21,9 +21,9 @@ interface PixelToastContextValue {
   removeToast: (id: string) => void;
 }
 
-const PixelToastContext = React.createContext<PixelToastContextValue | undefined>(
-  undefined
-);
+const PixelToastContext = React.createContext<
+  PixelToastContextValue | undefined
+>(undefined);
 
 export function PixelToastProvider({
   children,
@@ -47,7 +47,7 @@ export function PixelToastProvider({
         }, duration);
       }
     },
-    [duration]
+    [duration],
   );
 
   const removeToast = React.useCallback((id: string) => {
@@ -64,7 +64,12 @@ export function PixelToastProvider({
   return (
     <PixelToastContext.Provider value={{ toasts, addToast, removeToast }}>
       {children}
-      <div className={cn("fixed z-50 flex flex-col gap-2", positionClasses[position])}>
+      <div
+        className={cn(
+          "fixed z-50 flex flex-col gap-2",
+          positionClasses[position],
+        )}
+      >
         {toasts.map((toast) => (
           <div
             key={toast.id}

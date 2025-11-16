@@ -1,7 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { PixelChat, PixelMessageBubble, type MessageType } from "@/components/ui/pixel/pixel-chat";
+import {
+  type MessageType,
+  PixelChat,
+  PixelMessageBubble,
+} from "@/components/ui/pixel/pixel-chat";
 
 function InteractiveChat() {
   const [messages, setMessages] = useState<MessageType[]>([
@@ -29,7 +33,10 @@ function InteractiveChat() {
       id: Date.now().toString(),
       text,
       sender: "user",
-      timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
+      timestamp: new Date().toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit",
+      }),
     };
 
     setMessages((prev) => [...prev, newMessage]);
@@ -43,7 +50,10 @@ function InteractiveChat() {
         text: getBotResponse(text),
         sender: "other",
         username: "PixelBot",
-        timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
+        timestamp: new Date().toLocaleTimeString([], {
+          hour: "2-digit",
+          minute: "2-digit",
+        }),
         avatar: "🤖",
       };
       setMessages((prev) => [...prev, botResponse]);
@@ -105,7 +115,7 @@ export default function ChatExamples() {
       {/* Interactive Chat */}
       <section>
         <h2 className="text-3xl font-bold mb-8 font-pixel">Interactive Chat</h2>
-        
+
         <div className="flex justify-center">
           <InteractiveChat />
         </div>
@@ -114,7 +124,7 @@ export default function ChatExamples() {
       {/* Size Variants */}
       <section>
         <h2 className="text-3xl font-bold mb-8 font-pixel">Size Variants</h2>
-        
+
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div>
             <h3 className="text-lg font-bold mb-4 font-pixel">Small</h3>
@@ -136,7 +146,7 @@ export default function ChatExamples() {
       {/* Style Variants */}
       <section>
         <h2 className="text-3xl font-bold mb-8 font-pixel">Style Variants</h2>
-        
+
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <div>
             <h3 className="text-lg font-bold mb-4 font-pixel">Default</h3>
@@ -158,10 +168,12 @@ export default function ChatExamples() {
       {/* Message Bubbles */}
       <section>
         <h2 className="text-3xl font-bold mb-8 font-pixel">Message Bubbles</h2>
-        
+
         <div className="space-y-8">
           <div>
-            <h3 className="text-lg font-bold mb-4 font-pixel">User Messages (Right)</h3>
+            <h3 className="text-lg font-bold mb-4 font-pixel">
+              User Messages (Right)
+            </h3>
             <div className="space-y-3 max-w-2xl ml-auto">
               <PixelMessageBubble
                 text="This is a message from the current user"
@@ -177,7 +189,9 @@ export default function ChatExamples() {
           </div>
 
           <div>
-            <h3 className="text-lg font-bold mb-4 font-pixel">Other Messages (Left)</h3>
+            <h3 className="text-lg font-bold mb-4 font-pixel">
+              Other Messages (Left)
+            </h3>
             <div className="space-y-3 max-w-2xl">
               <PixelMessageBubble
                 text="This is a message from another user"
@@ -195,7 +209,9 @@ export default function ChatExamples() {
           </div>
 
           <div>
-            <h3 className="text-lg font-bold mb-4 font-pixel">System Messages (Center)</h3>
+            <h3 className="text-lg font-bold mb-4 font-pixel">
+              System Messages (Center)
+            </h3>
             <div className="space-y-3">
               <PixelMessageBubble
                 text="Alice joined the chat"
@@ -214,7 +230,7 @@ export default function ChatExamples() {
       {/* Group Chat Simulation */}
       <section>
         <h2 className="text-3xl font-bold mb-8 font-pixel">Group Chat</h2>
-        
+
         <div className="flex justify-center">
           <PixelChat
             messages={[
@@ -271,7 +287,7 @@ export default function ChatExamples() {
       {/* Customer Support Chat */}
       <section>
         <h2 className="text-3xl font-bold mb-8 font-pixel">Customer Support</h2>
-        
+
         <div className="flex justify-center">
           <PixelChat
             messages={[
@@ -309,7 +325,7 @@ export default function ChatExamples() {
       {/* Empty Chat */}
       <section>
         <h2 className="text-3xl font-bold mb-8 font-pixel">Empty Chat</h2>
-        
+
         <div className="flex justify-center">
           <PixelChat
             messages={[]}
@@ -332,7 +348,7 @@ export default function ChatExamples() {
 />`}
             </code>
           </div>
-          
+
           <div>
             <p className="font-bold mb-2">With Typing Indicator:</p>
             <code className="block bg-white dark:bg-black p-4 border-2 border-black overflow-x-auto">
@@ -343,7 +359,7 @@ export default function ChatExamples() {
 />`}
             </code>
           </div>
-          
+
           <div>
             <p className="font-bold mb-2">Message Bubble:</p>
             <code className="block bg-white dark:bg-black p-4 border-2 border-black overflow-x-auto">

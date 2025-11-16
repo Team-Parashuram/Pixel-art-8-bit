@@ -1,26 +1,66 @@
 "use client";
 
+import { Bell, Home, Settings, Star, Trophy, User } from "lucide-react";
 import Link from "next/link";
-import { PixelButton } from "@/components/ui/pixel/pixel-button";
-import { PixelCard, PixelCardContent, PixelCardDescription, PixelCardFooter, PixelCardHeader, PixelCardTitle } from "@/components/ui/pixel/pixel-card";
-import { PixelInput } from "@/components/ui/pixel/pixel-input";
+import {
+  PixelAccordion,
+  PixelAccordionContent,
+  PixelAccordionItem,
+  PixelAccordionTrigger,
+} from "@/components/ui/pixel/pixel-accordion";
 import { PixelBadge } from "@/components/ui/pixel/pixel-badge";
+import { PixelButton } from "@/components/ui/pixel/pixel-button";
+import {
+  PixelCard,
+  PixelCardContent,
+  PixelCardDescription,
+  PixelCardFooter,
+  PixelCardHeader,
+  PixelCardTitle,
+} from "@/components/ui/pixel/pixel-card";
 import { PixelCheckbox } from "@/components/ui/pixel/pixel-checkbox";
-import { PixelDialog, PixelDialogContent, PixelDialogDescription, PixelDialogHeader, PixelDialogTitle, PixelDialogTrigger } from "@/components/ui/pixel/pixel-dialog";
-import { PixelToastProvider, usePixelToast } from "@/components/ui/pixel/pixel-toast";
-import { PixelSelect, PixelSelectContent, PixelSelectItem, PixelSelectTrigger, PixelSelectValue } from "@/components/ui/pixel/pixel-select";
-import { PixelTabs, PixelTabsContent, PixelTabsList, PixelTabsTrigger } from "@/components/ui/pixel/pixel-tabs";
-import { PixelAccordion, PixelAccordionContent, PixelAccordionItem, PixelAccordionTrigger } from "@/components/ui/pixel/pixel-accordion";
-import { Home, Settings, User, Bell, Trophy, Star } from "lucide-react";
+import {
+  PixelDialog,
+  PixelDialogContent,
+  PixelDialogDescription,
+  PixelDialogHeader,
+  PixelDialogTitle,
+  PixelDialogTrigger,
+} from "@/components/ui/pixel/pixel-dialog";
+import { PixelInput } from "@/components/ui/pixel/pixel-input";
+import {
+  PixelSelect,
+  PixelSelectContent,
+  PixelSelectItem,
+  PixelSelectTrigger,
+  PixelSelectValue,
+} from "@/components/ui/pixel/pixel-select";
+import {
+  PixelTabs,
+  PixelTabsContent,
+  PixelTabsList,
+  PixelTabsTrigger,
+} from "@/components/ui/pixel/pixel-tabs";
+import {
+  PixelToastProvider,
+  usePixelToast,
+} from "@/components/ui/pixel/pixel-toast";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { setUsername, setEmail, toggleNotifications, setTheme } from "@/store/slices/userPreferencesSlice";
+import {
+  setEmail,
+  setTheme,
+  setUsername,
+  toggleNotifications,
+} from "@/store/slices/userPreferencesSlice";
 
 function DashboardContent() {
   const { addToast } = usePixelToast();
-  
+
   // Using Redux instead of local state
   const dispatch = useAppDispatch();
-  const { username, email, notifications, theme } = useAppSelector((state) => state.userPreferences);
+  const { username, email, notifications, theme } = useAppSelector(
+    (state) => state.userPreferences,
+  );
 
   return (
     <div className="min-h-screen bg-[#f5f5dc] dark:bg-[#000000] p-8">
@@ -44,7 +84,7 @@ function DashboardContent() {
               </Link>
             </div>
           </div>
-          
+
           <div className="flex gap-2">
             <PixelBadge variant="success">Online</PixelBadge>
             <PixelBadge variant="warning">3 Alerts</PixelBadge>
@@ -115,25 +155,36 @@ function DashboardContent() {
                 </PixelCardHeader>
                 <PixelCardContent className="space-y-4">
                   <div>
-                    <label className="block text-sm font-bold mb-2">Username</label>
-                    <PixelInput 
+                    <label className="block text-sm font-bold mb-2">
+                      Username
+                    </label>
+                    <PixelInput
                       value={username}
                       onChange={(e) => dispatch(setUsername(e.target.value))}
-                      placeholder="Enter username" 
+                      placeholder="Enter username"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-bold mb-2">Email</label>
-                    <PixelInput 
+                    <label className="block text-sm font-bold mb-2">
+                      Email
+                    </label>
+                    <PixelInput
                       type="email"
                       value={email}
                       onChange={(e) => dispatch(setEmail(e.target.value))}
-                      placeholder="email@example.com" 
+                      placeholder="email@example.com"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-bold mb-2">Game Mode</label>
-                    <PixelSelect value={theme} onValueChange={(value) => dispatch(setTheme(value as 'light' | 'dark' | 'system'))}>
+                    <label className="block text-sm font-bold mb-2">
+                      Game Mode
+                    </label>
+                    <PixelSelect
+                      value={theme}
+                      onValueChange={(value) =>
+                        dispatch(setTheme(value as "light" | "dark" | "system"))
+                      }
+                    >
                       <PixelSelectTrigger>
                         <PixelSelectValue placeholder="Select mode" />
                       </PixelSelectTrigger>
@@ -146,10 +197,14 @@ function DashboardContent() {
                   </div>
                 </PixelCardContent>
                 <PixelCardFooter className="gap-2">
-                  <PixelButton onClick={() => addToast("Profile updated successfully!", {
-                    label: "View",
-                    onClick: () => console.log("View profile")
-                  })}>
+                  <PixelButton
+                    onClick={() =>
+                      addToast("Profile updated successfully!", {
+                        label: "View",
+                        onClick: () => console.log("View profile"),
+                      })
+                    }
+                  >
                     Save Changes
                   </PixelButton>
                   <PixelButton variant="ghost">Cancel</PixelButton>
@@ -167,12 +222,15 @@ function DashboardContent() {
                 </PixelCardHeader>
                 <PixelCardContent className="space-y-4">
                   <div className="flex items-center space-x-2">
-                    <PixelCheckbox 
-                      id="notifications" 
+                    <PixelCheckbox
+                      id="notifications"
                       checked={notifications}
                       onCheckedChange={() => dispatch(toggleNotifications())}
                     />
-                    <label htmlFor="notifications" className="text-sm font-medium">
+                    <label
+                      htmlFor="notifications"
+                      className="text-sm font-medium"
+                    >
                       Enable notifications
                     </label>
                   </div>
@@ -208,19 +266,27 @@ function DashboardContent() {
             <PixelAccordionItem value="item-1">
               <PixelAccordionTrigger>What is Pixel UI?</PixelAccordionTrigger>
               <PixelAccordionContent>
-                Pixel UI is a retro 8-bit component library that brings nostalgic gaming aesthetics to modern web applications.
+                Pixel UI is a retro 8-bit component library that brings
+                nostalgic gaming aesthetics to modern web applications.
               </PixelAccordionContent>
             </PixelAccordionItem>
             <PixelAccordionItem value="item-2">
-              <PixelAccordionTrigger>How do I use these components?</PixelAccordionTrigger>
+              <PixelAccordionTrigger>
+                How do I use these components?
+              </PixelAccordionTrigger>
               <PixelAccordionContent>
-                Simply import the components you need and use them in your React/Next.js application. All components are fully typed with TypeScript.
+                Simply import the components you need and use them in your
+                React/Next.js application. All components are fully typed with
+                TypeScript.
               </PixelAccordionContent>
             </PixelAccordionItem>
             <PixelAccordionItem value="item-3">
-              <PixelAccordionTrigger>Are they accessible?</PixelAccordionTrigger>
+              <PixelAccordionTrigger>
+                Are they accessible?
+              </PixelAccordionTrigger>
               <PixelAccordionContent>
-                Yes! All components are built on Radix UI primitives with proper ARIA attributes and keyboard navigation support.
+                Yes! All components are built on Radix UI primitives with proper
+                ARIA attributes and keyboard navigation support.
               </PixelAccordionContent>
             </PixelAccordionItem>
           </PixelAccordion>
@@ -240,7 +306,8 @@ function DashboardContent() {
                 <PixelDialogHeader>
                   <PixelDialogTitle>Retro Dialog</PixelDialogTitle>
                   <PixelDialogDescription>
-                    This is a pixel-styled modal dialog with retro 8-bit aesthetics.
+                    This is a pixel-styled modal dialog with retro 8-bit
+                    aesthetics.
                   </PixelDialogDescription>
                 </PixelDialogHeader>
                 <div className="py-4">
@@ -255,12 +322,14 @@ function DashboardContent() {
               </PixelDialogContent>
             </PixelDialog>
 
-            <PixelButton 
+            <PixelButton
               variant="destructive"
-              onClick={() => addToast("This is a destructive action!", {
-                label: "Undo",
-                onClick: () => addToast("Action undone!")
-              })}
+              onClick={() =>
+                addToast("This is a destructive action!", {
+                  label: "Undo",
+                  onClick: () => addToast("Action undone!"),
+                })
+              }
             >
               Show Toast
             </PixelButton>
@@ -279,8 +348,12 @@ function DashboardContent() {
               </PixelCardHeader>
               <PixelCardContent className="space-y-2">
                 <PixelButton className="w-full">Default</PixelButton>
-                <PixelButton className="w-full" variant="secondary">Secondary</PixelButton>
-                <PixelButton className="w-full" variant="ghost">Ghost</PixelButton>
+                <PixelButton className="w-full" variant="secondary">
+                  Secondary
+                </PixelButton>
+                <PixelButton className="w-full" variant="ghost">
+                  Ghost
+                </PixelButton>
               </PixelCardContent>
             </PixelCard>
 

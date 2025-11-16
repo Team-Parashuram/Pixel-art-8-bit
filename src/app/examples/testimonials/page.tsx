@@ -1,18 +1,18 @@
 "use client";
 
-import { 
-  PixelTestimonials,
-  PixelTestimonialCard,
-  PixelTestimonialQuote,
+import {
   PixelTestimonialAuthor,
   PixelTestimonialAvatar,
+  PixelTestimonialCard,
   PixelTestimonialInfo,
   PixelTestimonialName,
-  PixelTestimonialRole,
+  PixelTestimonialQuote,
   PixelTestimonialRating,
+  PixelTestimonialRole,
+  PixelTestimonials,
   PixelTestimonialsHeader,
+  PixelTestimonialsSectionDescription,
   PixelTestimonialsSectionTitle,
-  PixelTestimonialsSectionDescription
 } from "@/components/ui/pixel/pixel-testimonials";
 
 export default function TestimonialsExamples() {
@@ -37,26 +37,31 @@ export default function TestimonialsExamples() {
             Simple testimonial grid with ratings and avatars
           </p>
         </div>
-        
+
         <PixelTestimonials columns={3} gap="md">
           <PixelTestimonialCard variant="default">
             <PixelTestimonialRating>⭐⭐⭐⭐⭐</PixelTestimonialRating>
             <PixelTestimonialQuote>
-              "This component library completely transformed our design workflow. The pixel-art aesthetic is absolutely perfect for our retro gaming platform!"
+              "This component library completely transformed our design
+              workflow. The pixel-art aesthetic is absolutely perfect for our
+              retro gaming platform!"
             </PixelTestimonialQuote>
             <PixelTestimonialAuthor>
               <PixelTestimonialAvatar>SM</PixelTestimonialAvatar>
               <PixelTestimonialInfo>
                 <PixelTestimonialName>Sarah Miller</PixelTestimonialName>
-                <PixelTestimonialRole>Lead Designer, GameDev Studios</PixelTestimonialRole>
+                <PixelTestimonialRole>
+                  Lead Designer, GameDev Studios
+                </PixelTestimonialRole>
               </PixelTestimonialInfo>
             </PixelTestimonialAuthor>
           </PixelTestimonialCard>
-          
+
           <PixelTestimonialCard variant="primary">
             <PixelTestimonialRating>⭐⭐⭐⭐⭐</PixelTestimonialRating>
             <PixelTestimonialQuote>
-              "Easy to use, highly customizable, and the documentation is excellent. Our team shipped features faster than ever before."
+              "Easy to use, highly customizable, and the documentation is
+              excellent. Our team shipped features faster than ever before."
             </PixelTestimonialQuote>
             <PixelTestimonialAuthor>
               <PixelTestimonialAvatar>MJ</PixelTestimonialAvatar>
@@ -66,17 +71,20 @@ export default function TestimonialsExamples() {
               </PixelTestimonialInfo>
             </PixelTestimonialAuthor>
           </PixelTestimonialCard>
-          
+
           <PixelTestimonialCard variant="default">
             <PixelTestimonialRating>⭐⭐⭐⭐</PixelTestimonialRating>
             <PixelTestimonialQuote>
-              "The attention to detail is remarkable. Every component feels thoughtfully crafted and production-ready out of the box."
+              "The attention to detail is remarkable. Every component feels
+              thoughtfully crafted and production-ready out of the box."
             </PixelTestimonialQuote>
             <PixelTestimonialAuthor>
               <PixelTestimonialAvatar>EK</PixelTestimonialAvatar>
               <PixelTestimonialInfo>
                 <PixelTestimonialName>Emma Kim</PixelTestimonialName>
-                <PixelTestimonialRole>Product Manager, TechCorp</PixelTestimonialRole>
+                <PixelTestimonialRole>
+                  Product Manager, TechCorp
+                </PixelTestimonialRole>
               </PixelTestimonialInfo>
             </PixelTestimonialAuthor>
           </PixelTestimonialCard>
@@ -93,53 +101,65 @@ export default function TestimonialsExamples() {
             Add section title and description above testimonials
           </p>
         </div>
-        
+
         <PixelTestimonials columns={3} gap="md">
           <PixelTestimonialsHeader>
-            <PixelTestimonialsSectionTitle>What Our Users Say</PixelTestimonialsSectionTitle>
+            <PixelTestimonialsSectionTitle>
+              What Our Users Say
+            </PixelTestimonialsSectionTitle>
             <PixelTestimonialsSectionDescription>
-              Don't just take our word for it - hear from developers and designers who love Pixel UI
+              Don't just take our word for it - hear from developers and
+              designers who love Pixel UI
             </PixelTestimonialsSectionDescription>
           </PixelTestimonialsHeader>
-          
+
           <PixelTestimonialCard variant="default">
             <PixelTestimonialRating>⭐⭐⭐⭐⭐</PixelTestimonialRating>
             <PixelTestimonialQuote>
-              "The best pixel-art component library I've ever used. Makes building retro interfaces a breeze!"
+              "The best pixel-art component library I've ever used. Makes
+              building retro interfaces a breeze!"
             </PixelTestimonialQuote>
             <PixelTestimonialAuthor>
               <PixelTestimonialAvatar>🎮</PixelTestimonialAvatar>
               <PixelTestimonialInfo>
                 <PixelTestimonialName>Alex Chen</PixelTestimonialName>
-                <PixelTestimonialRole>Indie Game Developer</PixelTestimonialRole>
+                <PixelTestimonialRole>
+                  Indie Game Developer
+                </PixelTestimonialRole>
               </PixelTestimonialInfo>
             </PixelTestimonialAuthor>
           </PixelTestimonialCard>
-          
+
           <PixelTestimonialCard variant="secondary">
             <PixelTestimonialRating>⭐⭐⭐⭐⭐</PixelTestimonialRating>
             <PixelTestimonialQuote>
-              "Saved us months of development time. The components are well-documented and easy to customize."
+              "Saved us months of development time. The components are
+              well-documented and easy to customize."
             </PixelTestimonialQuote>
             <PixelTestimonialAuthor>
               <PixelTestimonialAvatar>⚡</PixelTestimonialAvatar>
               <PixelTestimonialInfo>
                 <PixelTestimonialName>Rachel Torres</PixelTestimonialName>
-                <PixelTestimonialRole>Frontend Lead, RetroWeb</PixelTestimonialRole>
+                <PixelTestimonialRole>
+                  Frontend Lead, RetroWeb
+                </PixelTestimonialRole>
               </PixelTestimonialInfo>
             </PixelTestimonialAuthor>
           </PixelTestimonialCard>
-          
+
           <PixelTestimonialCard variant="default">
             <PixelTestimonialRating>⭐⭐⭐⭐⭐</PixelTestimonialRating>
             <PixelTestimonialQuote>
-              "Finally, a component library that perfectly captures the retro aesthetic we were looking for!"
+              "Finally, a component library that perfectly captures the retro
+              aesthetic we were looking for!"
             </PixelTestimonialQuote>
             <PixelTestimonialAuthor>
               <PixelTestimonialAvatar>🎨</PixelTestimonialAvatar>
               <PixelTestimonialInfo>
                 <PixelTestimonialName>David Park</PixelTestimonialName>
-                <PixelTestimonialRole>Creative Director, PixelForce</PixelTestimonialRole>
+                <PixelTestimonialRole>
+                  Creative Director, PixelForce
+                </PixelTestimonialRole>
               </PixelTestimonialInfo>
             </PixelTestimonialAuthor>
           </PixelTestimonialCard>
@@ -156,32 +176,42 @@ export default function TestimonialsExamples() {
             Larger cards with more detailed testimonials
           </p>
         </div>
-        
+
         <PixelTestimonials columns={2} gap="lg">
           <PixelTestimonialCard variant="default">
             <PixelTestimonialRating>⭐⭐⭐⭐⭐</PixelTestimonialRating>
             <PixelTestimonialQuote>
-              "We've been using Pixel UI for our retro gaming marketplace and it's been incredible. The components are not only beautiful but also incredibly functional. Our users love the nostalgic feel, and we love how easy it is to maintain."
+              "We've been using Pixel UI for our retro gaming marketplace and
+              it's been incredible. The components are not only beautiful but
+              also incredibly functional. Our users love the nostalgic feel, and
+              we love how easy it is to maintain."
             </PixelTestimonialQuote>
             <PixelTestimonialAuthor>
               <PixelTestimonialAvatar>JW</PixelTestimonialAvatar>
               <PixelTestimonialInfo>
                 <PixelTestimonialName>Jessica Williams</PixelTestimonialName>
-                <PixelTestimonialRole>Founder & CEO, RetroMarket</PixelTestimonialRole>
+                <PixelTestimonialRole>
+                  Founder & CEO, RetroMarket
+                </PixelTestimonialRole>
               </PixelTestimonialInfo>
             </PixelTestimonialAuthor>
           </PixelTestimonialCard>
-          
+
           <PixelTestimonialCard variant="primary">
             <PixelTestimonialRating>⭐⭐⭐⭐⭐</PixelTestimonialRating>
             <PixelTestimonialQuote>
-              "The pixel-perfect borders and instant state changes give our app the authentic retro feel we wanted. Plus, the TypeScript support and accessibility features are top-notch. Highly recommended for any retro-themed project!"
+              "The pixel-perfect borders and instant state changes give our app
+              the authentic retro feel we wanted. Plus, the TypeScript support
+              and accessibility features are top-notch. Highly recommended for
+              any retro-themed project!"
             </PixelTestimonialQuote>
             <PixelTestimonialAuthor>
               <PixelTestimonialAvatar>TL</PixelTestimonialAvatar>
               <PixelTestimonialInfo>
                 <PixelTestimonialName>Thomas Lee</PixelTestimonialName>
-                <PixelTestimonialRole>Senior Developer, NostalgiaTech</PixelTestimonialRole>
+                <PixelTestimonialRole>
+                  Senior Developer, NostalgiaTech
+                </PixelTestimonialRole>
               </PixelTestimonialInfo>
             </PixelTestimonialAuthor>
           </PixelTestimonialCard>
@@ -198,18 +228,26 @@ export default function TestimonialsExamples() {
             Highlight a single testimonial with full width
           </p>
         </div>
-        
+
         <PixelTestimonials columns={1} gap="none" className="max-w-3xl mx-auto">
           <PixelTestimonialCard variant="dark">
             <PixelTestimonialRating>⭐⭐⭐⭐⭐</PixelTestimonialRating>
             <PixelTestimonialQuote>
-              "Pixel UI has become an essential part of our design system. The components are not only visually stunning with their retro aesthetic, but they're also incredibly well-built under the hood. The attention to accessibility, TypeScript support, and comprehensive documentation makes this the gold standard for pixel-art UI libraries. Our entire team is in love with it, and our users can't stop complimenting the design!"
+              "Pixel UI has become an essential part of our design system. The
+              components are not only visually stunning with their retro
+              aesthetic, but they're also incredibly well-built under the hood.
+              The attention to accessibility, TypeScript support, and
+              comprehensive documentation makes this the gold standard for
+              pixel-art UI libraries. Our entire team is in love with it, and
+              our users can't stop complimenting the design!"
             </PixelTestimonialQuote>
             <PixelTestimonialAuthor>
               <PixelTestimonialAvatar>👨‍💻</PixelTestimonialAvatar>
               <PixelTestimonialInfo>
                 <PixelTestimonialName>Marcus Rodriguez</PixelTestimonialName>
-                <PixelTestimonialRole>VP of Engineering, PixelCraft Industries</PixelTestimonialRole>
+                <PixelTestimonialRole>
+                  VP of Engineering, PixelCraft Industries
+                </PixelTestimonialRole>
               </PixelTestimonialInfo>
             </PixelTestimonialAuthor>
           </PixelTestimonialCard>
@@ -226,19 +264,22 @@ export default function TestimonialsExamples() {
             Dark background for dramatic presentation
           </p>
         </div>
-        
+
         <PixelTestimonials columns={3} gap="md" variant="dark">
           <PixelTestimonialsHeader>
-            <PixelTestimonialsSectionTitle>Trusted by Developers</PixelTestimonialsSectionTitle>
+            <PixelTestimonialsSectionTitle>
+              Trusted by Developers
+            </PixelTestimonialsSectionTitle>
             <PixelTestimonialsSectionDescription>
               Join thousands of developers building amazing retro interfaces
             </PixelTestimonialsSectionDescription>
           </PixelTestimonialsHeader>
-          
+
           <PixelTestimonialCard variant="dark">
             <PixelTestimonialRating>⭐⭐⭐⭐⭐</PixelTestimonialRating>
             <PixelTestimonialQuote>
-              "The best investment we made for our project. Clean, professional, and perfectly retro."
+              "The best investment we made for our project. Clean, professional,
+              and perfectly retro."
             </PixelTestimonialQuote>
             <PixelTestimonialAuthor>
               <PixelTestimonialAvatar>🚀</PixelTestimonialAvatar>
@@ -248,31 +289,37 @@ export default function TestimonialsExamples() {
               </PixelTestimonialInfo>
             </PixelTestimonialAuthor>
           </PixelTestimonialCard>
-          
+
           <PixelTestimonialCard variant="dark">
             <PixelTestimonialRating>⭐⭐⭐⭐⭐</PixelTestimonialRating>
             <PixelTestimonialQuote>
-              "Outstanding quality and support. Made our retro app look professional from day one."
+              "Outstanding quality and support. Made our retro app look
+              professional from day one."
             </PixelTestimonialQuote>
             <PixelTestimonialAuthor>
               <PixelTestimonialAvatar>💎</PixelTestimonialAvatar>
               <PixelTestimonialInfo>
                 <PixelTestimonialName>Oliver Zhang</PixelTestimonialName>
-                <PixelTestimonialRole>Lead Dev, DiamondPixel</PixelTestimonialRole>
+                <PixelTestimonialRole>
+                  Lead Dev, DiamondPixel
+                </PixelTestimonialRole>
               </PixelTestimonialInfo>
             </PixelTestimonialAuthor>
           </PixelTestimonialCard>
-          
+
           <PixelTestimonialCard variant="dark">
             <PixelTestimonialRating>⭐⭐⭐⭐</PixelTestimonialRating>
             <PixelTestimonialQuote>
-              "Great components with excellent documentation. Helped us ship our MVP in record time."
+              "Great components with excellent documentation. Helped us ship our
+              MVP in record time."
             </PixelTestimonialQuote>
             <PixelTestimonialAuthor>
               <PixelTestimonialAvatar>⭐</PixelTestimonialAvatar>
               <PixelTestimonialInfo>
                 <PixelTestimonialName>Lisa Anderson</PixelTestimonialName>
-                <PixelTestimonialRole>Product Lead, StarBits</PixelTestimonialRole>
+                <PixelTestimonialRole>
+                  Product Lead, StarBits
+                </PixelTestimonialRole>
               </PixelTestimonialInfo>
             </PixelTestimonialAuthor>
           </PixelTestimonialCard>
@@ -289,46 +336,55 @@ export default function TestimonialsExamples() {
             Use different card styles for visual variety
           </p>
         </div>
-        
+
         <PixelTestimonials columns={3} gap="md">
           <PixelTestimonialCard variant="default">
             <PixelTestimonialRating>⭐⭐⭐⭐⭐</PixelTestimonialRating>
             <PixelTestimonialQuote>
-              "Clean, simple, and effective. Perfect for our minimalist design approach."
+              "Clean, simple, and effective. Perfect for our minimalist design
+              approach."
             </PixelTestimonialQuote>
             <PixelTestimonialAuthor>
               <PixelTestimonialAvatar>KM</PixelTestimonialAvatar>
               <PixelTestimonialInfo>
                 <PixelTestimonialName>Kevin Martinez</PixelTestimonialName>
-                <PixelTestimonialRole>UI Designer, MinimalCo</PixelTestimonialRole>
+                <PixelTestimonialRole>
+                  UI Designer, MinimalCo
+                </PixelTestimonialRole>
               </PixelTestimonialInfo>
             </PixelTestimonialAuthor>
           </PixelTestimonialCard>
-          
+
           <PixelTestimonialCard variant="primary">
             <PixelTestimonialRating>⭐⭐⭐⭐⭐</PixelTestimonialRating>
             <PixelTestimonialQuote>
-              "The orange accents add just the right amount of energy to our design system!"
+              "The orange accents add just the right amount of energy to our
+              design system!"
             </PixelTestimonialQuote>
             <PixelTestimonialAuthor>
               <PixelTestimonialAvatar>🔥</PixelTestimonialAvatar>
               <PixelTestimonialInfo>
                 <PixelTestimonialName>Sophie Turner</PixelTestimonialName>
-                <PixelTestimonialRole>Brand Designer, FireStudio</PixelTestimonialRole>
+                <PixelTestimonialRole>
+                  Brand Designer, FireStudio
+                </PixelTestimonialRole>
               </PixelTestimonialInfo>
             </PixelTestimonialAuthor>
           </PixelTestimonialCard>
-          
+
           <PixelTestimonialCard variant="secondary">
             <PixelTestimonialRating>⭐⭐⭐⭐</PixelTestimonialRating>
             <PixelTestimonialQuote>
-              "The gold variant is perfect for our premium tier features. Love the flexibility!"
+              "The gold variant is perfect for our premium tier features. Love
+              the flexibility!"
             </PixelTestimonialQuote>
             <PixelTestimonialAuthor>
               <PixelTestimonialAvatar>👑</PixelTestimonialAvatar>
               <PixelTestimonialInfo>
                 <PixelTestimonialName>James Wilson</PixelTestimonialName>
-                <PixelTestimonialRole>Director, GoldRush Games</PixelTestimonialRole>
+                <PixelTestimonialRole>
+                  Director, GoldRush Games
+                </PixelTestimonialRole>
               </PixelTestimonialInfo>
             </PixelTestimonialAuthor>
           </PixelTestimonialCard>

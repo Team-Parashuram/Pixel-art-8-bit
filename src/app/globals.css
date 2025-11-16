@@ -26,9 +26,9 @@
   --color-pixel-light-border: #000000;
 
   /* Pixel Shadows */
-  --shadow-pixel: 4px 4px 0px 0px rgba(0,0,0,1);
-  --shadow-pixel-sm: 2px 2px 0px 0px rgba(0,0,0,1);
-  --shadow-pixel-lg: 6px 6px 0px 0px rgba(0,0,0,1);
+  --shadow-pixel: 4px 4px 0px 0px rgba(0, 0, 0, 1);
+  --shadow-pixel-sm: 2px 2px 0px 0px rgba(0, 0, 0, 1);
+  --shadow-pixel-lg: 6px 6px 0px 0px rgba(0, 0, 0, 1);
 
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
@@ -171,7 +171,8 @@
 
 /* Pixel Animation Keyframes */
 @keyframes pixel-glitch {
-  0%, 100% {
+  0%,
+  100% {
     transform: translate(0);
   }
   20% {
@@ -256,7 +257,8 @@
 }
 
 @keyframes pixel-float {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0px);
   }
   50% {
@@ -265,7 +267,8 @@
 }
 
 @keyframes pixel-pulse {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 1;
   }
   50% {
@@ -274,7 +277,8 @@
 }
 
 @keyframes pixel-bounce {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0);
   }
   50% {
@@ -283,13 +287,21 @@
 }
 
 @keyframes pixel-shake {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateX(0);
   }
-  10%, 30%, 50%, 70%, 90% {
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
     transform: translateX(-4px);
   }
-  20%, 40%, 60%, 80% {
+  20%,
+  40%,
+  60%,
+  80% {
     transform: translateX(4px);
   }
 }

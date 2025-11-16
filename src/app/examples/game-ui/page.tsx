@@ -1,16 +1,16 @@
 "use client";
 
 import { useState } from "react";
+import { PixelButton } from "@/components/ui/pixel/pixel-button";
 import {
-  PixelHealthBar,
-  PixelManaBar,
-  PixelXPBar,
-  PixelInventory,
-  PixelInventorySlot,
   PixelAchievement,
   PixelDamageNumber,
+  PixelHealthBar,
+  PixelInventory,
+  PixelInventorySlot,
+  PixelManaBar,
+  PixelXPBar,
 } from "@/components/ui/pixel/pixel-game-ui";
-import { PixelButton } from "@/components/ui/pixel/pixel-button";
 
 export default function GameUIExamples() {
   const [hp, setHp] = useState(75);
@@ -18,32 +18,38 @@ export default function GameUIExamples() {
   const [xp, setXp] = useState(350);
   const [level, setLevel] = useState(12);
   const [showAchievement, setShowAchievement] = useState(false);
-  const [damageNumbers, setDamageNumbers] = useState<Array<{ id: number; value: number; type: "damage" | "heal" | "critical" | "miss" }>>([]);
+  const [damageNumbers, setDamageNumbers] = useState<
+    Array<{
+      id: number;
+      value: number;
+      type: "damage" | "heal" | "critical" | "miss";
+    }>
+  >([]);
 
   const handleDamage = () => {
     setHp(Math.max(0, hp - 10));
     const id = Date.now();
-    setDamageNumbers(prev => [...prev, { id, value: 10, type: "damage" }]);
+    setDamageNumbers((prev) => [...prev, { id, value: 10, type: "damage" }]);
     setTimeout(() => {
-      setDamageNumbers(prev => prev.filter(d => d.id !== id));
+      setDamageNumbers((prev) => prev.filter((d) => d.id !== id));
     }, 1000);
   };
 
   const handleHeal = () => {
     setHp(Math.min(100, hp + 15));
     const id = Date.now();
-    setDamageNumbers(prev => [...prev, { id, value: 15, type: "heal" }]);
+    setDamageNumbers((prev) => [...prev, { id, value: 15, type: "heal" }]);
     setTimeout(() => {
-      setDamageNumbers(prev => prev.filter(d => d.id !== id));
+      setDamageNumbers((prev) => prev.filter((d) => d.id !== id));
     }, 1000);
   };
 
   const handleCritical = () => {
     setHp(Math.max(0, hp - 25));
     const id = Date.now();
-    setDamageNumbers(prev => [...prev, { id, value: 25, type: "critical" }]);
+    setDamageNumbers((prev) => [...prev, { id, value: 25, type: "critical" }]);
     setTimeout(() => {
-      setDamageNumbers(prev => prev.filter(d => d.id !== id));
+      setDamageNumbers((prev) => prev.filter((d) => d.id !== id));
     }, 1000);
   };
 
@@ -52,7 +58,7 @@ export default function GameUIExamples() {
       {/* Health Bars */}
       <section>
         <h2 className="text-3xl font-bold mb-8 font-pixel">Health Bars</h2>
-        
+
         <div className="space-y-8 max-w-2xl">
           <div>
             <h3 className="text-lg font-bold mb-4 font-pixel">Default Sizes</h3>
@@ -64,7 +70,9 @@ export default function GameUIExamples() {
           </div>
 
           <div>
-            <h3 className="text-lg font-bold mb-4 font-pixel">Different Health States</h3>
+            <h3 className="text-lg font-bold mb-4 font-pixel">
+              Different Health States
+            </h3>
             <div className="space-y-4">
               <PixelHealthBar current={85} max={100} label="High HP" />
               <PixelHealthBar current={45} max={100} label="Medium HP" />
@@ -74,13 +82,20 @@ export default function GameUIExamples() {
           </div>
 
           <div>
-            <h3 className="text-lg font-bold mb-4 font-pixel">Without Labels</h3>
+            <h3 className="text-lg font-bold mb-4 font-pixel">
+              Without Labels
+            </h3>
             <PixelHealthBar current={60} max={100} showLabel={false} />
           </div>
 
           <div>
             <h3 className="text-lg font-bold mb-4 font-pixel">Custom Color</h3>
-            <PixelHealthBar current={70} max={100} color="#ff00ff" label="Shield" />
+            <PixelHealthBar
+              current={70}
+              max={100}
+              color="#ff00ff"
+              label="Shield"
+            />
           </div>
         </div>
       </section>
@@ -88,7 +103,7 @@ export default function GameUIExamples() {
       {/* Mana Bars */}
       <section>
         <h2 className="text-3xl font-bold mb-8 font-pixel">Mana Bars</h2>
-        
+
         <div className="space-y-4 max-w-2xl">
           <PixelManaBar current={100} max={100} />
           <PixelManaBar current={60} max={100} />
@@ -100,11 +115,16 @@ export default function GameUIExamples() {
       {/* XP Bars */}
       <section>
         <h2 className="text-3xl font-bold mb-8 font-pixel">Experience Bars</h2>
-        
+
         <div className="space-y-4 max-w-2xl">
           <PixelXPBar currentXP={500} requiredXP={1000} level={15} />
           <PixelXPBar currentXP={xp} requiredXP={500} level={level} />
-          <PixelXPBar currentXP={250} requiredXP={500} level={5} showLevel={false} />
+          <PixelXPBar
+            currentXP={250}
+            requiredXP={500}
+            level={5}
+            showLevel={false}
+          />
           <PixelXPBar currentXP={950} requiredXP={1000} level={20} />
         </div>
       </section>
@@ -112,7 +132,7 @@ export default function GameUIExamples() {
       {/* Combined Stats */}
       <section>
         <h2 className="text-3xl font-bold mb-8 font-pixel">Character Stats</h2>
-        
+
         <div className="max-w-2xl border-4 border-black p-6 bg-white dark:bg-[#2a2a2a] shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
           <div className="mb-4 flex items-center gap-4">
             <div className="w-20 h-20 border-4 border-black bg-[#ff8c00] flex items-center justify-center text-4xl">
@@ -123,11 +143,16 @@ export default function GameUIExamples() {
               <p className="text-sm opacity-70">Level {level}</p>
             </div>
           </div>
-          
+
           <div className="space-y-3">
             <PixelHealthBar current={hp} max={100} />
             <PixelManaBar current={mp} max={100} />
-            <PixelXPBar currentXP={xp} requiredXP={500} level={level} showLevel={false} />
+            <PixelXPBar
+              currentXP={xp}
+              requiredXP={500}
+              level={level}
+              showLevel={false}
+            />
           </div>
 
           <div className="mt-6 flex gap-2">
@@ -144,7 +169,7 @@ export default function GameUIExamples() {
 
           {/* Damage Numbers Display */}
           <div className="relative mt-6 h-20 flex items-center justify-center">
-            {damageNumbers.map(dmg => (
+            {damageNumbers.map((dmg) => (
               <div key={dmg.id} className="absolute">
                 <PixelDamageNumber value={dmg.value} type={dmg.type} />
               </div>
@@ -156,10 +181,12 @@ export default function GameUIExamples() {
       {/* Inventory */}
       <section>
         <h2 className="text-3xl font-bold mb-8 font-pixel">Inventory System</h2>
-        
+
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <div>
-            <h3 className="text-lg font-bold mb-4 font-pixel">Basic Inventory</h3>
+            <h3 className="text-lg font-bold mb-4 font-pixel">
+              Basic Inventory
+            </h3>
             <PixelInventory columns={5} title="Backpack">
               <PixelInventorySlot item="⚔️" />
               <PixelInventorySlot item="🛡️" count={1} rarity="rare" />
@@ -175,7 +202,9 @@ export default function GameUIExamples() {
           </div>
 
           <div>
-            <h3 className="text-lg font-bold mb-4 font-pixel">Full Inventory</h3>
+            <h3 className="text-lg font-bold mb-4 font-pixel">
+              Full Inventory
+            </h3>
             <PixelInventory columns={4} title="Storage">
               <PixelInventorySlot item="💎" count={10} rarity="rare" />
               <PixelInventorySlot item="🪙" count={99} rarity="common" />
@@ -189,7 +218,9 @@ export default function GameUIExamples() {
           </div>
 
           <div>
-            <h3 className="text-lg font-bold mb-4 font-pixel">Equipment Slots</h3>
+            <h3 className="text-lg font-bold mb-4 font-pixel">
+              Equipment Slots
+            </h3>
             <PixelInventory columns={3} title="Equipment">
               <PixelInventorySlot item="🪖" rarity="rare" />
               <PixelInventorySlot item="👕" rarity="epic" />
@@ -216,8 +247,10 @@ export default function GameUIExamples() {
 
       {/* Achievements */}
       <section>
-        <h2 className="text-3xl font-bold mb-8 font-pixel">Achievement Notifications</h2>
-        
+        <h2 className="text-3xl font-bold mb-8 font-pixel">
+          Achievement Notifications
+        </h2>
+
         <div className="space-y-4">
           <PixelAchievement
             variant="bronze"
@@ -281,7 +314,7 @@ export default function GameUIExamples() {
       {/* Damage Numbers */}
       <section>
         <h2 className="text-3xl font-bold mb-8 font-pixel">Damage Numbers</h2>
-        
+
         <div className="border-4 border-black p-8 bg-white dark:bg-[#2a2a2a] shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
           <div className="flex items-center justify-center gap-8 flex-wrap">
             <PixelDamageNumber value={50} type="damage" />
@@ -302,7 +335,7 @@ export default function GameUIExamples() {
               {`<PixelHealthBar current={75} max={100} label="HP" />`}
             </code>
           </div>
-          
+
           <div>
             <p className="font-bold mb-2">Inventory with Items:</p>
             <code className="block bg-white dark:bg-black p-4 border-2 border-black overflow-x-auto">
@@ -313,7 +346,7 @@ export default function GameUIExamples() {
 </PixelInventory>`}
             </code>
           </div>
-          
+
           <div>
             <p className="font-bold mb-2">Achievement Notification:</p>
             <code className="block bg-white dark:bg-black p-4 border-2 border-black overflow-x-auto">

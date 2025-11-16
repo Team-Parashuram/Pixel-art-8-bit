@@ -1,17 +1,17 @@
 "use client";
 
 import { useState } from "react";
+import { PixelButton } from "@/components/ui/pixel/pixel-button";
 import {
+  PixelStartButton,
+  PixelTaskbar,
+  PixelTaskbarItem,
   PixelWindow,
   PixelWindowContent,
   PixelWindowFooter,
   PixelWindowMenuBar,
   PixelWindowMenuItem,
-  PixelTaskbar,
-  PixelStartButton,
-  PixelTaskbarItem,
 } from "@/components/ui/pixel/pixel-window";
-import { PixelButton } from "@/components/ui/pixel/pixel-button";
 
 export default function WindowExamples() {
   const [windows, setWindows] = useState([
@@ -25,17 +25,15 @@ export default function WindowExamples() {
 
   const toggleMinimize = (id: number) => {
     setWindows(
-      windows.map((w) =>
-        w.id === id ? { ...w, minimized: !w.minimized } : w
-      )
+      windows.map((w) => (w.id === id ? { ...w, minimized: !w.minimized } : w)),
     );
   };
 
   const toggleMaximize = (id: number) => {
     setWindows(
       windows.map((w) =>
-        w.id === id ? { ...w, maximized: !w.maximized, minimized: false } : w
-      )
+        w.id === id ? { ...w, maximized: !w.maximized, minimized: false } : w,
+      ),
     );
   };
 
@@ -47,7 +45,9 @@ export default function WindowExamples() {
 
         <div className="grid grid-cols-1 gap-12">
           <div>
-            <h3 className="text-xl font-bold mb-4 font-pixel">Default Window</h3>
+            <h3 className="text-xl font-bold mb-4 font-pixel">
+              Default Window
+            </h3>
             <PixelWindow title="Untitled Document" icon="📄">
               <PixelWindowContent>
                 <p>This is a basic Windows 95-style window.</p>
@@ -56,7 +56,9 @@ export default function WindowExamples() {
           </div>
 
           <div>
-            <h3 className="text-xl font-bold mb-4 font-pixel">Blue Title Bar</h3>
+            <h3 className="text-xl font-bold mb-4 font-pixel">
+              Blue Title Bar
+            </h3>
             <PixelWindow title="My Computer" icon="💻" variant="blue">
               <PixelWindowContent>
                 <p>A window with a blue title bar variant.</p>
@@ -86,7 +88,9 @@ export default function WindowExamples() {
 
       {/* With Menu Bar */}
       <section>
-        <h2 className="text-3xl font-bold mb-8 font-pixel">Windows with Menu Bar</h2>
+        <h2 className="text-3xl font-bold mb-8 font-pixel">
+          Windows with Menu Bar
+        </h2>
 
         <div className="grid grid-cols-1 gap-12">
           <div>
@@ -110,7 +114,12 @@ export default function WindowExamples() {
 
           <div>
             <h3 className="text-xl font-bold mb-4 font-pixel">Paint Style</h3>
-            <PixelWindow title="Paint - Untitled" icon="🎨" size="xl" variant="blue">
+            <PixelWindow
+              title="Paint - Untitled"
+              icon="🎨"
+              size="xl"
+              variant="blue"
+            >
               <PixelWindowMenuBar>
                 <PixelWindowMenuItem>File</PixelWindowMenuItem>
                 <PixelWindowMenuItem>Edit</PixelWindowMenuItem>
@@ -137,16 +146,27 @@ export default function WindowExamples() {
 
       {/* With Footer */}
       <section>
-        <h2 className="text-3xl font-bold mb-8 font-pixel">Windows with Footer</h2>
+        <h2 className="text-3xl font-bold mb-8 font-pixel">
+          Windows with Footer
+        </h2>
 
         <div className="grid grid-cols-1 gap-12">
           <div>
-            <h3 className="text-xl font-bold mb-4 font-pixel">Properties Window</h3>
-            <PixelWindow title="System Properties" icon="⚙️" variant="teal" size="md">
+            <h3 className="text-xl font-bold mb-4 font-pixel">
+              Properties Window
+            </h3>
+            <PixelWindow
+              title="System Properties"
+              icon="⚙️"
+              variant="teal"
+              size="md"
+            >
               <PixelWindowContent>
                 <div className="space-y-4">
                   <div>
-                    <label className="font-bold font-pixel text-sm">Computer Name:</label>
+                    <label className="font-bold font-pixel text-sm">
+                      Computer Name:
+                    </label>
                     <input
                       type="text"
                       className="w-full mt-1 p-2 border-2 border-black"
@@ -154,7 +174,9 @@ export default function WindowExamples() {
                     />
                   </div>
                   <div>
-                    <label className="font-bold font-pixel text-sm">Workgroup:</label>
+                    <label className="font-bold font-pixel text-sm">
+                      Workgroup:
+                    </label>
                     <input
                       type="text"
                       className="w-full mt-1 p-2 border-2 border-black"
@@ -184,19 +206,24 @@ export default function WindowExamples() {
             <PixelWindow title="My Documents" icon="📁" size="lg">
               <PixelWindowContent>
                 <div className="grid grid-cols-4 gap-4">
-                  {["📄 Document.txt", "📊 Spreadsheet.xls", "🖼️ Image.jpg", "📁 Folder"].map(
-                    (item) => (
-                      <div
-                        key={item}
-                        className="flex flex-col items-center p-3 hover:bg-blue-100 cursor-pointer"
-                      >
-                        <span className="text-2xl mb-1">{item.split(" ")[0]}</span>
-                        <span className="text-xs text-center font-pixel">
-                          {item.split(" ")[1]}
-                        </span>
-                      </div>
-                    )
-                  )}
+                  {[
+                    "📄 Document.txt",
+                    "📊 Spreadsheet.xls",
+                    "🖼️ Image.jpg",
+                    "📁 Folder",
+                  ].map((item) => (
+                    <div
+                      key={item}
+                      className="flex flex-col items-center p-3 hover:bg-blue-100 cursor-pointer"
+                    >
+                      <span className="text-2xl mb-1">
+                        {item.split(" ")[0]}
+                      </span>
+                      <span className="text-xs text-center font-pixel">
+                        {item.split(" ")[1]}
+                      </span>
+                    </div>
+                  ))}
                 </div>
               </PixelWindowContent>
               <PixelWindowFooter>
@@ -222,7 +249,9 @@ export default function WindowExamples() {
           </div>
 
           <div>
-            <h3 className="text-lg font-bold mb-4 font-pixel">Medium (Default)</h3>
+            <h3 className="text-lg font-bold mb-4 font-pixel">
+              Medium (Default)
+            </h3>
             <PixelWindow title="Message" icon="💬" size="md">
               <PixelWindowContent>
                 <p>This is a medium-sized window.</p>
@@ -250,15 +279,21 @@ export default function WindowExamples() {
           <div className="absolute top-4 left-4 space-y-4">
             <div className="flex flex-col items-center cursor-pointer hover:bg-black/20 p-2">
               <span className="text-4xl">💻</span>
-              <span className="text-white text-xs font-pixel mt-1">My Computer</span>
+              <span className="text-white text-xs font-pixel mt-1">
+                My Computer
+              </span>
             </div>
             <div className="flex flex-col items-center cursor-pointer hover:bg-black/20 p-2">
               <span className="text-4xl">🗑️</span>
-              <span className="text-white text-xs font-pixel mt-1">Recycle Bin</span>
+              <span className="text-white text-xs font-pixel mt-1">
+                Recycle Bin
+              </span>
             </div>
             <div className="flex flex-col items-center cursor-pointer hover:bg-black/20 p-2">
               <span className="text-4xl">📁</span>
-              <span className="text-white text-xs font-pixel mt-1">My Documents</span>
+              <span className="text-white text-xs font-pixel mt-1">
+                My Documents
+              </span>
             </div>
           </div>
 
@@ -278,8 +313,8 @@ export default function WindowExamples() {
               >
                 <PixelWindowContent>
                   <p>
-                    This is {window.title}. Try minimizing, maximizing, or closing this
-                    window.
+                    This is {window.title}. Try minimizing, maximizing, or
+                    closing this window.
                   </p>
                 </PixelWindowContent>
               </PixelWindow>

@@ -1,8 +1,8 @@
 "use client";
 
+import { cva, type VariantProps } from "class-variance-authority";
 import * as React from "react";
 import { cn } from "@/lib/utils";
-import { cva, type VariantProps } from "class-variance-authority";
 
 const pixelBlurTextVariants = cva(
   "font-bold uppercase tracking-wider pixel-font inline-block",
@@ -25,7 +25,7 @@ const pixelBlurTextVariants = cva(
       variant: "default",
       size: "md",
     },
-  }
+  },
 );
 
 export interface PixelBlurTextProps
@@ -47,7 +47,7 @@ const PixelBlurText = React.forwardRef<HTMLDivElement, PixelBlurTextProps>(
       className,
       ...props
     },
-    ref
+    ref,
   ) => {
     const [isVisible, setIsVisible] = React.useState(false);
     const [isHovered, setIsHovered] = React.useState(false);
@@ -60,7 +60,7 @@ const PixelBlurText = React.forwardRef<HTMLDivElement, PixelBlurTextProps>(
             setIsVisible(true);
           }
         },
-        { threshold: 0.1 }
+        { threshold: 0.1 },
       );
 
       if (containerRef.current) {
@@ -82,7 +82,7 @@ const PixelBlurText = React.forwardRef<HTMLDivElement, PixelBlurTextProps>(
         className={cn(
           pixelBlurTextVariants({ variant, size }),
           "relative overflow-hidden",
-          className
+          className,
         )}
         onMouseEnter={() => animateOnHover && setIsHovered(true)}
         onMouseLeave={() => animateOnHover && setIsHovered(false)}
@@ -105,7 +105,7 @@ const PixelBlurText = React.forwardRef<HTMLDivElement, PixelBlurTextProps>(
         ))}
       </div>
     );
-  }
+  },
 );
 
 PixelBlurText.displayName = "PixelBlurText";

@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { Slot } from "@radix-ui/react-slot"
-import { cn } from "@/lib/utils"
+import { Slot } from "@radix-ui/react-slot";
+import type * as React from "react";
+import { cn } from "@/lib/utils";
 
 function PixelInputGroup({ className, ...props }: React.ComponentProps<"div">) {
   return (
@@ -11,11 +11,11 @@ function PixelInputGroup({ className, ...props }: React.ComponentProps<"div">) {
         "group/input-group relative flex h-9 w-full items-center overflow-hidden border-4 border-black bg-[#fffacd] dark:bg-[#2a2a2a] shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]",
         "has-[:focus-visible]:border-[#ff6b6b] has-[:disabled]:opacity-50",
         "font-[family-name:var(--font-press-start)]",
-        className
+        className,
       )}
       {...props}
     />
-  )
+  );
 }
 
 function PixelInputGroupAddon({
@@ -24,10 +24,10 @@ function PixelInputGroupAddon({
   asChild = false,
   ...props
 }: React.ComponentProps<"div"> & {
-  align?: "inline-start" | "inline-end" | "block-start" | "block-end"
-  asChild?: boolean
+  align?: "inline-start" | "inline-end" | "block-start" | "block-end";
+  asChild?: boolean;
 }) {
-  const Comp = asChild ? Slot : "div"
+  const Comp = asChild ? Slot : "div";
 
   return (
     <Comp
@@ -37,11 +37,11 @@ function PixelInputGroupAddon({
         align === "inline-end" && "order-last pr-3",
         align === "block-start" && "order-first w-full justify-start px-3 pt-3",
         align === "block-end" && "order-last w-full justify-start px-3 pb-3",
-        className
+        className,
       )}
       {...props}
     />
-  )
+  );
 }
 
 function PixelInputGroupInput({
@@ -52,11 +52,11 @@ function PixelInputGroupInput({
     <input
       className={cn(
         "flex h-full min-w-0 flex-1 bg-transparent px-3 text-xs outline-none placeholder:text-[#555] dark:placeholder:text-[#aaa] disabled:cursor-not-allowed",
-        className
+        className,
       )}
       {...props}
     />
-  )
+  );
 }
 
-export { PixelInputGroup, PixelInputGroupAddon, PixelInputGroupInput }
+export { PixelInputGroup, PixelInputGroupAddon, PixelInputGroupInput };

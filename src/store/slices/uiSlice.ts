@@ -1,76 +1,76 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 
 export interface UIState {
-  sidebarOpen: boolean
-  sidebarCollapsed: boolean
-  searchOpen: boolean
-  searchQuery: string
-  activeModal: string | null
-  loading: boolean
-  debugMode: boolean
-  showGridOverlay: boolean
+  sidebarOpen: boolean;
+  sidebarCollapsed: boolean;
+  searchOpen: boolean;
+  searchQuery: string;
+  activeModal: string | null;
+  loading: boolean;
+  debugMode: boolean;
+  showGridOverlay: boolean;
 }
 
 const initialState: UIState = {
   sidebarOpen: true,
   sidebarCollapsed: false,
   searchOpen: false,
-  searchQuery: '',
+  searchQuery: "",
   activeModal: null,
   loading: false,
   debugMode: false,
   showGridOverlay: false,
-}
+};
 
 const uiSlice = createSlice({
-  name: 'ui',
+  name: "ui",
   initialState,
   reducers: {
     toggleSidebar: (state) => {
-      state.sidebarOpen = !state.sidebarOpen
+      state.sidebarOpen = !state.sidebarOpen;
     },
     setSidebarOpen: (state, action: PayloadAction<boolean>) => {
-      state.sidebarOpen = action.payload
+      state.sidebarOpen = action.payload;
     },
     toggleSidebarCollapsed: (state) => {
-      state.sidebarCollapsed = !state.sidebarCollapsed
+      state.sidebarCollapsed = !state.sidebarCollapsed;
     },
     setSidebarCollapsed: (state, action: PayloadAction<boolean>) => {
-      state.sidebarCollapsed = action.payload
+      state.sidebarCollapsed = action.payload;
     },
     toggleSearch: (state) => {
-      state.searchOpen = !state.searchOpen
+      state.searchOpen = !state.searchOpen;
       if (!state.searchOpen) {
-        state.searchQuery = ''
+        state.searchQuery = "";
       }
     },
     setSearchOpen: (state, action: PayloadAction<boolean>) => {
-      state.searchOpen = action.payload
+      state.searchOpen = action.payload;
       if (!action.payload) {
-        state.searchQuery = ''
+        state.searchQuery = "";
       }
     },
     setSearchQuery: (state, action: PayloadAction<string>) => {
-      state.searchQuery = action.payload
+      state.searchQuery = action.payload;
     },
     openModal: (state, action: PayloadAction<string>) => {
-      state.activeModal = action.payload
+      state.activeModal = action.payload;
     },
     closeModal: (state) => {
-      state.activeModal = null
+      state.activeModal = null;
     },
     setLoading: (state, action: PayloadAction<boolean>) => {
-      state.loading = action.payload
+      state.loading = action.payload;
     },
     toggleDebugMode: (state) => {
-      state.debugMode = !state.debugMode
+      state.debugMode = !state.debugMode;
     },
     toggleGridOverlay: (state) => {
-      state.showGridOverlay = !state.showGridOverlay
+      state.showGridOverlay = !state.showGridOverlay;
     },
     resetUI: () => initialState,
   },
-})
+});
 
 export const {
   toggleSidebar,
@@ -86,6 +86,6 @@ export const {
   toggleDebugMode,
   toggleGridOverlay,
   resetUI,
-} = uiSlice.actions
+} = uiSlice.actions;
 
-export default uiSlice.reducer
+export default uiSlice.reducer;

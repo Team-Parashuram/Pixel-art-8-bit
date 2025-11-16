@@ -1,5 +1,5 @@
-import { cn } from "@/lib/utils"
-import { cva, type VariantProps } from "class-variance-authority"
+import { cva, type VariantProps } from "class-variance-authority";
+import { cn } from "@/lib/utils";
 
 function PixelEmpty({ className, ...props }: React.ComponentProps<"div">) {
   return (
@@ -7,23 +7,23 @@ function PixelEmpty({ className, ...props }: React.ComponentProps<"div">) {
       className={cn(
         "flex min-h-[200px] flex-col items-center justify-center gap-2 border-4 border-black bg-[#fffacd] dark:bg-[#2a2a2a] p-8 text-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]",
         "font-[family-name:var(--font-press-start)]",
-        className
+        className,
       )}
       {...props}
     />
-  )
+  );
 }
 
-function PixelEmptyHeader({ className, ...props }: React.ComponentProps<"div">) {
+function PixelEmptyHeader({
+  className,
+  ...props
+}: React.ComponentProps<"div">) {
   return (
     <div
-      className={cn(
-        "flex flex-col items-center gap-2",
-        className
-      )}
+      className={cn("flex flex-col items-center gap-2", className)}
       {...props}
     />
-  )
+  );
 }
 
 const pixelEmptyMediaVariants = cva(
@@ -38,8 +38,8 @@ const pixelEmptyMediaVariants = cva(
     defaultVariants: {
       variant: "default",
     },
-  }
-)
+  },
+);
 
 function PixelEmptyMedia({
   className,
@@ -51,40 +51,35 @@ function PixelEmptyMedia({
       className={cn(pixelEmptyMediaVariants({ variant }), className)}
       {...props}
     />
-  )
+  );
 }
 
 function PixelEmptyTitle({ className, ...props }: React.ComponentProps<"div">) {
-  return (
-    <div
-      className={cn("text-sm font-bold", className)}
-      {...props}
-    />
-  )
+  return <div className={cn("text-sm font-bold", className)} {...props} />;
 }
 
-function PixelEmptyDescription({ className, ...props }: React.ComponentProps<"p">) {
+function PixelEmptyDescription({
+  className,
+  ...props
+}: React.ComponentProps<"p">) {
   return (
     <p
-      className={cn(
-        "text-xs text-[#555] dark:text-[#aaa] max-w-sm",
-        className
-      )}
+      className={cn("text-xs text-[#555] dark:text-[#aaa] max-w-sm", className)}
       {...props}
     />
-  )
+  );
 }
 
-function PixelEmptyContent({ className, ...props }: React.ComponentProps<"div">) {
+function PixelEmptyContent({
+  className,
+  ...props
+}: React.ComponentProps<"div">) {
   return (
     <div
-      className={cn(
-        "flex flex-col items-center gap-2 mt-4",
-        className
-      )}
+      className={cn("flex flex-col items-center gap-2 mt-4", className)}
       {...props}
     />
-  )
+  );
 }
 
 export {
@@ -94,4 +89,4 @@ export {
   PixelEmptyTitle,
   PixelEmptyDescription,
   PixelEmptyContent,
-}
+};

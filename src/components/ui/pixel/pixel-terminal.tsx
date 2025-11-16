@@ -1,7 +1,7 @@
 "use client";
 
-import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
+import * as React from "react";
 import { cn } from "@/lib/utils";
 
 const pixelTerminalVariants = cva(
@@ -26,7 +26,7 @@ const pixelTerminalVariants = cva(
       variant: "default",
       size: "md",
     },
-  }
+  },
 );
 
 export interface Command {
@@ -62,7 +62,7 @@ const PixelTerminal = React.forwardRef<HTMLDivElement, PixelTerminalProps>(
       typingSpeed = 50,
       ...props
     },
-    ref
+    ref,
   ) => {
     const [history, setHistory] = React.useState<Command[]>([]);
     const [currentInput, setCurrentInput] = React.useState("");
@@ -73,21 +73,28 @@ const PixelTerminal = React.forwardRef<HTMLDivElement, PixelTerminalProps>(
     const terminalRef = React.useRef<HTMLDivElement>(null);
 
     // Default built-in commands
-    const builtInCommands: Record<string, (args: string[]) => string | React.ReactNode> = {
+    const builtInCommands: Record<
+      string,
+      (args: string[]) => string | React.ReactNode
+    > = {
       help: () => {
-        const availableCommands = Object.keys({ ...builtInCommands, ...customCommands });
-        return `Available commands:\n${availableCommands.map(cmd => `  ${cmd}`).join('\n')}`;
+        const availableCommands = Object.keys({
+          ...builtInCommands,
+          ...customCommands,
+        });
+        return `Available commands:\n${availableCommands.map((cmd) => `  ${cmd}`).join("\n")}`;
       },
       clear: () => {
         setHistory([]);
         return null;
       },
-      echo: (args) => args.join(' '),
+      echo: (args) => args.join(" "),
       date: () => new Date().toLocaleString(),
-      whoami: () => prompt.split('@')[0] || 'user',
-      pwd: () => '/home/user',
-      ls: () => 'Documents  Downloads  Pictures  Desktop',
-      about: () => 'Pixel Terminal - A retro-style terminal emulator\nBuilt with React and TypeScript',
+      whoami: () => prompt.split("@")[0] || "user",
+      pwd: () => "/home/user",
+      ls: () => "Documents  Downloads  Pictures  Desktop",
+      about: () =>
+        "Pixel Terminal - A retro-style terminal emulator\nBuilt with React and TypeScript",
     };
 
     const allCommands = { ...builtInCommands, ...customCommands };
@@ -101,7 +108,7 @@ const PixelTerminal = React.forwardRef<HTMLDivElement, PixelTerminalProps>(
           return;
         }
 
-        const [commandName, ...args] = trimmedInput.split(' ');
+        const [commandName, ...args] = trimmedInput.split(" ");
         const command = allCommands[commandName];
 
         if (command) {
@@ -128,7 +135,7 @@ const PixelTerminal = React.forwardRef<HTMLDivElement, PixelTerminalProps>(
           onCommand(commandName, args);
         }
       },
-      [allCommands, onCommand]
+      [allCommands, onCommand],
     );
 
     // Handle key events
@@ -163,7 +170,7 @@ const PixelTerminal = React.forwardRef<HTMLDivElement, PixelTerminalProps>(
         // Simple autocomplete
         const availableCommands = Object.keys(allCommands);
         const matches = availableCommands.filter((cmd) =>
-          cmd.startsWith(currentInput)
+          cmd.startsWith(currentInput),
         );
         if (matches.length === 1) {
           setCurrentInput(matches[0]);
@@ -229,7 +236,7 @@ const PixelTerminal = React.forwardRef<HTMLDivElement, PixelTerminalProps>(
                 <div
                   className={cn(
                     "mt-1 whitespace-pre-wrap",
-                    item.error && "text-red-500"
+                    item.error && "text-red-500",
                   )}
                 >
                   {item.output}
@@ -252,14 +259,12 @@ const PixelTerminal = React.forwardRef<HTMLDivElement, PixelTerminalProps>(
               spellCheck={false}
               autoComplete="off"
             />
-            {showCursor && (
-              <span className="animate-pulse">_</span>
-            )}
+            {showCursor && <span className="animate-pulse">_</span>}
           </div>
         </div>
       </div>
     );
-  }
+  },
 );
 PixelTerminal.displayName = "PixelTerminal";
 
@@ -282,11 +287,7 @@ const PixelTerminalPrompt = React.forwardRef<
   HTMLSpanElement,
   React.HTMLAttributes<HTMLSpanElement>
 >(({ className, children, ...props }, ref) => (
-  <span
-    ref={ref}
-    className={cn("opacity-70 font-mono", className)}
-    {...props}
-  >
+  <span ref={ref} className={cn("opacity-70 font-mono", className)} {...props}>
     {children}
   </span>
 ));

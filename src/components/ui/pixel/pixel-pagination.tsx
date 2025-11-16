@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { cn } from "@/lib/utils"
+import type * as React from "react";
+import { cn } from "@/lib/utils";
 
 interface PixelPaginationProps extends React.ComponentProps<"nav"> {}
 
@@ -13,7 +13,7 @@ function PixelPagination({ className, ...props }: PixelPaginationProps) {
       className={cn("mx-auto flex w-full justify-center", className)}
       {...props}
     />
-  )
+  );
 }
 
 function PixelPaginationContent({
@@ -25,16 +25,15 @@ function PixelPaginationContent({
       className={cn("flex flex-row items-center gap-1", className)}
       {...props}
     />
-  )
+  );
 }
 
 function PixelPaginationItem(props: React.ComponentProps<"li">) {
-  return <li {...props} />
+  return <li {...props} />;
 }
 
-interface PixelPaginationLinkProps
-  extends React.ComponentProps<"button"> {
-  isActive?: boolean
+interface PixelPaginationLinkProps extends React.ComponentProps<"button"> {
+  isActive?: boolean;
 }
 
 function PixelPaginationLink({
@@ -50,11 +49,11 @@ function PixelPaginationLink({
         "hover:bg-[#ffd700] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none",
         "font-[family-name:var(--font-press-start)]",
         isActive && "bg-[#ff6b6b] text-white hover:bg-[#ff6b6b]",
-        className
+        className,
       )}
       {...props}
     />
-  )
+  );
 }
 
 function PixelPaginationPrevious({
@@ -70,7 +69,7 @@ function PixelPaginationPrevious({
       <span>←</span>
       <span>Prev</span>
     </PixelPaginationLink>
-  )
+  );
 }
 
 function PixelPaginationNext({
@@ -86,7 +85,7 @@ function PixelPaginationNext({
       <span>Next</span>
       <span>→</span>
     </PixelPaginationLink>
-  )
+  );
 }
 
 function PixelPaginationEllipsis({
@@ -98,14 +97,14 @@ function PixelPaginationEllipsis({
       aria-hidden
       className={cn(
         "flex h-8 w-8 items-center justify-center font-[family-name:var(--font-press-start)]",
-        className
+        className,
       )}
       {...props}
     >
       <span className="sr-only">More pages</span>
       <span>...</span>
     </span>
-  )
+  );
 }
 
 export {
@@ -116,4 +115,4 @@ export {
   PixelPaginationPrevious,
   PixelPaginationNext,
   PixelPaginationEllipsis,
-}
+};

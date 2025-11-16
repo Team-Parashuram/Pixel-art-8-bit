@@ -1,7 +1,7 @@
 "use client";
 
-import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
+import * as React from "react";
 import { cn } from "@/lib/utils";
 
 const pixelWindowVariants = cva(
@@ -26,7 +26,7 @@ const pixelWindowVariants = cva(
       variant: "default",
       size: "md",
     },
-  }
+  },
 );
 
 export interface PixelWindowProps
@@ -65,7 +65,7 @@ const PixelWindow = React.forwardRef<HTMLDivElement, PixelWindowProps>(
       children,
       ...props
     },
-    ref
+    ref,
   ) => {
     const [position, setPosition] = React.useState({ x: 0, y: 0 });
     const [isDragging, setIsDragging] = React.useState(false);
@@ -105,13 +105,14 @@ const PixelWindow = React.forwardRef<HTMLDivElement, PixelWindowProps>(
       };
     }, [isDragging, dragStart]);
 
-    const windowStyle = draggable && !isMaximized
-      ? {
-          position: "absolute" as const,
-          left: `${position.x}px`,
-          top: `${position.y}px`,
-        }
-      : {};
+    const windowStyle =
+      draggable && !isMaximized
+        ? {
+            position: "absolute" as const,
+            left: `${position.x}px`,
+            top: `${position.y}px`,
+          }
+        : {};
 
     if (isMinimized) {
       return (
@@ -131,7 +132,7 @@ const PixelWindow = React.forwardRef<HTMLDivElement, PixelWindowProps>(
         className={cn(
           pixelWindowVariants({ variant, size }),
           isMaximized && "w-full h-full",
-          className
+          className,
         )}
         style={windowStyle}
         {...props}
@@ -140,17 +141,20 @@ const PixelWindow = React.forwardRef<HTMLDivElement, PixelWindowProps>(
         <div
           className={cn(
             "flex items-center justify-between px-2 py-1 border-b-4 border-black",
-            variant === "default" && "bg-gradient-to-r from-[#000080] to-[#1084d0] text-white",
+            variant === "default" &&
+              "bg-gradient-to-r from-[#000080] to-[#1084d0] text-white",
             variant === "blue" && "bg-[#000080] text-white",
             variant === "teal" && "bg-[#008080] text-white",
             variant === "dark" && "bg-black text-white",
-            draggable && "cursor-move select-none"
+            draggable && "cursor-move select-none",
           )}
           onMouseDown={handleMouseDown}
         >
           <div className="flex items-center gap-2 flex-1 min-w-0">
             {icon && <span className="text-base flex-shrink-0">{icon}</span>}
-            <span className="text-sm font-bold font-pixel truncate">{title}</span>
+            <span className="text-sm font-bold font-pixel truncate">
+              {title}
+            </span>
           </div>
 
           {/* Window Controls */}
@@ -198,7 +202,7 @@ const PixelWindow = React.forwardRef<HTMLDivElement, PixelWindowProps>(
         <div className="bg-white dark:bg-[#1a1a1a]">{children}</div>
       </div>
     );
-  }
+  },
 );
 PixelWindow.displayName = "PixelWindow";
 
@@ -221,7 +225,7 @@ const PixelWindowFooter = React.forwardRef<
     ref={ref}
     className={cn(
       "flex items-center justify-between px-4 py-2 border-t-4 border-black bg-[#c0c0c0]",
-      className
+      className,
     )}
     {...props}
   >
@@ -238,7 +242,7 @@ const PixelWindowMenuBar = React.forwardRef<
     ref={ref}
     className={cn(
       "flex items-center gap-1 px-2 py-1 border-b-2 border-black bg-[#c0c0c0]",
-      className
+      className,
     )}
     {...props}
   >
@@ -255,7 +259,7 @@ const PixelWindowMenuItem = React.forwardRef<
     ref={ref}
     className={cn(
       "px-3 py-1 text-sm font-pixel hover:bg-[#000080] hover:text-white border-2 border-transparent hover:border-black transition-colors",
-      className
+      className,
     )}
     {...props}
   >
@@ -273,7 +277,7 @@ const PixelTaskbar = React.forwardRef<
     ref={ref}
     className={cn(
       "fixed bottom-0 left-0 right-0 h-12 border-t-4 border-black bg-[#c0c0c0] flex items-center px-2 gap-2 shadow-[0_-4px_0px_0px_rgba(0,0,0,1)] z-50",
-      className
+      className,
     )}
     {...props}
   >
@@ -290,7 +294,7 @@ const PixelStartButton = React.forwardRef<
     ref={ref}
     className={cn(
       "flex items-center gap-2 px-4 py-2 border-4 border-black bg-[#c0c0c0] hover:bg-[#d0d0d0] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:shadow-none active:translate-x-[2px] active:translate-y-[2px] font-bold font-pixel",
-      className
+      className,
     )}
     {...props}
   >
@@ -310,7 +314,7 @@ const PixelTaskbarItem = React.forwardRef<
       "flex items-center gap-2 px-3 py-2 border-2 border-black bg-[#c0c0c0] hover:bg-[#d0d0d0] font-pixel text-sm",
       active && "shadow-[inset_2px_2px_0px_0px_rgba(0,0,0,0.3)]",
       !active && "shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]",
-      className
+      className,
     )}
     {...props}
   >

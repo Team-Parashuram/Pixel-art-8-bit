@@ -1,20 +1,20 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import * as ContextMenuPrimitive from "@radix-ui/react-context-menu"
-import { Check, ChevronRight } from "lucide-react"
-import { cn } from "@/lib/utils"
+import * as ContextMenuPrimitive from "@radix-ui/react-context-menu";
+import { Check, ChevronRight } from "lucide-react";
+import type * as React from "react";
+import { cn } from "@/lib/utils";
 
 function PixelContextMenu({
   ...props
 }: React.ComponentProps<typeof ContextMenuPrimitive.Root>) {
-  return <ContextMenuPrimitive.Root {...props} />
+  return <ContextMenuPrimitive.Root {...props} />;
 }
 
 function PixelContextMenuTrigger({
   ...props
 }: React.ComponentProps<typeof ContextMenuPrimitive.Trigger>) {
-  return <ContextMenuPrimitive.Trigger {...props} />
+  return <ContextMenuPrimitive.Trigger {...props} />;
 }
 
 function PixelContextMenuContent({
@@ -27,12 +27,12 @@ function PixelContextMenuContent({
         className={cn(
           "z-50 min-w-[8rem] overflow-hidden border-4 border-black bg-[#fffacd] dark:bg-[#2a2a2a] p-1 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]",
           "font-[family-name:var(--font-press-start)] text-xs duration-0",
-          className
+          className,
         )}
         {...props}
       />
     </ContextMenuPrimitive.Portal>
-  )
+  );
 }
 
 function PixelContextMenuItem({
@@ -40,7 +40,7 @@ function PixelContextMenuItem({
   inset,
   ...props
 }: React.ComponentProps<typeof ContextMenuPrimitive.Item> & {
-  inset?: boolean
+  inset?: boolean;
 }) {
   return (
     <ContextMenuPrimitive.Item
@@ -49,11 +49,11 @@ function PixelContextMenuItem({
         "hover:bg-[#ff6b6b] hover:text-white focus:bg-[#ff6b6b] focus:text-white",
         "data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
         inset && "pl-8",
-        className
+        className,
       )}
       {...props}
     />
-  )
+  );
 }
 
 function PixelContextMenuCheckboxItem({
@@ -68,7 +68,7 @@ function PixelContextMenuCheckboxItem({
         "relative flex cursor-pointer select-none items-center py-1.5 pl-8 pr-2 text-xs outline-none transition-colors duration-0",
         "hover:bg-[#ff6b6b] hover:text-white focus:bg-[#ff6b6b] focus:text-white",
         "data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
-        className
+        className,
       )}
       checked={checked}
       {...props}
@@ -80,7 +80,7 @@ function PixelContextMenuCheckboxItem({
       </span>
       {children}
     </ContextMenuPrimitive.CheckboxItem>
-  )
+  );
 }
 
 function PixelContextMenuRadioItem({
@@ -94,7 +94,7 @@ function PixelContextMenuRadioItem({
         "relative flex cursor-pointer select-none items-center py-1.5 pl-8 pr-2 text-xs outline-none transition-colors duration-0",
         "hover:bg-[#ff6b6b] hover:text-white focus:bg-[#ff6b6b] focus:text-white",
         "data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
-        className
+        className,
       )}
       {...props}
     >
@@ -105,7 +105,7 @@ function PixelContextMenuRadioItem({
       </span>
       {children}
     </ContextMenuPrimitive.RadioItem>
-  )
+  );
 }
 
 function PixelContextMenuLabel({
@@ -113,18 +113,18 @@ function PixelContextMenuLabel({
   inset,
   ...props
 }: React.ComponentProps<typeof ContextMenuPrimitive.Label> & {
-  inset?: boolean
+  inset?: boolean;
 }) {
   return (
     <ContextMenuPrimitive.Label
       className={cn(
         "px-2 py-1.5 text-xs font-bold",
         inset && "pl-8",
-        className
+        className,
       )}
       {...props}
     />
-  )
+  );
 }
 
 function PixelContextMenuSeparator({
@@ -136,13 +136,13 @@ function PixelContextMenuSeparator({
       className={cn("my-1 h-px bg-black", className)}
       {...props}
     />
-  )
+  );
 }
 
 function PixelContextMenuSub({
   ...props
 }: React.ComponentProps<typeof ContextMenuPrimitive.Sub>) {
-  return <ContextMenuPrimitive.Sub {...props} />
+  return <ContextMenuPrimitive.Sub {...props} />;
 }
 
 function PixelContextMenuSubTrigger({
@@ -151,7 +151,7 @@ function PixelContextMenuSubTrigger({
   children,
   ...props
 }: React.ComponentProps<typeof ContextMenuPrimitive.SubTrigger> & {
-  inset?: boolean
+  inset?: boolean;
 }) {
   return (
     <ContextMenuPrimitive.SubTrigger
@@ -160,14 +160,14 @@ function PixelContextMenuSubTrigger({
         "hover:bg-[#ff6b6b] hover:text-white focus:bg-[#ff6b6b] focus:text-white",
         "data-[state=open]:bg-[#ff6b6b] data-[state=open]:text-white",
         inset && "pl-8",
-        className
+        className,
       )}
       {...props}
     >
       {children}
       <ChevronRight className="ml-auto h-4 w-4" />
     </ContextMenuPrimitive.SubTrigger>
-  )
+  );
 }
 
 function PixelContextMenuSubContent({
@@ -179,23 +179,23 @@ function PixelContextMenuSubContent({
       className={cn(
         "z-50 min-w-[8rem] overflow-hidden border-4 border-black bg-[#fffacd] dark:bg-[#2a2a2a] p-1 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]",
         "font-[family-name:var(--font-press-start)] text-xs duration-0",
-        className
+        className,
       )}
       {...props}
     />
-  )
+  );
 }
 
 function PixelContextMenuGroup({
   ...props
 }: React.ComponentProps<typeof ContextMenuPrimitive.Group>) {
-  return <ContextMenuPrimitive.Group {...props} />
+  return <ContextMenuPrimitive.Group {...props} />;
 }
 
 function PixelContextMenuRadioGroup({
   ...props
 }: React.ComponentProps<typeof ContextMenuPrimitive.RadioGroup>) {
-  return <ContextMenuPrimitive.RadioGroup {...props} />
+  return <ContextMenuPrimitive.RadioGroup {...props} />;
 }
 
 export {
@@ -212,4 +212,4 @@ export {
   PixelContextMenuSubContent,
   PixelContextMenuGroup,
   PixelContextMenuRadioGroup,
-}
+};

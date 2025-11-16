@@ -1,10 +1,10 @@
-import { configureStore } from '@reduxjs/toolkit'
-import userPreferencesReducer from './slices/userPreferencesSlice'
-import componentPlaygroundReducer from './slices/componentPlaygroundSlice'
-import shoppingCartReducer from './slices/shoppingCartSlice'
-import toastReducer from './slices/toastSlice'
-import uiReducer from './slices/uiSlice'
-import filterReducer from './slices/filterSlice'
+import { configureStore } from "@reduxjs/toolkit";
+import componentPlaygroundReducer from "./slices/componentPlaygroundSlice";
+import filterReducer from "./slices/filterSlice";
+import shoppingCartReducer from "./slices/shoppingCartSlice";
+import toastReducer from "./slices/toastSlice";
+import uiReducer from "./slices/uiSlice";
+import userPreferencesReducer from "./slices/userPreferencesSlice";
 
 export const makeStore = () => {
   return configureStore({
@@ -22,9 +22,9 @@ export const makeStore = () => {
           ignoredActions: [],
         },
       }),
-  })
-}
+  });
+};
 
-export type AppStore = ReturnType<typeof makeStore>
-export type RootState = ReturnType<AppStore['getState']>
-export type AppDispatch = AppStore['dispatch']
+export type AppStore = ReturnType<typeof makeStore>;
+export type RootState = ReturnType<AppStore["getState"]>;
+export type AppDispatch = AppStore["dispatch"];

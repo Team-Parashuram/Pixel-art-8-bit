@@ -1,7 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { PixelNotification, PixelToastContainer, usePixelToast } from "@/components/ui/pixel/pixel-notification";
+import {
+  PixelNotification,
+  PixelToastContainer,
+  usePixelToast,
+} from "@/components/ui/pixel/pixel-notification";
 
 function ToastDemo() {
   const { toasts, addToast, removeToast } = usePixelToast();
@@ -124,8 +128,10 @@ export default function NotificationExamples() {
     <div className="container mx-auto px-4 py-16 space-y-24">
       {/* Basic Notifications */}
       <section>
-        <h2 className="text-3xl font-bold mb-8 font-pixel">Basic Notifications</h2>
-        
+        <h2 className="text-3xl font-bold mb-8 font-pixel">
+          Basic Notifications
+        </h2>
+
         <div className="space-y-6">
           <div>
             <h3 className="text-lg font-bold mb-4 font-pixel">Default</h3>
@@ -180,8 +186,10 @@ export default function NotificationExamples() {
 
       {/* With Close Button */}
       <section>
-        <h2 className="text-3xl font-bold mb-8 font-pixel">With Close Button</h2>
-        
+        <h2 className="text-3xl font-bold mb-8 font-pixel">
+          With Close Button
+        </h2>
+
         {showNotification && (
           <PixelNotification
             title="Dismissible Notification"
@@ -191,7 +199,7 @@ export default function NotificationExamples() {
             onClose={() => setShowNotification(false)}
           />
         )}
-        
+
         {!showNotification && (
           <button
             onClick={() => setShowNotification(true)}
@@ -204,8 +212,10 @@ export default function NotificationExamples() {
 
       {/* With Action Button */}
       <section>
-        <h2 className="text-3xl font-bold mb-8 font-pixel">With Action Button</h2>
-        
+        <h2 className="text-3xl font-bold mb-8 font-pixel">
+          With Action Button
+        </h2>
+
         <div className="space-y-6">
           <PixelNotification
             title="Update Available"
@@ -235,7 +245,7 @@ export default function NotificationExamples() {
       {/* Different Icons */}
       <section>
         <h2 className="text-3xl font-bold mb-8 font-pixel">Custom Icons</h2>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <PixelNotification
             title="New Message"
@@ -269,11 +279,14 @@ export default function NotificationExamples() {
 
       {/* Toast Notifications */}
       <section>
-        <h2 className="text-3xl font-bold mb-8 font-pixel">Toast Notifications (Live Demo)</h2>
-        
+        <h2 className="text-3xl font-bold mb-8 font-pixel">
+          Toast Notifications (Live Demo)
+        </h2>
+
         <div className="border-4 border-black p-8 bg-white dark:bg-[#2a2a2a] shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
           <p className="mb-6 font-pixel">
-            Click the buttons below to see toast notifications appear in the top-right corner:
+            Click the buttons below to see toast notifications appear in the
+            top-right corner:
           </p>
           <ToastDemo />
         </div>
@@ -282,7 +295,7 @@ export default function NotificationExamples() {
       {/* Without Description */}
       <section>
         <h2 className="text-3xl font-bold mb-8 font-pixel">Title Only</h2>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <PixelNotification
             title="Saved successfully!"
@@ -290,18 +303,16 @@ export default function NotificationExamples() {
             icon="✓"
           />
 
-          <PixelNotification
-            title="Connection lost"
-            variant="error"
-            icon="✕"
-          />
+          <PixelNotification title="Connection lost" variant="error" icon="✕" />
         </div>
       </section>
 
       {/* Stacked Notifications */}
       <section>
-        <h2 className="text-3xl font-bold mb-8 font-pixel">Stacked Notifications</h2>
-        
+        <h2 className="text-3xl font-bold mb-8 font-pixel">
+          Stacked Notifications
+        </h2>
+
         <div className="space-y-3">
           <PixelNotification
             title="First notification"
@@ -338,7 +349,7 @@ export default function NotificationExamples() {
 />`}
             </code>
           </div>
-          
+
           <div>
             <p className="font-bold mb-2">Toast Hook:</p>
             <code className="block bg-white dark:bg-black p-4 border-2 border-black overflow-x-auto">
@@ -352,7 +363,7 @@ addToast({
 });`}
             </code>
           </div>
-          
+
           <div>
             <p className="font-bold mb-2">With Action:</p>
             <code className="block bg-white dark:bg-black p-4 border-2 border-black overflow-x-auto">

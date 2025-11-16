@@ -1,8 +1,8 @@
 "use client";
 
+import { cva, type VariantProps } from "class-variance-authority";
 import * as React from "react";
 import { cn } from "@/lib/utils";
-import { cva, type VariantProps } from "class-variance-authority";
 
 const pixelGlitchTextVariants = cva(
   "font-bold uppercase tracking-wider pixel-font relative inline-block",
@@ -25,7 +25,7 @@ const pixelGlitchTextVariants = cva(
       variant: "default",
       size: "md",
     },
-  }
+  },
 );
 
 export interface PixelGlitchTextProps
@@ -49,14 +49,12 @@ const PixelGlitchText = React.forwardRef<HTMLDivElement, PixelGlitchTextProps>(
       className,
       ...props
     },
-    ref
+    ref,
   ) => {
     const [isGlitching, setIsGlitching] = React.useState(!enableOnHover);
 
     const glitchStyle: React.CSSProperties = {
-      animation: isGlitching
-        ? `pixel-glitch ${2 * speed}s infinite`
-        : "none",
+      animation: isGlitching ? `pixel-glitch ${2 * speed}s infinite` : "none",
     };
 
     const shadowStyle = enableShadows
@@ -73,7 +71,7 @@ const PixelGlitchText = React.forwardRef<HTMLDivElement, PixelGlitchTextProps>(
         className={cn(
           pixelGlitchTextVariants({ variant, size }),
           "cursor-pointer select-none",
-          className
+          className,
         )}
         onMouseEnter={() => enableOnHover && setIsGlitching(true)}
         onMouseLeave={() => enableOnHover && setIsGlitching(false)}
@@ -107,7 +105,7 @@ const PixelGlitchText = React.forwardRef<HTMLDivElement, PixelGlitchTextProps>(
         )}
       </div>
     );
-  }
+  },
 );
 
 PixelGlitchText.displayName = "PixelGlitchText";

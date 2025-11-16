@@ -1,8 +1,8 @@
 "use client";
 
-import * as React from "react";
 import * as SelectPrimitive from "@radix-ui/react-select";
 import { Check, ChevronDown, ChevronUp } from "lucide-react";
+import * as React from "react";
 import { cn } from "@/lib/utils";
 
 const PixelSelect = SelectPrimitive.Root;
@@ -19,7 +19,7 @@ const PixelSelectTrigger = React.forwardRef<
     ref={ref}
     className={cn(
       "flex h-12 w-full items-center justify-between pixel-borders border-[3px] border-black bg-white px-4 py-3 text-sm placeholder:text-black/50 focus:outline-none focus:ring-2 focus:ring-[#ff8c00] disabled:cursor-not-allowed disabled:opacity-50 dark:border-[#ff8c00] dark:bg-[#1a1a1a] dark:text-white transition-none duration-0",
-      className
+      className,
     )}
     {...props}
   >
@@ -39,14 +39,15 @@ const PixelSelectScrollUpButton = React.forwardRef<
     ref={ref}
     className={cn(
       "flex cursor-default items-center justify-center py-1",
-      className
+      className,
     )}
     {...props}
   >
     <ChevronUp className="h-4 w-4" />
   </SelectPrimitive.ScrollUpButton>
 ));
-PixelSelectScrollUpButton.displayName = SelectPrimitive.ScrollUpButton.displayName;
+PixelSelectScrollUpButton.displayName =
+  SelectPrimitive.ScrollUpButton.displayName;
 
 const PixelSelectScrollDownButton = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.ScrollDownButton>,
@@ -56,7 +57,7 @@ const PixelSelectScrollDownButton = React.forwardRef<
     ref={ref}
     className={cn(
       "flex cursor-default items-center justify-center py-1",
-      className
+      className,
     )}
     {...props}
   >
@@ -77,7 +78,7 @@ const PixelSelectContent = React.forwardRef<
         "relative z-50 max-h-96 min-w-[8rem] overflow-hidden pixel-borders border-4 border-black bg-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:border-[#ff8c00] dark:bg-[#1a1a1a] dark:shadow-[4px_4px_0px_0px_rgba(255,140,0,0.3)] data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 duration-0",
         position === "popper" &&
           "data-[side=bottom]:translate-y-1 data-[side=left]:-translate-x-1 data-[side=right]:translate-x-1 data-[side=top]:-translate-y-1",
-        className
+        className,
       )}
       position={position}
       {...props}
@@ -87,7 +88,7 @@ const PixelSelectContent = React.forwardRef<
         className={cn(
           "p-1",
           position === "popper" &&
-            "h-[var(--radix-select-trigger-height)] w-full min-w-[var(--radix-select-trigger-width)]"
+            "h-[var(--radix-select-trigger-height)] w-full min-w-[var(--radix-select-trigger-width)]",
         )}
       >
         {children}
@@ -118,7 +119,7 @@ const PixelSelectItem = React.forwardRef<
     ref={ref}
     className={cn(
       "relative flex w-full cursor-default select-none items-center py-2 px-2 text-sm outline-none focus:bg-[#ff8c00] focus:text-white data-[disabled]:pointer-events-none data-[disabled]:opacity-50 dark:focus:bg-[#ff8c00] transition-none duration-0",
-      className
+      className,
     )}
     {...props}
   >
@@ -127,7 +128,9 @@ const PixelSelectItem = React.forwardRef<
         <Check className="h-4 w-4" />
       </SelectPrimitive.ItemIndicator>
     </span>
-    <SelectPrimitive.ItemText className="pl-6">{children}</SelectPrimitive.ItemText>
+    <SelectPrimitive.ItemText className="pl-6">
+      {children}
+    </SelectPrimitive.ItemText>
   </SelectPrimitive.Item>
 ));
 PixelSelectItem.displayName = SelectPrimitive.Item.displayName;

@@ -1,8 +1,8 @@
 "use client";
 
+import { cva, type VariantProps } from "class-variance-authority";
 import * as React from "react";
 import { cn } from "@/lib/utils";
-import { cva, type VariantProps } from "class-variance-authority";
 
 const pixelCircularTextVariants = cva(
   "font-bold uppercase tracking-wider pixel-font inline-block relative",
@@ -25,7 +25,7 @@ const pixelCircularTextVariants = cva(
       variant: "default",
       size: "md",
     },
-  }
+  },
 );
 
 export interface PixelCircularTextProps
@@ -50,7 +50,7 @@ const PixelCircularText = React.forwardRef<
       className,
       ...props
     },
-    ref
+    ref,
   ) => {
     const [isHovered, setIsHovered] = React.useState(false);
     const letters = Array.from(text);
@@ -80,7 +80,7 @@ const PixelCircularText = React.forwardRef<
         className={cn(
           pixelCircularTextVariants({ variant, size }),
           "flex items-center justify-center",
-          className
+          className,
         )}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
@@ -113,7 +113,7 @@ const PixelCircularText = React.forwardRef<
         </div>
       </div>
     );
-  }
+  },
 );
 
 PixelCircularText.displayName = "PixelCircularText";

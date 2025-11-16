@@ -1,9 +1,9 @@
 "use client";
 
+import { Check, Copy } from "lucide-react";
 import * as React from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { tomorrow } from "react-syntax-highlighter/dist/esm/styles/prism";
-import { Check, Copy } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface CodeBlockProps {
@@ -28,7 +28,12 @@ export function CodeBlock({
   };
 
   return (
-    <div className={cn("relative pixel-borders border-2 my-4 overflow-hidden bg-[#1a1a1a]", className)}>
+    <div
+      className={cn(
+        "relative pixel-borders border-2 my-4 overflow-hidden bg-[#1a1a1a]",
+        className,
+      )}
+    >
       <button
         onClick={copyToClipboard}
         className="absolute right-2 top-2 z-10 pixel-borders border-2 border-[#ff8c00] bg-[#1a1a1a] p-2 text-white hover:bg-[#ff8c00] transition-none duration-0"
