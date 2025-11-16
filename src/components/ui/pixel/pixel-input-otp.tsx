@@ -1,7 +1,7 @@
 "use client";
 
-import * as React from "react";
 import { OTPInput, OTPInputContext } from "input-otp";
+import * as React from "react";
 import { cn } from "@/lib/utils";
 
 type PixelInputOTPProps = React.ComponentProps<typeof OTPInput> & {
@@ -19,18 +19,24 @@ function PixelInputOTP({
   helperText,
   ...props
 }: PixelInputOTPProps) {
+  const generatedId = React.useId();
+  const otpId = props.id ?? `pixel-otp-${generatedId}`;
   return (
     <div className="space-y-2">
       {label ? (
-        <label className="text-xs font-bold uppercase tracking-wide text-black dark:text-white">
+        <label
+          className="text-xs font-bold uppercase tracking-wide text-black dark:text-white"
+          htmlFor={otpId}
+        >
           {label}
         </label>
       ) : null}
       <OTPInput
+        id={otpId}
         containerClassName={cn(
           "flex items-center gap-2 has-disabled:opacity-50",
           hasError && "animate-shake",
-          containerClassName
+          containerClassName,
         )}
         className={cn("disabled:cursor-not-allowed", className)}
         {...props}
@@ -39,7 +45,7 @@ function PixelInputOTP({
         <p
           className={cn(
             "text-xs font-mono",
-            hasError ? "text-[#ff4d4f]" : "text-black/60 dark:text-white/60"
+            hasError ? "text-[#ff4d4f]" : "text-black/60 dark:text-white/60",
           )}
         >
           {helperText}
@@ -49,13 +55,11 @@ function PixelInputOTP({
   );
 }
 
-function PixelInputOTPGroup({ className, ...props }: React.ComponentProps<"div">) {
-  return (
-    <div
-      className={cn("flex items-center", className)}
-      {...props}
-    />
-  );
+function PixelInputOTPGroup({
+  className,
+  ...props
+}: React.ComponentProps<"div">) {
+  return <div className={cn("flex items-center", className)} {...props} />;
 }
 
 function PixelInputOTPSlot({
@@ -71,9 +75,9 @@ function PixelInputOTPSlot({
   return (
     <div
       className={cn(
-  "relative flex h-12 w-12 select-none items-center justify-center border-4 border-black bg-pixel-light-surface pixel-font text-lg uppercase text-black shadow-[2px_2px_0px_rgba(0,0,0,1)] transition-none dark:bg-pixel-dark-surface dark:text-white",
+        "relative flex h-12 w-12 select-none items-center justify-center border-4 border-black bg-pixel-light-surface pixel-font text-lg uppercase text-black shadow-[2px_2px_0px_rgba(0,0,0,1)] transition-none dark:bg-pixel-dark-surface dark:text-white",
         isActive && "z-10 border-[#ff8c00] dark:border-[#ff8c00]",
-        className
+        className,
       )}
       {...props}
     >
@@ -87,16 +91,24 @@ function PixelInputOTPSlot({
   );
 }
 
-function PixelInputOTPSeparator({ className, ...props }: React.ComponentProps<"div">) {
+function PixelInputOTPSeparator({
+  className,
+  ...props
+}: React.ComponentProps<"span">) {
   return (
-    <div
-      role="separator"
-  className={cn("px-2 text-lg pixel-font", className)}
+    <span
+      className={cn("px-2 text-lg pixel-font", className)}
+      aria-hidden="true"
       {...props}
     >
       -
-    </div>
+    </span>
   );
 }
 
-export { PixelInputOTP, PixelInputOTPGroup, PixelInputOTPSlot, PixelInputOTPSeparator };
+export {
+  PixelInputOTP,
+  PixelInputOTPGroup,
+  PixelInputOTPSlot,
+  PixelInputOTPSeparator,
+};
