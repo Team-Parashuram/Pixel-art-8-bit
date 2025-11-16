@@ -34,6 +34,13 @@
     "dependencies": ["lucide-react"],
     "registryDependencies": []
   },
+  "pixel-inventory-picker": {
+    "name": "Pixel Inventory Picker",
+    "description": "Retro inventory grid with rarity indicators and multi-select",
+    "files": ["components/ui/pixel/pixel-inventory-picker.tsx"],
+    "dependencies": ["lucide-react"],
+    "registryDependencies": []
+  },
   "pixel-badge": {
     "name": "Pixel Badge",
     "description": "Small status indicators with pixel-art styling and color variants",

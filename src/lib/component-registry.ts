@@ -234,6 +234,74 @@ export const componentRegistry: ComponentDoc[] = [
     ],
   },
   {
+    slug: "pixel-inventory-picker",
+    title: "Inventory Picker",
+    description: "Retro grid picker for loadouts or item selection with rarity badges and helper text.",
+    category: "Forms",
+    installation: "",
+    importCode: `import { PixelInventoryPicker } from "@/components/ui/pixel/pixel-inventory-picker"`,
+    usageCode: `const inventoryItems = [
+  { id: "sword", label: "Sword", icon: "🗡️", quantity: 1, rarity: "common" },
+  { id: "shield", label: "Shield", icon: "🛡️", quantity: 1, rarity: "rare" },
+  { id: "potion", label: "Potion", icon: "🧪", quantity: 3, rarity: "epic" },
+  { id: "amulet", label: "Amulet", icon: "📿", quantity: 1, rarity: "legendary" },
+];
+
+const [equipped, setEquipped] = useState<string[]>([]);
+
+<PixelInventoryPicker
+  label="Loadout"
+  items={inventoryItems}
+  maxSelections={3}
+  helperText={
+    equipped.length
+      ? equipped.length + (equipped.length > 1 ? " items equipped" : " item equipped")
+      : "Choose up to 3 items"
+  }
+  selectedIds={equipped}
+  onSelectionChange={setEquipped}
+/>`,
+    componentCode: `/src/components/ui/pixel/pixel-inventory-picker.tsx`,
+    props: [
+      { name: "items", type: "PixelInventoryItem[]", description: "Array of inventory items rendered as slots." },
+      { name: "selectedIds", type: "string[]", description: "Controlled list of selected item IDs." },
+      { name: "defaultSelectedIds", type: "string[]", description: "Initial selection for uncontrolled usage." },
+      { name: "maxSelections", type: "number", description: "Limits the number of simultaneous selections." },
+      { name: "columns", type: "number", default: "4", description: "How many columns to display in the grid." },
+      { name: "renderItem", type: "(item, state) => React.ReactNode", description: "Custom renderer for each slot." },
+      { name: "slotClassName", type: "string", description: "Additional classes applied to default slots." },
+      { name: "helperText", type: "React.ReactNode", description: "Status or helper message shown below the grid." },
+      { name: "hasError", type: "boolean", default: "false", description: "Highlights helper text when validation fails." },
+    ],
+    examples: [
+      {
+        title: "Starter Backpack",
+        code: `<PixelInventoryPicker
+  label="Starter Pack"
+  items={inventoryItems}
+  helperText="Select the gear you want to carry"
+  maxSelections={2}
+  onSelectionChange={(ids) => console.log('Selected', ids)}
+/>`,
+      },
+      {
+        title: "Custom Render",
+        code: `<PixelInventoryPicker
+  items={inventoryItems}
+  renderItem={(item, state) => (
+    <div className={
+      state.isSelected
+        ? "border-4 border-black bg-pixel-light-bg p-3 text-xs font-bold uppercase"
+        : "border-4 border-black bg-pixel-light-surface p-3 text-xs uppercase"
+    }>
+      {item.label}
+    </div>
+  )}
+/>`,
+      },
+    ],
+  },
+  {
     slug: "pixel-checkbox",
     title: "Checkbox",
     description: "A pixel-styled checkbox component for selections.",

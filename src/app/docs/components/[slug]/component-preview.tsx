@@ -14,6 +14,7 @@ import { PixelRadioGroup, PixelRadioGroupItem } from "@/components/ui/pixel/pixe
 import { PixelTextarea } from "@/components/ui/pixel/pixel-textarea";
 import { PixelInputOTP, PixelInputOTPGroup, PixelInputOTPSlot, PixelInputOTPSeparator } from "@/components/ui/pixel/pixel-input-otp";
 import { PixelDropzone } from "@/components/ui/pixel/pixel-dropzone";
+import { PixelInventoryPicker } from "@/components/ui/pixel/pixel-inventory-picker";
 import { PixelSlider } from "@/components/ui/pixel/pixel-slider";
 import { PixelLabel } from "@/components/ui/pixel/pixel-label";
 import { PixelRating } from "@/components/ui/pixel/pixel-rating";
@@ -211,6 +212,13 @@ export function ComponentPreview({ slug }: { slug: string }) {
   const [radioValue, setRadioValue] = useState("option1");
   const [otpValue, setOtpValue] = useState("");
   const [dropzoneFiles, setDropzoneFiles] = useState<File[]>([]);
+  const [inventorySelection, setInventorySelection] = useState<string[]>([]);
+  const inventoryItems = [
+    { id: "blade", label: "Blade", icon: "🗡️", quantity: 1, rarity: "common" as const },
+    { id: "shield", label: "Shield", icon: "🛡️", quantity: 1, rarity: "rare" as const },
+    { id: "potion", label: "Potion", icon: "🧪", quantity: 3, rarity: "epic" as const },
+    { id: "orb", label: "Orb", icon: "🔮", quantity: 1, rarity: "legendary" as const },
+  ];
   
   switch (slug) {
     case "pixel-button":
@@ -281,6 +289,22 @@ export function ComponentPreview({ slug }: { slug: string }) {
           accept={["image/png", "image/webp", "image/gif"]}
           files={dropzoneFiles}
           onFilesChange={setDropzoneFiles}
+        />
+      );
+    }
+
+    case "pixel-inventory-picker": {
+      const equippedLabel = inventorySelection.length
+        ? `${inventorySelection.length} item${inventorySelection.length > 1 ? "s" : ""} equipped`
+        : "Select up to 3 items";
+      return (
+        <PixelInventoryPicker
+          label="Inventory"
+          items={inventoryItems}
+          maxSelections={3}
+          helperText={equippedLabel}
+          selectedIds={inventorySelection}
+          onSelectionChange={setInventorySelection}
         />
       );
     }
