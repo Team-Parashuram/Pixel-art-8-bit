@@ -111,7 +111,7 @@ export default async function ComponentPage(props: {
         <div className="flex gap-8">
           <DocsSidebar />
 
-          <main className="flex-1 max-w-4xl">
+          <main className="flex-1 w-full lg:max-w-4xl">
             {/* Back Button */}
             <Link href="/docs/components">
               <PixelButton variant="ghost" size="sm" className="mb-6">
