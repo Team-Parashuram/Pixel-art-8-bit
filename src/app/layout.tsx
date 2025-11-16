@@ -6,6 +6,7 @@ import { Navbar } from "@/components/navbar/navbar";
 import { StructuredData } from "@/components/seo/structured-data";
 import { ThemeProvider } from "@/components/theme/theme";
 import StoreProvider from "@/store/StoreProvider";
+import { Analytics } from "@vercel/analytics/next"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -191,6 +192,7 @@ export default function RootLayout({
             <Navbar />
             <main>{children}</main>
             <Footer />
+            <Analytics />
           </ThemeProvider>
         </StoreProvider>
       </body>

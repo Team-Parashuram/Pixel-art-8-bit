@@ -68,39 +68,41 @@ function ComponentsListContent() {
 
   return (
     <div className="min-h-screen bg-pixel-light-bg dark:bg-black">
-      <div className="container mx-auto px-4 py-12">
+      <div className="container mx-auto px-4 py-8 sm:py-12">
         {/* Header */}
-        <div className="mb-12 text-center">
+        <div className="mb-8 sm:mb-12 text-center">
           <Link href="/">
-            <PixelButton variant="ghost" size="sm" className="mb-6">
+            <PixelButton variant="ghost" size="sm" className="mb-4 sm:mb-6">
               ← Back to Home
             </PixelButton>
           </Link>
 
-          <h1 className="text-5xl md:text-6xl font-bold uppercase font-pixel mb-6 dark:text-pixel-dark-secondary">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold uppercase font-pixel mb-4 sm:mb-6 dark:text-pixel-dark-secondary px-2">
             Components
           </h1>
 
-          <p className="text-lg max-w-2xl mx-auto dark:text-white/80 mb-8">
+          <p className="text-sm sm:text-base md:text-lg max-w-2xl mx-auto dark:text-white/80 mb-6 sm:mb-8 px-4">
             Browse our collection of {componentRegistry.length}+ pixel-perfect
             retro components. All components are fully typed, accessible, and
             copy-paste ready.
           </p>
 
           {/* Search */}
-          <div className="max-w-md mx-auto relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-black/50 dark:text-white/50" />
-            <PixelInput
-              placeholder="Search components..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="pl-10"
-            />
+          <div className="max-w-md mx-auto px-4 sm:px-0">
+            <div className="relative">
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-black/50 dark:text-white/50 pointer-events-none" />
+              <PixelInput
+                placeholder="Search components..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="pl-10 w-full"
+              />
+            </div>
           </div>
         </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12 max-w-4xl mx-auto">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mb-8 sm:mb-12 max-w-4xl mx-auto">
           {categories.map((category) => {
             const count = componentRegistry.filter(
               (c) => c.category === category,
@@ -133,7 +135,7 @@ function ComponentsListContent() {
 
         {/* Component Grid by Category */}
         <PixelTabs value={selectedTab} onValueChange={handleTabChange}>
-          <PixelTabsList className="mb-8">
+          <PixelTabsList className="mb-8 flex-wrap justify-center">
             {categories.map((category) => (
               <PixelTabsTrigger
                 key={category}
@@ -158,13 +160,13 @@ function ComponentsListContent() {
             return (
               <PixelTabsContent key={category} value={category}>
                 {categoryComponents.length === 0 ? (
-                  <div className="text-center py-12">
-                    <p className="text-lg dark:text-white/60">
+                  <div className="text-center py-8 sm:py-12 px-4">
+                    <p className="text-base sm:text-lg dark:text-white/60">
                       No components found
                     </p>
                   </div>
                 ) : (
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                     {categoryComponents.map((component) => (
                       <Link
                         key={component.slug}

@@ -133,22 +133,22 @@ const Page = () => {
   }
 
   return (
-    <div className="min-h-screen bg-pixel-light-bg dark:bg-[#000000] flex items-center justify-center px-4 py-12 md:py-20">
-      <div className="max-w-4xl w-full space-y-10">
+    <div className="min-h-screen bg-pixel-light-bg dark:bg-[#000000] flex items-center justify-center px-4 py-8 sm:py-12 md:py-20">
+      <div className="max-w-4xl w-full space-y-6 sm:space-y-8 md:space-y-10">
         {/* Hero Section */}
-        <div className="text-center space-y-5">
-          <div className="flex justify-center mb-4">
+        <div className="text-center space-y-3 sm:space-y-4 md:space-y-5">
+          <div className="flex justify-center mb-3 sm:mb-4">
             <PixelBadge
               variant="warning"
-              className="text-sm md:text-base px-6 py-2 font-pixel"
+              className="text-xs sm:text-sm md:text-base px-4 sm:px-6 py-1.5 sm:py-2 font-pixel"
             >
               ✨ NEW FEATURE
             </PixelBadge>
           </div>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold uppercase tracking-wider font-pixel dark:text-pixel-dark-secondary leading-tight">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold uppercase tracking-wider font-pixel dark:text-pixel-dark-secondary leading-tight px-2">
             Resume to Portfolio
           </h1>
-          <p className="text-lg md:text-xl lg:text-2xl dark:text-gray-300 text-gray-700 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl dark:text-gray-300 text-gray-700 max-w-2xl mx-auto leading-relaxed px-4">
             Transform your resume into a stunning pixel-perfect portfolio
             website in seconds
           </p>
@@ -156,28 +156,28 @@ const Page = () => {
 
         {/* Upload Card */}
         <PixelCard className="overflow-hidden">
-          <PixelCardHeader className="space-y-3">
-            <PixelCardTitle className="flex items-center gap-3 text-xl md:text-2xl">
-              <FileText className="h-6 w-6 md:h-7 md:w-7" />
+          <PixelCardHeader className="space-y-2 sm:space-y-3">
+            <PixelCardTitle className="flex items-center gap-2 sm:gap-3 text-lg sm:text-xl md:text-2xl px-2">
+              <FileText className="h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7 flex-shrink-0" />
               Upload Your Resume
             </PixelCardTitle>
-            <PixelCardDescription className="text-base">
+            <PixelCardDescription className="text-sm sm:text-base px-2">
               Upload a PDF resume and we'll instantly create a beautiful,
               responsive portfolio website
             </PixelCardDescription>
           </PixelCardHeader>
-          <PixelCardContent className="space-y-5">
+          <PixelCardContent className="space-y-4 sm:space-y-5">
             <label
               htmlFor="resume-upload"
-              className="block w-full p-16 md:p-20 border-4 border-dashed border-black dark:border-pixel-dark-primary text-center cursor-pointer transition-all duration-200 hover:bg-pixel-warning/10 dark:hover:bg-pixel-dark-primary/20 hover:border-pixel-warning dark:hover:border-pixel-dark-secondary group"
+              className="block w-full p-8 sm:p-12 md:p-16 lg:p-20 border-4 border-dashed border-black dark:border-pixel-dark-primary text-center cursor-pointer transition-all duration-200 hover:bg-pixel-warning/10 dark:hover:bg-pixel-dark-primary/20 hover:border-pixel-warning dark:hover:border-pixel-dark-secondary group"
             >
-              <div className="space-y-5">
-                <Upload className="h-14 w-14 md:h-16 md:w-16 mx-auto text-gray-600 dark:text-gray-400 group-hover:text-pixel-warning dark:group-hover:text-pixel-dark-secondary transition-colors" />
+              <div className="space-y-3 sm:space-y-4 md:space-y-5">
+                <Upload className="h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 lg:h-16 lg:w-16 mx-auto text-gray-600 dark:text-gray-400 group-hover:text-pixel-warning dark:group-hover:text-pixel-dark-secondary transition-colors" />
                 <div>
-                  <div className="text-xl md:text-2xl font-bold uppercase font-pixel mb-2 group-hover:text-pixel-warning dark:group-hover:text-pixel-dark-secondary transition-colors">
+                  <div className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold uppercase font-pixel mb-2 group-hover:text-pixel-warning dark:group-hover:text-pixel-dark-secondary transition-colors px-2">
                     Click to Upload
                   </div>
-                  <div className="text-sm md:text-base text-gray-600 dark:text-gray-400">
+                  <div className="text-xs sm:text-sm md:text-base text-gray-600 dark:text-gray-400 px-2">
                     PDF files only • Max 10MB
                   </div>
                 </div>
@@ -207,12 +207,12 @@ const Page = () => {
         {/* Features Card */}
         <PixelCard>
           <PixelCardHeader>
-            <PixelCardTitle className="text-xl md:text-2xl text-center md:text-left">
+            <PixelCardTitle className="text-lg sm:text-xl md:text-2xl text-center px-2">
               📋 What We'll Extract
             </PixelCardTitle>
           </PixelCardHeader>
           <PixelCardContent>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 md:gap-5">
               {[
                 "Contact Information",
                 "Skills & Technologies",
@@ -223,10 +223,10 @@ const Page = () => {
               ].map((item, index) => (
                 <div
                   key={index}
-                  className="flex items-center gap-3 p-3 rounded-lg bg-pixel-light-bg dark:bg-pixel-dark-bg/50 transition-all hover:bg-pixel-warning/10 dark:hover:bg-pixel-dark-primary/10"
+                  className="flex items-center gap-2 sm:gap-3 p-2.5 sm:p-3 rounded-lg bg-pixel-light-bg dark:bg-pixel-dark-bg/50 transition-all hover:bg-pixel-warning/10 dark:hover:bg-pixel-dark-primary/10"
                 >
-                  <CheckCircle className="h-5 w-5 md:h-6 md:w-6 text-[#50c878] shrink-0" />
-                  <span className="font-bold text-sm md:text-base">{item}</span>
+                  <CheckCircle className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 text-[#50c878] shrink-0" />
+                  <span className="font-bold text-xs sm:text-sm md:text-base">{item}</span>
                 </div>
               ))}
             </div>
@@ -237,10 +237,10 @@ const Page = () => {
         <div className="text-center pt-2">
           <PixelBadge
             variant="default"
-            className="text-xs md:text-sm px-5 py-2.5 inline-flex items-center gap-2"
+            className="text-xs sm:text-sm px-4 sm:px-5 py-2 sm:py-2.5 inline-flex items-center gap-2"
           >
-            <span className="text-base">🔒</span>
-            <span>
+            <span className="text-sm sm:text-base">🔒</span>
+            <span className="text-left">
               Your resume data is processed securely and never stored
               permanently
             </span>
