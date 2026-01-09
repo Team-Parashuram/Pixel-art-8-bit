@@ -1,12 +1,24 @@
 # https://www.robotstxt.org/robotstxt.html
+# Robots.txt for Pixel UI - 8-Bit Retro Component Library
+# https://pixel-art-8-bit.mishrashardendu22.is-a.dev
+
 User-agent: *
 Allow: /
-
-# Disallow admin or private paths if any
 Disallow: /api/
 Disallow: /_next/static/
+Disallow: /_next/image/
 
-# Crawl-delay for specific bots
+# Allow social media crawlers for rich previews
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+# Search engine specific rules
 User-agent: Googlebot
 Allow: /
 
@@ -16,5 +28,18 @@ Allow: /
 User-agent: Slurp
 Allow: /
 
-# Sitemap
+User-agent: DuckDuckBot
+Allow: /
+
+# Rate limit aggressive crawlers
+User-agent: AhrefsBot
+Crawl-delay: 10
+
+User-agent: SemrushBot
+Crawl-delay: 10
+
+# Sitemap location
 Sitemap: https://pixel-art-8-bit.mishrashardendu22.is-a.dev/sitemap.xml
+
+# Host
+Host: https://pixel-art-8-bit.mishrashardendu22.is-a.dev

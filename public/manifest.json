@@ -1,25 +1,44 @@
 {
+  "id": "pixel-ui-component-library",
   "name": "Pixel UI - 8-Bit Retro Component Library for React & Next.js",
   "short_name": "Pixel UI",
   "description": "Build nostalgic web experiences with 50+ pixel-perfect components. Free, open-source 8-bit UI library with TypeScript, Tailwind CSS, and full accessibility support.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone", "minimal-ui"],
   "background_color": "#f5f5dc",
   "theme_color": "#ff8c00",
   "orientation": "portrait-primary",
   "icons": [
     {
+      "src": "/favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    },
+    {
       "src": "/icon-192x192.png",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "maskable any"
+      "purpose": "any"
     },
     {
       "src": "/icon-512x512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "maskable any"
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ],
   "categories": ["development", "design", "utilities", "productivity"],
